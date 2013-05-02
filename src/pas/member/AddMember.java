@@ -4,17 +4,34 @@
  */
 package pas.member;
 
+import java.beans.PropertyChangeEvent;
+
 /**
  *
  * @author Frank
  */
-public class AddMember extends javax.swing.JPanel {
+public class AddMember extends mvc.view.AbstractView {
 
+    private MemberController controller;
+    
+    
     /**
      * Creates new form AddMember
      */
-    public AddMember() {
+    public AddMember(MemberController controller) {
+        this.controller = controller;
         initComponents();
+    }
+    
+    
+    @Override
+    public MemberController getController() {
+        return this.controller;
+    }
+    
+    @Override
+    public void propertyChange(PropertyChangeEvent change) {
+        
     }
 
     /**
