@@ -3,6 +3,7 @@ package pas;
 import mvc.Application;
 import mvc.controller.InstanceController;
 import pas.layout.MainFrame;
+import pas.member.MemberController;
 
 /**
  * 
@@ -15,6 +16,6 @@ public class PAS {
         application.setInstanceController(
                 new InstanceController(new MainFrame()));
         
-        new MemberController().
+        new MemberController().addMemberAction();
     }
 }
