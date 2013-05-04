@@ -16,6 +16,6 @@ public class PAS {
         application.setInstanceController(
                 new InstanceController(new MainFrame()));
         
-        new MemberController().addMemberAction();
+        new MemberController().manageMemberAction();
     }
 }
