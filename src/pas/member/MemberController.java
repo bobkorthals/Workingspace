@@ -19,4 +19,8 @@ public class MemberController extends AbstractController {
     public void fileChooserAction(){
     open(new FileChooser(this));
     }
+
+    public void measurementResultsAction(){
+    open(new MeasurementResults(this));
+    }
 }

@@ -101,6 +101,7 @@ public class AddMember extends mvc.view.AbstractView {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setMaximumSize(new java.awt.Dimension(1201, 491));
         setMinimumSize(new java.awt.Dimension(1201, 491));
 
@@ -645,7 +646,7 @@ public class AddMember extends mvc.view.AbstractView {
     }//GEN-LAST:event_jTextField18ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    controller.manageMemberAction();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -653,7 +654,6 @@ public class AddMember extends mvc.view.AbstractView {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         controller.fileChooserAction();
     }//GEN-LAST:event_jButton3ActionPerformed
 
