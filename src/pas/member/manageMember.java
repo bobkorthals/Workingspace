@@ -4,17 +4,21 @@
  */
 package pas.member;
 
+import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
-import javax.swing.JFrame;
-import pas.layout.FileChooserFrame;
+import javax.swing.JFileChooser;
+import pas.file.chooser.FileChooserAbstract;
+import pas.file.chooser.FileChooserInterface;
 
 /**
  *
  * @author jkg
  */
-public class manageMember extends mvc.view.AbstractView {
+public class manageMember extends mvc.view.AbstractView implements FileChooserInterface {
 
     private MemberController controller;
+    
+    private FileChooserAbstract fileChooser;
 
     /**
      * Creates new form manageMember
@@ -27,6 +31,36 @@ public class manageMember extends mvc.view.AbstractView {
     @Override
     public MemberController getController() {
         return this.controller;
+    }
+    
+    public FileChooserAbstract getFileChooser() {
+        if (null == this.fileChooser) {
+            this.fileChooser = new FileChooserAbstract(this);
+        }
+        
+        return fileChooser;
+    }
+
+    public void setFileChooser(FileChooserAbstract fileChooser) {
+        this.fileChooser = fileChooser;
+    }
+    
+    /**
+     * Called to push events from the file chooser
+     * to the calling view
+     * 
+     * @param evt
+     * @return void
+     */
+    @Override
+    public void fileChooserActionPerformed(ActionEvent evt) {
+        FileChooserAbstract chooser = this.getFileChooser(); 
+
+        if (JFileChooser.APPROVE_SELECTION.equals(evt.getActionCommand())) {
+            lblTitle.setText(chooser.getFileChooser().getSelectedFile().getName());
+            chooser.setVisible(false);
+            chooser.dispose();
+        }
     }
 
     @Override
@@ -42,7 +76,7 @@ public class manageMember extends mvc.view.AbstractView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel10 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -126,8 +160,8 @@ public class manageMember extends mvc.view.AbstractView {
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel10.setText("Leden beheer");
+        lblTitle.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        lblTitle.setText("Leden beheer");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Leden overzicht", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
 
@@ -527,14 +561,15 @@ public class manageMember extends mvc.view.AbstractView {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton17)
-                    .addComponent(jButton19)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton11)
-                        .addComponent(jButton12)))
+                        .addComponent(jButton12))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton17)
+                        .addComponent(jButton19)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -868,14 +903,14 @@ public class manageMember extends mvc.view.AbstractView {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -969,7 +1004,7 @@ public class manageMember extends mvc.view.AbstractView {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnSelectFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelectFileMouseClicked
-        JFrame fileChooser = new FileChooserFrame();
+        this.getFileChooser().setVisible(true);
     }//GEN-LAST:event_btnSelectFileMouseClicked
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
@@ -1006,7 +1041,6 @@ public class manageMember extends mvc.view.AbstractView {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -1062,9 +1096,11 @@ public class manageMember extends mvc.view.AbstractView {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JLabel lblTitle;
     private java.awt.TextField textField1;
     private java.awt.TextField textField2;
     private java.awt.TextField textField4;
     private javax.swing.JTextField txtVoornaam;
     // End of variables declaration//GEN-END:variables
+
 }

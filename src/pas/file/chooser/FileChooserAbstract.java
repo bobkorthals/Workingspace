@@ -1,26 +1,42 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package pas.layout;
+package pas.file.chooser;
+
+import javax.swing.JFileChooser;
+
 /**
- *
+ * Basic file chooser
+ * 
  * @author Frank
  */
-public class FileChooserFrame extends javax.swing.JFrame {
+public abstract class FileChooserAbstract extends javax.swing.JFrame {
 
     /**
-     * Creates new form FileChooserFrame
+     * The caller that implements the FileChooserInterface
      */
-    public FileChooserFrame() {
+    private FileChooserInterface caller;
+    
+    /**
+     * Creates new form FileChooserAbstract
+     * 
+     * @param FileChooserInterface
+     */
+    public FileChooserAbstract(FileChooserInterface caller) {
         initComponents();
         
+        this.caller = caller;
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setAlwaysOnTop(true);
         this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
 
+    /**
+     * Returns an instance of the JFileChooser
+     * 
+     * @return JFileChooser
+     */
+    public JFileChooser getFileChooser() {
+        return fileChooser;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,8 +76,13 @@ public class FileChooserFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Call fileChooserActionPerformed on the caller
+     * 
+     * @param evt 
+     */
     private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChooserActionPerformed
-        System.out.println(evt.getActionCommand());
+        this.caller.fileChooserActionPerformed(evt);
     }//GEN-LAST:event_fileChooserActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
