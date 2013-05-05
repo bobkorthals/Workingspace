@@ -5,13 +5,14 @@
 package pas.layout;
 
 import mvc.view.AbstractFrame;
+import pas.main.MainController;
 
 /**
  *
  * @author Frank
  */
 public class MainFrame extends AbstractFrame {
-
+private MainController maincontroller;
     /**
      * Creates new form MainFrame
      */
@@ -30,6 +31,7 @@ public class MainFrame extends AbstractFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
         MenuItemSluiten = new javax.swing.JMenuItem();
@@ -48,7 +50,12 @@ public class MainFrame extends AbstractFrame {
         });
 
         MenuItemSluiten.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        MenuItemSluiten.setText("Sluiten");
+        MenuItemSluiten.setText("Naar Hoofdmenu");
+        MenuItemSluiten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemSluitenActionPerformed(evt);
+            }
+        });
         MenuFile.add(MenuItemSluiten);
 
         jMenuBar1.add(MenuFile);
@@ -65,10 +72,16 @@ public class MainFrame extends AbstractFrame {
         System.out.println("Sluiten...");
     }//GEN-LAST:event_MenuFileMouseClicked
 
+    private void MenuItemSluitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSluitenActionPerformed
+        // TODO add your handling code here:
+        new MainController().mainAction();
+    }//GEN-LAST:event_MenuItemSluitenActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuFile;
     private javax.swing.JMenuItem MenuItemSluiten;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
