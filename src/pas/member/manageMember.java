@@ -5,6 +5,8 @@
 package pas.member;
 
 import java.beans.PropertyChangeEvent;
+import javax.swing.JFrame;
+import pas.layout.FileChooserFrame;
 
 /**
  *
@@ -114,7 +116,7 @@ public class manageMember extends mvc.view.AbstractView {
         jButton14 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btnSelectFile = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -193,7 +195,7 @@ public class manageMember extends mvc.view.AbstractView {
                     .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addGap(125, 125, 125))
         );
 
         jPanel21.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gegevens", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
@@ -714,10 +716,15 @@ public class manageMember extends mvc.view.AbstractView {
             .addGap(0, 325, Short.MAX_VALUE)
         );
 
-        jButton3.setText("Zoek Foto");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSelectFile.setText("Zoek Foto");
+        btnSelectFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSelectFileMouseClicked(evt);
+            }
+        });
+        btnSelectFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSelectFileActionPerformed(evt);
             }
         });
 
@@ -734,7 +741,7 @@ public class manageMember extends mvc.view.AbstractView {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSelectFile, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addContainerGap())
@@ -747,7 +754,7 @@ public class manageMember extends mvc.view.AbstractView {
                 .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(btnSelectFile)
                     .addComponent(jButton4))
                 .addContainerGap())
         );
@@ -888,16 +895,21 @@ public class manageMember extends mvc.view.AbstractView {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton19ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectFileActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSelectFileActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void btnSelectFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSelectFileMouseClicked
+        JFrame fileChooser = new FileChooserFrame();
+    }//GEN-LAST:event_btnSelectFileMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNewMember;
+    private javax.swing.JButton btnSelectFile;
     private java.awt.Choice choice18;
     private java.awt.Choice choice19;
     private java.awt.Choice choice20;
@@ -914,7 +926,6 @@ public class manageMember extends mvc.view.AbstractView {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
