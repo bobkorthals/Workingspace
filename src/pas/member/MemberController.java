@@ -10,7 +10,7 @@ import pas.layout.FileChooser;
 public class MemberController extends AbstractController {
 
     public void manageMemberAction() {
-        open(new manageMember(this));
+        open(new ManageMember(this));
     }
 
     public void addMemeberAction() {
