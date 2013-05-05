@@ -9,7 +9,7 @@ import mvc.controller.AbstractController;
 public class MemberController extends AbstractController {
 
     public void manageMemberAction() {
-        open(new ManageMember(this));
+        open(new manageMember(this));
     }
 
     public void addMemeberAction() {
