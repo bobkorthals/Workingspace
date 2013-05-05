@@ -24,6 +24,5 @@ public class MemberController extends AbstractController {
     public void measurementAction() {
         Measurement view = new Measurement(this);
         open(view);
-        
     }
 }

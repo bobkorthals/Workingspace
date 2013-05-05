@@ -4,17 +4,21 @@
  */
 package pas.layout;
 
+import mvc.view.AbstractFrame;
+
 /**
  *
  * @author Frank
  */
-public class MainFrame extends mvc.view.AbstractFrame {
+public class MainFrame extends AbstractFrame {
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
+
+        this.setExtendedState(AbstractFrame.MAXIMIZED_BOTH);
     }
 
     /**
