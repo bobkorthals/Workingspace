@@ -1,7 +1,6 @@
 package pas.member;
 
 import mvc.controller.AbstractController;
-import pas.layout.FileChooser;
 
 /**
  *
@@ -15,10 +14,6 @@ public class MemberController extends AbstractController {
 
     public void addMemeberAction() {
         open(new AddMember(this));
-    }
-
-    public void fileChooserAction() {
-        open(new FileChooser(this));
     }
 
     public void measurementResultsAction() {
