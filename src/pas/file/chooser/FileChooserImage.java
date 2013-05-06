@@ -4,7 +4,8 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
- *
+ * Image chooser
+ * 
  * @author Frank
  */
 public class FileChooserImage extends FileChooserAbstract {
@@ -18,6 +19,4 @@ public class FileChooserImage extends FileChooserAbstract {
         chooser.addChoosableFileFilter(
                 new FileNameExtensionFilter("Image files", "jpg", "png"));
     }
-    
-    
 }

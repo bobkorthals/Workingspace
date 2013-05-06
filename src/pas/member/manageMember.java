@@ -62,6 +62,11 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
             chooser.setVisible(false);
             chooser.dispose();
         }
+        
+        else if (JFileChooser.CANCEL_SELECTION.equals(evt.getActionCommand())) {
+            chooser.setVisible(false);
+            chooser.dispose();
+        }
     }
 
     @Override
