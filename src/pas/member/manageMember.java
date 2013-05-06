@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JFileChooser;
 import pas.file.chooser.FileChooserAbstract;
+import pas.file.chooser.FileChooserImage;
 import pas.file.chooser.FileChooserInterface;
 
 /**
@@ -35,7 +36,7 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
     
     public FileChooserAbstract getFileChooser() {
         if (null == this.fileChooser) {
-            this.fileChooser = new FileChooserAbstract(this);
+            this.fileChooser = new FileChooserImage(this);
         }
         
         return fileChooser;
