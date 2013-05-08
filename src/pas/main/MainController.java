@@ -12,8 +12,13 @@ import mvc.controller.AbstractController;
  */
 public class MainController extends AbstractController {
     
-    public void mainAction(){
-    Main view=new Main(this);
+    public void mainAction(String functie){
+    Main view=new Main(this, functie);
+    open(view);
+    }
+    
+    public void actorLoginAction(){
+    ActorLogin view=new ActorLogin(this);
     open(view);
     }
     

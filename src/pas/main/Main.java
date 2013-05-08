@@ -16,12 +16,13 @@ public class Main extends mvc.view.AbstractView {
 
     private MainController maincontroller;
     private MemberController membercontroller;
-
+    private String functie;
     /**
      * Creates new form main
      */
-    public Main(MainController controller) {
+    public Main(MainController controller, String functie) {
         this.maincontroller = controller;
+        this.functie=functie;
         initComponents();
     }
 

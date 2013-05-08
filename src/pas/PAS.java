@@ -20,6 +20,6 @@ public class PAS {
         application.setInstanceController(
                 new InstanceController(new MainFrame()));
         
-        new MainController().mainAction();
+        new MainController().actorLoginAction();
     }
 }
