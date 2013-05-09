@@ -1,25 +1,26 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pas.main;
 
 import mvc.controller.AbstractController;
+import pas.layout.MainFrame;
 
 /**
  *
  * @author jkg
  */
 public class MainController extends AbstractController {
-    
-    public void mainAction(String functie){
-    Main view=new Main(this, functie);
-    open(view);
+
+    public MainController() {
+        MainFrame mainFrame = (MainFrame) getMainFrame();
+        mainFrame.setSidebarEnabled(false);
     }
     
-    public void actorLoginAction(){
-    ActorLogin view=new ActorLogin(this);
-    open(view);
+    public void mainAction(String functie) {
+        Main view = new Main(this, functie);
+        open(view);
     }
-    
+
+    public void actorLoginAction() {
+        ActorLogin view = new ActorLogin(this);
+        open(view);
+    }
 }

@@ -1,6 +1,7 @@
 package pas.member;
 
 import mvc.controller.AbstractController;
+import pas.layout.MainFrame;
 
 /**
  *
@@ -8,8 +9,13 @@ import mvc.controller.AbstractController;
  */
 public class MemberController extends AbstractController {
 
+    public MemberController() {
+        MainFrame mainFrame = (MainFrame) getMainFrame();
+        mainFrame.setSidebarEnabled(true);
+    }
+
     public void manageMemberAction() {
-        open(new manageMember(this));
+        open(new ManageMember(this));
     }
 
     public void addMemeberAction() {

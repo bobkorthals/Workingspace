@@ -1,31 +1,49 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pas.layout;
 
-import javax.swing.ImageIcon;
+import java.awt.Container;
+import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
-import pas.main.MainController;
+import mvc.view.AbstractView;
 
 /**
  *
  * @author Frank
  */
 public class MainFrame extends AbstractFrame {
-private MainController maincontroller;
-private String function;    
-ImageIcon icon=new ImageIcon();
 
-/**
+    /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
-
         this.setExtendedState(AbstractFrame.MAXIMIZED_BOTH);
     }
-
+    
+    /*
+     * By overriding the setContentPane mehtod we make sure that 
+     * not the entire contentPane but just the main JPanel receives the
+     * view when the instanceController opens a view.
+     * 
+     * @param Container view
+     * @return void
+     */
+    @Override
+    public void setContentPane(Container contentPane) {
+        if (contentPane instanceof AbstractView) {
+            JPanel view = (JPanel) contentPane;
+            this.pnlMain.removeAll();
+            this.pnlMain.add(view);
+        }
+        
+        else {
+            super.setContentPane(contentPane);
+        }
+    }
+    
+    public void setSidebarEnabled(boolean flag) {
+        this.pnlSidebar.setVisible(flag);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,9 +54,10 @@ ImageIcon icon=new ImageIcon();
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        pnlHeader = new javax.swing.JPanel();
+        pnlSidebar = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlMain = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
         MenuItemSluiten = new javax.swing.JMenuItem();
@@ -48,12 +67,13 @@ ImageIcon icon=new ImageIcon();
         setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(1920, 1080));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlHeader.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlSidebar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlMain.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlMain.setLayout(new java.awt.BorderLayout());
+        jScrollPane1.setViewportView(pnlMain);
 
         MenuFile.setText("File");
         MenuFile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -82,20 +102,23 @@ ImageIcon icon=new ImageIcon();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -105,17 +128,16 @@ ImageIcon icon=new ImageIcon();
 
     private void MenuItemSluitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSluitenActionPerformed
         // TODO add your handling code here:
-        new MainController().mainAction(function);
     }//GEN-LAST:event_MenuItemSluitenActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuFile;
     private javax.swing.JMenuItem MenuItemSluiten;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlMain;
+    private javax.swing.JPanel pnlSidebar;
     // End of variables declaration//GEN-END:variables
 }
