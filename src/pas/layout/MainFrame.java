@@ -1,8 +1,6 @@
 package pas.layout;
 
 import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Image;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
@@ -14,22 +12,6 @@ import pas.main.MainController;
  */
 public class MainFrame extends AbstractFrame {
 private MainController maincontroller;
-private String function;    
-
-public void createImage(Image img){
-
-}
-
-
-
-
-
-
-public void draw(Graphics g){
-    
-
-}
-
     /**
      * Creates new form MainFrame
      */
@@ -81,7 +63,9 @@ public void draw(Graphics g){
         pnlUser = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        link1 = new pas.layout.label.Link();
         lblSepperator1 = new javax.swing.JLabel();
+        linkLogout = new pas.layout.label.Link();
         imgLogo = new javax.swing.JLabel();
         pnlSidebar = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -96,6 +80,11 @@ public void draw(Graphics g){
 
         jScrollPane1.setBorder(null);
 
+        pnlMain.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pnlMainKeyPressed(evt);
+            }
+        });
         pnlMain.setLayout(new java.awt.BorderLayout());
         jScrollPane1.setViewportView(pnlMain);
 
@@ -112,24 +101,35 @@ public void draw(Graphics g){
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        link1.setText("Wijzig profiel");
+
         lblSepperator1.setText("-");
         lblSepperator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblSepperator1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        linkLogout.setText("Uitloggen");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addContainerGap()
+                .addComponent(link1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(lblSepperator1, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
-                .addGap(46, 46, 46))
+                .addGap(4, 4, 4)
+                .addComponent(linkLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblSepperator1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(linkLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(link1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSepperator1))
                 .addContainerGap())
         );
 
@@ -260,8 +260,13 @@ public void draw(Graphics g){
     }//GEN-LAST:event_MenuFileMouseClicked
 
     private void MenuItemSluitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSluitenActionPerformed
-        // TODO add your handling code here:
+maincontroller.mainAction();        // TODO add your handling code here:
     }//GEN-LAST:event_MenuItemSluitenActionPerformed
+
+    private void pnlMainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnlMainKeyPressed
+        maincontroller.mainAction();
+    }//GEN-LAST:event_pnlMainKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuFile;
     private javax.swing.JMenuItem MenuItemSluiten;
@@ -273,6 +278,8 @@ public void draw(Graphics g){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSepperator1;
+    private pas.layout.label.Link link1;
+    private pas.layout.label.Link linkLogout;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlBackgroundHead;
     private javax.swing.JPanel pnlHeader;

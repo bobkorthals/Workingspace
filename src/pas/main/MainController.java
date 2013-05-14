@@ -10,17 +10,15 @@ import pas.layout.MainFrame;
 public class MainController extends AbstractController {
 
     public MainController() {
-        MainFrame mainFrame = (MainFrame) getMainFrame();
+        MainFrame mainFrame;
+        mainFrame = (MainFrame) this.getMainFrame();
         mainFrame.setSidebarEnabled(false);
     }
     
-    public void mainAction(String functie) {
-        Main view = new Main(this, functie);
+    public void mainAction() {
+        Main view = new Main(this);
         open(view);
     }
 
-    public void actorLoginAction() {
-        ActorLogin view = new ActorLogin(this);
-        open(view);
-    }
+   
 }

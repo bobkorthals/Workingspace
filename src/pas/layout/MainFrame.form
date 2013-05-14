@@ -121,6 +121,9 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnlMain">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="pnlMainKeyPressed"/>
+              </Events>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
             </Container>
@@ -239,9 +242,13 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="link1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="lblSepperator1" pref="14" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                                  <Component id="linkLogout" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -249,13 +256,22 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblSepperator1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="linkLogout" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="link1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblSepperator1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                       </Layout>
                       <SubComponents>
+                        <Component class="pas.layout.label.Link" name="link1">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Wijzig profiel"/>
+                          </Properties>
+                        </Component>
                         <Component class="javax.swing.JLabel" name="lblSepperator1">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="-"/>
@@ -263,6 +279,11 @@
                               <Color id="Default Cursor"/>
                             </Property>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
+                          </Properties>
+                        </Component>
+                        <Component class="pas.layout.label.Link" name="linkLogout">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Uitloggen"/>
                           </Properties>
                         </Component>
                       </SubComponents>
