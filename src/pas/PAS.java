@@ -7,7 +7,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import mvc.Application;
 import mvc.controller.InstanceController;
 import pas.layout.MainFrame;
-import pas.member.MemberController;
+import pas.main.MainController;
 
 /**
  *
@@ -21,7 +21,7 @@ public class PAS {
         application.setInstanceController(
                 new InstanceController(new MainFrame()));
 
-        new MemberController().manageMemberAction();
+        new MainController().mainAction();
     }
 
    

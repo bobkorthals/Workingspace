@@ -14,7 +14,7 @@ public class MainController extends AbstractController {
         mainFrame.setSidebarEnabled(false);
     }
     
-    public void mainAction(String functie) {
+    public void mainAction() {
         Main view = new Main(this);
         open(view);
     }

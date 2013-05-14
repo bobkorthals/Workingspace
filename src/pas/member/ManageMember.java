@@ -17,53 +17,49 @@ import pas.file.chooser.FileChooserInterface;
  */
 public class ManageMember extends mvc.view.AbstractView implements FileChooserInterface {
 
-    private MemberController controller;
-    
+    private MemberController membercontroller;
     private FileChooserAbstract fileChooser;
 
     /**
      * Creates new form ManageMember
      */
     public ManageMember(MemberController controller) {
-        this.controller = controller;
+        this.membercontroller = controller;
         initComponents();
     }
 
     @Override
     public MemberController getController() {
-        return this.controller;
+        return this.membercontroller;
     }
-    
+
     public FileChooserAbstract getFileChooser() {
         if (null == this.fileChooser) {
             this.fileChooser = new FileChooserImage(this);
         }
-        
+
         return fileChooser;
     }
 
     public void setFileChooser(FileChooserAbstract fileChooser) {
         this.fileChooser = fileChooser;
     }
-    
+
     /**
-     * Called to push events from the file chooser
-     * to the calling view
-     * 
+     * Called to push events from the file chooser to the calling view
+     *
      * @param evt
      * @return void
      */
     @Override
     public void fileChooserActionPerformed(ActionEvent evt) {
-        FileChooserAbstract chooser = this.getFileChooser(); 
+        FileChooserAbstract chooser = this.getFileChooser();
 
         if (JFileChooser.APPROVE_SELECTION.equals(evt.getActionCommand())) {
             lblTitle.setText(chooser.getFileChooser().getSelectedFile().getName());
             chooser.setVisible(false);
             chooser.dispose();
-        }
-        
-        else if (JFileChooser.CANCEL_SELECTION.equals(evt.getActionCommand())) {
+        } else if (JFileChooser.CANCEL_SELECTION.equals(evt.getActionCommand())) {
             chooser.setVisible(false);
             chooser.dispose();
         }
@@ -167,9 +163,11 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         lblTitle.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(98, 98, 152));
         lblTitle.setText("Leden beheer");
-        lblTitle.setOpaque(true);
+
+        jPanel14.setOpaque(false);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Leden overzicht", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
+        jPanel4.setOpaque(false);
 
         jLabel4.setText("Voornaam");
 
@@ -202,6 +200,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
                 return types [columnIndex];
             }
         });
+        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -238,7 +237,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
                     .addComponent(jLabel20)
                     .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -246,6 +245,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         jPanel21.setOpaque(false);
 
         jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Algemeen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
+        jPanel22.setOpaque(false);
 
         jTextField25.setText("jTextField1");
 
@@ -333,6 +333,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         );
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Abbonement", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
+        jPanel13.setOpaque(false);
 
         jTextField3.setText("jTextField3");
 
@@ -405,6 +406,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Krediet", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
+        jPanel5.setOpaque(false);
 
         jTextField15.setText("jTextField3");
         jTextField15.addActionListener(new java.awt.event.ActionListener() {
@@ -454,6 +456,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adres- en contactgegevens", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
+        jPanel2.setOpaque(false);
 
         jLabel15.setText("Straat");
 
@@ -636,6 +639,8 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        jPanel10.setOpaque(false);
+
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -646,7 +651,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+            .addGap(0, 202, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -692,8 +697,11 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
                     .addComponent(jLabel3)
                     .addComponent(jLabel5))
                 .addGap(11, 11, 11)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        jPanel6.setOpaque(false);
 
         jButton17.setBackground(new java.awt.Color(155, 9, 46));
         jButton17.setForeground(new java.awt.Color(255, 255, 255));
@@ -806,6 +814,8 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
                 .addContainerGap())
         );
 
+        jPanel1.setOpaque(false);
+
         jButton13.setBackground(new java.awt.Color(155, 9, 46));
         jButton13.setForeground(new java.awt.Color(255, 255, 255));
         jButton13.setText("Uitgebreid Zoeken");
@@ -884,22 +894,22 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblTitle)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -932,7 +942,6 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     }//GEN-LAST:event_jTextField18ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
@@ -944,7 +953,6 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -980,13 +988,12 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
+        membercontroller.addMemeberAction();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        this.getFileChooser().setVisible(true);  
+        this.getFileChooser().setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice choice18;
     private java.awt.Choice choice19;
@@ -1068,5 +1075,4 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     private java.awt.TextField textField4;
     private javax.swing.JTextField txtVoornaam;
     // End of variables declaration//GEN-END:variables
-
 }

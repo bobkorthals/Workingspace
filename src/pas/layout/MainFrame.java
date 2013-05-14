@@ -52,9 +52,9 @@ public class MainFrame extends AbstractFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pnlBackground = new javax.swing.JPanel();
+        javax.swing.JPanel pnlBackground = new pas.layout.panel.Background("/pas/resources/Pas_Background.jpg", pas.layout.panel.Background.REPEAT);
         jScrollPane1 = new javax.swing.JScrollPane();
-        pnlMain = new javax.swing.JPanel();
+        pnlMain = new pas.layout.panel.Background("/pas/resources/background.jpg", pas.layout.panel.Background.REPEAT);
         pnlHeader = new javax.swing.JPanel();
         pnlBackgroundHead = new pas.layout.panel.Background(
             "/pas/resources/background_head.png", pas.layout.panel.Background.REPEAT_HORIZONTAL);
@@ -304,7 +304,6 @@ public class MainFrame extends AbstractFrame {
     private pas.layout.label.Link link2;
     private pas.layout.label.Link linkLogout;
     private pas.layout.label.Link linkLogout1;
-    private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlBackgroundHead;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlMain;
