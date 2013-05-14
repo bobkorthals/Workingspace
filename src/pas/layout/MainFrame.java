@@ -73,7 +73,7 @@ public void draw(Graphics g){
         jPanel1 = new javax.swing.JPanel();
         pnlBackground = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        pnlMain = new pas.layout.panel.Background(     "/pas/resources/Pas_Background.jpg", pas.layout.panel.Background.REPEAT);
+        pnlMain = new javax.swing.JPanel();
         pnlHeader = new javax.swing.JPanel();
         pnlBackgroundHead = new pas.layout.panel.Background(
             "/pas/resources/background_head.png", pas.layout.panel.Background.REPEAT_HORIZONTAL);

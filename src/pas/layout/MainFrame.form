@@ -123,9 +123,6 @@
                   <ComponentRef name="pnlBackground"/>
                 </Property>
               </AccessibilityProperties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new pas.layout.panel.Background(     &quot;/pas/resources/Pas_Background.jpg&quot;, pas.layout.panel.Background.REPEAT)"/>
-              </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
             </Container>
