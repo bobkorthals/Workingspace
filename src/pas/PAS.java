@@ -33,6 +33,6 @@ public class PAS {
             Logger.getLogger(PAS.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        UIManager.put("Panel.background", new Color(0, 0, 0, 0));
+        //UIManager.put("Panel.background", new Color(0, 0, 0, 0));
     }
 }

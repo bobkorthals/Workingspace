@@ -79,10 +79,18 @@ public class MainFrame extends AbstractFrame {
 
         jScrollPane1.setBorder(null);
 
+        pnlMain.setOpaque(false);
         pnlMain.setLayout(new java.awt.BorderLayout());
         jScrollPane1.setViewportView(pnlMain);
 
+        pnlHeader.setOpaque(false);
         pnlHeader.setPreferredSize(new java.awt.Dimension(461, 200));
+
+        pnlBackgroundHead.setOpaque(false);
+
+        pnlUser.setOpaque(false);
+
+        jPanel2.setOpaque(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -94,6 +102,8 @@ public class MainFrame extends AbstractFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        jPanel3.setOpaque(false);
 
         link1.setText("Wijzig profiel");
 
@@ -160,7 +170,7 @@ public class MainFrame extends AbstractFrame {
             .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(imgLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(pnlUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -189,6 +199,8 @@ public class MainFrame extends AbstractFrame {
                 .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        pnlSidebar.setOpaque(false);
 
         javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
         pnlBackground.setLayout(pnlBackgroundLayout);
