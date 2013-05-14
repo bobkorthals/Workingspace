@@ -1,13 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pas.layout;
 
+import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Image;
-import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
+import mvc.view.AbstractView;
 import pas.main.MainController;
 
 /**
@@ -32,13 +30,35 @@ public void draw(Graphics g){
 
 }
 
-/**
+    /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
-
         this.setExtendedState(AbstractFrame.MAXIMIZED_BOTH);
+    }
+
+    /*
+     * By overriding the setContentPane mehtod we make sure that 
+     * not the entire contentPane but just the main JPanel receives the
+     * view when the instanceController opens a view.
+     * 
+     * @param Container view
+     * @return void
+     */
+    @Override
+    public void setContentPane(Container contentPane) {
+        if (contentPane instanceof AbstractView) {
+            JPanel view = (JPanel) contentPane;
+            this.pnlMain.removeAll();
+            this.pnlMain.add(view);
+        } else {
+            super.setContentPane(contentPane);
+        }
+    }
+
+    public void setSidebarEnabled(boolean flag) {
+        this.pnlSidebar.setVisible(flag);
     }
 
     /**
@@ -51,6 +71,19 @@ public void draw(Graphics g){
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        pnlBackground = new pas.layout.panel.Background(
+            "/pas/resources/background.jpg", pas.layout.panel.Background.REPEAT);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlMain = new javax.swing.JPanel();
+        pnlHeader = new javax.swing.JPanel();
+        pnlBackgroundHead = new pas.layout.panel.Background(
+            "/pas/resources/background_head.png", pas.layout.panel.Background.REPEAT_HORIZONTAL);
+        pnlUser = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        lblSepperator1 = new javax.swing.JLabel();
+        imgLogo = new javax.swing.JLabel();
+        pnlSidebar = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
         MenuItemSluiten = new javax.swing.JMenuItem();
@@ -58,8 +91,134 @@ public void draw(Graphics g){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
+        setBackground(new java.awt.Color(0, 204, 102));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
-        getContentPane().setLayout(null);
+
+        jScrollPane1.setBorder(null);
+
+        pnlMain.setLayout(new java.awt.BorderLayout());
+        jScrollPane1.setViewportView(pnlMain);
+
+        pnlHeader.setPreferredSize(new java.awt.Dimension(461, 200));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        lblSepperator1.setText("-");
+        lblSepperator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblSepperator1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(lblSepperator1, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+                .addGap(46, 46, 46))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSepperator1)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnlUserLayout = new javax.swing.GroupLayout(pnlUser);
+        pnlUser.setLayout(pnlUserLayout);
+        pnlUserLayout.setHorizontalGroup(
+            pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUserLayout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(45, 45, 45))
+        );
+        pnlUserLayout.setVerticalGroup(
+            pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUserLayout.createSequentialGroup()
+                .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUserLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUserLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+
+        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pas/resources/logo.png"))); // NOI18N
+
+        javax.swing.GroupLayout pnlBackgroundHeadLayout = new javax.swing.GroupLayout(pnlBackgroundHead);
+        pnlBackgroundHead.setLayout(pnlBackgroundHeadLayout);
+        pnlBackgroundHeadLayout.setHorizontalGroup(
+            pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(imgLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+        );
+        pnlBackgroundHeadLayout.setVerticalGroup(
+            pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
+                .addGroup(pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(imgLogo))
+                    .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(pnlUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
+        pnlHeader.setLayout(pnlHeaderLayout);
+        pnlHeaderLayout.setHorizontalGroup(
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        pnlHeaderLayout.setVerticalGroup(
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
+        pnlBackground.setLayout(pnlBackgroundLayout);
+        pnlBackgroundLayout.setHorizontalGroup(
+            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackgroundLayout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE))
+            .addGroup(pnlBackgroundLayout.createSequentialGroup()
+                .addComponent(pnlSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlBackgroundLayout.setVerticalGroup(
+            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackgroundLayout.createSequentialGroup()
+                .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
+        );
 
         MenuFile.setText("File");
         MenuFile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,6 +242,17 @@ public void draw(Graphics g){
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuFileMouseClicked
@@ -91,14 +261,23 @@ public void draw(Graphics g){
 
     private void MenuItemSluitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSluitenActionPerformed
         // TODO add your handling code here:
-        new MainController().mainAction(function);
     }//GEN-LAST:event_MenuItemSluitenActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuFile;
     private javax.swing.JMenuItem MenuItemSluiten;
+    private javax.swing.JLabel imgLogo;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblSepperator1;
+    private javax.swing.JPanel pnlBackground;
+    private javax.swing.JPanel pnlBackgroundHead;
+    private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlMain;
+    private javax.swing.JPanel pnlSidebar;
+    private javax.swing.JPanel pnlUser;
     // End of variables declaration//GEN-END:variables
 }
