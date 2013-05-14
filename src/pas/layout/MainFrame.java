@@ -4,14 +4,13 @@ import java.awt.Container;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
-import pas.main.MainController;
 
 /**
  *
  * @author Frank
  */
 public class MainFrame extends AbstractFrame {
-private MainController maincontroller;
+
     /**
      * Creates new form MainFrame
      */
@@ -80,11 +79,6 @@ private MainController maincontroller;
 
         jScrollPane1.setBorder(null);
 
-        pnlMain.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                pnlMainKeyPressed(evt);
-            }
-        });
         pnlMain.setLayout(new java.awt.BorderLayout());
         jScrollPane1.setViewportView(pnlMain);
 
@@ -260,13 +254,8 @@ private MainController maincontroller;
     }//GEN-LAST:event_MenuFileMouseClicked
 
     private void MenuItemSluitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSluitenActionPerformed
-maincontroller.mainAction();        // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_MenuItemSluitenActionPerformed
-
-    private void pnlMainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnlMainKeyPressed
-        maincontroller.mainAction();
-    }//GEN-LAST:event_pnlMainKeyPressed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuFile;
     private javax.swing.JMenuItem MenuItemSluiten;
