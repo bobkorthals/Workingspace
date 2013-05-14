@@ -1,34 +1,15 @@
 package pas.layout;
 
 import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Image;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
-import pas.main.MainController;
 
 /**
  *
  * @author Frank
  */
 public class MainFrame extends AbstractFrame {
-private MainController maincontroller;
-private String function;    
-
-public void createImage(Image img){
-
-}
-
-
-
-
-
-
-public void draw(Graphics g){
-    
-
-}
 
     /**
      * Creates new form MainFrame
@@ -77,11 +58,17 @@ public void draw(Graphics g){
         pnlHeader = new javax.swing.JPanel();
         pnlBackgroundHead = new pas.layout.panel.Background(
             "/pas/resources/background_head.png", pas.layout.panel.Background.REPEAT_HORIZONTAL);
-        imgLogo = new javax.swing.JLabel();
+        pnlUser = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         link1 = new pas.layout.label.Link();
         lblSepperator1 = new javax.swing.JLabel();
         linkLogout = new pas.layout.label.Link();
+        imgLogo = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        link2 = new pas.layout.label.Link();
+        lblSepperator2 = new javax.swing.JLabel();
+        linkLogout1 = new pas.layout.label.Link();
         pnlSidebar = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
@@ -99,11 +86,26 @@ public void draw(Graphics g){
         pnlMain.setOpaque(false);
         pnlMain.setLayout(new java.awt.BorderLayout());
         jScrollPane1.setViewportView(pnlMain);
-        pnlMain.getAccessibleContext().setAccessibleParent(pnlBackground);
 
+        pnlHeader.setOpaque(false);
         pnlHeader.setPreferredSize(new java.awt.Dimension(461, 200));
 
-        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pas/resources/logo.png"))); // NOI18N
+        pnlBackgroundHead.setOpaque(false);
+
+        pnlUser.setOpaque(false);
+
+        jPanel2.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         jPanel3.setOpaque(false);
 
@@ -123,8 +125,8 @@ public void draw(Graphics g){
                 .addContainerGap()
                 .addComponent(link1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(lblSepperator1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSepperator1, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
+                .addGap(4, 4, 4)
                 .addComponent(linkLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -139,35 +141,55 @@ public void draw(Graphics g){
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout pnlBackgroundHeadLayout = new javax.swing.GroupLayout(pnlBackgroundHead);
-        pnlBackgroundHead.setLayout(pnlBackgroundHeadLayout);
-        pnlBackgroundHeadLayout.setHorizontalGroup(
-            pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imgLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 463, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        javax.swing.GroupLayout pnlUserLayout = new javax.swing.GroupLayout(pnlUser);
+        pnlUser.setLayout(pnlUserLayout);
+        pnlUserLayout.setHorizontalGroup(
+            pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUserLayout.createSequentialGroup()
+                .addGap(208, 208, 208)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(45, 45, 45))
         );
-        pnlBackgroundHeadLayout.setVerticalGroup(
-            pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
-                        .addComponent(imgLogo)
-                        .addGap(50, 50, 50))
-                    .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(156, 156, 156))))
+        pnlUserLayout.setVerticalGroup(
+            pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUserLayout.createSequentialGroup()
+                .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUserLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlUserLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
+
+        pnlBackgroundHead.add(pnlUser);
+
+        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pas/resources/logo.png"))); // NOI18N
+        pnlBackgroundHead.add(imgLogo);
+
+        jPanel4.setOpaque(false);
+
+        link2.setText("Wijzig profiel");
+        jPanel4.add(link2);
+
+        lblSepperator2.setText("-");
+        lblSepperator2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblSepperator2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(lblSepperator2);
+
+        linkLogout1.setText("Uitloggen");
+        jPanel4.add(linkLogout1);
+
+        pnlBackgroundHead.add(jPanel4);
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
         pnlHeaderLayout.setHorizontalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,6 +197,8 @@ public void draw(Graphics g){
                 .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        pnlSidebar.setOpaque(false);
 
         javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
         pnlBackground.setLayout(pnlBackgroundLayout);
@@ -186,7 +210,7 @@ public void draw(Graphics g){
             .addGroup(pnlBackgroundLayout.createSequentialGroup()
                 .addComponent(pnlSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlBackgroundLayout.setVerticalGroup(
@@ -249,15 +273,21 @@ public void draw(Graphics g){
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSepperator1;
+    private javax.swing.JLabel lblSepperator2;
     private pas.layout.label.Link link1;
+    private pas.layout.label.Link link2;
     private pas.layout.label.Link linkLogout;
+    private pas.layout.label.Link linkLogout1;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlBackgroundHead;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlSidebar;
+    private javax.swing.JPanel pnlUser;
     // End of variables declaration//GEN-END:variables
 }
