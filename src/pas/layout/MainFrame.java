@@ -1,15 +1,34 @@
 package pas.layout;
 
 import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Image;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
+import pas.main.MainController;
 
 /**
  *
  * @author Frank
  */
 public class MainFrame extends AbstractFrame {
+private MainController maincontroller;
+private String function;    
+
+public void createImage(Image img){
+
+}
+
+
+
+
+
+
+public void draw(Graphics g){
+    
+
+}
 
     /**
      * Creates new form MainFrame
@@ -77,9 +96,7 @@ public class MainFrame extends AbstractFrame {
         setMinimumSize(new java.awt.Dimension(1920, 1080));
 
         jScrollPane1.setBorder(null);
-        jScrollPane1.setOpaque(false);
 
-        pnlMain.setOpaque(false);
         pnlMain.setLayout(new java.awt.BorderLayout());
         jScrollPane1.setViewportView(pnlMain);
         pnlMain.getAccessibleContext().setAccessibleParent(pnlBackground);
