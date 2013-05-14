@@ -8,14 +8,14 @@ import pas.layout.MainFrame;
  * @author jkg
  */
 public class MainController extends AbstractController {
-
+private MainFrame mainFrame;
     public MainController() {
-        MainFrame mainFrame = (MainFrame) getMainFrame();
-        mainFrame.setSidebarEnabled(false);
-    }
+        mainFrame = (MainFrame) getMainFrame();
+        }
     
     public void mainAction() {
         Main view = new Main(this);
+        mainFrame.setSidebarEnabled(false);
         open(view);
     }
 
