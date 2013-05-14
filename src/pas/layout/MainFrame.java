@@ -52,10 +52,9 @@ public class MainFrame extends AbstractFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pnlBackground = new pas.layout.panel.Background(
-            "/pas/resources/background.jpg", pas.layout.panel.Background.REPEAT);
+        pnlBackground = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        pnlMain = new javax.swing.JPanel();
+        pnlMain = new pas.layout.panel.Background(     "/pas/resources/Pas_Background.jpg", pas.layout.panel.Background.REPEAT);
         pnlHeader = new javax.swing.JPanel();
         pnlBackgroundHead = new pas.layout.panel.Background(
             "/pas/resources/background_head.png", pas.layout.panel.Background.REPEAT_HORIZONTAL);
@@ -78,9 +77,12 @@ public class MainFrame extends AbstractFrame {
         setMinimumSize(new java.awt.Dimension(1920, 1080));
 
         jScrollPane1.setBorder(null);
+        jScrollPane1.setOpaque(false);
 
+        pnlMain.setOpaque(false);
         pnlMain.setLayout(new java.awt.BorderLayout());
         jScrollPane1.setViewportView(pnlMain);
+        pnlMain.getAccessibleContext().setAccessibleParent(pnlBackground);
 
         pnlHeader.setPreferredSize(new java.awt.Dimension(461, 200));
 
@@ -132,7 +134,7 @@ public class MainFrame extends AbstractFrame {
         pnlUserLayout.setHorizontalGroup(
             pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlUserLayout.createSequentialGroup()
-                .addGap(208, 208, 208)
+                .addContainerGap(208, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,7 +162,7 @@ public class MainFrame extends AbstractFrame {
             .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(imgLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );

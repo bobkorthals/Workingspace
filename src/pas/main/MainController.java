@@ -15,12 +15,9 @@ public class MainController extends AbstractController {
     }
     
     public void mainAction(String functie) {
-        Main view = new Main(this, functie);
+        Main view = new Main(this);
         open(view);
     }
 
-    public void actorLoginAction() {
-        ActorLogin view = new ActorLogin(this);
-        open(view);
-    }
+    
 }
