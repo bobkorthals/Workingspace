@@ -27,8 +27,8 @@ public class BarController extends AbstractController {
     open(view);
     }
     
-    public void overviewBarAction(){
-    overviewBar view=new overviewBar(this);
+    public void productAction(){
+    Product view=new Product(this);
     open(view);
     }
     
@@ -36,4 +36,12 @@ public class BarController extends AbstractController {
     paymentBar view=new paymentBar(this);
     open(view);
     }
+    
+    public void addProductAction(){
+    AddProduct view=new AddProduct(this);
+    open(view);
+    }
+    
+  
+
 }

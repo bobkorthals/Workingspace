@@ -4,8 +4,11 @@
  */
 package pas.member;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.font.TextAttribute;
 import java.beans.PropertyChangeEvent;
+import java.util.Map;
 import javax.swing.JFileChooser;
 import pas.file.chooser.FileChooserAbstract;
 import pas.file.chooser.FileChooserImage;
@@ -16,10 +19,10 @@ import pas.file.chooser.FileChooserInterface;
  * @author jkg
  */
 public class manageMember extends mvc.view.AbstractView implements FileChooserInterface {
-
-    private MemberController controller;
     
+    private MemberController controller;
     private FileChooserAbstract fileChooser;
+    Font original;
 
     /**
      * Creates new form manageMember
@@ -28,7 +31,7 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
         this.controller = controller;
         initComponents();
     }
-
+    
     @Override
     public MemberController getController() {
         return this.controller;
@@ -41,34 +44,31 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
         
         return fileChooser;
     }
-
+    
     public void setFileChooser(FileChooserAbstract fileChooser) {
         this.fileChooser = fileChooser;
     }
-    
+
     /**
-     * Called to push events from the file chooser
-     * to the calling view
-     * 
+     * Called to push events from the file chooser to the calling view
+     *
      * @param evt
      * @return void
      */
     @Override
     public void fileChooserActionPerformed(ActionEvent evt) {
-        FileChooserAbstract chooser = this.getFileChooser(); 
-
+        FileChooserAbstract chooser = this.getFileChooser();
+        
         if (JFileChooser.APPROVE_SELECTION.equals(evt.getActionCommand())) {
             lblTitle.setText(chooser.getFileChooser().getSelectedFile().getName());
             chooser.setVisible(false);
             chooser.dispose();
-        }
-        
-        else if (JFileChooser.CANCEL_SELECTION.equals(evt.getActionCommand())) {
+        } else if (JFileChooser.CANCEL_SELECTION.equals(evt.getActionCommand())) {
             chooser.setVisible(false);
             chooser.dispose();
         }
     }
-
+    
     @Override
     public void propertyChange(PropertyChangeEvent change) {
     }
@@ -650,6 +650,14 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(155, 9, 46));
         jLabel2.setText("Foto uploaden");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel2MouseExited(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(155, 9, 46));
@@ -657,6 +665,12 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel3MouseExited(evt);
             }
         });
 
@@ -904,87 +918,106 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
-
+    
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
-
+    
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
-
+    
     private void jTextField12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField12ActionPerformed
-
+    
     private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField13ActionPerformed
-
+    
     private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField14ActionPerformed
-
+    
     private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField18ActionPerformed
-
+    
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        
     }//GEN-LAST:event_jButton10ActionPerformed
-
+    
     private void jTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField30ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField30ActionPerformed
-
+    
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
-
+    
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-
     }//GEN-LAST:event_jButton12ActionPerformed
-
+    
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
-
+    
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton15ActionPerformed
-
+    
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
-
+    
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton17ActionPerformed
-
+    
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton19ActionPerformed
-
+    
     private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField15ActionPerformed
-
+    
     private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField16ActionPerformed
-
+    
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton13ActionPerformed
-
+    
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
+        controller.addMemeberAction();
     }//GEN-LAST:event_jButton18ActionPerformed
-
+    
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        this.getFileChooser().setVisible(true);  
+        this.getFileChooser().setVisible(true);
     }//GEN-LAST:event_jLabel3MouseClicked
-
+    
+    private void jLabel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseExited
+        evt.getComponent().setFont(original);
+    }//GEN-LAST:event_jLabel3MouseExited
+    
+    private void jLabel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseEntered
+        original = evt.getComponent().getFont();
+        Map attributes = original.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        evt.getComponent().setFont(original.deriveFont(attributes));     // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3MouseEntered
+    
+    private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
+        original = evt.getComponent().getFont();
+        Map attributes = original.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        evt.getComponent().setFont(original.deriveFont(attributes));        
+    }//GEN-LAST:event_jLabel2MouseEntered
+    
+    private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
+        evt.getComponent().setFont(original);
+    }//GEN-LAST:event_jLabel2MouseExited
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice choice18;
     private java.awt.Choice choice19;
@@ -1066,5 +1099,4 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
     private java.awt.TextField textField4;
     private javax.swing.JTextField txtVoornaam;
     // End of variables declaration//GEN-END:variables
-
 }
