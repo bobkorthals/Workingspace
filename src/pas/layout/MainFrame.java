@@ -52,8 +52,7 @@ public class MainFrame extends AbstractFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        pnlBackground = new pas.layout.panel.Background(
-            "/pas/resources/background.jpg", pas.layout.panel.Background.REPEAT);
+        pnlBackground = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlMain = new javax.swing.JPanel();
         pnlHeader = new javax.swing.JPanel();
@@ -66,6 +65,10 @@ public class MainFrame extends AbstractFrame {
         lblSepperator1 = new javax.swing.JLabel();
         linkLogout = new pas.layout.label.Link();
         imgLogo = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        link2 = new pas.layout.label.Link();
+        lblSepperator2 = new javax.swing.JLabel();
+        linkLogout1 = new pas.layout.label.Link();
         pnlSidebar = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
@@ -77,7 +80,10 @@ public class MainFrame extends AbstractFrame {
         setBackground(new java.awt.Color(0, 204, 102));
         setMinimumSize(new java.awt.Dimension(1920, 1080));
 
+        pnlBackground.setOpaque(false);
+
         jScrollPane1.setBorder(null);
+        jScrollPane1.setOpaque(false);
 
         pnlMain.setOpaque(false);
         pnlMain.setLayout(new java.awt.BorderLayout());
@@ -162,6 +168,19 @@ public class MainFrame extends AbstractFrame {
         );
 
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pas/resources/logo.png"))); // NOI18N
+
+        jPanel4.setOpaque(false);
+
+        link2.setText("Wijzig profiel");
+        jPanel4.add(link2);
+
+        lblSepperator2.setText("-");
+        lblSepperator2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblSepperator2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(lblSepperator2);
+
+        linkLogout1.setText("Uitloggen");
+        jPanel4.add(linkLogout1);
 
         javax.swing.GroupLayout pnlBackgroundHeadLayout = new javax.swing.GroupLayout(pnlBackgroundHead);
         pnlBackgroundHead.setLayout(pnlBackgroundHeadLayout);
@@ -277,10 +296,14 @@ public class MainFrame extends AbstractFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSepperator1;
+    private javax.swing.JLabel lblSepperator2;
     private pas.layout.label.Link link1;
+    private pas.layout.label.Link link2;
     private pas.layout.label.Link linkLogout;
+    private pas.layout.label.Link linkLogout1;
     private javax.swing.JPanel pnlBackground;
     private javax.swing.JPanel pnlBackgroundHead;
     private javax.swing.JPanel pnlHeader;

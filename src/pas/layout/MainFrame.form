@@ -77,6 +77,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnlBackground">
+      <Properties>
+        <Property name="opaque" type="boolean" value="false"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -138,7 +141,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="pnlBackgroundHead" alignment="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="pnlBackgroundHead" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -312,6 +315,8 @@
                   <Properties>
                     <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                   <SubComponents>
                     <Component class="pas.layout.label.Link" name="link2">
                       <Properties>
