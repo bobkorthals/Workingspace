@@ -4,6 +4,8 @@ import java.awt.Container;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
+import pas.layout.panel.SideBar;
+import pas.main.MainController;
 
 /**
  *
@@ -31,8 +33,11 @@ public class MainFrame extends AbstractFrame {
     public void setContentPane(Container contentPane) {
         if (contentPane instanceof AbstractView) {
             JPanel view = (JPanel) contentPane;
+            SideBar sidebar=new SideBar();
             this.pnlMain.removeAll();
             this.pnlMain.add(view);
+            this.pnlSidebar.removeAll();
+            this.pnlSidebar.add(sidebar);
         } else {
             super.setContentPane(contentPane);
         }
@@ -62,17 +67,15 @@ public class MainFrame extends AbstractFrame {
         pnlHeader = new javax.swing.JPanel();
         pnlBackgroundHead = new pas.layout.panel.Background(
             "/pas/resources/background_head.png", pas.layout.panel.Background.REPEAT_HORIZONTAL);
-        pnlUser = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        profilePanel = new javax.swing.JPanel();
-        link1 = new pas.layout.label.Link();
-        lblSepperator1 = new javax.swing.JLabel();
-        linkLogout = new pas.layout.label.Link();
         imgLogo = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         link2 = new pas.layout.label.Link();
         lblSepperator2 = new javax.swing.JLabel();
         linkLogout1 = new pas.layout.label.Link();
+        profilePanel = new javax.swing.JPanel();
+        link1 = new pas.layout.label.Link();
+        lblSepperator1 = new javax.swing.JLabel();
+        linkLogout = new pas.layout.label.Link();
         pnlSidebar = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
@@ -98,20 +101,20 @@ public class MainFrame extends AbstractFrame {
 
         pnlBackgroundHead.setOpaque(false);
 
-        pnlUser.setOpaque(false);
+        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pas/resources/logo.png"))); // NOI18N
 
-        jPanel2.setOpaque(false);
+        jPanel4.setOpaque(false);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        link2.setText("Wijzig profiel");
+        jPanel4.add(link2);
+
+        lblSepperator2.setText("-");
+        lblSepperator2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblSepperator2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(lblSepperator2);
+
+        linkLogout1.setText("Uitloggen");
+        jPanel4.add(linkLogout1);
 
         profilePanel.setOpaque(false);
 
@@ -131,8 +134,8 @@ public class MainFrame extends AbstractFrame {
                 .addContainerGap()
                 .addComponent(link1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(lblSepperator1, javax.swing.GroupLayout.DEFAULT_SIZE, 14, Short.MAX_VALUE)
-                .addGap(4, 4, 4)
+                .addComponent(lblSepperator1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(linkLogout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -147,45 +150,6 @@ public class MainFrame extends AbstractFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout pnlUserLayout = new javax.swing.GroupLayout(pnlUser);
-        pnlUser.setLayout(pnlUserLayout);
-        pnlUserLayout.setHorizontalGroup(
-            pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlUserLayout.createSequentialGroup()
-                .addGap(208, 208, 208)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(profilePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(45, 45, 45))
-        );
-        pnlUserLayout.setVerticalGroup(
-            pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlUserLayout.createSequentialGroup()
-                .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlUserLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlUserLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(91, Short.MAX_VALUE))
-        );
-
-        imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pas/resources/logo.png"))); // NOI18N
-
-        jPanel4.setOpaque(false);
-
-        link2.setText("Wijzig profiel");
-        jPanel4.add(link2);
-
-        lblSepperator2.setText("-");
-        lblSepperator2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        lblSepperator2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel4.add(lblSepperator2);
-
-        linkLogout1.setText("Uitloggen");
-        jPanel4.add(linkLogout1);
-
         javax.swing.GroupLayout pnlBackgroundHeadLayout = new javax.swing.GroupLayout(pnlBackgroundHead);
         pnlBackgroundHead.setLayout(pnlBackgroundHeadLayout);
         pnlBackgroundHeadLayout.setHorizontalGroup(
@@ -193,21 +157,18 @@ public class MainFrame extends AbstractFrame {
             .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(imgLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(pnlUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlBackgroundHeadLayout.setVerticalGroup(
             pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(imgLogo))
-                    .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(pnlUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imgLogo))
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
@@ -289,7 +250,7 @@ public class MainFrame extends AbstractFrame {
     }//GEN-LAST:event_MenuFileMouseClicked
 
     private void MenuItemSluitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSluitenActionPerformed
-        // TODO add your handling code here:
+        new MainController().mainAction();
     }//GEN-LAST:event_MenuItemSluitenActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuFile;
@@ -298,7 +259,6 @@ public class MainFrame extends AbstractFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSepperator1;
@@ -311,7 +271,6 @@ public class MainFrame extends AbstractFrame {
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlSidebar;
-    private javax.swing.JPanel pnlUser;
     private javax.swing.JPanel profilePanel;
     // End of variables declaration//GEN-END:variables
 }

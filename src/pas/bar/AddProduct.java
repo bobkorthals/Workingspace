@@ -4,34 +4,23 @@
  */
 package pas.bar;
 
-import java.beans.PropertyChangeEvent;
-
-
-
 /**
  *
  * @author jkg
  */
-public class AddProduct extends mvc.view.AbstractView {
-private BarController barcontroller;
+public class AddProduct extends javax.swing.JFrame {
+
     /**
      * Creates new form AddProduct
      */
-    public AddProduct(BarController barcontroller) {
-    this.barcontroller=barcontroller;
+    public AddProduct() {
         initComponents();
-        }
-    
-    @Override
-    public BarController getController(){
-    return this.barcontroller;
-    }
-    @Override
-    public void propertyChange(PropertyChangeEvent evt){
-    
+ 
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setAlwaysOnTop(true);
+        this.setLocationRelativeTo(null);
     }
 
-   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -267,7 +256,7 @@ private BarController barcontroller;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-barcontroller.productAction();        
+        //barcontroller.productAction();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -277,7 +266,6 @@ barcontroller.productAction();
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton8;

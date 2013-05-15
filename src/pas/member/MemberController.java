@@ -1,5 +1,6 @@
 package pas.member;
 
+import pas.member.*;
 import mvc.controller.AbstractController;
 import pas.layout.MainFrame;
 
@@ -9,26 +10,23 @@ import pas.layout.MainFrame;
  */
 public class MemberController extends AbstractController {
 
+    private MainFrame mainFrame;
+
     public MemberController() {
-        MainFrame mainFrame = (MainFrame) getMainFrame();
-        mainFrame.setSidebarEnabled(true);
+        mainFrame = (MainFrame) getMainFrame();
+
     }
 
     public void manageMemberAction() {
-        open(new ManageMember(this));
+        manageMember view = new manageMember(this);
+        mainFrame.setSidebarEnabled(true);
+        mainFrame.setProfilePanelEnabled(true);
+        open(view);
     }
 
     public void addMemeberAction() {
         open(new AddMember(this));
-    }
-
-    public void measurementResultsAction() {
-        MeasurementResults view = new MeasurementResults(this);
-        open(view);
-    }
-
-    public void measurementAction() {
-        Measurement view = new Measurement(this);
-        open(view);
+        mainFrame.setSidebarEnabled(false);
+        mainFrame.setProfilePanelEnabled(true);
     }
 }
