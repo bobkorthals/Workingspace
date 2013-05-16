@@ -4,7 +4,6 @@
  */
 package pas.layout;
 
-import java.awt.Dimension;
 import javax.swing.JPanel;
 
 /**
@@ -13,21 +12,18 @@ import javax.swing.JPanel;
  */
 public class PopFrame extends javax.swing.JFrame {
 
-    
-    private JPanel view;
-    
     /**
      * Creates new form PopFrame
      */
     public PopFrame(JPanel view) {
-        initComponents();
-        this.view=view;
-        this.setContentPane(view);
         this.setAlwaysOnTop(true);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+        this.setMinimumSize(view.getPreferredSize());
+        this.setPreferredSize(view.getPreferredSize());
         this.setLocationRelativeTo(null);
-        this.setPreferredSize(new Dimension(view.getWidth(),view.getHeight()));
-        
+        initComponents();
+        this.setContentPane(view);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -40,12 +36,11 @@ public class PopFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(getPreferredSize());
         getContentPane().setLayout(null);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
