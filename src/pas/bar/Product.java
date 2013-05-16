@@ -5,14 +5,14 @@
 package pas.bar;
 
 import java.beans.PropertyChangeEvent;
+import pas.layout.PopFrame;
 
 /**
  *
  * @author jkg
  */
 public class Product extends mvc.view.AbstractView {
-
-    private AddProduct addproduct;
+    private PopFrame popframe;
     private BarController barcontroller;
 
     /**
@@ -23,15 +23,16 @@ public class Product extends mvc.view.AbstractView {
         initComponents();
     }
 
-    public void setAddProduct(AddProduct product) {
-        this.addproduct = product;
+    public void setAddProduct(PopFrame frame) {
+        this.popframe = frame;
     }
 
-    public AddProduct getAddProduct() {
-        if (null == this.addproduct) {
-            this.addproduct = new AddProduct();
+    public PopFrame getPopUpAddProduct() {
+        if (null == this.popframe) {
+            this.popframe = new PopFrame(new AddProduct());
         }
-        return addproduct;
+        
+         return this.popframe;
     }
 
     @Override
@@ -461,9 +462,7 @@ public class Product extends mvc.view.AbstractView {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
-       this.getAddProduct().setVisible(true);
-        
+        this.getPopUpAddProduct().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
