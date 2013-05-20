@@ -208,6 +208,8 @@ public class ScheduleCourse extends mvc.view.AbstractView {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel12.setOpaque(false);
+
         jButton6.setBackground(new java.awt.Color(155, 9, 46));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Inschrijven");
@@ -229,6 +231,8 @@ public class ScheduleCourse extends mvc.view.AbstractView {
                 .addComponent(jButton6)
                 .addGap(0, 11, Short.MAX_VALUE))
         );
+
+        jPanel11.setOpaque(false);
 
         jButton5.setBackground(new java.awt.Color(155, 9, 46));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
