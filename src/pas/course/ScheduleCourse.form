@@ -84,7 +84,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="20" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cursus Planning"/>
+            <Property name="text" type="java.lang.String" value="Planning Beheer"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[129, 24]"/>
             </Property>

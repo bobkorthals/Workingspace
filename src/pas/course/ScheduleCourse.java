@@ -130,7 +130,7 @@ public class ScheduleCourse extends mvc.view.AbstractView {
         jPanel1.setOpaque(false);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel1.setText("Cursus Planning");
+        jLabel1.setText("Planning Beheer");
         jLabel1.setPreferredSize(new java.awt.Dimension(129, 24));
 
         jPanel2.setOpaque(false);
