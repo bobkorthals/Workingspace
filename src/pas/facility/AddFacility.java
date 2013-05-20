@@ -195,7 +195,7 @@ public class AddFacility extends mvc.view.AbstractView {
 
         jButton4.setBackground(new java.awt.Color(155, 9, 46));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Ga Terug");
+        jButton4.setText("Terug");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
