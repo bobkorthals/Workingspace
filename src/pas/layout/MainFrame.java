@@ -4,6 +4,7 @@ import java.awt.Container;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
+import pas.layout.label.Button;
 import pas.layout.panel.SideBar;
 import pas.main.MainController;
 
@@ -19,6 +20,7 @@ public class MainFrame extends AbstractFrame {
     public MainFrame() {
         initComponents();
         this.setExtendedState(AbstractFrame.MAXIMIZED_BOTH);
+        btnAllMembers.setStatus(Button.ACTIVE);
     }
 
     /*
@@ -33,11 +35,9 @@ public class MainFrame extends AbstractFrame {
     public void setContentPane(Container contentPane) {
         if (contentPane instanceof AbstractView) {
             JPanel view = (JPanel) contentPane;
-            SideBar sidebar=new SideBar();
+            SideBar sidebar = new SideBar();
             this.pnlMain.removeAll();
             this.pnlMain.add(view);
-            this.pnlSidebar.removeAll();
-            this.pnlSidebar.add(sidebar);
         } else {
             super.setContentPane(contentPane);
         }
@@ -46,9 +46,9 @@ public class MainFrame extends AbstractFrame {
     public void setSidebarEnabled(boolean flag) {
         this.pnlSidebar.setVisible(flag);
     }
-    
-    public void setProfilePanelEnabled(boolean flag){
-    this.profilePanel.setVisible(flag);
+
+    public void setProfilePanelEnabled(boolean flag) {
+        this.profilePanel.setVisible(flag);
     }
 
     /**
@@ -77,9 +77,13 @@ public class MainFrame extends AbstractFrame {
         lblSepperator1 = new javax.swing.JLabel();
         linkLogout = new pas.layout.label.Link();
         pnlSidebar = new javax.swing.JPanel();
+        title2 = new pas.layout.label.Title();
+        pnlMemberSearchControl = new javax.swing.JPanel();
+        btnAllMembers = new pas.layout.label.Button();
+        btnActiveMembers = new pas.layout.label.Button();
+        textField1 = new pas.layout.textfield.TextField("Zoek op naam of lid nummer..");
+        pnlMemberSearchResults = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        MenuFile = new javax.swing.JMenu();
-        MenuItemSluiten = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -155,7 +159,6 @@ public class MainFrame extends AbstractFrame {
         pnlBackgroundHeadLayout.setHorizontalGroup(
             pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(imgLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,23 +171,105 @@ public class MainFrame extends AbstractFrame {
                 .addGroup(pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(imgLogo))
-                .addGap(56, 56, 56))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
         pnlHeaderLayout.setHorizontalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHeaderLayout.createSequentialGroup()
-                .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlBackgroundHead, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pnlSidebar.setOpaque(false);
+        pnlSidebar.setPreferredSize(new java.awt.Dimension(240, 403));
+
+        title2.setText("Leden beheer");
+
+        pnlMemberSearchControl.setPreferredSize(new java.awt.Dimension(240, 127));
+
+        btnAllMembers.setText("Alle leden");
+        btnAllMembers.setAlignmentY(0.0F);
+        btnAllMembers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAllMembersMouseClicked(evt);
+            }
+        });
+
+        btnActiveMembers.setText("Nu aanwezig");
+        btnActiveMembers.setAlignmentY(0.0F);
+        btnActiveMembers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActiveMembersMouseClicked(evt);
+            }
+        });
+
+        textField1.setBorder(null);
+        textField1.setAlignmentX(0.0F);
+        textField1.setAlignmentY(0.0F);
+        textField1.setMargin(new java.awt.Insets(5, 5, 5, 5));
+
+        javax.swing.GroupLayout pnlMemberSearchControlLayout = new javax.swing.GroupLayout(pnlMemberSearchControl);
+        pnlMemberSearchControl.setLayout(pnlMemberSearchControlLayout);
+        pnlMemberSearchControlLayout.setHorizontalGroup(
+            pnlMemberSearchControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMemberSearchControlLayout.createSequentialGroup()
+                .addGroup(pnlMemberSearchControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMemberSearchControlLayout.createSequentialGroup()
+                        .addComponent(btnActiveMembers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(btnAllMembers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlMemberSearchControlLayout.setVerticalGroup(
+            pnlMemberSearchControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMemberSearchControlLayout.createSequentialGroup()
+                .addGroup(pnlMemberSearchControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAllMembers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnActiveMembers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout pnlMemberSearchResultsLayout = new javax.swing.GroupLayout(pnlMemberSearchResults);
+        pnlMemberSearchResults.setLayout(pnlMemberSearchResultsLayout);
+        pnlMemberSearchResultsLayout.setHorizontalGroup(
+            pnlMemberSearchResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnlMemberSearchResultsLayout.setVerticalGroup(
+            pnlMemberSearchResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 296, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
+        pnlSidebar.setLayout(pnlSidebarLayout);
+        pnlSidebarLayout.setHorizontalGroup(
+            pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlMemberSearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlSidebarLayout.createSequentialGroup()
+                .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlMemberSearchControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnlSidebarLayout.setVerticalGroup(
+            pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlSidebarLayout.createSequentialGroup()
+                .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlMemberSearchControl, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlMemberSearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
         pnlBackground.setLayout(pnlBackgroundLayout);
@@ -192,41 +277,23 @@ public class MainFrame extends AbstractFrame {
             pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBackgroundLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE))
+                .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE))
             .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                .addComponent(pnlSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(pnlSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE))
         );
         pnlBackgroundLayout.setVerticalGroup(
             pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBackgroundLayout.createSequentialGroup()
                 .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlSidebar, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addComponent(pnlSidebar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-
-        MenuFile.setText("File");
-        MenuFile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                MenuFileMouseClicked(evt);
-            }
-        });
-
-        MenuItemSluiten.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
-        MenuItemSluiten.setText("Naar Hoofdmenu");
-        MenuItemSluiten.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItemSluitenActionPerformed(evt);
-            }
-        });
-        MenuFile.add(MenuItemSluiten);
-
-        jMenuBar1.add(MenuFile);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -245,16 +312,17 @@ public class MainFrame extends AbstractFrame {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MenuFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuFileMouseClicked
-        System.out.println("Sluiten...");
-    }//GEN-LAST:event_MenuFileMouseClicked
+    private void btnActiveMembersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActiveMembersMouseClicked
+        btnAllMembers.toggleStatus();
+    }//GEN-LAST:event_btnActiveMembersMouseClicked
 
-    private void MenuItemSluitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSluitenActionPerformed
-        new MainController().mainAction();
-    }//GEN-LAST:event_MenuItemSluitenActionPerformed
+    private void btnAllMembersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAllMembersMouseClicked
+        btnActiveMembers.toggleStatus();
+    }//GEN-LAST:event_btnAllMembersMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu MenuFile;
-    private javax.swing.JMenuItem MenuItemSluiten;
+    private pas.layout.label.Button btnActiveMembers;
+    private pas.layout.label.Button btnAllMembers;
     private javax.swing.JLabel imgLogo;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -270,7 +338,11 @@ public class MainFrame extends AbstractFrame {
     private javax.swing.JPanel pnlBackgroundHead;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlMain;
+    private javax.swing.JPanel pnlMemberSearchControl;
+    private javax.swing.JPanel pnlMemberSearchResults;
     private javax.swing.JPanel pnlSidebar;
     private javax.swing.JPanel profilePanel;
+    private pas.layout.textfield.TextField textField1;
+    private pas.layout.label.Title title2;
     // End of variables declaration//GEN-END:variables
 }
