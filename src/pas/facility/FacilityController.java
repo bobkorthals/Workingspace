@@ -31,5 +31,10 @@ public class FacilityController extends AbstractController {
        ReservationPayment view = new ReservationPayment(this);
        open(view);
    }
+   
+   public void addFacilityAction(){
+       AddFacility view = new AddFacility(this);
+       open(view);
+   }
 }
 

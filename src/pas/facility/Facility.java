@@ -57,6 +57,7 @@ public class Facility extends mvc.view.AbstractView {
         jButton19 = new javax.swing.JButton();
         jButton27 = new javax.swing.JButton();
         jButton28 = new javax.swing.JButton();
+        jButton29 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblTitle1 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
@@ -185,6 +186,15 @@ public class Facility extends mvc.view.AbstractView {
             }
         });
 
+        jButton29.setBackground(new java.awt.Color(155, 9, 46));
+        jButton29.setForeground(new java.awt.Color(255, 255, 255));
+        jButton29.setText("Faciliteit Toevoegen");
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -195,7 +205,8 @@ public class Facility extends mvc.view.AbstractView {
                     .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+                    .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(jButton29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -209,6 +220,8 @@ public class Facility extends mvc.view.AbstractView {
                 .addComponent(jButton27)
                 .addGap(101, 101, 101)
                 .addComponent(jButton28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton29)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -374,6 +387,10 @@ public class Facility extends mvc.view.AbstractView {
         new FacilityController().reservationChange();                // TODO add your handling code here:
     }//GEN-LAST:event_jButton28ActionPerformed
 
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        new FacilityController().addFacilityAction();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton29ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Choice choice21;
     private java.awt.Choice choice23;
@@ -381,6 +398,7 @@ public class Facility extends mvc.view.AbstractView {
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
+    private javax.swing.JButton jButton29;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
