@@ -15,7 +15,7 @@ import pas.file.chooser.FileChooserInterface;
  *
  * @author jkg
  */
-public class manageMember extends mvc.view.AbstractView implements FileChooserInterface {
+public class ManageMember extends mvc.view.AbstractView implements FileChooserInterface {
 
     private MemberController membercontroller;
     private FileChooserAbstract fileChooser;
@@ -23,7 +23,7 @@ public class manageMember extends mvc.view.AbstractView implements FileChooserIn
     /**
      * Creates new form manageMember
      */
-    public manageMember(MemberController controller) {
+    public ManageMember(MemberController controller) {
         this.membercontroller = controller;
         initComponents();
     }
