@@ -26,7 +26,7 @@ public class MemberController extends AbstractController {
 
     public void addMemeberAction() {
         open(new AddMember(this));
-        mainFrame.setSidebarEnabled(false);
-        mainFrame.setProfilePanelEnabled(true);
+        mainFrame.setSidebarEnabled(true);
+        mainFrame.setProfilePanelEnabled(false);
     }
 }

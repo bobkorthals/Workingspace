@@ -43,7 +43,7 @@ public final class DbManager {
      */
     
     // Private constructor. No instances allowed 
-    private DbManager(){
+    public DbManager(){
         //
     }
     
@@ -112,10 +112,10 @@ public final class DbManager {
     private static Connection connect(DbManager.Drivers driver) throws DbManagerException {
         try {
             Class.forName(driver.getDriver()).newInstance();
-            String connStr = driver.getConnStr()+DbManager.connProperties.getProperty("host")+":"+DbManager.connProperties.getProperty("port")+"/"
-                                                                   +DbManager.connProperties.getProperty("database")
-                                                                   +"?user="+DbManager.connProperties.getProperty("user")
-                                                                   +"&password="+DbManager.connProperties.getProperty("password");
+            String connStr = driver.getConnStr()+DbManager.connProperties.getProperty("localhost")+":"+DbManager.connProperties.getProperty("5431")+"/"
+                                                                   +DbManager.connProperties.getProperty("fitshape")
+                                                                   +"?user="+DbManager.connProperties.getProperty("fitshape")
+                                                                   +"&password="+DbManager.connProperties.getProperty("test123");
             
             if("true".equals(DbManager.connProperties.getProperty("ssl"))){
                 connStr += "&ssl=true";

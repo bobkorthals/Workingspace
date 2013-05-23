@@ -82,7 +82,6 @@ public class ReservationPayment extends mvc.view.AbstractView {
         txtVoornaam8 = new javax.swing.JTextField();
         choice22 = new java.awt.Choice();
         jLabel5 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanel7 = new javax.swing.JPanel();
         jButton21 = new javax.swing.JButton();
 
@@ -366,8 +365,7 @@ public class ReservationPayment extends mvc.view.AbstractView {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField31, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(choice22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(choice22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel24Layout.createSequentialGroup()
@@ -418,10 +416,8 @@ public class ReservationPayment extends mvc.view.AbstractView {
                         .addComponent(choice22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                .addComponent(jLabel7)
+                .addGap(32, 32, 32))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -520,7 +516,6 @@ public class ReservationPayment extends mvc.view.AbstractView {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

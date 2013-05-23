@@ -85,6 +85,7 @@ public class MainFrame extends AbstractFrame {
         pnlMemberSearchResults = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -92,6 +93,11 @@ public class MainFrame extends AbstractFrame {
         setMinimumSize(new java.awt.Dimension(1920, 1080));
 
         pnlBackground.setOpaque(false);
+        pnlBackground.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pnlBackgroundKeyPressed(evt);
+            }
+        });
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setOpaque(false);
@@ -296,6 +302,16 @@ public class MainFrame extends AbstractFrame {
         );
 
         jMenu2.setText("Edit");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItem1.setText("Naar Hoofdmenu");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -320,12 +336,20 @@ public class MainFrame extends AbstractFrame {
         btnActiveMembers.toggleStatus();
     }//GEN-LAST:event_btnAllMembersMouseClicked
 
+    private void pnlBackgroundKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnlBackgroundKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlBackgroundKeyPressed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new MainController().mainAction();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.label.Button btnActiveMembers;
     private pas.layout.label.Button btnAllMembers;
     private javax.swing.JLabel imgLogo;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
