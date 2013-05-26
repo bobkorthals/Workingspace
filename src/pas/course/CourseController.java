@@ -4,7 +4,9 @@
  */
 package pas.course;
 
+import java.awt.Container;
 import mvc.controller.AbstractController;
+import mvc.view.AbstractView;
 import pas.layout.MainFrame;
 
 /**
@@ -28,6 +30,12 @@ public class CourseController extends AbstractController {
         mainframe.setProfilePanelEnabled(true);
         open(view);
 
+    }
+    
+    public void returnAction(AbstractView view){
+        
+        open(view);
+    
     }
 
     public void AddCourseAction() {

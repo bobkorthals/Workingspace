@@ -12,6 +12,7 @@ import pas.layout.PopFrame;
  * @author jkg
  */
 public class Product extends mvc.view.AbstractView {
+
     private PopFrame popframe;
     private BarController barcontroller;
 
@@ -29,10 +30,19 @@ public class Product extends mvc.view.AbstractView {
 
     public PopFrame getPopUpAddProduct() {
         if (null == this.popframe) {
-            this.popframe = new PopFrame(new AddProduct());
+            AddProduct product = new AddProduct(null);
+            this.popframe = new PopFrame(product);
+            product.setPopframe(this.popframe);
         }
-        
-         return this.popframe;
+
+        return this.popframe;
+    }
+
+    public PopFrame getPopUpAddCategorie() {
+        if (null == this.popframe) {
+            this.popframe = new PopFrame(new AddCategorie());
+        }
+        return this.popframe;
     }
 
     @Override
@@ -482,7 +492,7 @@ public class Product extends mvc.view.AbstractView {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+        this.getPopUpAddCategorie().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;

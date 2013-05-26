@@ -4,6 +4,7 @@
  */
 package pas.course;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JFileChooser;
@@ -16,7 +17,7 @@ import pas.file.chooser.FileChooserInterface;
  * @author Ufuk Çelebi
  */
 public class CourseMain extends mvc.view.AbstractView implements FileChooserInterface {
-
+private Container container;
     private CourseController coursecontroller;
     private FileChooserAbstract fileChooser;
 
