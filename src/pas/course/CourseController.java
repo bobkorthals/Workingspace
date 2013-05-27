@@ -47,6 +47,12 @@ public class CourseController extends AbstractController {
         open(view);
     
     }
+    
+    public void returnAction(AbstractView view){
+        
+        open(view);
+    
+    }
 
     public void AddCourseAction() {
         mainframe.setSidebarEnabled(true);
