@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import mvc.Application;
 import mvc.controller.AbstractController;
 import mvc.exception.NoInstanceControllerException;
+import mvc.view.AbstractView;
 import pas.layout.MainFrame;
 
 /**
@@ -39,6 +40,12 @@ public class CourseController extends AbstractController {
         mainframe.setSidebarEnabled(true);
         mainframe.setProfilePanelEnabled(true);
         open(view);
+    }
+    
+    public void returnAction(AbstractView view){
+        
+        open(view);
+    
     }
 
     public void AddCourseAction() {

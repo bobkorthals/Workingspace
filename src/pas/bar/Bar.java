@@ -62,6 +62,7 @@ public class Bar extends mvc.view.AbstractView {
         setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(98, 98, 152));
         jLabel2.setText("Bar Programma");
 
         jPanel1.setOpaque(false);
@@ -246,7 +247,7 @@ public class Bar extends mvc.view.AbstractView {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(187, 187, 187))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

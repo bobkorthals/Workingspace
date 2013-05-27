@@ -1,7 +1,6 @@
 package pas.layout;
 
 import java.awt.Container;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.util.List;

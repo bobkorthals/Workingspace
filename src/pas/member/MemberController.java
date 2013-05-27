@@ -1,6 +1,6 @@
 package pas.member;
 
-import pas.member.*;
+
 import mvc.controller.AbstractController;
 import pas.layout.MainFrame;
 
