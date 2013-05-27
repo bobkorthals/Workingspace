@@ -1,4 +1,4 @@
-package pas.models.connectivity;
+package pas.models.connectivityRuben;
 
 import java.io.InputStream;
 import java.math.BigDecimal;

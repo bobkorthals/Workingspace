@@ -1,33 +1,24 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package pas.models.db;
-
-import java.util.Date;
+package pas.models.role;
 
 /**
  *
  * @author jkg
  */
-public class Person {
+public abstract class AbsractPerson {
 
     private String firstName;
     private String lastName;
     private String suffix;
     private String gender;
     private String dateOfBrith;
-    
     private int age;
 
-    public Person(String firstName, String lastName, String suffix, String gender, String dateOfBrith) {
+    public AbsractPerson(String firstName, String lastName, String suffix, String gender, String dateOfBrith) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.suffix=suffix;
-        this.dateOfBrith=dateOfBrith;
-        this.gender=gender;
-
-
+        this.suffix = suffix;
+        this.dateOfBrith = dateOfBrith;
+        this.gender = gender;
     }
 
     public String getGender() {
