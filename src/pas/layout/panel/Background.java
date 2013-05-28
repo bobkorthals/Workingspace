@@ -28,9 +28,9 @@ public class Background extends javax.swing.JPanel {
      * @param int repeat mode
      */
     public Background(String src, int mode) {
+        initComponents();
         this.src = src;
         this.mode = mode;
-        initComponents();
     }
     
     /**
@@ -42,7 +42,7 @@ public class Background extends javax.swing.JPanel {
     public Background(String src) {
         this(src, Background.NO_REPEAT);
     }
-
+    
     /*
      * Draw an image as background repeating both horizontal
      * and vertical.
@@ -54,8 +54,13 @@ public class Background extends javax.swing.JPanel {
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
+        System.out.println(this.src);
+        
         Image background = new ImageIcon(
                 getClass().getResource(this.src)).getImage();
+        
+        System.out.println(background);
+        System.out.println("");
 
         if (this.mode != Background.NO_REPEAT) {
             int imageWidth  = background.getWidth(this);

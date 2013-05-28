@@ -21,13 +21,14 @@ public final class PopFrame extends AbstractFrame {
      * Creates new form PopFrame
      */
     public PopFrame(JPanel view) {
+        initComponents();
         this.view = view;
         this.setAlwaysOnTop(true);
         this.setUndecorated(true);
         this.setMinimumSize(view.getPreferredSize());
         this.setPreferredSize(view.getPreferredSize());
         this.setLocationRelativeTo(null);
-        initComponents();
+        
         this.setContentPane(view);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
