@@ -1,159 +1,76 @@
 package pas.models.connectivity;
 
 import java.sql.*;
-import java.util.Properties;
-import pas.exception.*;
-
 
 /**
- * @todo Support for multiple synchronous database connections
- * @author Ruben
+ * The Database Manager is responsible for creating/closing/maintaining
+ * connections to the database.
  */
-public final class DbManager {
-    public enum Drivers {
-        POSTGRESQL ("org.postgresql.Driver", "jdbc:postgresql://"),
-        MYSQL("com.mysql.jdbc.Driver", "jdbc:mysql://"),
-        ODBC("sun.jdbc.odbc.JdbcOdbcDriver", "jdbc:odbc:emp://"),
-        MSSQL("com.mysql.jdbc.Driver", "jdbc:mysql://");
-        
-        
-        private String driver;
-        private String connStr;
-        
-        private Drivers(String driver, String connStr){
-            this.driver = driver;
-            this.connStr = connStr;
-        }
-        
-        public String getDriver(){
-            return this.driver;
-        }
-        
-        public String getConnStr(){
-            return this.connStr;
-        }
-    }
-    
-    private static Connection conn = null;
-    private static Properties connProperties = null;
-    private static DbManager.Drivers selectedDriver = null;
-    
+public class DbManager {
+    public static final String JDBC_EXCEPTION = "JDBC Exception: ";
+    public static final String SQL_EXCEPTION = "SQL Exception: ";
+
+    private Connection connection;
+
     /**
-     * Static DbManager class for use of one concurrent database connection
+     * Open database connection
      */
-    
-    // Private constructor. No instances allowed 
-    public DbManager(){
-        //
-    }
-    
-    // No cloning allowed either
-    @Override
-    public Object clone() throws CloneNotSupportedException{
-        throw new CloneNotSupportedException();
-    }
-    
-    /**
-     * This static method returns a Connection object with saved settings
-     * @access public static
-     * @return Connection
-     * @throws DbManagerException 
-     */
-    
-    // Give the current static Connection object
-    public static synchronized Connection getConnection() throws DbManagerException {
-        if(DbManager.selectedDriver == null){
-            throw new DbManagerException("No database driver selected!", 150);
-        }
-        else if(DbManager.connProperties == null){
-            throw new DbManagerException("No database settings available", 151);
-        }
-        
-        return DbManager.connect(DbManager.selectedDriver);
-    }
-    
-    /**
-     * This static method returns a Connection object with given settings
-     * @access public static
-     * @param driver
-     * @param connProperties
-     * @return Connection
-     * @throws DbManagerException 
-     */
-    
-    public static Connection getConnection(DbManager.Drivers driver, Properties connProperties) throws DbManagerException {
-        DbManager.selectedDriver = driver;
-        
-        if(connProperties.getProperty("host") == null || 
-           connProperties.getProperty("port") == null || 
-           connProperties.getProperty("user") == null || 
-           connProperties.getProperty("password") == null || 
-           connProperties.getProperty("database") == null){
-            throw new DbManagerException("Connection properties list incomplete", 1000);
-        }
-        
-        if(connProperties.getProperty("ssl") != null && "false".equals(connProperties.getProperty("ssl"))){
-            connProperties.remove("ssl");
-        }
-        
-        DbManager.connProperties = connProperties;
-        
-        return DbManager.connect(driver);
-    }
-    
-    /**
-     * This private method opens a database connection
-     * @access private
-     * @param driver
-     * @return Connection
-     * @throws DbManagerException 
-     */
-    
-    private static Connection connect(DbManager.Drivers driver) throws DbManagerException {
+    public void openConnection() {
         try {
-            Class.forName(driver.getDriver()).newInstance();
-            String connStr = driver.getConnStr()+DbManager.connProperties.getProperty("localhost")+":"+DbManager.connProperties.getProperty("5431")+"/"
-                                                                   +DbManager.connProperties.getProperty("fitshape")
-                                                                   +"?user="+DbManager.connProperties.getProperty("fitshape")
-                                                                   +"&password="+DbManager.connProperties.getProperty("test123");
-            
-            if("true".equals(DbManager.connProperties.getProperty("ssl"))){
-                connStr += "&ssl=true";
-            }
-            
-            // First close any existing database connection
-            if(DbManager.conn != null){
-                DbManager.close();
-            }
-            DbManager.conn = DriverManager.getConnection(connStr);
+            Class.forName("org.postgresql.Driver");
+
+            String url = "jdbc:postgresql://localhost:5432/fitshape";
+            String user = "fitshape", pass = "test123";
+
+            connection = DriverManager.getConnection(url, user, pass);
+        } catch (ClassNotFoundException e) {
+            System.err.println(JDBC_EXCEPTION + e.getMessage());
+            e.printStackTrace(System.err);
+        } catch (java.sql.SQLException e) {
+            System.err.println(SQL_EXCEPTION + e.getMessage());
+            e.printStackTrace(System.err);
         }
-        catch(SQLException e){ 
-            throw new DbManagerException("SQL: "+e.getMessage(), 1010);
-        }
-        catch(ClassNotFoundException e){
-            throw new DbManagerException("Class Not Found: "+e.getMessage(), 1011);
-        }
-        catch(InstantiationException e){
-            throw new DbManagerException(e.getMessage(), 1013);
-        }
-        catch(Exception e){
-            throw new DbManagerException(e.getMessage(), 1015);
-        }
-        return DbManager.conn;
     }
-    
-    
+
     /**
-     * This method closes the connection
-     * @access public
-     * @throws DbManagerException 
+     * Close database connection
      */
-    public static void close() throws DbManagerException {
-        try{
-            DbManager.conn.close();
+    public void closeConnection() {
+        try {
+            connection.close();
+        } catch (Exception e) {
+            System.err.println(JDBC_EXCEPTION + e.getMessage());
+            e.printStackTrace(System.err);
         }
-        catch(SQLException e){
-            throw new DbManagerException("Could not close connection.\n"+e.getMessage(), 1090);
+    }
+
+    /**
+     * Executes a query without result.
+     * @param query, the SQl query
+     */
+    public void executeQuery(String query) {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(query);
+        } catch (java.sql.SQLException e) {
+            System.err.println(SQL_EXCEPTION + e.getMessage());
+            e.printStackTrace(System.err);
         }
+    }
+
+    /**
+     * Executes a query with result.
+     * @param query, the SQL query
+     */
+    public ResultSet doQuery(String query) {
+        ResultSet result = null;
+        try {
+            Statement statement = connection.createStatement();
+            result = statement.executeQuery(query);
+        } catch (java.sql.SQLException e) {
+            System.err.println(SQL_EXCEPTION + e.getMessage());
+            e.printStackTrace(System.err);
+        }
+        return result;
     }
 }

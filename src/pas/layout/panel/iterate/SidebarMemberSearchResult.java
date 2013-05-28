@@ -1,6 +1,7 @@
 package pas.layout.panel.iterate;
 
 import javax.swing.JPanel;
+import pas.models.db.Member;
 
 /**
  *
@@ -11,8 +12,10 @@ public class SidebarMemberSearchResult extends JPanel {
     /**
      * Creates new form SidebarMemberSearchResult
      */
-    public SidebarMemberSearchResult() {
+    public SidebarMemberSearchResult(Member member) {
         initComponents();
+        lblMemberName.setText(member.getFirstname() + " " + member.getLastname());
+        lblMemberId.setText(member.getId().toString());
     }
 
     /**
@@ -25,14 +28,17 @@ public class SidebarMemberSearchResult extends JPanel {
     private void initComponents() {
 
         lblMemberName = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblMemberId = new javax.swing.JLabel();
+        lblMemberStatus = new javax.swing.JLabel();
+
+        setMaximumSize(new java.awt.Dimension(246, 14));
+        setMinimumSize(new java.awt.Dimension(246, 14));
 
         lblMemberName.setText("Member name");
 
-        jLabel1.setText("Member id");
+        lblMemberId.setText("Member id");
 
-        jLabel2.setText("1");
+        lblMemberStatus.setText("1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -41,22 +47,22 @@ public class SidebarMemberSearchResult extends JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblMemberName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblMemberStatus)
                 .addGap(0, 28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lblMemberName)
-                .addComponent(jLabel1)
-                .addComponent(jLabel2))
+                .addComponent(lblMemberId)
+                .addComponent(lblMemberStatus))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblMemberId;
     private javax.swing.JLabel lblMemberName;
+    private javax.swing.JLabel lblMemberStatus;
     // End of variables declaration//GEN-END:variables
 }

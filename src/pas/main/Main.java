@@ -23,8 +23,9 @@ public class Main extends mvc.view.AbstractView {
      * Creates new form main
      */
     public Main(MainController controller) {
-        this.maincontroller = controller;
         initComponents();
+        this.maincontroller = controller;
+        
     }
 
     @Override

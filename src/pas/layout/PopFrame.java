@@ -5,11 +5,9 @@
 package pas.layout;
 
 import java.awt.Container;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
-import pas.layout.panel.SideBar;
 
 /**
  *
@@ -23,13 +21,14 @@ public final class PopFrame extends AbstractFrame {
      * Creates new form PopFrame
      */
     public PopFrame(JPanel view) {
+        initComponents();
         this.view = view;
         this.setAlwaysOnTop(true);
         this.setUndecorated(true);
         this.setMinimumSize(view.getPreferredSize());
         this.setPreferredSize(view.getPreferredSize());
         this.setLocationRelativeTo(null);
-        initComponents();
+        
         this.setContentPane(view);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
@@ -39,7 +38,6 @@ public final class PopFrame extends AbstractFrame {
     public void setContentPane(Container contentPane) {
         if (contentPane instanceof AbstractView) {
             JPanel pane = (JPanel) contentPane;
-            SideBar sidebar = new SideBar();
             this.jPanel1.removeAll();
             this.jPanel1.add(pane);
         } else {
