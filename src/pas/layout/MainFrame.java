@@ -29,16 +29,16 @@ public class MainFrame extends AbstractFrame {
         this.setExtendedState(AbstractFrame.MAXIMIZED_BOTH);
         btnAllMembers.setStatus(Button.ACTIVE); 
         
-        EntityManager entityManager = Persistence.createEntityManagerFactory("PASPU").createEntityManager();
-        Query query = entityManager.createNamedQuery("Member.findAll");
-        List<Member> memberList = query.getResultList();
-        
-        pnlMemberSearchResults.setLayout(new GridLayout(memberList.size(), 0));
-        GridBagConstraints gbc = new GridBagConstraints();
-        
-        for (Member member: memberList) {
-            pnlMemberSearchResults.add(new SidebarMemberSearchResult(member), gbc);
-        }
+//        EntityManager entityManager = Persistence.createEntityManagerFactory("PASPU").createEntityManager();
+//        Query query = entityManager.createNamedQuery("Member.findAll");
+//        List<Member> memberList = query.getResultList();
+//        
+//        pnlMemberSearchResults.setLayout(new GridLayout(memberList.size(), 0));
+//        GridBagConstraints gbc = new GridBagConstraints();
+//        
+//        for (Member member: memberList) {
+//            pnlMemberSearchResults.add(new SidebarMemberSearchResult(member), gbc);
+//        }
     }
 
     /*
