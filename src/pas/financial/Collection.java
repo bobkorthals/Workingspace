@@ -28,7 +28,6 @@ public class Collection extends javax.swing.JPanel {
 
         title = new pas.layout.label.Title();
         buttonRevenues = new pas.layout.label.Button();
-        buttonPayments = new pas.layout.label.Button();
         buttonCosts = new pas.layout.label.Button();
         buttonCollection = new pas.layout.label.Button();
         paneMembers = new javax.swing.JPanel();
@@ -41,8 +40,7 @@ public class Collection extends javax.swing.JPanel {
         selectPeriodYear = new javax.swing.JComboBox();
         button1 = new pas.layout.label.Button();
         buttonUpdate = new pas.layout.label.Button();
-        buttonClieop = new pas.layout.label.Button();
-        buttonSepa = new pas.layout.label.Button();
+        buttonGenerateCollection = new pas.layout.label.Button();
 
         setName("Form"); // NOI18N
 
@@ -53,9 +51,6 @@ public class Collection extends javax.swing.JPanel {
 
         buttonRevenues.setText("Omzetten");
         buttonRevenues.setName("buttonRevenues"); // NOI18N
-
-        buttonPayments.setText("Betalingen");
-        buttonPayments.setName("buttonPayments"); // NOI18N
 
         buttonCosts.setText("Kosten");
         buttonCosts.setName("buttonCosts"); // NOI18N
@@ -165,11 +160,8 @@ public class Collection extends javax.swing.JPanel {
         buttonUpdate.setText("Bijwerken");
         buttonUpdate.setName("buttonUpdate"); // NOI18N
 
-        buttonClieop.setText("Genereer Clieop");
-        buttonClieop.setName("buttonClieop"); // NOI18N
-
-        buttonSepa.setText("Genereer SEPA");
-        buttonSepa.setName("buttonSepa"); // NOI18N
+        buttonGenerateCollection.setText("Genereer Incassobestand");
+        buttonGenerateCollection.setName("buttonGenerateCollection"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -184,7 +176,6 @@ public class Collection extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(buttonCosts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonPayments, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonRevenues, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonCollection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -192,9 +183,7 @@ public class Collection extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonClieop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonSepa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,8 +220,6 @@ public class Collection extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(buttonRevenues, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonPayments, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCosts, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -240,8 +227,7 @@ public class Collection extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonClieop, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSepa, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(222, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -260,12 +246,10 @@ public class Collection extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.label.Button button1;
-    private pas.layout.label.Button buttonClieop;
     private pas.layout.label.Button buttonCollection;
     private pas.layout.label.Button buttonCosts;
-    private pas.layout.label.Button buttonPayments;
+    private pas.layout.label.Button buttonGenerateCollection;
     private pas.layout.label.Button buttonRevenues;
-    private pas.layout.label.Button buttonSepa;
     private pas.layout.label.Button buttonUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelLocation;

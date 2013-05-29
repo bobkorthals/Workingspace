@@ -29,7 +29,6 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="buttonCosts" max="32767" attributes="0"/>
-                          <Component id="buttonPayments" alignment="0" max="32767" attributes="0"/>
                           <Component id="buttonRevenues" alignment="0" max="32767" attributes="0"/>
                           <Component id="buttonCollection" max="32767" attributes="0"/>
                       </Group>
@@ -38,9 +37,7 @@
                           <Group type="102" attributes="0">
                               <Component id="buttonUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonClieop" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonSepa" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonGenerateCollection" min="-2" pref="157" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -87,8 +84,6 @@
                   <Group type="102" attributes="0">
                       <Component id="buttonRevenues" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonPayments" min="-2" pref="23" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonCosts" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonCollection" min="-2" pref="23" max="-2" attributes="0"/>
@@ -98,8 +93,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="buttonUpdate" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="buttonClieop" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="buttonSepa" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="buttonGenerateCollection" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="222" max="32767" attributes="0"/>
           </Group>
@@ -123,12 +117,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Omzetten"/>
         <Property name="name" type="java.lang.String" value="buttonRevenues" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="pas.layout.label.Button" name="buttonPayments">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Betalingen"/>
-        <Property name="name" type="java.lang.String" value="buttonPayments" noResource="true"/>
       </Properties>
     </Component>
     <Component class="pas.layout.label.Button" name="buttonCosts">
@@ -506,16 +494,10 @@
         <Property name="name" type="java.lang.String" value="buttonUpdate" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="pas.layout.label.Button" name="buttonClieop">
+    <Component class="pas.layout.label.Button" name="buttonGenerateCollection">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Genereer Clieop"/>
-        <Property name="name" type="java.lang.String" value="buttonClieop" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="pas.layout.label.Button" name="buttonSepa">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Genereer SEPA"/>
-        <Property name="name" type="java.lang.String" value="buttonSepa" noResource="true"/>
+        <Property name="text" type="java.lang.String" value="Genereer Incassobestand"/>
+        <Property name="name" type="java.lang.String" value="buttonGenerateCollection" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

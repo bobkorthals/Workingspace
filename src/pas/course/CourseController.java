@@ -25,11 +25,11 @@ public class CourseController extends AbstractController {
     }
 
     public void openReferer() {
-        try {
-            open(Application.getInstance().getInstanceController().getReferer());
-        } catch (NoInstanceControllerException ex) {
-            Logger.getLogger(CourseController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            open(Application.getInstance().getInstanceController().getReferer());
+//        } catch (NoInstanceControllerException ex) {
+//            Logger.getLogger(CourseController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
     
     public void CourseMainAction() {
