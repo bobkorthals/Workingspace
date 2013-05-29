@@ -16,7 +16,7 @@ public class MainController extends AbstractController {
     }
 
     public void mainAction() {
-        mainFrame.setSidebarEnabled(true);
+        mainFrame.setSidebarEnabled(false);
         mainFrame.setProfilePanelEnabled(true);
         Main view = new Main(this);
         open(view);

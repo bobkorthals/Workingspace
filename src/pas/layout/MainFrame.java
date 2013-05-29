@@ -1,12 +1,19 @@
 package pas.layout;
 
 import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
 import pas.layout.label.Button;
-import pas.layout.panel.SideBar;
+import pas.layout.panel.iterate.SidebarMemberSearchResult;
 import pas.main.MainController;
+import pas.models.db.Member;
 
 /**
  *
@@ -20,7 +27,18 @@ public class MainFrame extends AbstractFrame {
     public MainFrame() {
         initComponents();
         this.setExtendedState(AbstractFrame.MAXIMIZED_BOTH);
-        btnAllMembers.setStatus(Button.ACTIVE);
+        btnAllMembers.setStatus(Button.ACTIVE); 
+        
+        EntityManager entityManager = Persistence.createEntityManagerFactory("PASPU").createEntityManager();
+        Query query = entityManager.createNamedQuery("Member.findAll");
+        List<Member> memberList = query.getResultList();
+        
+        pnlMemberSearchResults.setLayout(new GridLayout(memberList.size(), 0));
+        GridBagConstraints gbc = new GridBagConstraints();
+        
+        for (Member member: memberList) {
+            pnlMemberSearchResults.add(new SidebarMemberSearchResult(member), gbc);
+        }
     }
 
     /*
@@ -35,7 +53,6 @@ public class MainFrame extends AbstractFrame {
     public void setContentPane(Container contentPane) {
         if (contentPane instanceof AbstractView) {
             JPanel view = (JPanel) contentPane;
-            SideBar sidebar = new SideBar();
             this.pnlMain.removeAll();
             this.pnlMain.add(view);
         } else {
@@ -85,6 +102,7 @@ public class MainFrame extends AbstractFrame {
         pnlMemberSearchResults = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -92,6 +110,11 @@ public class MainFrame extends AbstractFrame {
         setMinimumSize(new java.awt.Dimension(1920, 1080));
 
         pnlBackground.setOpaque(false);
+        pnlBackground.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                pnlBackgroundKeyPressed(evt);
+            }
+        });
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setOpaque(false);
@@ -239,16 +262,8 @@ public class MainFrame extends AbstractFrame {
                 .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout pnlMemberSearchResultsLayout = new javax.swing.GroupLayout(pnlMemberSearchResults);
-        pnlMemberSearchResults.setLayout(pnlMemberSearchResultsLayout);
-        pnlMemberSearchResultsLayout.setHorizontalGroup(
-            pnlMemberSearchResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlMemberSearchResultsLayout.setVerticalGroup(
-            pnlMemberSearchResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 296, Short.MAX_VALUE)
-        );
+        pnlMemberSearchResults.setOpaque(false);
+        pnlMemberSearchResults.setLayout(new java.awt.GridLayout());
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
         pnlSidebar.setLayout(pnlSidebarLayout);
@@ -268,7 +283,7 @@ public class MainFrame extends AbstractFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlMemberSearchControl, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlMemberSearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlMemberSearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
@@ -296,6 +311,16 @@ public class MainFrame extends AbstractFrame {
         );
 
         jMenu2.setText("Edit");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
+        jMenuItem1.setText("Naar Hoofdmenu");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -320,12 +345,20 @@ public class MainFrame extends AbstractFrame {
         btnActiveMembers.toggleStatus();
     }//GEN-LAST:event_btnAllMembersMouseClicked
 
+    private void pnlBackgroundKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnlBackgroundKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlBackgroundKeyPressed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        new MainController().mainAction();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.label.Button btnActiveMembers;
     private pas.layout.label.Button btnAllMembers;
     private javax.swing.JLabel imgLogo;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;

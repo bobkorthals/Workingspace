@@ -23,8 +23,9 @@ public class Main extends mvc.view.AbstractView {
      * Creates new form main
      */
     public Main(MainController controller) {
-        this.maincontroller = controller;
         initComponents();
+        this.maincontroller = controller;
+        
     }
 
     @Override
@@ -57,6 +58,8 @@ public class Main extends mvc.view.AbstractView {
 
         jPanel1.setOpaque(false);
 
+        jButton2.setBackground(new java.awt.Color(155, 9, 46));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Bar Applicatie");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +67,8 @@ public class Main extends mvc.view.AbstractView {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(155, 9, 46));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Ledenregistratie");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +76,8 @@ public class Main extends mvc.view.AbstractView {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(155, 9, 46));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Faciliteiten");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +85,8 @@ public class Main extends mvc.view.AbstractView {
             }
         });
 
+        jButton4.setBackground(new java.awt.Color(155, 9, 46));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Cursussen");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

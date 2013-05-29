@@ -17,7 +17,7 @@ public class MemberController extends AbstractController {
     }
 
     public void manageMemberAction() {
-        manageMember view = new manageMember(this);
+        ManageMember view = new ManageMember(this);
         mainFrame.setSidebarEnabled(true);
         mainFrame.setProfilePanelEnabled(true);
         open(view);
@@ -25,7 +25,7 @@ public class MemberController extends AbstractController {
 
     public void addMemeberAction() {
         open(new AddMember(this));
-        mainFrame.setSidebarEnabled(false);
-        mainFrame.setProfilePanelEnabled(true);
+        mainFrame.setSidebarEnabled(true);
+        mainFrame.setProfilePanelEnabled(false);
     }
 }

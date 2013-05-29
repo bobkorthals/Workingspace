@@ -4,7 +4,12 @@
  */
 package pas.course;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import mvc.Application;
 import mvc.controller.AbstractController;
+import mvc.exception.NoInstanceControllerException;
+import mvc.view.AbstractView;
 import pas.layout.MainFrame;
 
 /**
@@ -19,6 +24,14 @@ public class CourseController extends AbstractController {
         mainframe = (MainFrame) getMainFrame();
     }
 
+    public void openReferer() {
+//        try {
+//            open(Application.getInstance().getInstanceController().getReferer());
+//        } catch (NoInstanceControllerException ex) {
+//            Logger.getLogger(CourseController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+    
     public void CourseMainAction() {
 
         CourseMain view = new CourseMain(this);
@@ -27,7 +40,10 @@ public class CourseController extends AbstractController {
         mainframe.setSidebarEnabled(true);
         mainframe.setProfilePanelEnabled(true);
         open(view);
-
+    }
+    
+    public void returnAction(AbstractView view){  
+        open(view);
     }
 
     public void AddCourseAction() {

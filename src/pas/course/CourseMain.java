@@ -4,6 +4,7 @@
  */
 package pas.course;
 
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
 import javax.swing.JFileChooser;
@@ -16,7 +17,7 @@ import pas.file.chooser.FileChooserInterface;
  * @author Ufuk Çelebi
  */
 public class CourseMain extends mvc.view.AbstractView implements FileChooserInterface {
-
+private Container container;
     private CourseController coursecontroller;
     private FileChooserAbstract fileChooser;
 
@@ -154,10 +155,15 @@ public class CourseMain extends mvc.view.AbstractView implements FileChooserInte
 
         jButton1.setBackground(new java.awt.Color(155, 9, 46));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Wijzigen");
+        jButton1.setText("Ga Terug");
         jButton1.setMaximumSize(new java.awt.Dimension(99, 23));
         jButton1.setMinimumSize(new java.awt.Dimension(99, 23));
         jButton1.setPreferredSize(new java.awt.Dimension(99, 23));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(155, 9, 46));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -705,8 +711,13 @@ public class CourseMain extends mvc.view.AbstractView implements FileChooserInte
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        
         coursecontroller.CourseMainAction();        // 
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.getController().openReferer();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
