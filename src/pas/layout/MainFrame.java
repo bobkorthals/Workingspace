@@ -1,5 +1,6 @@
 package pas.layout;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
@@ -7,7 +8,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.swing.JPanel;
 import mvc.Application;
@@ -18,7 +18,7 @@ import pas.layout.label.Button;
 import pas.layout.panel.iterate.SidebarMemberSearchResult;
 import pas.main.MainController;
 import pas.models.SessionManager;
-import pas.models.db.Member;
+import pas.models.db.Member1;
 import session.NoSessionManagerException;
 
 /**
@@ -33,12 +33,12 @@ public class MainFrame extends AbstractFrame {
     public MainFrame() {
         initComponents();
         this.setExtendedState(AbstractFrame.MAXIMIZED_BOTH);
-        btnAllMembers.setStatus(Button.ACTIVE); 
-        
-        Query query = getEntityManager().createNamedQuery("Member.findAll");
+        btnAllMembers.setStatus(Button.ACTIVE);
+
+        Query query = getEntityManager().createNamedQuery("Member1.findAll");
         this.setMemberList(query.getResultList());
     }
-    
+
     /*
      * Returns the Sessionmanager
      * 
@@ -52,7 +52,7 @@ public class MainFrame extends AbstractFrame {
         }
         return null;
     }
-    
+
     /*
      * Returns the database entity manager
      * 
@@ -66,20 +66,26 @@ public class MainFrame extends AbstractFrame {
         }
         return null;
     }
-    
+
     /*
      * Fill the memberlist in the sidebar
      * 
      * @param List<Member> memberlist
      * @return void
      */
-    private void setMemberList(List<Member> memberList) {
-        pnlMemberSearchResults.setLayout(new GridLayout(memberList.size(), 0));
-        GridBagConstraints gbc = new GridBagConstraints();
-        
-        for (Member member: memberList) {
-            pnlMemberSearchResults.add(new SidebarMemberSearchResult(member), gbc);
+    private void setMemberList(List<Member1> memberList) {
+        pnlMemberSearchResults.removeAll();
+        SidebarMemberSearchResult.resetCounter();
+        if (memberList.size() > 0) {
+            pnlMemberSearchResults.setLayout(new GridLayout(memberList.size(), 0));
+            GridBagConstraints gbc = new GridBagConstraints();
+            for (Member1 member : memberList) {
+                pnlMemberSearchResults.add(
+                        new SidebarMemberSearchResult(member), gbc);
+            }
         }
+        pnlMemberSearchResults.revalidate();
+        pnlMemberSearchResults.repaint();
     }
 
     /*
@@ -139,10 +145,10 @@ public class MainFrame extends AbstractFrame {
         pnlMemberSearchControl = new javax.swing.JPanel();
         btnAllMembers = new pas.layout.label.Button();
         btnActiveMembers = new pas.layout.label.Button();
-        textField1 = new pas.layout.textfield.TextField("Zoek op naam of lid nummer..");
+        txtFilterMember = new pas.layout.textfield.TextField("Zoek op naam of lid nummer..");
         pnlMemberSearchResults = new javax.swing.JPanel();
-        h21 = new pas.layout.label.H2();
-        h22 = new pas.layout.label.H2();
+        h2MemberName = new pas.layout.label.H2();
+        h2MemberId = new pas.layout.label.H2();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -235,8 +241,8 @@ public class MainFrame extends AbstractFrame {
             .addGroup(pnlBackgroundHeadLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlBackgroundHeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imgLogo))
+                    .addComponent(imgLogo)
+                    .addComponent(profilePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -276,10 +282,18 @@ public class MainFrame extends AbstractFrame {
             }
         });
 
-        textField1.setBorder(null);
-        textField1.setAlignmentX(0.0F);
-        textField1.setAlignmentY(0.0F);
-        textField1.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        txtFilterMember.setBorder(null);
+        txtFilterMember.setAlignmentX(0.0F);
+        txtFilterMember.setAlignmentY(0.0F);
+        txtFilterMember.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        txtFilterMember.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFilterMemberKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFilterMemberKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMemberSearchControlLayout = new javax.swing.GroupLayout(pnlMemberSearchControl);
         pnlMemberSearchControl.setLayout(pnlMemberSearchControlLayout);
@@ -292,7 +306,7 @@ public class MainFrame extends AbstractFrame {
                         .addGap(0, 0, 0)
                         .addComponent(btnAllMembers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtFilterMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlMemberSearchControlLayout.setVerticalGroup(
@@ -302,15 +316,15 @@ public class MainFrame extends AbstractFrame {
                     .addComponent(btnAllMembers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActiveMembers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
-                .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtFilterMember, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pnlMemberSearchResults.setOpaque(false);
         pnlMemberSearchResults.setLayout(new java.awt.GridLayout(1, 0));
 
-        h21.setText("Lid naam");
+        h2MemberName.setText("Lid naam");
 
-        h22.setText("Lid nr.");
+        h2MemberId.setText("Lid nr.");
 
         javax.swing.GroupLayout pnlSidebarLayout = new javax.swing.GroupLayout(pnlSidebar);
         pnlSidebar.setLayout(pnlSidebarLayout);
@@ -322,9 +336,9 @@ public class MainFrame extends AbstractFrame {
                     .addComponent(title2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlMemberSearchControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlSidebarLayout.createSequentialGroup()
-                        .addComponent(h21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(h2MemberName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(38, 38, 38)
-                        .addComponent(h22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(h2MemberId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlSidebarLayout.setVerticalGroup(
@@ -335,10 +349,10 @@ public class MainFrame extends AbstractFrame {
                 .addComponent(pnlMemberSearchControl, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlSidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(h21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(h22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(h2MemberName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(h2MemberId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlMemberSearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE))
+                .addComponent(pnlMemberSearchResults, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
@@ -407,11 +421,27 @@ public class MainFrame extends AbstractFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new MainController().mainAction();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void txtFilterMemberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterMemberKeyTyped
+    }//GEN-LAST:event_txtFilterMemberKeyTyped
+
+    private void txtFilterMemberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterMemberKeyReleased
+        Query query;
+        if (txtFilterMember.getText().equals("")) {
+            query = this.getEntityManager().createNamedQuery("Member1.findAll");
+        } else {
+            query = this.getEntityManager()
+                    .createNamedQuery("Member1.search")
+                    .setParameter("searchable", "%" + txtFilterMember.getText() + "%");
+        }
+
+        this.setMemberList(query.getResultList());
+    }//GEN-LAST:event_txtFilterMemberKeyReleased
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.label.Button btnActiveMembers;
     private pas.layout.label.Button btnAllMembers;
-    private pas.layout.label.H2 h21;
-    private pas.layout.label.H2 h22;
+    private pas.layout.label.H2 h2MemberId;
+    private pas.layout.label.H2 h2MemberName;
     private javax.swing.JLabel imgLogo;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -432,7 +462,7 @@ public class MainFrame extends AbstractFrame {
     private javax.swing.JPanel pnlMemberSearchResults;
     private javax.swing.JPanel pnlSidebar;
     private javax.swing.JPanel profilePanel;
-    private pas.layout.textfield.TextField textField1;
     private pas.layout.label.H1 title2;
+    private pas.layout.textfield.TextField txtFilterMember;
     // End of variables declaration//GEN-END:variables
 }

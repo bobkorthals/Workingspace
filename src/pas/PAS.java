@@ -23,14 +23,14 @@ public class PAS {
         PAS.setLookAndFeel();
         
         Application application = Application.getInstance();
-        InstanceController instanceController = new InstanceController(new MainFrame());
         SessionManager sessionManager = new SessionManager();
         sessionManager.setEntityManager(
                     Persistence.createEntityManagerFactory(PAS.PERSISTENCE_UNIT_NAME)
                                .createEntityManager());
-        
-        application.setInstanceController(instanceController);
         application.setSessionManager(sessionManager);
+        
+        InstanceController instanceController = new InstanceController(new MainFrame());
+        application.setInstanceController(instanceController);
 
         new MainController().mainAction();
     }

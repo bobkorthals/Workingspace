@@ -33,28 +33,28 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "member")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Member.findAll", query = "SELECT m FROM Member m"),
-    @NamedQuery(name = "Member.findById", query = "SELECT m FROM Member m WHERE m.id = :id"),
-    @NamedQuery(name = "Member.findByKeyid", query = "SELECT m FROM Member m WHERE m.keyid = :keyid"),
-    @NamedQuery(name = "Member.findByCredit", query = "SELECT m FROM Member m WHERE m.credit = :credit"),
-    @NamedQuery(name = "Member.findByFirstname", query = "SELECT m FROM Member m WHERE m.firstname = :firstname"),
-    @NamedQuery(name = "Member.findBySuffix", query = "SELECT m FROM Member m WHERE m.suffix = :suffix"),
-    @NamedQuery(name = "Member.findByLastname", query = "SELECT m FROM Member m WHERE m.lastname = :lastname"),
-    @NamedQuery(name = "Member.findByBirthday", query = "SELECT m FROM Member m WHERE m.birthday = :birthday"),
-    @NamedQuery(name = "Member.findByGender", query = "SELECT m FROM Member m WHERE m.gender = :gender"),
-    @NamedQuery(name = "Member.findByMobile", query = "SELECT m FROM Member m WHERE m.mobile = :mobile"),
-    @NamedQuery(name = "Member.findByTelnumber", query = "SELECT m FROM Member m WHERE m.telnumber = :telnumber"),
-    @NamedQuery(name = "Member.findByEmail", query = "SELECT m FROM Member m WHERE m.email = :email"),
-    @NamedQuery(name = "Member.findByStreetname", query = "SELECT m FROM Member m WHERE m.streetname = :streetname"),
-    @NamedQuery(name = "Member.findByHousenumber", query = "SELECT m FROM Member m WHERE m.housenumber = :housenumber"),
-    @NamedQuery(name = "Member.findByHousesuffix", query = "SELECT m FROM Member m WHERE m.housesuffix = :housesuffix"),
-    @NamedQuery(name = "Member.findByZipcode", query = "SELECT m FROM Member m WHERE m.zipcode = :zipcode"),
-    @NamedQuery(name = "Member.findByCity", query = "SELECT m FROM Member m WHERE m.city = :city"),
-    @NamedQuery(name = "Member.findByStatus", query = "SELECT m FROM Member m WHERE m.status = :status"),
-    @NamedQuery(name = "Member.findByComment", query = "SELECT m FROM Member m WHERE m.comment = :comment"),
-    @NamedQuery(name = "Member.findByIdentityid", query = "SELECT m FROM Member m WHERE m.identityid = :identityid")})
-public class Member implements Serializable {
-
+    @NamedQuery(name = "Member1.findAll", query = "SELECT m FROM Member1 m"),
+    @NamedQuery(name = "Member1.findById", query = "SELECT m FROM Member1 m WHERE m.id = :id"),
+    @NamedQuery(name = "Member1.findByKeyid", query = "SELECT m FROM Member1 m WHERE m.keyid = :keyid"),
+    @NamedQuery(name = "Member1.findByCredit", query = "SELECT m FROM Member1 m WHERE m.credit = :credit"),
+    @NamedQuery(name = "Member1.findByFirstname", query = "SELECT m FROM Member1 m WHERE m.firstname = :firstname"),
+    @NamedQuery(name = "Member1.findBySuffix", query = "SELECT m FROM Member1 m WHERE m.suffix = :suffix"),
+    @NamedQuery(name = "Member1.findByLastname", query = "SELECT m FROM Member1 m WHERE m.lastname = :lastname"),
+    @NamedQuery(name = "Member1.findByBirthday", query = "SELECT m FROM Member1 m WHERE m.birthday = :birthday"),
+    @NamedQuery(name = "Member1.findByGender", query = "SELECT m FROM Member1 m WHERE m.gender = :gender"),
+    @NamedQuery(name = "Member1.findByMobile", query = "SELECT m FROM Member1 m WHERE m.mobile = :mobile"),
+    @NamedQuery(name = "Member1.findByTelnumber", query = "SELECT m FROM Member1 m WHERE m.telnumber = :telnumber"),
+    @NamedQuery(name = "Member1.findByEmail", query = "SELECT m FROM Member1 m WHERE m.email = :email"),
+    @NamedQuery(name = "Member1.findByStreetname", query = "SELECT m FROM Member1 m WHERE m.streetname = :streetname"),
+    @NamedQuery(name = "Member1.findByHousenumber", query = "SELECT m FROM Member1 m WHERE m.housenumber = :housenumber"),
+    @NamedQuery(name = "Member1.findByHousesuffix", query = "SELECT m FROM Member1 m WHERE m.housesuffix = :housesuffix"),
+    @NamedQuery(name = "Member1.findByZipcode", query = "SELECT m FROM Member1 m WHERE m.zipcode = :zipcode"),
+    @NamedQuery(name = "Member1.findByCity", query = "SELECT m FROM Member1 m WHERE m.city = :city"),
+    @NamedQuery(name = "Member1.findByStatus", query = "SELECT m FROM Member1 m WHERE m.status = :status"),
+    @NamedQuery(name = "Member1.findByComment", query = "SELECT m FROM Member1 m WHERE m.comment = :comment"),
+    @NamedQuery(name = "Member1.findByIdentityid", query = "SELECT m FROM Member1 m WHERE m.identityid = :identityid"),
+    @NamedQuery(name = "Member1.search", query = "SELECT m FROM Member1 m WHERE m.searchable LIKE :searchable")})
+public class Member1 implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,6 +92,7 @@ public class Member implements Serializable {
     private String comment;
     @Basic(optional = false)
     private int identityid;
+    private String searchable;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "memberid")
     private Collection<Accessing> accessingCollection;
     @JoinColumn(name = "locationid", referencedColumnName = "id")
@@ -111,14 +112,14 @@ public class Member implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "memberid")
     private Collection<Orders> ordersCollection;
 
-    public Member() {
+    public Member1() {
     }
 
-    public Member(Integer id) {
+    public Member1(Integer id) {
         this.id = id;
     }
 
-    public Member(Integer id, int keyid, BigDecimal credit, String firstname, String lastname, Date birthday, int gender, String streetname, int housenumber, String zipcode, String city, String status, int identityid) {
+    public Member1(Integer id, int keyid, BigDecimal credit, String firstname, String lastname, Date birthday, int gender, String streetname, int housenumber, String zipcode, String city, String status, int identityid) {
         this.id = id;
         this.keyid = keyid;
         this.credit = credit;
@@ -286,6 +287,14 @@ public class Member implements Serializable {
         this.identityid = identityid;
     }
 
+    public String getSearchable() {
+        return searchable;
+    }
+
+    public void setSearchable(String searchable) {
+        this.searchable = searchable;
+    }
+
     @XmlTransient
     public Collection<Accessing> getAccessingCollection() {
         return accessingCollection;
@@ -366,10 +375,10 @@ public class Member implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Member)) {
+        if (!(object instanceof Member1)) {
             return false;
         }
-        Member other = (Member) object;
+        Member1 other = (Member1) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -378,6 +387,7 @@ public class Member implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Member[ id=" + id + " ]";
+        return "pas.models.db.Member1[ id=" + id + " ]";
     }
+    
 }

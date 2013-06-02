@@ -181,8 +181,8 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="profilePanel" min="-2" max="-2" attributes="0"/>
                               <Component id="imgLogo" min="-2" max="-2" attributes="0"/>
+                              <Component id="profilePanel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -301,9 +301,9 @@
                           <Component id="title2" min="-2" max="-2" attributes="0"/>
                           <Component id="pnlMemberSearchControl" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="h21" min="-2" max="-2" attributes="0"/>
+                              <Component id="h2MemberName" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="h22" min="-2" max="-2" attributes="0"/>
+                              <Component id="h2MemberId" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -314,15 +314,15 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="title2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="pnlMemberSearchControl" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="h21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="h22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="h2MemberName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="h2MemberId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlMemberSearchResults" pref="258" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlMemberSearchResults" min="-2" pref="258" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -351,7 +351,7 @@
                                   <Component id="btnAllMembers" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="textField1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtFilterMember" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -365,7 +365,7 @@
                               <Component id="btnActiveMembers" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                          <Component id="textField1" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="txtFilterMember" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -389,7 +389,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnActiveMembersMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="pas.layout.textfield.TextField" name="textField1">
+                <Component class="pas.layout.textfield.TextField" name="txtFilterMember">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -400,6 +400,10 @@
                       <Insets value="[5, 5, 5, 5]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFilterMemberKeyReleased"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFilterMemberKeyTyped"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new pas.layout.textfield.TextField(&quot;Zoek op naam of lid nummer..&quot;)"/>
                   </AuxValues>
@@ -416,12 +420,12 @@
                 <Property name="rows" type="int" value="1"/>
               </Layout>
             </Container>
-            <Component class="pas.layout.label.H2" name="h21">
+            <Component class="pas.layout.label.H2" name="h2MemberName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lid naam"/>
               </Properties>
             </Component>
-            <Component class="pas.layout.label.H2" name="h22">
+            <Component class="pas.layout.label.H2" name="h2MemberId">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lid nr."/>
               </Properties>

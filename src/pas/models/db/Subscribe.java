@@ -50,7 +50,7 @@ public class Subscribe implements Serializable {
     private Subscription subscriptionid;
     @JoinColumn(name = "memberid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member memberid;
+    private Member1 memberid;
     @OneToMany(mappedBy = "subscribeid")
     private Collection<Invoiceline> invoicelineCollection;
 
@@ -99,11 +99,11 @@ public class Subscribe implements Serializable {
         this.subscriptionid = subscriptionid;
     }
 
-    public Member getMemberid() {
+    public Member1 getMemberid() {
         return memberid;
     }
 
-    public void setMemberid(Member memberid) {
+    public void setMemberid(Member1 memberid) {
         this.memberid = memberid;
     }
 

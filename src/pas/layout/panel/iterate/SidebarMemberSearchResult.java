@@ -1,7 +1,8 @@
 package pas.layout.panel.iterate;
 
+import java.awt.Color;
 import javax.swing.JPanel;
-import pas.models.db.Member;
+import pas.models.db.Member1;
 
 /**
  *
@@ -9,13 +10,37 @@ import pas.models.db.Member;
  */
 public class SidebarMemberSearchResult extends JPanel {
 
+    // Counter
+    private static int counter = 1;
+    
+    // Alternating background colors
+    public static final Color COLOR_ODD = new Color(255, 255, 255);
+    public static final Color COLOR_EVEN  = new Color(222, 222, 222);
+    
     /**
      * Creates new form SidebarMemberSearchResult
      */
-    public SidebarMemberSearchResult(Member member) {
+    public SidebarMemberSearchResult(Member1 member) {
         initComponents();
         lblMemberName.setText(member.getFirstname() + " " + member.getLastname());
         lblMemberId.setText(member.getId().toString());
+        
+        if (counter % 2 == 0) {
+            setBackground(SidebarMemberSearchResult.COLOR_EVEN);
+        } else {
+            setBackground(SidebarMemberSearchResult.COLOR_ODD);
+        }
+        
+        SidebarMemberSearchResult.counter ++;
+    }
+    
+    /*
+     * Reset the alternate counter
+     * 
+     * @return void
+     */
+    public static void resetCounter() {
+        SidebarMemberSearchResult.counter = 1;
     }
 
     /**
@@ -29,40 +54,34 @@ public class SidebarMemberSearchResult extends JPanel {
 
         lblMemberName = new javax.swing.JLabel();
         lblMemberId = new javax.swing.JLabel();
-        lblMemberStatus = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(246, 14));
-        setMinimumSize(new java.awt.Dimension(246, 14));
+        setMaximumSize(new java.awt.Dimension(246, 20));
+        setMinimumSize(new java.awt.Dimension(246, 20));
+        setPreferredSize(new java.awt.Dimension(246, 20));
 
         lblMemberName.setText("Member name");
 
         lblMemberId.setText("Member id");
-
-        lblMemberStatus.setText("1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblMemberName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(lblMemberName, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(lblMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMemberStatus)
-                .addGap(0, 28, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(lblMemberName)
-                .addComponent(lblMemberId)
-                .addComponent(lblMemberStatus))
+            .addComponent(lblMemberName, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+            .addComponent(lblMemberId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblMemberId;
     private javax.swing.JLabel lblMemberName;
-    private javax.swing.JLabel lblMemberStatus;
     // End of variables declaration//GEN-END:variables
 }

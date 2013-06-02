@@ -8,7 +8,6 @@
     <class>pas.models.db.Payment</class>
     <class>pas.models.db.Facility</class>
     <class>pas.models.db.Locations</class>
-    <class>pas.models.db.Member</class>
     <class>pas.models.db.Employee</class>
     <class>pas.models.db.Invoice</class>
     <class>pas.models.db.Schedule</class>
@@ -26,6 +25,7 @@
     <class>pas.models.db.Orders</class>
     <class>pas.models.db.Roles</class>
     <class>pas.models.db.Reservation</class>
+    <class>pas.models.db.Member1</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/PAS"/>
       <property name="javax.persistence.jdbc.password" value="@june23rd"/>
