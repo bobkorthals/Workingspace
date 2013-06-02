@@ -14,6 +14,7 @@ import pas.file.chooser.FileChooserAbstract;
 import pas.file.chooser.FileChooserImage;
 import pas.file.chooser.FileChooserInterface;
 import pas.main.MainController;
+import pas.models.role.Member;
 
 /**
  *
@@ -28,8 +29,20 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
      * Creates new form manageMember
      */
     public ManageMember(MemberController controller) {
-        this.membercontroller = controller;
         initComponents();
+        this.membercontroller = controller;
+    }
+    
+    public ManageMember(MemberController controller, Member member) {
+        initComponents();
+        this.membercontroller = controller;
+        
+        txtDateOfBirth.setText(member.getDateOfBrith());
+        txtFirstName.setText(member.getFirstName());
+        txtGender.setText(member.getGender());
+        txtLastName.setText(member.getLastName());
+        txtMemberId.setText(((Integer)member.getMemberID()).toString());
+        txtSuffix.setText(member.getSuffix());
     }
 
     @Override
@@ -71,6 +84,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
 
     @Override
     public void propertyChange(PropertyChangeEvent change) {
+        
     }
 
     /**
