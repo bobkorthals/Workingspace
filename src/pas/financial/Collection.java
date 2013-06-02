@@ -26,7 +26,7 @@ public class Collection extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new pas.layout.label.Title();
+        title = new pas.layout.label.H1();
         buttonRevenues = new pas.layout.label.Button();
         buttonCosts = new pas.layout.label.Button();
         buttonCollection = new pas.layout.label.Button();
@@ -259,6 +259,6 @@ public class Collection extends javax.swing.JPanel {
     private javax.swing.JComboBox selectPeriodMonth;
     private javax.swing.JComboBox selectPeriodYear;
     private javax.swing.JTable tableMembers;
-    private pas.layout.label.Title title;
+    private pas.layout.label.H1 title;
     // End of variables declaration//GEN-END:variables
 }

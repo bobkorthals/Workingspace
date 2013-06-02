@@ -6,7 +6,6 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -43,7 +42,7 @@
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new pas.layout.panel.Background(&quot;/pas/resources/background.jpg&quot;, pas.layout.panel.Background.REPEAT)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new pas.layout.panel.Background(&quot;/pas/resources/Pas_Background.png&quot;, pas.layout.panel.Background.REPEAT)"/>
       </AuxValues>
 
       <Layout>

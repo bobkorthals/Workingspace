@@ -3,28 +3,28 @@
   <persistence-unit name="PASPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>pas.models.db.Result</class>
-    <class>pas.models.db.Privilege</class>
-    <class>pas.models.db.Permission</class>
-    <class>pas.models.db.Orders</class>
+    <class>pas.models.db.Accessing</class>
+    <class>pas.models.db.Subscribe</class>
+    <class>pas.models.db.Payment</class>
+    <class>pas.models.db.Facility</class>
     <class>pas.models.db.Locations</class>
-    <class>pas.models.db.Invoice</class>
+    <class>pas.models.db.Member</class>
     <class>pas.models.db.Employee</class>
-    <class>pas.models.db.Roles</class>
+    <class>pas.models.db.Invoice</class>
+    <class>pas.models.db.Schedule</class>
+    <class>pas.models.db.Category</class>
+    <class>pas.models.db.Privilege</class>
+    <class>pas.models.db.Device</class>
     <class>pas.models.db.Registration</class>
     <class>pas.models.db.Subscription</class>
-    <class>pas.models.db.Category</class>
-    <class>pas.models.db.Member</class>
-    <class>pas.models.db.Course</class>
-    <class>pas.models.db.Accessing</class>
     <class>pas.models.db.Claim</class>
-    <class>pas.models.db.Subscribe</class>
-    <class>pas.models.db.Device</class>
-    <class>pas.models.db.Product</class>
-    <class>pas.models.db.Facility</class>
-    <class>pas.models.db.Payment</class>
-    <class>pas.models.db.Resource</class>
+    <class>pas.models.db.Course</class>
     <class>pas.models.db.Invoiceline</class>
-    <class>pas.models.db.Schedule</class>
+    <class>pas.models.db.Resource</class>
+    <class>pas.models.db.Permission</class>
+    <class>pas.models.db.Product</class>
+    <class>pas.models.db.Orders</class>
+    <class>pas.models.db.Roles</class>
     <class>pas.models.db.Reservation</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/PAS"/>

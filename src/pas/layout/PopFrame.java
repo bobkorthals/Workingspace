@@ -54,7 +54,7 @@ public final class PopFrame extends AbstractFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new pas.layout.panel.Background("/pas/resources/background.jpg", pas.layout.panel.Background.REPEAT);
+        jPanel1 = new pas.layout.panel.Background("/pas/resources/Pas_Background.png", pas.layout.panel.Background.REPEAT);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

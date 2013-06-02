@@ -300,6 +300,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="title2" min="-2" max="-2" attributes="0"/>
                           <Component id="pnlMemberSearchControl" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="h21" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="h22" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -311,14 +316,19 @@
                       <Component id="title2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnlMemberSearchControl" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="h21" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="h22" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlMemberSearchResults" pref="296" max="32767" attributes="0"/>
+                      <Component id="pnlMemberSearchResults" pref="258" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="pas.layout.label.Title" name="title2">
+            <Component class="pas.layout.label.H1" name="title2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Leden beheer"/>
               </Properties>
@@ -406,6 +416,16 @@
                 <Property name="rows" type="int" value="1"/>
               </Layout>
             </Container>
+            <Component class="pas.layout.label.H2" name="h21">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lid naam"/>
+              </Properties>
+            </Component>
+            <Component class="pas.layout.label.H2" name="h22">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lid nr."/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
