@@ -40,7 +40,7 @@ public class Orders implements Serializable {
     private Date times;
     @JoinColumn(name = "memberid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member memberid;
+    private Member1 memberid;
     @JoinColumn(name = "invoicelineid", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Invoiceline invoicelineid;
@@ -76,11 +76,11 @@ public class Orders implements Serializable {
         this.times = times;
     }
 
-    public Member getMemberid() {
+    public Member1 getMemberid() {
         return memberid;
     }
 
-    public void setMemberid(Member memberid) {
+    public void setMemberid(Member1 memberid) {
         this.memberid = memberid;
     }
 

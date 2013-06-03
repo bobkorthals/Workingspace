@@ -41,7 +41,7 @@ public class Collection extends mvc.view.AbstractView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new pas.layout.label.Title();
+        title = new pas.layout.label.H1();
         buttonRevenues = new pas.layout.label.Button();
         buttonCosts = new pas.layout.label.Button();
         buttonCollection = new pas.layout.label.Button();

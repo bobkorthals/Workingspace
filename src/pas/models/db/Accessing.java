@@ -54,7 +54,7 @@ public class Accessing implements Serializable {
     private Registration registrationid;
     @JoinColumn(name = "memberid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member memberid;
+    private Member1 memberid;
 
     public Accessing() {
     }
@@ -118,11 +118,11 @@ public class Accessing implements Serializable {
         this.registrationid = registrationid;
     }
 
-    public Member getMemberid() {
+    public Member1 getMemberid() {
         return memberid;
     }
 
-    public void setMemberid(Member memberid) {
+    public void setMemberid(Member1 memberid) {
         this.memberid = memberid;
     }
 

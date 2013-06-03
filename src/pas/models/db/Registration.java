@@ -42,7 +42,7 @@ public class Registration implements Serializable {
     private Schedule scheduleid;
     @JoinColumn(name = "memberid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member memberid;
+    private Member1 memberid;
     @OneToMany(mappedBy = "registrationid")
     private Collection<Invoiceline> invoicelineCollection;
 
@@ -78,11 +78,11 @@ public class Registration implements Serializable {
         this.scheduleid = scheduleid;
     }
 
-    public Member getMemberid() {
+    public Member1 getMemberid() {
         return memberid;
     }
 
-    public void setMemberid(Member memberid) {
+    public void setMemberid(Member1 memberid) {
         this.memberid = memberid;
     }
 

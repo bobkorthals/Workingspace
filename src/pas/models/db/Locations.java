@@ -56,7 +56,7 @@ public class Locations implements Serializable {
     @Basic(optional = false)
     private String city;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "locationid")
-    private Collection<Member> member1Collection;
+    private Collection<Member1> member1Collection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "locationid")
     private Collection<Course> courseCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "locationid")
@@ -154,11 +154,11 @@ public class Locations implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Member> getMember1Collection() {
+    public Collection<Member1> getMember1Collection() {
         return member1Collection;
     }
 
-    public void setMember1Collection(Collection<Member> member1Collection) {
+    public void setMember1Collection(Collection<Member1> member1Collection) {
         this.member1Collection = member1Collection;
     }
 

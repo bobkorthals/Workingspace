@@ -46,7 +46,7 @@ public class Reservation implements Serializable {
     private Collection<Accessing> accessingCollection;
     @JoinColumn(name = "memberid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member memberid;
+    private Member1 memberid;
     @JoinColumn(name = "facilityid", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Facility facilityid;
@@ -90,11 +90,11 @@ public class Reservation implements Serializable {
         this.accessingCollection = accessingCollection;
     }
 
-    public Member getMemberid() {
+    public Member1 getMemberid() {
         return memberid;
     }
 
-    public void setMemberid(Member memberid) {
+    public void setMemberid(Member1 memberid) {
         this.memberid = memberid;
     }
 
