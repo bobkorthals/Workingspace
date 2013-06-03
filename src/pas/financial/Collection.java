@@ -347,6 +347,6 @@ public class Collection extends mvc.view.AbstractView {
     private javax.swing.JComboBox selectPeriodMonth;
     private javax.swing.JComboBox selectPeriodYear;
     private pas.layout.table.Table tableMembers;
-    private pas.layout.label.Title title;
+    private pas.layout.label.H1 title;
     // End of variables declaration//GEN-END:variables
 }

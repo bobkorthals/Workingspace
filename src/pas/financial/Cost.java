@@ -390,6 +390,6 @@ public class Cost extends mvc.view.AbstractView {
     private pas.layout.table.Table tableBar;
     private pas.layout.table.Table tableCourse;
     private pas.layout.table.Table tableFacility;
-    private pas.layout.label.Title title;
+    private pas.layout.label.H1 title;
     // End of variables declaration//GEN-END:variables
 }

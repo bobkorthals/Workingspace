@@ -1,6 +1,5 @@
 package pas.layout;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
@@ -15,6 +14,7 @@ import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
 import pas.exception.NoEntityManagerException;
 import pas.layout.label.Button;
+import pas.layout.panel.iterate.SidebarMemberSearchResult;
 import pas.main.MainController;
 import pas.models.SessionManager;
 import pas.models.db.Member1;
