@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
+    <Property name="opaque" type="boolean" value="false"/>
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -19,69 +20,81 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="title" min="-2" pref="302" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="buttonCosts" max="32767" attributes="0"/>
-                          <Component id="buttonRevenues" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buttonCollection" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="buttonRevenues" pref="140" max="32767" attributes="0"/>
+                          <Component id="buttonCosts" alignment="0" max="32767" attributes="0"/>
+                          <Component id="buttonCollection" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="labelLocation" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="selectLocation1" pref="142" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelPeriod" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="selectPeriodMonth" pref="104" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="selectPeriodYear" pref="61" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="button1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="paneBar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="paneSubscription" alignment="0" max="32767" attributes="0"/>
-                          <Component id="paneCourse" max="32767" attributes="0"/>
+                          <Component id="paneSubscription" max="32767" attributes="0"/>
+                          <Component id="paneBar" max="32767" attributes="0"/>
+                          <Component id="paneCourse" alignment="0" max="32767" attributes="0"/>
                           <Component id="paneBar3" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="title" min="-2" pref="302" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
+              <Component id="labelLocation" min="-2" pref="71" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="selectLocation1" min="-2" pref="94" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="labelPeriod" min="-2" pref="71" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="selectPeriodMonth" pref="92" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="selectPeriodYear" pref="61" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="button1" min="-2" pref="140" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="title" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="labelLocation" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="selectLocation1" alignment="3" max="-2" attributes="0"/>
-                  <Component id="labelPeriod" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="selectPeriodMonth" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="selectPeriodYear" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="button1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="labelLocation" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="selectLocation1" alignment="3" max="-2" attributes="0"/>
+                          <Component id="labelPeriod" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="selectPeriodMonth" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="selectPeriodYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="button1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="buttonRevenues" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonCosts" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonCollection" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="paneBar" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="paneBar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="paneSubscription" min="-2" max="-2" attributes="0"/>
@@ -89,7 +102,7 @@
               <Component id="paneCourse" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="paneBar3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

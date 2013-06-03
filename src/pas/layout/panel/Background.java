@@ -54,14 +54,9 @@ public class Background extends javax.swing.JPanel {
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
-        System.out.println(this.src);
-        
         Image background = new ImageIcon(
                 getClass().getResource(this.src)).getImage();
         
-        System.out.println(background);
-        System.out.println("");
-
         if (this.mode != Background.NO_REPEAT) {
             int imageWidth  = background.getWidth(this);
             int imageHeight = background.getHeight(this);

@@ -8,6 +8,7 @@ import java.beans.PropertyChangeEvent;
 import pas.bar.BarController;
 import pas.course.CourseController;
 import pas.facility.FacilityController;
+import pas.financial.FinancialController;
 import pas.member.MemberController;
 
 /**
@@ -45,52 +46,61 @@ public class Main extends mvc.view.AbstractView {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        buttonFinancial = new javax.swing.JButton();
+        buttonMembers = new javax.swing.JButton();
+        buttonFacilities = new javax.swing.JButton();
+        buttonCourses = new javax.swing.JButton();
+        buttonBar = new javax.swing.JButton();
 
         setOpaque(false);
         setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setOpaque(false);
 
-        jButton2.setBackground(new java.awt.Color(155, 9, 46));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Bar Applicatie");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonFinancial.setBackground(new java.awt.Color(155, 9, 46));
+        buttonFinancial.setForeground(new java.awt.Color(255, 255, 255));
+        buttonFinancial.setText("Financieel");
+        buttonFinancial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonFinancialActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(155, 9, 46));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ledenregistratie");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonMembers.setBackground(new java.awt.Color(155, 9, 46));
+        buttonMembers.setForeground(new java.awt.Color(255, 255, 255));
+        buttonMembers.setText("Ledenregistratie");
+        buttonMembers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonMembersActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(155, 9, 46));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Faciliteiten");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonFacilities.setBackground(new java.awt.Color(155, 9, 46));
+        buttonFacilities.setForeground(new java.awt.Color(255, 255, 255));
+        buttonFacilities.setText("Faciliteiten");
+        buttonFacilities.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                buttonFacilitiesActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(155, 9, 46));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Cursussen");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonCourses.setBackground(new java.awt.Color(155, 9, 46));
+        buttonCourses.setForeground(new java.awt.Color(255, 255, 255));
+        buttonCourses.setText("Cursussen");
+        buttonCourses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                buttonCoursesActionPerformed(evt);
+            }
+        });
+
+        buttonBar.setBackground(new java.awt.Color(155, 9, 46));
+        buttonBar.setForeground(new java.awt.Color(255, 255, 255));
+        buttonBar.setText("Bar Applicatie");
+        buttonBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBarActionPerformed(evt);
             }
         });
 
@@ -101,56 +111,63 @@ public class Main extends mvc.view.AbstractView {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(313, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonBar, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonFinancial, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonFinancial, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 10, 22, 20);
-        add(jPanel1, gridBagConstraints);
+        add(jPanel1, new java.awt.GridBagConstraints());
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMembersActionPerformed
         new MemberController().manageMemberAction();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonMembersActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new BarController().barAction();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void buttonFinancialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinancialActionPerformed
+        new FinancialController().defaultAction();        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonFinancialActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void buttonFacilitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFacilitiesActionPerformed
         new FacilityController().facilityAction();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_buttonFacilitiesActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void buttonCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCoursesActionPerformed
         new CourseController().CourseMainAction();        // Deze button opent de view CourseMain
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_buttonCoursesActionPerformed
+
+    private void buttonBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBarActionPerformed
+        new BarController().barAction();
+    }//GEN-LAST:event_buttonBarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton buttonBar;
+    private javax.swing.JButton buttonCourses;
+    private javax.swing.JButton buttonFacilities;
+    private javax.swing.JButton buttonFinancial;
+    private javax.swing.JButton buttonMembers;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

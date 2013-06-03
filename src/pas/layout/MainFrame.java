@@ -1,19 +1,11 @@
 package pas.layout;
 
 import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
 import javax.swing.JPanel;
 import mvc.view.AbstractFrame;
 import mvc.view.AbstractView;
 import pas.layout.label.Button;
-import pas.layout.panel.iterate.SidebarMemberSearchResult;
 import pas.main.MainController;
-import pas.models.db.Member;
 
 /**
  *
