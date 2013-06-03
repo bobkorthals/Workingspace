@@ -144,8 +144,7 @@ public class Main extends mvc.view.AbstractView {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        //new CourseController().CourseMainAction();        // Deze button opent de view CourseMain
-        this.getController().referer();
+        new CourseController().CourseMainAction();        // Deze button opent de view CourseMain
     }//GEN-LAST:event_jButton4ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
