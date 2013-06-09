@@ -26,11 +26,31 @@
     <class>pas.models.db.Roles</class>
     <class>pas.models.db.Reservation</class>
     <class>pas.models.db.Member1</class>
+    <class>pas.models.db.Reservering</class>
+    <class>pas.models.db.Permissie</class>
+    <class>pas.models.db.Planning</class>
+    <class>pas.models.db.Vestiging</class>
+    <class>pas.models.db.Lid</class>
+    <class>pas.models.db.Categorie</class>
+    <class>pas.models.db.Bewering</class>
+    <class>pas.models.db.Factuuritem</class>
+    <class>pas.models.db.Bestelling</class>
+    <class>pas.models.db.Inschrijving</class>
+    <class>pas.models.db.Functie</class>
+    <class>pas.models.db.Werknemer</class>
+    <class>pas.models.db.Faciliteit</class>
+    <class>pas.models.db.Cursus</class>
+    <class>pas.models.db.Betaling</class>
+    <class>pas.models.db.Abonnering</class>
+    <class>pas.models.db.Abonnement</class>
+    <class>pas.models.db.Hulpbron</class>
+    <class>pas.models.db.Toegang</class>
+    <class>pas.models.db.Factuur</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/PAS"/>
-      <property name="javax.persistence.jdbc.password" value="@june23rd"/>
+      <property name="javax.persistence.jdbc.password" value="pas"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="javax.persistence.jdbc.user" value="PAS"/>
+      <property name="javax.persistence.jdbc.user" value="pas"/>
     </properties>
   </persistence-unit>
 </persistence>
