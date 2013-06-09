@@ -748,7 +748,7 @@ public class AddMember extends mvc.view.AbstractView implements FileChooserInter
     }//GEN-LAST:event_jLabel4MouseExited
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controller.manageMemberAction();
+        //controller.manageMemberAction();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -756,7 +756,7 @@ public class AddMember extends mvc.view.AbstractView implements FileChooserInter
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        controller.manageMemberAction();
+        //controller.manageMemberAction();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 

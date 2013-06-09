@@ -6,7 +6,7 @@ package pas.models.db;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -26,13 +26,13 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Subscription.findAll", query = "SELECT s FROM Subscription s"),
-    @NamedQuery(name = "Subscription.findById", query = "SELECT s FROM Subscription s WHERE s.id = :id"),
-    @NamedQuery(name = "Subscription.findByCosts", query = "SELECT s FROM Subscription s WHERE s.costs = :costs"),
-    @NamedQuery(name = "Subscription.findByDescription", query = "SELECT s FROM Subscription s WHERE s.description = :description"),
-    @NamedQuery(name = "Subscription.findByPeriodes", query = "SELECT s FROM Subscription s WHERE s.periodes = :periodes"),
-    @NamedQuery(name = "Subscription.findByTypen", query = "SELECT s FROM Subscription s WHERE s.typen = :typen")})
-public class Subscription implements Serializable {
+    @NamedQuery(name = "Abonnement.findAll", query = "SELECT a FROM Abonnement a"),
+    @NamedQuery(name = "Abonnement.findById", query = "SELECT a FROM Abonnement a WHERE a.id = :id"),
+    @NamedQuery(name = "Abonnement.findByKosten", query = "SELECT a FROM Abonnement a WHERE a.kosten = :kosten"),
+    @NamedQuery(name = "Abonnement.findByOmschrijving", query = "SELECT a FROM Abonnement a WHERE a.omschrijving = :omschrijving"),
+    @NamedQuery(name = "Abonnement.findByPeriodes", query = "SELECT a FROM Abonnement a WHERE a.periodes = :periodes"),
+    @NamedQuery(name = "Abonnement.findByTypen", query = "SELECT a FROM Abonnement a WHERE a.typen = :typen")})
+public class Abonnement implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,25 +40,25 @@ public class Subscription implements Serializable {
     private Integer id;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
-    private BigDecimal costs;
-    private String description;
+    private BigDecimal kosten;
+    private String omschrijving;
     @Basic(optional = false)
     private String periodes;
     @Basic(optional = false)
     private String typen;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "subscriptionid")
-    private Collection<Subscribe> subscribeCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "abonnementid")
+    private List<Abonnering> abonneringList;
 
-    public Subscription() {
+    public Abonnement() {
     }
 
-    public Subscription(Integer id) {
+    public Abonnement(Integer id) {
         this.id = id;
     }
 
-    public Subscription(Integer id, BigDecimal costs, String periodes, String typen) {
+    public Abonnement(Integer id, BigDecimal kosten, String periodes, String typen) {
         this.id = id;
-        this.costs = costs;
+        this.kosten = kosten;
         this.periodes = periodes;
         this.typen = typen;
     }
@@ -71,20 +71,20 @@ public class Subscription implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getCosts() {
-        return costs;
+    public BigDecimal getKosten() {
+        return kosten;
     }
 
-    public void setCosts(BigDecimal costs) {
-        this.costs = costs;
+    public void setKosten(BigDecimal kosten) {
+        this.kosten = kosten;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOmschrijving() {
+        return omschrijving;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOmschrijving(String omschrijving) {
+        this.omschrijving = omschrijving;
     }
 
     public String getPeriodes() {
@@ -104,12 +104,12 @@ public class Subscription implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Subscribe> getSubscribeCollection() {
-        return subscribeCollection;
+    public List<Abonnering> getAbonneringList() {
+        return abonneringList;
     }
 
-    public void setSubscribeCollection(Collection<Subscribe> subscribeCollection) {
-        this.subscribeCollection = subscribeCollection;
+    public void setAbonneringList(List<Abonnering> abonneringList) {
+        this.abonneringList = abonneringList;
     }
 
     @Override
@@ -122,10 +122,10 @@ public class Subscription implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Subscription)) {
+        if (!(object instanceof Abonnement)) {
             return false;
         }
-        Subscription other = (Subscription) object;
+        Abonnement other = (Abonnement) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -134,7 +134,7 @@ public class Subscription implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Subscription[ id=" + id + " ]";
+        return "pas.models.db.Abonnement[ id=" + id + " ]";
     }
     
 }

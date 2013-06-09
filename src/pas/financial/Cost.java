@@ -4,17 +4,31 @@
  */
 package pas.financial;
 
+import java.beans.PropertyChangeEvent;
+
 /**
  *
  * @author Ruben
  */
-public class Cost extends javax.swing.JPanel {
-
+public class Cost extends mvc.view.AbstractView {
+    private FinancialController controller;
+    
     /**
      * Creates new form Revenue
      */
-    public Cost() {
+    public Cost(FinancialController controller) {
+        this.controller = controller;
         initComponents();
+    }
+    
+    @Override
+    public FinancialController getController(){
+        return this.controller;
+    }
+    
+    @Override
+    public void propertyChange(PropertyChangeEvent change) {
+        
     }
 
     /**
@@ -31,14 +45,8 @@ public class Cost extends javax.swing.JPanel {
         buttonCosts = new pas.layout.label.Button();
         buttonCollection = new pas.layout.label.Button();
         paneBar = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableBar = new javax.swing.JTable();
         paneCourse = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tableCourse = new javax.swing.JTable();
         paneBar3 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tableFacility = new javax.swing.JTable();
         labelLocation = new javax.swing.JLabel();
         selectPeriodMonth = new javax.swing.JComboBox();
         labelPeriod = new javax.swing.JLabel();
@@ -47,6 +55,7 @@ public class Cost extends javax.swing.JPanel {
         button1 = new pas.layout.label.Button();
 
         setName("Form"); // NOI18N
+        setOpaque(false);
 
         title.setForeground(new java.awt.Color(98, 98, 152));
         title.setText("Financieel - Kosten");
@@ -55,138 +64,68 @@ public class Cost extends javax.swing.JPanel {
 
         buttonRevenues.setText("Omzetten");
         buttonRevenues.setName("buttonRevenues"); // NOI18N
+        buttonRevenues.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonRevenuesMouseClicked(evt);
+            }
+        });
 
         buttonCosts.setText("Kosten");
         buttonCosts.setName("buttonCosts"); // NOI18N
+        buttonCosts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCostsMouseClicked(evt);
+            }
+        });
 
         buttonCollection.setText("Incasso");
         buttonCollection.setName("buttonCollection"); // NOI18N
+        buttonCollection.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCollectionMouseClicked(evt);
+            }
+        });
 
         paneBar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
         paneBar.setName("paneBar"); // NOI18N
-
-        jScrollPane1.setName("jScrollPane1"); // NOI18N
-
-        tableBar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Inkoop",  new Float(6535.0)},
-                {"Energie",  new Float(1500.0)},
-                {"Onderhoud",  new Float(250.0)},
-                {"Afschrijving",  new Float(350.0)}
-            },
-            new String [] {
-                "Soort", "Kosten"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tableBar.setName("tableBar"); // NOI18N
-        jScrollPane1.setViewportView(tableBar);
 
         javax.swing.GroupLayout paneBarLayout = new javax.swing.GroupLayout(paneBar);
         paneBar.setLayout(paneBarLayout);
         paneBarLayout.setHorizontalGroup(
             paneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+            .addGap(0, 542, Short.MAX_VALUE)
         );
         paneBarLayout.setVerticalGroup(
             paneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneBarLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
+            .addGap(0, 119, Short.MAX_VALUE)
         );
 
         paneCourse.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cursussen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
         paneCourse.setName("paneCourse"); // NOI18N
 
-        jScrollPane3.setName("jScrollPane3"); // NOI18N
-
-        tableCourse.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Tai-boxing",  new Float(150.0),  new Float(350.0),  new Float(200.0)},
-                {"Joga",  new Float(150.0),  new Float(150.0),  new Float(50.0)},
-                {"Karate",  new Float(150.0),  new Float(150.0),  new Float(20.0)}
-            },
-            new String [] {
-                "Naam", "Energie", "Afschrijving", "Onderhoud"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tableCourse.setName("tableCourse"); // NOI18N
-        jScrollPane3.setViewportView(tableCourse);
-
         javax.swing.GroupLayout paneCourseLayout = new javax.swing.GroupLayout(paneCourse);
         paneCourse.setLayout(paneCourseLayout);
         paneCourseLayout.setHorizontalGroup(
             paneCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneCourseLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
+            .addGap(0, 542, Short.MAX_VALUE)
         );
         paneCourseLayout.setVerticalGroup(
             paneCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneCourseLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+            .addGap(0, 113, Short.MAX_VALUE)
         );
 
         paneBar3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Faciliteiten", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
         paneBar3.setName("paneBar3"); // NOI18N
 
-        jScrollPane4.setName("jScrollPane4"); // NOI18N
-
-        tableFacility.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Sauna",  new Float(4165.0),  new Float(1000.0),  new Float(800.0)},
-                {"Squash",  new Float(930.0),  new Float(3500.0),  new Float(650.0)},
-                {"Zonnebank",  new Float(6500.0),  new Float(650.0), null}
-            },
-            new String [] {
-                "Naam", "Energie", "Afschrijving", "Onderhoud"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tableFacility.setName("tableFacility"); // NOI18N
-        jScrollPane4.setViewportView(tableFacility);
-
         javax.swing.GroupLayout paneBar3Layout = new javax.swing.GroupLayout(paneBar3);
         paneBar3.setLayout(paneBar3Layout);
         paneBar3Layout.setHorizontalGroup(
             paneBar3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneBar3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4)
-                .addContainerGap())
+            .addGap(0, 542, Short.MAX_VALUE)
         );
         paneBar3Layout.setVerticalGroup(
             paneBar3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneBar3Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+            .addGap(0, 129, Short.MAX_VALUE)
         );
 
         labelLocation.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -236,68 +175,76 @@ public class Cost extends javax.swing.JPanel {
 
         button1.setText("Selecteren");
         button1.setName("button1"); // NOI18N
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(buttonCosts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonRevenues, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonCollection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectLocation1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectPeriodMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(selectLocation1, 0, 142, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(selectPeriodMonth, 0, 104, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(selectPeriodYear, 0, 61, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(paneBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonCosts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonRevenues, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonCollection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(paneCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(paneBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(44, 44, 44))))
+                            .addComponent(paneBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(paneBar3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelLocation)
-                    .addComponent(selectLocation1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPeriod)
-                    .addComponent(selectPeriodMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelLocation))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(selectLocation1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelPeriod)
+                        .addComponent(selectPeriodMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
                         .addComponent(buttonRevenues, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCosts, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(paneBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(paneBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(paneCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(36, 36, 36)
                 .addComponent(paneBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -313,14 +260,27 @@ public class Cost extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectPeriodYearActionPerformed
 
+    private void button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button1MouseClicked
+
+    private void buttonRevenuesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonRevenuesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonRevenuesMouseClicked
+
+    private void buttonCostsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCostsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCostsMouseClicked
+
+    private void buttonCollectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCollectionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonCollectionMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.label.Button button1;
     private pas.layout.label.Button buttonCollection;
     private pas.layout.label.Button buttonCosts;
     private pas.layout.label.Button buttonRevenues;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel labelPeriod;
     private javax.swing.JPanel paneBar;
@@ -329,9 +289,6 @@ public class Cost extends javax.swing.JPanel {
     private javax.swing.JComboBox selectLocation1;
     private javax.swing.JComboBox selectPeriodMonth;
     private javax.swing.JComboBox selectPeriodYear;
-    private javax.swing.JTable tableBar;
-    private javax.swing.JTable tableCourse;
-    private javax.swing.JTable tableFacility;
     private pas.layout.label.H1 title;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,14 +27,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Payment.findAll", query = "SELECT p FROM Payment p"),
-    @NamedQuery(name = "Payment.findById", query = "SELECT p FROM Payment p WHERE p.id = :id"),
-    @NamedQuery(name = "Payment.findByTimes", query = "SELECT p FROM Payment p WHERE p.times = :times"),
-    @NamedQuery(name = "Payment.findByMemberid", query = "SELECT p FROM Payment p WHERE p.memberid = :memberid"),
-    @NamedQuery(name = "Payment.findByMethode", query = "SELECT p FROM Payment p WHERE p.methode = :methode"),
-    @NamedQuery(name = "Payment.findByPaid", query = "SELECT p FROM Payment p WHERE p.paid = :paid"),
-    @NamedQuery(name = "Payment.findBySepa", query = "SELECT p FROM Payment p WHERE p.sepa = :sepa")})
-public class Payment implements Serializable {
+    @NamedQuery(name = "Betaling.findAll", query = "SELECT b FROM Betaling b"),
+    @NamedQuery(name = "Betaling.findById", query = "SELECT b FROM Betaling b WHERE b.id = :id"),
+    @NamedQuery(name = "Betaling.findByTimes", query = "SELECT b FROM Betaling b WHERE b.times = :times"),
+    @NamedQuery(name = "Betaling.findByLidid", query = "SELECT b FROM Betaling b WHERE b.lidid = :lidid"),
+    @NamedQuery(name = "Betaling.findByMethode", query = "SELECT b FROM Betaling b WHERE b.methode = :methode"),
+    @NamedQuery(name = "Betaling.findByRestant", query = "SELECT b FROM Betaling b WHERE b.restant = :restant"),
+    @NamedQuery(name = "Betaling.findBySepa", query = "SELECT b FROM Betaling b WHERE b.sepa = :sepa")})
+public class Betaling implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,30 +44,28 @@ public class Payment implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date times;
     @Basic(optional = false)
-    private int memberid;
+    private int lidid;
     @Basic(optional = false)
     private String methode;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    private BigDecimal paid;
-    @Basic(optional = false)
-    private int sepa;
-    @JoinColumn(name = "invoiceid", referencedColumnName = "id")
+    private BigDecimal restant;
+    private Integer sepa;
+    @JoinColumn(name = "factuurid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Invoice invoiceid;
+    private Factuur factuurid;
 
-    public Payment() {
+    public Betaling() {
     }
 
-    public Payment(Integer id) {
+    public Betaling(Integer id) {
         this.id = id;
     }
 
-    public Payment(Integer id, Date times, int memberid, String methode, int sepa) {
+    public Betaling(Integer id, Date times, int lidid, String methode) {
         this.id = id;
         this.times = times;
-        this.memberid = memberid;
+        this.lidid = lidid;
         this.methode = methode;
-        this.sepa = sepa;
     }
 
     public Integer getId() {
@@ -86,12 +84,12 @@ public class Payment implements Serializable {
         this.times = times;
     }
 
-    public int getMemberid() {
-        return memberid;
+    public int getLidid() {
+        return lidid;
     }
 
-    public void setMemberid(int memberid) {
-        this.memberid = memberid;
+    public void setLidid(int lidid) {
+        this.lidid = lidid;
     }
 
     public String getMethode() {
@@ -102,28 +100,28 @@ public class Payment implements Serializable {
         this.methode = methode;
     }
 
-    public BigDecimal getPaid() {
-        return paid;
+    public BigDecimal getRestant() {
+        return restant;
     }
 
-    public void setPaid(BigDecimal paid) {
-        this.paid = paid;
+    public void setRestant(BigDecimal restant) {
+        this.restant = restant;
     }
 
-    public int getSepa() {
+    public Integer getSepa() {
         return sepa;
     }
 
-    public void setSepa(int sepa) {
+    public void setSepa(Integer sepa) {
         this.sepa = sepa;
     }
 
-    public Invoice getInvoiceid() {
-        return invoiceid;
+    public Factuur getFactuurid() {
+        return factuurid;
     }
 
-    public void setInvoiceid(Invoice invoiceid) {
-        this.invoiceid = invoiceid;
+    public void setFactuurid(Factuur factuurid) {
+        this.factuurid = factuurid;
     }
 
     @Override
@@ -136,10 +134,10 @@ public class Payment implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Payment)) {
+        if (!(object instanceof Betaling)) {
             return false;
         }
-        Payment other = (Payment) object;
+        Betaling other = (Betaling) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -148,7 +146,7 @@ public class Payment implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Payment[ id=" + id + " ]";
+        return "pas.models.db.Betaling[ id=" + id + " ]";
     }
     
 }

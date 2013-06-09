@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import pas.member.MemberController;
-import pas.models.db.Member1;
+import pas.models.db.Lid;
 
 /**
  *
@@ -15,17 +16,14 @@ import pas.models.db.Member1;
  */
 public class SidebarMemberSearchResult extends JPanel implements MouseListener {
 
-    // Counter
-    private static int counter = 1;
-    
+    // Active result list members
+    private static ArrayList<SidebarMemberSearchResult> activeResultList = new ArrayList<>();
     // Statusses
     public static final int INACTIVE = 1;
     public static final int ACTIVE = 2;
-    
     // Alternating background colors
     public static final Color COLOR_ODD = new Color(255, 255, 255);
-    public static final Color COLOR_EVEN  = new Color(222, 222, 222);
-    
+    public static final Color COLOR_EVEN = new Color(222, 222, 222);
     /*
      * State
      */
@@ -33,53 +31,53 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
     private Color color = new Color(0, 0, 0);
     private Color backgroundColor; // Alternating
     private int cursor = Cursor.HAND_CURSOR;
-    
     /*
      * Hover style
      */
     private Color hoverColor = new Color(255, 255, 255);
     private Color hoverBackgroundColor = new Color(155, 9, 46);
-    
     /*
      * Active style
      */
     private Color activeColor = new Color(255, 255, 255);
     private Color activeBackgroundColor = new Color(155, 9, 46);
-    
+
     /*
      * Creates new form SidebarMemberSearchResult
+     * 
+     * @param Lid member
      */
-    public SidebarMemberSearchResult(Member1 member) {
+    public SidebarMemberSearchResult(Lid member) {
         initComponents();
 
-        lblMemberName.setText(member.getFirstname() + " " + member.getLastname());
+        lblMemberName.setText(member.getVoornaam()+ " " + member.getAchternaam());
         lblMemberName.setForeground(color);
-        
+
         lblMemberId.setText(member.getId().toString());
         lblMemberId.setForeground(color);
-        
-        setBorder(new EmptyBorder(0,10,0,0));
+
+        setBorder(new EmptyBorder(0, 10, 0, 0));
         setCursor(new Cursor(this.cursor));
-        
-        if (counter % 2 == 0) {
-            setBackground(SidebarMemberSearchResult.COLOR_EVEN);
-            this.backgroundColor = SidebarMemberSearchResult.COLOR_EVEN;
-        } else {
+
+        if (SidebarMemberSearchResult.activeResultList.size() % 2 == 0) {
             setBackground(SidebarMemberSearchResult.COLOR_ODD);
             this.backgroundColor = SidebarMemberSearchResult.COLOR_ODD;
+        } else {
+            setBackground(SidebarMemberSearchResult.COLOR_EVEN);
+            this.backgroundColor = SidebarMemberSearchResult.COLOR_EVEN;
         }
-        
-        SidebarMemberSearchResult.counter ++;
+
+        SidebarMemberSearchResult.activeResultList.add(this);
         addMouseListener(this);
     }
-    
+
     /*
      * Reset the alternate counter
      * 
      * @return void
      */
     public static void resetCounter() {
-        SidebarMemberSearchResult.counter = 1;
+        SidebarMemberSearchResult.activeResultList.clear();
     }
 
     /**
@@ -176,11 +174,9 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
     public void setStatus(int status) {
         switch (status) {
             case 1:
-                this.status = SidebarMemberSearchResult.INACTIVE;
                 this.setInactive();
                 break;
             case 2:
-                this.status = SidebarMemberSearchResult.ACTIVE;
                 this.setActive();
                 break;
         }
@@ -201,7 +197,7 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent event) {
         if (null != hoverColor && !color.equals(hoverColor)) {
-            lblMemberId.setForeground(hoverColor); 
+            lblMemberId.setForeground(hoverColor);
             lblMemberName.setForeground(hoverColor);
         }
 
@@ -245,8 +241,14 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
      * @return void
      */
     private void setActive() {
+        // Disable all buttons
+        for (SidebarMemberSearchResult searchResult: SidebarMemberSearchResult.activeResultList) {
+            searchResult.setInactive();
+        }
+        
+        this.status = SidebarMemberSearchResult.ACTIVE;
         if (null != activeColor && !color.equals(activeColor)) {
-            lblMemberId.setForeground(activeColor); 
+            lblMemberId.setForeground(activeColor);
             lblMemberName.setForeground(activeColor);
         }
 
@@ -261,11 +263,11 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
      * @return void
      */
     private void setInactive() {
-        lblMemberId.setForeground(color); 
+        this.status = SidebarMemberSearchResult.INACTIVE;
+        lblMemberId.setForeground(color);
         lblMemberName.setForeground(color);
         setBackground(backgroundColor);
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.panel.Background background1;
     private javax.swing.JLabel lblMemberId;

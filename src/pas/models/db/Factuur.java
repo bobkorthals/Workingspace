@@ -6,7 +6,9 @@ package pas.models.db;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +17,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -26,10 +30,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Orders.findAll", query = "SELECT o FROM Orders o"),
-    @NamedQuery(name = "Orders.findById", query = "SELECT o FROM Orders o WHERE o.id = :id"),
-    @NamedQuery(name = "Orders.findByTimes", query = "SELECT o FROM Orders o WHERE o.times = :times")})
-public class Orders implements Serializable {
+    @NamedQuery(name = "Factuur.findAll", query = "SELECT f FROM Factuur f"),
+    @NamedQuery(name = "Factuur.findById", query = "SELECT f FROM Factuur f WHERE f.id = :id"),
+    @NamedQuery(name = "Factuur.findByTimes", query = "SELECT f FROM Factuur f WHERE f.times = :times")})
+public class Factuur implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,24 +42,22 @@ public class Orders implements Serializable {
     @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date times;
-    @JoinColumn(name = "memberid", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "factuurid")
+    private List<Factuuritem> factuuritemList;
+    @JoinColumn(name = "lidid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member1 memberid;
-    @JoinColumn(name = "invoicelineid", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Invoiceline invoicelineid;
-    @JoinColumn(name = "employeeid", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Employee employeeid;
+    private Lid lidid;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "factuurid")
+    private List<Betaling> betalingList;
 
-    public Orders() {
+    public Factuur() {
     }
 
-    public Orders(Integer id) {
+    public Factuur(Integer id) {
         this.id = id;
     }
 
-    public Orders(Integer id, Date times) {
+    public Factuur(Integer id, Date times) {
         this.id = id;
         this.times = times;
     }
@@ -76,28 +78,30 @@ public class Orders implements Serializable {
         this.times = times;
     }
 
-    public Member1 getMemberid() {
-        return memberid;
+    @XmlTransient
+    public List<Factuuritem> getFactuuritemList() {
+        return factuuritemList;
     }
 
-    public void setMemberid(Member1 memberid) {
-        this.memberid = memberid;
+    public void setFactuuritemList(List<Factuuritem> factuuritemList) {
+        this.factuuritemList = factuuritemList;
     }
 
-    public Invoiceline getInvoicelineid() {
-        return invoicelineid;
+    public Lid getLidid() {
+        return lidid;
     }
 
-    public void setInvoicelineid(Invoiceline invoicelineid) {
-        this.invoicelineid = invoicelineid;
+    public void setLidid(Lid lidid) {
+        this.lidid = lidid;
     }
 
-    public Employee getEmployeeid() {
-        return employeeid;
+    @XmlTransient
+    public List<Betaling> getBetalingList() {
+        return betalingList;
     }
 
-    public void setEmployeeid(Employee employeeid) {
-        this.employeeid = employeeid;
+    public void setBetalingList(List<Betaling> betalingList) {
+        this.betalingList = betalingList;
     }
 
     @Override
@@ -110,10 +114,10 @@ public class Orders implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Orders)) {
+        if (!(object instanceof Factuur)) {
             return false;
         }
-        Orders other = (Orders) object;
+        Factuur other = (Factuur) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -122,7 +126,7 @@ public class Orders implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Orders[ id=" + id + " ]";
+        return "pas.models.db.Factuur[ id=" + id + " ]";
     }
     
 }

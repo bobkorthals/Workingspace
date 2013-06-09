@@ -6,7 +6,7 @@ package pas.models.db;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,10 +29,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
     @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id"),
-    @NamedQuery(name = "Product.findByProductname", query = "SELECT p FROM Product p WHERE p.productname = :productname"),
+    @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
     @NamedQuery(name = "Product.findByPrijs", query = "SELECT p FROM Product p WHERE p.prijs = :prijs"),
-    @NamedQuery(name = "Product.findByStock", query = "SELECT p FROM Product p WHERE p.stock = :stock"),
-    @NamedQuery(name = "Product.findByDescription", query = "SELECT p FROM Product p WHERE p.description = :description")})
+    @NamedQuery(name = "Product.findByVoorraad", query = "SELECT p FROM Product p WHERE p.voorraad = :voorraad"),
+    @NamedQuery(name = "Product.findByOmschrijving", query = "SELECT p FROM Product p WHERE p.omschrijving = :omschrijving")})
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,17 +40,17 @@ public class Product implements Serializable {
     @Basic(optional = false)
     private Integer id;
     @Basic(optional = false)
-    private String productname;
+    private String name;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     private BigDecimal prijs;
-    private Integer stock;
-    private String description;
-    @JoinColumn(name = "categoryid", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Category categoryid;
+    private Integer voorraad;
+    private String omschrijving;
     @OneToMany(mappedBy = "productid")
-    private Collection<Invoiceline> invoicelineCollection;
+    private List<Factuuritem> factuuritemList;
+    @JoinColumn(name = "categorieid", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Categorie categorieid;
 
     public Product() {
     }
@@ -59,9 +59,9 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(Integer id, String productname, BigDecimal prijs) {
+    public Product(Integer id, String name, BigDecimal prijs) {
         this.id = id;
-        this.productname = productname;
+        this.name = name;
         this.prijs = prijs;
     }
 
@@ -73,12 +73,12 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public String getProductname() {
-        return productname;
+    public String getName() {
+        return name;
     }
 
-    public void setProductname(String productname) {
-        this.productname = productname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getPrijs() {
@@ -89,37 +89,37 @@ public class Product implements Serializable {
         this.prijs = prijs;
     }
 
-    public Integer getStock() {
-        return stock;
+    public Integer getVoorraad() {
+        return voorraad;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
+    public void setVoorraad(Integer voorraad) {
+        this.voorraad = voorraad;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOmschrijving() {
+        return omschrijving;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Category getCategoryid() {
-        return categoryid;
-    }
-
-    public void setCategoryid(Category categoryid) {
-        this.categoryid = categoryid;
+    public void setOmschrijving(String omschrijving) {
+        this.omschrijving = omschrijving;
     }
 
     @XmlTransient
-    public Collection<Invoiceline> getInvoicelineCollection() {
-        return invoicelineCollection;
+    public List<Factuuritem> getFactuuritemList() {
+        return factuuritemList;
     }
 
-    public void setInvoicelineCollection(Collection<Invoiceline> invoicelineCollection) {
-        this.invoicelineCollection = invoicelineCollection;
+    public void setFactuuritemList(List<Factuuritem> factuuritemList) {
+        this.factuuritemList = factuuritemList;
+    }
+
+    public Categorie getCategorieid() {
+        return categorieid;
+    }
+
+    public void setCategorieid(Categorie categorieid) {
+        this.categorieid = categorieid;
     }
 
     @Override

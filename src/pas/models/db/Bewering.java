@@ -5,7 +5,7 @@
 package pas.models.db;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,23 +24,23 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Resource.findAll", query = "SELECT r FROM Resource r"),
-    @NamedQuery(name = "Resource.findById", query = "SELECT r FROM Resource r WHERE r.id = :id"),
-    @NamedQuery(name = "Resource.findByDescription", query = "SELECT r FROM Resource r WHERE r.description = :description")})
-public class Resource implements Serializable {
+    @NamedQuery(name = "Bewering.findAll", query = "SELECT b FROM Bewering b"),
+    @NamedQuery(name = "Bewering.findById", query = "SELECT b FROM Bewering b WHERE b.id = :id"),
+    @NamedQuery(name = "Bewering.findByOmschrijving", query = "SELECT b FROM Bewering b WHERE b.omschrijving = :omschrijving")})
+public class Bewering implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer id;
-    private String description;
-    @OneToMany(mappedBy = "resourceid")
-    private Collection<Permission> permissionCollection;
+    private String omschrijving;
+    @OneToMany(mappedBy = "beweringid")
+    private List<Permissie> permissieList;
 
-    public Resource() {
+    public Bewering() {
     }
 
-    public Resource(Integer id) {
+    public Bewering(Integer id) {
         this.id = id;
     }
 
@@ -52,21 +52,21 @@ public class Resource implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOmschrijving() {
+        return omschrijving;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOmschrijving(String omschrijving) {
+        this.omschrijving = omschrijving;
     }
 
     @XmlTransient
-    public Collection<Permission> getPermissionCollection() {
-        return permissionCollection;
+    public List<Permissie> getPermissieList() {
+        return permissieList;
     }
 
-    public void setPermissionCollection(Collection<Permission> permissionCollection) {
-        this.permissionCollection = permissionCollection;
+    public void setPermissieList(List<Permissie> permissieList) {
+        this.permissieList = permissieList;
     }
 
     @Override
@@ -79,10 +79,10 @@ public class Resource implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Resource)) {
+        if (!(object instanceof Bewering)) {
             return false;
         }
-        Resource other = (Resource) object;
+        Bewering other = (Bewering) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -91,7 +91,7 @@ public class Resource implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Resource[ id=" + id + " ]";
+        return "pas.models.db.Bewering[ id=" + id + " ]";
     }
     
 }

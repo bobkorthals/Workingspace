@@ -26,12 +26,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Accessing.findAll", query = "SELECT a FROM Accessing a"),
-    @NamedQuery(name = "Accessing.findById", query = "SELECT a FROM Accessing a WHERE a.id = :id"),
-    @NamedQuery(name = "Accessing.findByDatum", query = "SELECT a FROM Accessing a WHERE a.datum = :datum"),
-    @NamedQuery(name = "Accessing.findByTimein", query = "SELECT a FROM Accessing a WHERE a.timein = :timein"),
-    @NamedQuery(name = "Accessing.findByTimeout", query = "SELECT a FROM Accessing a WHERE a.timeout = :timeout")})
-public class Accessing implements Serializable {
+    @NamedQuery(name = "Toegang.findAll", query = "SELECT t FROM Toegang t"),
+    @NamedQuery(name = "Toegang.findById", query = "SELECT t FROM Toegang t WHERE t.id = :id"),
+    @NamedQuery(name = "Toegang.findByDatum", query = "SELECT t FROM Toegang t WHERE t.datum = :datum"),
+    @NamedQuery(name = "Toegang.findByCheckintijd", query = "SELECT t FROM Toegang t WHERE t.checkintijd = :checkintijd"),
+    @NamedQuery(name = "Toegang.findByCheckouttijd", query = "SELECT t FROM Toegang t WHERE t.checkouttijd = :checkouttijd")})
+public class Toegang implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,32 +42,32 @@ public class Accessing implements Serializable {
     private Date datum;
     @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date timein;
+    private Date checkintijd;
     @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date timeout;
-    @JoinColumn(name = "reservationid", referencedColumnName = "id")
+    private Date checkouttijd;
+    @JoinColumn(name = "reserveringid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Reservation reservationid;
-    @JoinColumn(name = "registrationid", referencedColumnName = "id")
+    private Reservering reserveringid;
+    @JoinColumn(name = "lidid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Registration registrationid;
-    @JoinColumn(name = "memberid", referencedColumnName = "id")
+    private Lid lidid;
+    @JoinColumn(name = "inschrijvingid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member1 memberid;
+    private Inschrijving inschrijvingid;
 
-    public Accessing() {
+    public Toegang() {
     }
 
-    public Accessing(Integer id) {
+    public Toegang(Integer id) {
         this.id = id;
     }
 
-    public Accessing(Integer id, Date datum, Date timein, Date timeout) {
+    public Toegang(Integer id, Date datum, Date checkintijd, Date checkouttijd) {
         this.id = id;
         this.datum = datum;
-        this.timein = timein;
-        this.timeout = timeout;
+        this.checkintijd = checkintijd;
+        this.checkouttijd = checkouttijd;
     }
 
     public Integer getId() {
@@ -86,44 +86,44 @@ public class Accessing implements Serializable {
         this.datum = datum;
     }
 
-    public Date getTimein() {
-        return timein;
+    public Date getCheckintijd() {
+        return checkintijd;
     }
 
-    public void setTimein(Date timein) {
-        this.timein = timein;
+    public void setCheckintijd(Date checkintijd) {
+        this.checkintijd = checkintijd;
     }
 
-    public Date getTimeout() {
-        return timeout;
+    public Date getCheckouttijd() {
+        return checkouttijd;
     }
 
-    public void setTimeout(Date timeout) {
-        this.timeout = timeout;
+    public void setCheckouttijd(Date checkouttijd) {
+        this.checkouttijd = checkouttijd;
     }
 
-    public Reservation getReservationid() {
-        return reservationid;
+    public Reservering getReserveringid() {
+        return reserveringid;
     }
 
-    public void setReservationid(Reservation reservationid) {
-        this.reservationid = reservationid;
+    public void setReserveringid(Reservering reserveringid) {
+        this.reserveringid = reserveringid;
     }
 
-    public Registration getRegistrationid() {
-        return registrationid;
+    public Lid getLidid() {
+        return lidid;
     }
 
-    public void setRegistrationid(Registration registrationid) {
-        this.registrationid = registrationid;
+    public void setLidid(Lid lidid) {
+        this.lidid = lidid;
     }
 
-    public Member1 getMemberid() {
-        return memberid;
+    public Inschrijving getInschrijvingid() {
+        return inschrijvingid;
     }
 
-    public void setMemberid(Member1 memberid) {
-        this.memberid = memberid;
+    public void setInschrijvingid(Inschrijving inschrijvingid) {
+        this.inschrijvingid = inschrijvingid;
     }
 
     @Override
@@ -136,10 +136,10 @@ public class Accessing implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Accessing)) {
+        if (!(object instanceof Toegang)) {
             return false;
         }
-        Accessing other = (Accessing) object;
+        Toegang other = (Toegang) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -148,7 +148,7 @@ public class Accessing implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Accessing[ id=" + id + " ]";
+        return "pas.models.db.Toegang[ id=" + id + " ]";
     }
     
 }

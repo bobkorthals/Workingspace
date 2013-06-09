@@ -5,8 +5,8 @@
 package pas.models.db;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,10 +30,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Schedule.findAll", query = "SELECT s FROM Schedule s"),
-    @NamedQuery(name = "Schedule.findById", query = "SELECT s FROM Schedule s WHERE s.id = :id"),
-    @NamedQuery(name = "Schedule.findByTimes", query = "SELECT s FROM Schedule s WHERE s.times = :times")})
-public class Schedule implements Serializable {
+    @NamedQuery(name = "Reservering.findAll", query = "SELECT r FROM Reservering r"),
+    @NamedQuery(name = "Reservering.findById", query = "SELECT r FROM Reservering r WHERE r.id = :id"),
+    @NamedQuery(name = "Reservering.findByTimes", query = "SELECT r FROM Reservering r WHERE r.times = :times")})
+public class Reservering implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,23 +42,25 @@ public class Schedule implements Serializable {
     @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date times;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "scheduleid")
-    private Collection<Registration> registrationCollection;
-    @JoinColumn(name = "employeeid", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reserveringid")
+    private List<Toegang> toegangList;
+    @OneToMany(mappedBy = "reserveringid")
+    private List<Factuuritem> factuuritemList;
+    @JoinColumn(name = "lidid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Employee employeeid;
-    @JoinColumn(name = "courseid", referencedColumnName = "id")
+    private Lid lidid;
+    @JoinColumn(name = "faciliteitid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Course courseid;
+    private Faciliteit faciliteitid;
 
-    public Schedule() {
+    public Reservering() {
     }
 
-    public Schedule(Integer id) {
+    public Reservering(Integer id) {
         this.id = id;
     }
 
-    public Schedule(Integer id, Date times) {
+    public Reservering(Integer id, Date times) {
         this.id = id;
         this.times = times;
     }
@@ -80,28 +82,37 @@ public class Schedule implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Registration> getRegistrationCollection() {
-        return registrationCollection;
+    public List<Toegang> getToegangList() {
+        return toegangList;
     }
 
-    public void setRegistrationCollection(Collection<Registration> registrationCollection) {
-        this.registrationCollection = registrationCollection;
+    public void setToegangList(List<Toegang> toegangList) {
+        this.toegangList = toegangList;
     }
 
-    public Employee getEmployeeid() {
-        return employeeid;
+    @XmlTransient
+    public List<Factuuritem> getFactuuritemList() {
+        return factuuritemList;
     }
 
-    public void setEmployeeid(Employee employeeid) {
-        this.employeeid = employeeid;
+    public void setFactuuritemList(List<Factuuritem> factuuritemList) {
+        this.factuuritemList = factuuritemList;
     }
 
-    public Course getCourseid() {
-        return courseid;
+    public Lid getLidid() {
+        return lidid;
     }
 
-    public void setCourseid(Course courseid) {
-        this.courseid = courseid;
+    public void setLidid(Lid lidid) {
+        this.lidid = lidid;
+    }
+
+    public Faciliteit getFaciliteitid() {
+        return faciliteitid;
+    }
+
+    public void setFaciliteitid(Faciliteit faciliteitid) {
+        this.faciliteitid = faciliteitid;
     }
 
     @Override
@@ -114,10 +125,10 @@ public class Schedule implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Schedule)) {
+        if (!(object instanceof Reservering)) {
             return false;
         }
-        Schedule other = (Schedule) object;
+        Reservering other = (Reservering) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -126,7 +137,7 @@ public class Schedule implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Schedule[ id=" + id + " ]";
+        return "pas.models.db.Reservering[ id=" + id + " ]";
     }
     
 }

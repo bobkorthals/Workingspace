@@ -5,8 +5,8 @@
 package pas.models.db;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,11 +29,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Subscribe.findAll", query = "SELECT s FROM Subscribe s"),
-    @NamedQuery(name = "Subscribe.findById", query = "SELECT s FROM Subscribe s WHERE s.id = :id"),
-    @NamedQuery(name = "Subscribe.findByStartdate", query = "SELECT s FROM Subscribe s WHERE s.startdate = :startdate"),
-    @NamedQuery(name = "Subscribe.findByEnddate", query = "SELECT s FROM Subscribe s WHERE s.enddate = :enddate")})
-public class Subscribe implements Serializable {
+    @NamedQuery(name = "Abonnering.findAll", query = "SELECT a FROM Abonnering a"),
+    @NamedQuery(name = "Abonnering.findById", query = "SELECT a FROM Abonnering a WHERE a.id = :id"),
+    @NamedQuery(name = "Abonnering.findByStartdate", query = "SELECT a FROM Abonnering a WHERE a.startdate = :startdate"),
+    @NamedQuery(name = "Abonnering.findByEnddate", query = "SELECT a FROM Abonnering a WHERE a.enddate = :enddate")})
+public class Abonnering implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,23 +45,23 @@ public class Subscribe implements Serializable {
     @Basic(optional = false)
     @Temporal(TemporalType.DATE)
     private Date enddate;
-    @JoinColumn(name = "subscriptionid", referencedColumnName = "id")
+    @OneToMany(mappedBy = "abonneringid")
+    private List<Factuuritem> factuuritemList;
+    @JoinColumn(name = "lidid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Subscription subscriptionid;
-    @JoinColumn(name = "memberid", referencedColumnName = "id")
+    private Lid lidid;
+    @JoinColumn(name = "abonnementid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member1 memberid;
-    @OneToMany(mappedBy = "subscribeid")
-    private Collection<Invoiceline> invoicelineCollection;
+    private Abonnement abonnementid;
 
-    public Subscribe() {
+    public Abonnering() {
     }
 
-    public Subscribe(Integer id) {
+    public Abonnering(Integer id) {
         this.id = id;
     }
 
-    public Subscribe(Integer id, Date startdate, Date enddate) {
+    public Abonnering(Integer id, Date startdate, Date enddate) {
         this.id = id;
         this.startdate = startdate;
         this.enddate = enddate;
@@ -91,29 +91,29 @@ public class Subscribe implements Serializable {
         this.enddate = enddate;
     }
 
-    public Subscription getSubscriptionid() {
-        return subscriptionid;
-    }
-
-    public void setSubscriptionid(Subscription subscriptionid) {
-        this.subscriptionid = subscriptionid;
-    }
-
-    public Member1 getMemberid() {
-        return memberid;
-    }
-
-    public void setMemberid(Member1 memberid) {
-        this.memberid = memberid;
-    }
-
     @XmlTransient
-    public Collection<Invoiceline> getInvoicelineCollection() {
-        return invoicelineCollection;
+    public List<Factuuritem> getFactuuritemList() {
+        return factuuritemList;
     }
 
-    public void setInvoicelineCollection(Collection<Invoiceline> invoicelineCollection) {
-        this.invoicelineCollection = invoicelineCollection;
+    public void setFactuuritemList(List<Factuuritem> factuuritemList) {
+        this.factuuritemList = factuuritemList;
+    }
+
+    public Lid getLidid() {
+        return lidid;
+    }
+
+    public void setLidid(Lid lidid) {
+        this.lidid = lidid;
+    }
+
+    public Abonnement getAbonnementid() {
+        return abonnementid;
+    }
+
+    public void setAbonnementid(Abonnement abonnementid) {
+        this.abonnementid = abonnementid;
     }
 
     @Override
@@ -126,10 +126,10 @@ public class Subscribe implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Subscribe)) {
+        if (!(object instanceof Abonnering)) {
             return false;
         }
-        Subscribe other = (Subscribe) object;
+        Abonnering other = (Abonnering) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -138,7 +138,7 @@ public class Subscribe implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Subscribe[ id=" + id + " ]";
+        return "pas.models.db.Abonnering[ id=" + id + " ]";
     }
     
 }

@@ -5,8 +5,8 @@
 package pas.models.db;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,10 +30,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Reservation.findAll", query = "SELECT r FROM Reservation r"),
-    @NamedQuery(name = "Reservation.findById", query = "SELECT r FROM Reservation r WHERE r.id = :id"),
-    @NamedQuery(name = "Reservation.findByTimes", query = "SELECT r FROM Reservation r WHERE r.times = :times")})
-public class Reservation implements Serializable {
+    @NamedQuery(name = "Planning.findAll", query = "SELECT p FROM Planning p"),
+    @NamedQuery(name = "Planning.findById", query = "SELECT p FROM Planning p WHERE p.id = :id"),
+    @NamedQuery(name = "Planning.findByTimes", query = "SELECT p FROM Planning p WHERE p.times = :times")})
+public class Planning implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,25 +42,23 @@ public class Reservation implements Serializable {
     @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date times;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reservationid")
-    private Collection<Accessing> accessingCollection;
-    @JoinColumn(name = "memberid", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "planningid")
+    private List<Inschrijving> inschrijvingList;
+    @JoinColumn(name = "werknemerid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member1 memberid;
-    @JoinColumn(name = "facilityid", referencedColumnName = "id")
+    private Werknemer werknemerid;
+    @JoinColumn(name = "cursusid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Facility facilityid;
-    @OneToMany(mappedBy = "reservationid")
-    private Collection<Invoiceline> invoicelineCollection;
+    private Cursus cursusid;
 
-    public Reservation() {
+    public Planning() {
     }
 
-    public Reservation(Integer id) {
+    public Planning(Integer id) {
         this.id = id;
     }
 
-    public Reservation(Integer id, Date times) {
+    public Planning(Integer id, Date times) {
         this.id = id;
         this.times = times;
     }
@@ -82,37 +80,28 @@ public class Reservation implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Accessing> getAccessingCollection() {
-        return accessingCollection;
+    public List<Inschrijving> getInschrijvingList() {
+        return inschrijvingList;
     }
 
-    public void setAccessingCollection(Collection<Accessing> accessingCollection) {
-        this.accessingCollection = accessingCollection;
+    public void setInschrijvingList(List<Inschrijving> inschrijvingList) {
+        this.inschrijvingList = inschrijvingList;
     }
 
-    public Member1 getMemberid() {
-        return memberid;
+    public Werknemer getWerknemerid() {
+        return werknemerid;
     }
 
-    public void setMemberid(Member1 memberid) {
-        this.memberid = memberid;
+    public void setWerknemerid(Werknemer werknemerid) {
+        this.werknemerid = werknemerid;
     }
 
-    public Facility getFacilityid() {
-        return facilityid;
+    public Cursus getCursusid() {
+        return cursusid;
     }
 
-    public void setFacilityid(Facility facilityid) {
-        this.facilityid = facilityid;
-    }
-
-    @XmlTransient
-    public Collection<Invoiceline> getInvoicelineCollection() {
-        return invoicelineCollection;
-    }
-
-    public void setInvoicelineCollection(Collection<Invoiceline> invoicelineCollection) {
-        this.invoicelineCollection = invoicelineCollection;
+    public void setCursusid(Cursus cursusid) {
+        this.cursusid = cursusid;
     }
 
     @Override
@@ -125,10 +114,10 @@ public class Reservation implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Reservation)) {
+        if (!(object instanceof Planning)) {
             return false;
         }
-        Reservation other = (Reservation) object;
+        Planning other = (Planning) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -137,7 +126,7 @@ public class Reservation implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Reservation[ id=" + id + " ]";
+        return "pas.models.db.Planning[ id=" + id + " ]";
     }
     
 }

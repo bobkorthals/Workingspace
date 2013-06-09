@@ -1,41 +1,52 @@
 package pas.models.role;
 
-import javax.persistence.Query;
-import pas.models.db.Member1;
+import java.util.Date;
+import pas.models.db.Lid;
 
 /**
  *
- * @author jkg
+ * @author Frank
  */
 public class Member extends AbsractPerson {
 
+    // Read-only memberId
     private int memberID;
 
-    public Member(String firstName, String lastName, String suffix, String dateOfBirth, String gender, int memberID) {
-        super(firstName, lastName, suffix, dateOfBirth, gender);
-        this.memberID = memberID;
+    /*
+     * Create member from supplied data
+     * 
+     * @param firstname String
+     * @param lastname String
+     * @param suffix String
+     * @param dateOfBirth Date
+     * @param String gender
+     */
+    public Member(String firstName, String lastName, String suffix, Date dateOfBirth, String gender) {
+        super(firstName, lastName, suffix, gender, dateOfBirth);
     }
     
-    public Member(int memberId) {
-        super(null, null, null, null, null);
-        Query query = getEntityManager().createNamedQuery("Member1.findById");
-        query.setParameter("id", memberId);
-        Member1 member = (Member1) query.getSingleResult();
-        
-        member.getFirstname();
-        
-        setFirstName(member.getFirstname());
-        setLastName(member.getLastname());
-        setSuffix(member.getSuffix()); 
-        setDateOfBrith(member.getBirthday().toString());
-        setGender(((Integer) member.getGender()).toString());
+    /*
+     * Create member from db result
+     * 
+     * @param Lid dbResult
+     */
+    public Member(Lid dbResult) {
+        super(
+               dbResult.getVoornaam(), 
+               dbResult.getAchternaam(),
+               dbResult.getAchtervoegsel(),
+               ((Integer) dbResult.getGeslachte()).toString(),
+               dbResult.getGeboortedatum());
+
+        this.memberID = dbResult.getId();
     }
 
+    /*
+     * Return member id
+     * 
+     * @return int memberid
+     */
     public int getMemberID() {
         return memberID;
-    }
-
-    public void setMemberID(int memberID) {
-        this.memberID = memberID;
     }
 }

@@ -5,14 +5,13 @@
 package pas.models.db;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,26 +25,32 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Roles.findAll", query = "SELECT r FROM Roles r"),
-    @NamedQuery(name = "Roles.findById", query = "SELECT r FROM Roles r WHERE r.id = :id"),
-    @NamedQuery(name = "Roles.findByDescription", query = "SELECT r FROM Roles r WHERE r.description = :description")})
-public class Roles implements Serializable {
+    @NamedQuery(name = "Categorie.findAll", query = "SELECT c FROM Categorie c"),
+    @NamedQuery(name = "Categorie.findById", query = "SELECT c FROM Categorie c WHERE c.id = :id"),
+    @NamedQuery(name = "Categorie.findByName", query = "SELECT c FROM Categorie c WHERE c.name = :name"),
+    @NamedQuery(name = "Categorie.findByOmschrijving", query = "SELECT c FROM Categorie c WHERE c.omschrijving = :omschrijving")})
+public class Categorie implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer id;
-    private String description;
-    @ManyToMany(mappedBy = "rolesCollection")
-    private Collection<Permission> permissionCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "roleid")
-    private Collection<Employee> employeeCollection;
+    @Basic(optional = false)
+    private String name;
+    private String omschrijving;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categorieid")
+    private List<Product> productList;
 
-    public Roles() {
+    public Categorie() {
     }
 
-    public Roles(Integer id) {
+    public Categorie(Integer id) {
         this.id = id;
+    }
+
+    public Categorie(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Integer getId() {
@@ -56,30 +61,29 @@ public class Roles implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOmschrijving() {
+        return omschrijving;
+    }
+
+    public void setOmschrijving(String omschrijving) {
+        this.omschrijving = omschrijving;
     }
 
     @XmlTransient
-    public Collection<Permission> getPermissionCollection() {
-        return permissionCollection;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setPermissionCollection(Collection<Permission> permissionCollection) {
-        this.permissionCollection = permissionCollection;
-    }
-
-    @XmlTransient
-    public Collection<Employee> getEmployeeCollection() {
-        return employeeCollection;
-    }
-
-    public void setEmployeeCollection(Collection<Employee> employeeCollection) {
-        this.employeeCollection = employeeCollection;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
     @Override
@@ -92,10 +96,10 @@ public class Roles implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Roles)) {
+        if (!(object instanceof Categorie)) {
             return false;
         }
-        Roles other = (Roles) object;
+        Categorie other = (Categorie) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -104,7 +108,7 @@ public class Roles implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Roles[ id=" + id + " ]";
+        return "pas.models.db.Categorie[ id=" + id + " ]";
     }
     
 }

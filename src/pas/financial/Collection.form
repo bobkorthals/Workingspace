@@ -3,6 +3,10 @@
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
+    <Property name="opaque" type="boolean" value="false"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[915, 617]"/>
+    </Property>
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -19,117 +23,106 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+              <Component id="labelLocation" min="-2" pref="71" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="selectLocation" pref="82" max="32767" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Component id="labelPeriod" min="-2" pref="71" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="selectPeriodMonth" pref="80" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="selectPeriodYear" pref="54" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="buttonSelect" min="-2" pref="140" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="buttonCosts" alignment="0" pref="140" max="32767" attributes="0"/>
+                  <Component id="buttonRevenues" alignment="0" max="32767" attributes="0"/>
+                  <Component id="buttonCollection" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="paneMembers" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="title" min="-2" pref="274" max="-2" attributes="0"/>
+                      <Component id="buttonUpdate" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="buttonGenerateCollection" min="-2" pref="160" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="buttonCosts" max="32767" attributes="0"/>
-                          <Component id="buttonRevenues" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buttonCollection" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="buttonUpdate" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="buttonGenerateCollection" min="-2" pref="157" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="labelLocation" min="-2" pref="71" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="selectLocation1" pref="142" max="32767" attributes="0"/>
-                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                      <Component id="labelPeriod" min="-2" pref="71" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="selectPeriodMonth" pref="104" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                                      <Component id="selectPeriodYear" pref="61" max="32767" attributes="0"/>
-                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                      <Component id="button1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="paneMembers" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="title" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelLocation" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="selectLocation1" alignment="3" max="-2" attributes="0"/>
+                  <Component id="selectLocation" alignment="3" max="-2" attributes="0"/>
                   <Component id="labelPeriod" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="selectPeriodMonth" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="selectPeriodYear" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="button1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="buttonSelect" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="paneMembers" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="buttonUpdate" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="buttonGenerateCollection" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="buttonRevenues" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonCosts" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonCollection" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="paneMembers" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="buttonUpdate" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="buttonGenerateCollection" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="222" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="pas.layout.label.H1" name="title">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="98" green="62" red="62" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Financieel - Incasso"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="20" style="1"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="title" noResource="true"/>
-      </Properties>
-    </Component>
     <Component class="pas.layout.label.Button" name="buttonRevenues">
       <Properties>
         <Property name="text" type="java.lang.String" value="Omzetten"/>
         <Property name="name" type="java.lang.String" value="buttonRevenues" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonRevenuesMouseClicked"/>
+      </Events>
     </Component>
     <Component class="pas.layout.label.Button" name="buttonCosts">
       <Properties>
         <Property name="text" type="java.lang.String" value="Kosten"/>
         <Property name="name" type="java.lang.String" value="buttonCosts" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCostsMouseClicked"/>
+      </Events>
     </Component>
     <Component class="pas.layout.label.Button" name="buttonCollection">
       <Properties>
         <Property name="text" type="java.lang.String" value="Incasso"/>
         <Property name="name" type="java.lang.String" value="buttonCollection" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCollectionMouseClicked"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="paneMembers">
       <Properties>
@@ -147,223 +140,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="571" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="733" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="269" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="238" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
-      <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="tableMembers">
-              <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="9" rowCount="12">
-                    <Column editable="true" title="Lidnummer" type="java.lang.Integer">
-                      <Data value="1"/>
-                      <Data value="3"/>
-                      <Data value="4"/>
-                      <Data value="5"/>
-                      <Data value="8"/>
-                      <Data value="9"/>
-                      <Data value="13"/>
-                      <Data value="14"/>
-                      <Data value="15"/>
-                      <Data value="19"/>
-                      <Data value="24"/>
-                      <Data value="25"/>
-                    </Column>
-                    <Column editable="true" title="Naam" type="java.lang.String">
-                      <Data value="Jan Jansen"/>
-                      <Data value="Sander Boersma"/>
-                      <Data value="Ralph Veenstra"/>
-                      <Data value="Mark Blijdschap"/>
-                      <Data value="Anneke Veenstra"/>
-                      <Data value="Jorrit Verschuur"/>
-                      <Data value="Jessica Kaaijk"/>
-                      <Data value="Ashley Daza"/>
-                      <Data value="Corry Symons"/>
-                      <Data value="Madelon Boon"/>
-                      <Data value="Wilco de Boer"/>
-                      <Data value="Marko Bakker"/>
-                    </Column>
-                    <Column editable="true" title="Abonnement" type="java.lang.Float">
-                      <Data value="35.0"/>
-                      <Data value="20.0"/>
-                      <Data value="35.0"/>
-                      <Data value="35.0"/>
-                      <Data value="35.0"/>
-                      <Data value="25.0"/>
-                      <Data value="25.0"/>
-                      <Data value="35.0"/>
-                      <Data value="25.0"/>
-                      <Data value="35.0"/>
-                      <Data value="35.0"/>
-                      <Data value="35.0"/>
-                    </Column>
-                    <Column editable="true" title="Bar" type="java.lang.Float">
-                      <Data value="121.5"/>
-                      <Data value="0.0"/>
-                      <Data value="35.0"/>
-                      <Data value="10.0"/>
-                      <Data value="0.0"/>
-                      <Data value="12.5"/>
-                      <Data value="6.5"/>
-                      <Data value="8.5"/>
-                      <Data value="64.0"/>
-                      <Data value="0.0"/>
-                      <Data value="10.0"/>
-                      <Data value="0.0"/>
-                    </Column>
-                    <Column editable="true" title="Cursussen" type="java.lang.Float">
-                      <Data value="0.0"/>
-                      <Data value="35.0"/>
-                      <Data value="35.0"/>
-                      <Data value="70.0"/>
-                      <Data value="0.0"/>
-                      <Data value="0.0"/>
-                      <Data value="0.0"/>
-                      <Data value="25.0"/>
-                      <Data value="25.0"/>
-                      <Data value="0.0"/>
-                      <Data value="35.0"/>
-                      <Data value="0.0"/>
-                    </Column>
-                    <Column editable="true" title="Faciliteiten" type="java.lang.Float">
-                      <Data value="45.0"/>
-                      <Data value="10.0"/>
-                      <Data value="50.0"/>
-                      <Data value="0.0"/>
-                      <Data value="10.0"/>
-                      <Data value="5.0"/>
-                      <Data value="0.0"/>
-                      <Data value="25.0"/>
-                      <Data value="25.0"/>
-                      <Data value="0.0"/>
-                      <Data value="15.0"/>
-                      <Data value="0.0"/>
-                    </Column>
-                    <Column editable="true" title="Totaal" type="java.lang.Float">
-                      <Data value="201.5"/>
-                      <Data value="65.0"/>
-                      <Data value="155.0"/>
-                      <Data value="115.0"/>
-                      <Data value="45.0"/>
-                      <Data value="42.5"/>
-                      <Data value="31.5"/>
-                      <Data value="93.5"/>
-                      <Data value="139.0"/>
-                      <Data value="35.0"/>
-                      <Data value="95.0"/>
-                      <Data value="null"/>
-                    </Column>
-                    <Column editable="true" title="Status" type="java.lang.String">
-                      <Data value="Betaald"/>
-                      <Data value="Betaald"/>
-                      <Data value="Betaald"/>
-                      <Data value="Betaald"/>
-                      <Data value="Betaald"/>
-                      <Data value="Stornering"/>
-                      <Data value="Betaald"/>
-                      <Data value="Betaald"/>
-                      <Data value="Betaald"/>
-                      <Data value="Betaald"/>
-                      <Data value="Mislukt"/>
-                      <Data value="Betaald"/>
-                    </Column>
-                    <Column editable="true" title="Datum" type="java.lang.String">
-                      <Data value="3-2-2013"/>
-                      <Data value="3-2-2013"/>
-                      <Data value="3-2-2013"/>
-                      <Data value="5-2-2013"/>
-                      <Data value="3-2-2013"/>
-                      <Data value="8-2-2013"/>
-                      <Data value="3-2-2013"/>
-                      <Data value="3-2-2013"/>
-                      <Data value="3-2-2013"/>
-                      <Data value="3-2-2013"/>
-                      <Data value="5-2-2013"/>
-                      <Data value="3-2-2013"/>
-                    </Column>
-                  </Table>
-                </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                  <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                  </TableColumnModel>
-                </Property>
-                <Property name="name" type="java.lang.String" value="tableMembers" noResource="true"/>
-                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                </Property>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-      </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="labelLocation">
       <Properties>
@@ -424,7 +209,7 @@
         <Property name="name" type="java.lang.String" value="labelPeriod" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="selectLocation1">
+    <Component class="javax.swing.JComboBox" name="selectLocation">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="8e" green="6d" red="f2" type="rgb"/>
@@ -448,10 +233,10 @@
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Default Cursor"/>
         </Property>
-        <Property name="name" type="java.lang.String" value="selectLocation1" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="selectLocation" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectLocation1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectLocationActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="selectPeriodYear">
@@ -482,23 +267,33 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectPeriodYearActionPerformed"/>
       </Events>
     </Component>
-    <Component class="pas.layout.label.Button" name="button1">
+    <Component class="pas.layout.label.Button" name="buttonSelect">
       <Properties>
         <Property name="text" type="java.lang.String" value="Selecteren"/>
-        <Property name="name" type="java.lang.String" value="button1" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="buttonSelect" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSelectMouseClicked"/>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonSelectPropertyChange"/>
+      </Events>
     </Component>
     <Component class="pas.layout.label.Button" name="buttonUpdate">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bijwerken"/>
         <Property name="name" type="java.lang.String" value="buttonUpdate" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdateMouseClicked"/>
+      </Events>
     </Component>
     <Component class="pas.layout.label.Button" name="buttonGenerateCollection">
       <Properties>
         <Property name="text" type="java.lang.String" value="Genereer Incassobestand"/>
         <Property name="name" type="java.lang.String" value="buttonGenerateCollection" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonGenerateCollectionMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

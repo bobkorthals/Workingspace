@@ -4,17 +4,32 @@
  */
 package pas.financial;
 
+import java.beans.PropertyChangeEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ruben
  */
-public class Collection extends javax.swing.JPanel {
-
+public class Collection extends mvc.view.AbstractView {
+    private FinancialController controller;
+    
     /**
      * Creates new form Revenue
      */
-    public Collection() {
+    public Collection(FinancialController controller) {
+        this.controller = controller;
         initComponents();
+    }
+    
+    @Override
+    public FinancialController getController(){
+        return this.controller;
+    }
+    
+    @Override
+    public void propertyChange(PropertyChangeEvent change) {
+        
     }
 
     /**
@@ -26,87 +41,59 @@ public class Collection extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new pas.layout.label.H1();
         buttonRevenues = new pas.layout.label.Button();
         buttonCosts = new pas.layout.label.Button();
         buttonCollection = new pas.layout.label.Button();
         paneMembers = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableMembers = new javax.swing.JTable();
         labelLocation = new javax.swing.JLabel();
         selectPeriodMonth = new javax.swing.JComboBox();
         labelPeriod = new javax.swing.JLabel();
-        selectLocation1 = new javax.swing.JComboBox();
+        selectLocation = new javax.swing.JComboBox();
         selectPeriodYear = new javax.swing.JComboBox();
-        button1 = new pas.layout.label.Button();
+        buttonSelect = new pas.layout.label.Button();
         buttonUpdate = new pas.layout.label.Button();
         buttonGenerateCollection = new pas.layout.label.Button();
 
         setName("Form"); // NOI18N
-
-        title.setForeground(new java.awt.Color(98, 98, 152));
-        title.setText("Financieel - Incasso");
-        title.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        title.setName("title"); // NOI18N
+        setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(915, 617));
 
         buttonRevenues.setText("Omzetten");
         buttonRevenues.setName("buttonRevenues"); // NOI18N
+        buttonRevenues.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonRevenuesMouseClicked(evt);
+            }
+        });
 
         buttonCosts.setText("Kosten");
         buttonCosts.setName("buttonCosts"); // NOI18N
+        buttonCosts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCostsMouseClicked(evt);
+            }
+        });
 
         buttonCollection.setText("Incasso");
         buttonCollection.setName("buttonCollection"); // NOI18N
+        buttonCollection.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCollectionMouseClicked(evt);
+            }
+        });
 
         paneMembers.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Leden", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
         paneMembers.setName("paneMembers"); // NOI18N
-
-        jScrollPane1.setName("jScrollPane1"); // NOI18N
-
-        tableMembers.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                { new Integer(1), "Jan Jansen",  new Float(35.0),  new Float(121.5),  new Float(0.0),  new Float(45.0),  new Float(201.5), "Betaald", "3-2-2013"},
-                { new Integer(3), "Sander Boersma",  new Float(20.0),  new Float(0.0),  new Float(35.0),  new Float(10.0),  new Float(65.0), "Betaald", "3-2-2013"},
-                { new Integer(4), "Ralph Veenstra",  new Float(35.0),  new Float(35.0),  new Float(35.0),  new Float(50.0),  new Float(155.0), "Betaald", "3-2-2013"},
-                { new Integer(5), "Mark Blijdschap",  new Float(35.0),  new Float(10.0),  new Float(70.0),  new Float(0.0),  new Float(115.0), "Betaald", "5-2-2013"},
-                { new Integer(8), "Anneke Veenstra",  new Float(35.0),  new Float(0.0),  new Float(0.0),  new Float(10.0),  new Float(45.0), "Betaald", "3-2-2013"},
-                { new Integer(9), "Jorrit Verschuur",  new Float(25.0),  new Float(12.5),  new Float(0.0),  new Float(5.0),  new Float(42.5), "Stornering", "8-2-2013"},
-                { new Integer(13), "Jessica Kaaijk",  new Float(25.0),  new Float(6.5),  new Float(0.0),  new Float(0.0),  new Float(31.5), "Betaald", "3-2-2013"},
-                { new Integer(14), "Ashley Daza",  new Float(35.0),  new Float(8.5),  new Float(25.0),  new Float(25.0),  new Float(93.5), "Betaald", "3-2-2013"},
-                { new Integer(15), "Corry Symons",  new Float(25.0),  new Float(64.0),  new Float(25.0),  new Float(25.0),  new Float(139.0), "Betaald", "3-2-2013"},
-                { new Integer(19), "Madelon Boon",  new Float(35.0),  new Float(0.0),  new Float(0.0),  new Float(0.0),  new Float(35.0), "Betaald", "3-2-2013"},
-                { new Integer(24), "Wilco de Boer",  new Float(35.0),  new Float(10.0),  new Float(35.0),  new Float(15.0),  new Float(95.0), "Mislukt", "5-2-2013"},
-                { new Integer(25), "Marko Bakker",  new Float(35.0),  new Float(0.0),  new Float(0.0),  new Float(0.0), null, "Betaald", "3-2-2013"}
-            },
-            new String [] {
-                "Lidnummer", "Naam", "Abonnement", "Bar", "Cursussen", "Faciliteiten", "Totaal", "Status", "Datum"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tableMembers.setName("tableMembers"); // NOI18N
-        jScrollPane1.setViewportView(tableMembers);
 
         javax.swing.GroupLayout paneMembersLayout = new javax.swing.GroupLayout(paneMembers);
         paneMembers.setLayout(paneMembersLayout);
         paneMembersLayout.setHorizontalGroup(
             paneMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneMembersLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 733, Short.MAX_VALUE)
         );
         paneMembersLayout.setVerticalGroup(
             paneMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneMembersLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 17, Short.MAX_VALUE))
+            .addGap(0, 238, Short.MAX_VALUE)
         );
 
         labelLocation.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -130,15 +117,15 @@ public class Collection extends javax.swing.JPanel {
         labelPeriod.setText("Periode");
         labelPeriod.setName("labelPeriod"); // NOI18N
 
-        selectLocation1.setBackground(new java.awt.Color(242, 109, 142));
-        selectLocation1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle", "Haarlem", "Amsterdam", "Purmerend" }));
-        selectLocation1.setToolTipText("");
-        selectLocation1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
-        selectLocation1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        selectLocation1.setName("selectLocation1"); // NOI18N
-        selectLocation1.addActionListener(new java.awt.event.ActionListener() {
+        selectLocation.setBackground(new java.awt.Color(242, 109, 142));
+        selectLocation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle", "Haarlem", "Amsterdam", "Purmerend" }));
+        selectLocation.setToolTipText("");
+        selectLocation.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
+        selectLocation.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selectLocation.setName("selectLocation"); // NOI18N
+        selectLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectLocation1ActionPerformed(evt);
+                selectLocationActionPerformed(evt);
             }
         });
 
@@ -154,81 +141,97 @@ public class Collection extends javax.swing.JPanel {
             }
         });
 
-        button1.setText("Selecteren");
-        button1.setName("button1"); // NOI18N
+        buttonSelect.setText("Selecteren");
+        buttonSelect.setName("buttonSelect"); // NOI18N
+        buttonSelect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSelectMouseClicked(evt);
+            }
+        });
+        buttonSelect.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                buttonSelectPropertyChange(evt);
+            }
+        });
 
         buttonUpdate.setText("Bijwerken");
         buttonUpdate.setName("buttonUpdate"); // NOI18N
+        buttonUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonUpdateMouseClicked(evt);
+            }
+        });
 
         buttonGenerateCollection.setText("Genereer Incassobestand");
         buttonGenerateCollection.setName("buttonGenerateCollection"); // NOI18N
+        buttonGenerateCollection.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonGenerateCollectionMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
+                .addGap(144, 144, 144)
+                .addComponent(labelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectLocation, 0, 82, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(labelPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectPeriodMonth, 0, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectPeriodYear, 0, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(231, 231, 231))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(buttonCosts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(buttonRevenues, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonCollection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paneMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(buttonCosts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonRevenues, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonCollection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(selectLocation1, 0, 142, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(labelPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(selectPeriodMonth, 0, 104, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(selectPeriodYear, 0, 61, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(paneMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(44, 44, 44))))))
+                        .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelLocation)
-                    .addComponent(selectLocation1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPeriod)
                     .addComponent(selectPeriodMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(buttonSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(paneMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(249, 249, 249))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
                         .addComponent(buttonRevenues, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCosts, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(paneMembers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(222, Short.MAX_VALUE))
+                        .addComponent(buttonCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(295, 295, 295))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -236,29 +239,58 @@ public class Collection extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectPeriodMonthActionPerformed
 
-    private void selectLocation1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectLocation1ActionPerformed
+    private void selectLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectLocationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_selectLocation1ActionPerformed
+    }//GEN-LAST:event_selectLocationActionPerformed
 
     private void selectPeriodYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectPeriodYearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selectPeriodYearActionPerformed
 
+    private void buttonSelectPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonSelectPropertyChange
+
+    }//GEN-LAST:event_buttonSelectPropertyChange
+
+    // generateCollection
+    private void buttonGenerateCollectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonGenerateCollectionMouseClicked
+        JOptionPane.showMessageDialog(this, "Genereren van Clieop03 bestand op basis van huidige selectie");
+    }//GEN-LAST:event_buttonGenerateCollectionMouseClicked
+
+    private void buttonUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdateMouseClicked
+        JOptionPane.showMessageDialog(this, "Bijwerken van betalingsstatussen");
+    }//GEN-LAST:event_buttonUpdateMouseClicked
+
+    private void buttonSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSelectMouseClicked
+        String location = (String) selectLocation.getSelectedItem();
+        String month = (String) selectPeriodMonth.getSelectedItem();
+        String year = (String) selectPeriodYear.getSelectedItem();
+        JOptionPane.showMessageDialog(this, "Selectie: Vestiging "+location+" in de periode van "+month+" "+year);
+    }//GEN-LAST:event_buttonSelectMouseClicked
+
+    private void buttonRevenuesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonRevenuesMouseClicked
+        this.controller.openRevenue();
+    }//GEN-LAST:event_buttonRevenuesMouseClicked
+
+    private void buttonCostsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCostsMouseClicked
+        this.controller.openCost();
+    }//GEN-LAST:event_buttonCostsMouseClicked
+
+    private void buttonCollectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCollectionMouseClicked
+        this.controller.openCollection();
+    }//GEN-LAST:event_buttonCollectionMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private pas.layout.label.Button button1;
     private pas.layout.label.Button buttonCollection;
     private pas.layout.label.Button buttonCosts;
     private pas.layout.label.Button buttonGenerateCollection;
     private pas.layout.label.Button buttonRevenues;
+    private pas.layout.label.Button buttonSelect;
     private pas.layout.label.Button buttonUpdate;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel labelPeriod;
     private javax.swing.JPanel paneMembers;
-    private javax.swing.JComboBox selectLocation1;
+    private javax.swing.JComboBox selectLocation;
     private javax.swing.JComboBox selectPeriodMonth;
     private javax.swing.JComboBox selectPeriodYear;
-    private javax.swing.JTable tableMembers;
-    private pas.layout.label.H1 title;
     // End of variables declaration//GEN-END:variables
 }
