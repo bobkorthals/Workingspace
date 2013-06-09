@@ -45,8 +45,14 @@ public class Cost extends mvc.view.AbstractView {
         buttonCosts = new pas.layout.label.Button();
         buttonCollection = new pas.layout.label.Button();
         paneBar = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableBar = new pas.layout.table.Table();
         paneCourse = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableCourse = new pas.layout.table.Table();
         paneBar3 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tableFacility = new pas.layout.table.Table();
         labelLocation = new javax.swing.JLabel();
         selectPeriodMonth = new javax.swing.JComboBox();
         labelPeriod = new javax.swing.JLabel();
@@ -89,43 +95,132 @@ public class Cost extends mvc.view.AbstractView {
         paneBar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
         paneBar.setName("paneBar"); // NOI18N
 
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        tableBar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Inkoop",  new Double(6535.0)},
+                {"Energie",  new Double(1500.0)},
+                {"Onderhoud",  new Double(250.0)},
+                {"Afschrijving", null}
+            },
+            new String [] {
+                "Soort", "Kosten"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableBar.setName("tableBar"); // NOI18N
+        jScrollPane2.setViewportView(tableBar);
+
         javax.swing.GroupLayout paneBarLayout = new javax.swing.GroupLayout(paneBar);
         paneBar.setLayout(paneBarLayout);
         paneBarLayout.setHorizontalGroup(
             paneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGroup(paneBarLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         paneBarLayout.setVerticalGroup(
             paneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 119, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneBarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         paneCourse.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cursussen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
         paneCourse.setName("paneCourse"); // NOI18N
 
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        tableCourse.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Tai-boxing",  new Double(150.0),  new Double(350.0),  new Double(200.0)},
+                {"Joga",  new Double(150.0),  new Double(150.0),  new Double(50.0)},
+                {"Karate",  new Double(150.0),  new Double(150.0), null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Naam", "Energie", "Afschrijving", "Onderhoud"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableCourse.setName("tableCourse"); // NOI18N
+        jScrollPane1.setViewportView(tableCourse);
+
         javax.swing.GroupLayout paneCourseLayout = new javax.swing.GroupLayout(paneCourse);
         paneCourse.setLayout(paneCourseLayout);
         paneCourseLayout.setHorizontalGroup(
             paneCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGroup(paneCourseLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         paneCourseLayout.setVerticalGroup(
             paneCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 113, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneCourseLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         paneBar3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Faciliteiten", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
         paneBar3.setName("paneBar3"); // NOI18N
 
+        jScrollPane5.setName("jScrollPane5"); // NOI18N
+
+        tableFacility.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Sauna",  new Double(4165.0),  new Double(1000.0), null},
+                {"Squash",  new Double(930.0),  new Double(3500.0),  new Double(650.0)},
+                {"Zonnebank",  new Double(6500.0),  new Double(650.0),  new Double(300.0)}
+            },
+            new String [] {
+                "Naam", "Energie", "Afschrijving", "Onderhoud"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableFacility.setName("tableFacility"); // NOI18N
+        jScrollPane5.setViewportView(tableFacility);
+
         javax.swing.GroupLayout paneBar3Layout = new javax.swing.GroupLayout(paneBar3);
         paneBar3.setLayout(paneBar3Layout);
         paneBar3Layout.setHorizontalGroup(
             paneBar3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGroup(paneBar3Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         paneBar3Layout.setVerticalGroup(
             paneBar3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 129, Short.MAX_VALUE)
+            .addGroup(paneBar3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         labelLocation.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -281,6 +376,9 @@ public class Cost extends mvc.view.AbstractView {
     private pas.layout.label.Button buttonCollection;
     private pas.layout.label.Button buttonCosts;
     private pas.layout.label.Button buttonRevenues;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel labelPeriod;
     private javax.swing.JPanel paneBar;
@@ -289,6 +387,9 @@ public class Cost extends mvc.view.AbstractView {
     private javax.swing.JComboBox selectLocation1;
     private javax.swing.JComboBox selectPeriodMonth;
     private javax.swing.JComboBox selectPeriodYear;
+    private pas.layout.table.Table tableBar;
+    private pas.layout.table.Table tableCourse;
+    private pas.layout.table.Table tableFacility;
     private pas.layout.label.H1 title;
     // End of variables declaration//GEN-END:variables
 }
