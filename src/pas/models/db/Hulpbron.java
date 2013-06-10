@@ -5,7 +5,7 @@
 package pas.models.db;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,23 +24,23 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Claim.findAll", query = "SELECT c FROM Claim c"),
-    @NamedQuery(name = "Claim.findById", query = "SELECT c FROM Claim c WHERE c.id = :id"),
-    @NamedQuery(name = "Claim.findByDescription", query = "SELECT c FROM Claim c WHERE c.description = :description")})
-public class Claim implements Serializable {
+    @NamedQuery(name = "Hulpbron.findAll", query = "SELECT h FROM Hulpbron h"),
+    @NamedQuery(name = "Hulpbron.findById", query = "SELECT h FROM Hulpbron h WHERE h.id = :id"),
+    @NamedQuery(name = "Hulpbron.findByOmschrijving", query = "SELECT h FROM Hulpbron h WHERE h.omschrijving = :omschrijving")})
+public class Hulpbron implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer id;
-    private String description;
-    @OneToMany(mappedBy = "claimid")
-    private Collection<Permission> permissionCollection;
+    private String omschrijving;
+    @OneToMany(mappedBy = "hulpbronid")
+    private List<Permissie> permissieList;
 
-    public Claim() {
+    public Hulpbron() {
     }
 
-    public Claim(Integer id) {
+    public Hulpbron(Integer id) {
         this.id = id;
     }
 
@@ -52,21 +52,21 @@ public class Claim implements Serializable {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getOmschrijving() {
+        return omschrijving;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOmschrijving(String omschrijving) {
+        this.omschrijving = omschrijving;
     }
 
     @XmlTransient
-    public Collection<Permission> getPermissionCollection() {
-        return permissionCollection;
+    public List<Permissie> getPermissieList() {
+        return permissieList;
     }
 
-    public void setPermissionCollection(Collection<Permission> permissionCollection) {
-        this.permissionCollection = permissionCollection;
+    public void setPermissieList(List<Permissie> permissieList) {
+        this.permissieList = permissieList;
     }
 
     @Override
@@ -79,10 +79,10 @@ public class Claim implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Claim)) {
+        if (!(object instanceof Hulpbron)) {
             return false;
         }
-        Claim other = (Claim) object;
+        Hulpbron other = (Hulpbron) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -91,7 +91,7 @@ public class Claim implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Claim[ id=" + id + " ]";
+        return "pas.models.db.Hulpbron[ id=" + id + " ]";
     }
     
 }

@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pas.member;
 
 import java.awt.event.ActionEvent;
@@ -10,13 +14,12 @@ import pas.file.chooser.FileChooserAbstract;
 import pas.file.chooser.FileChooserImage;
 import pas.file.chooser.FileChooserInterface;
 import pas.main.MainController;
-import pas.models.role.Member;
 
 /**
  *
  * @author jkg
  */
-public class ManageMember extends mvc.view.AbstractView implements FileChooserInterface {
+public class MemberIndex extends mvc.view.AbstractView implements FileChooserInterface {
 
     private MemberController membercontroller;
     private FileChooserAbstract fileChooser;
@@ -24,21 +27,9 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     /**
      * Creates new form manageMember
      */
-    public ManageMember(MemberController controller) {
+    public MemberIndex(MemberController controller) {
         initComponents();
         this.membercontroller = controller;
-    }
-    
-    public ManageMember(MemberController controller, Member member) {
-        initComponents();
-        this.membercontroller = controller;
-        
-        txtDateOfBirth.setText(member.getDateOfBrith().toString());
-        txtFirstName.setText(member.getFirstName());
-        txtGender.setText(member.getGender());
-        txtLastName.setText(member.getLastName());
-        txtMemberId.setText(((Integer)member.getMemberID()).toString());
-        txtSuffix.setText(member.getSuffix());
     }
 
     @Override
@@ -67,16 +58,14 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     @Override
     public void fileChooserActionPerformed(ActionEvent evt) {
         FileChooserAbstract chooser = this.getFileChooser();
-        switch (evt.getActionCommand()) {
-            case JFileChooser.APPROVE_SELECTION:
-                lblTitle.setText(chooser.getFileChooser().getSelectedFile().getName());
-                chooser.setVisible(false);
-                chooser.dispose();
-                break;
-            case JFileChooser.CANCEL_SELECTION:
-                chooser.setVisible(false);
-                chooser.dispose();
-                break;
+
+        if (JFileChooser.APPROVE_SELECTION.equals(evt.getActionCommand())) {
+            lblTitle.setText(chooser.getFileChooser().getSelectedFile().getName());
+            chooser.setVisible(false);
+            chooser.dispose();
+        } else if (JFileChooser.CANCEL_SELECTION.equals(evt.getActionCommand())) {
+            chooser.setVisible(false);
+            chooser.dispose();
         }
     }
 
@@ -800,7 +789,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
 
         lblTitle.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(98, 98, 152));
-        lblTitle.setText("Leden beheer");
+        lblTitle.setText("Leden beheer (kies eerst een lid)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

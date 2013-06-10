@@ -41,13 +41,10 @@ public class Collection extends mvc.view.AbstractView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new pas.layout.label.H1();
         buttonRevenues = new pas.layout.label.Button();
         buttonCosts = new pas.layout.label.Button();
         buttonCollection = new pas.layout.label.Button();
         paneMembers = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableMembers = new pas.layout.table.Table();
         labelLocation = new javax.swing.JLabel();
         selectPeriodMonth = new javax.swing.JComboBox();
         labelPeriod = new javax.swing.JLabel();
@@ -60,11 +57,6 @@ public class Collection extends mvc.view.AbstractView {
         setName("Form"); // NOI18N
         setOpaque(false);
         setPreferredSize(new java.awt.Dimension(915, 617));
-
-        title.setForeground(new java.awt.Color(98, 98, 152));
-        title.setText("Financieel - Incasso");
-        title.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        title.setName("title"); // NOI18N
 
         buttonRevenues.setText("Omzetten");
         buttonRevenues.setName("buttonRevenues"); // NOI18N
@@ -93,53 +85,15 @@ public class Collection extends mvc.view.AbstractView {
         paneMembers.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Leden", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
         paneMembers.setName("paneMembers"); // NOI18N
 
-        jScrollPane2.setName("jScrollPane2"); // NOI18N
-
-        tableMembers.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                { new Integer(1), "Jan Jansen",  new Double(35.0),  new Double(121.5),  new Double(0.0),  new Double(45.0),  new Double(201.5), "Betaald", "3-2-2013"},
-                { new Integer(3), "Sander Boersma",  new Double(20.0),  new Double(0.0),  new Double(35.0),  new Double(10.0),  new Double(65.0), "Betaald", "3-2-2013"},
-                { new Integer(4), "Ralph Veenstra",  new Double(35.0),  new Double(35.0),  new Double(35.0),  new Double(50.0),  new Double(155.0), "Betaald", "3-2-2013"},
-                { new Integer(5), null,  new Double(35.0),  new Double(10.0),  new Double(70.0),  new Double(0.0),  new Double(115.0), "Betaald", "5-2-2013"},
-                { new Integer(8), "Anneke Veenstra",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(10.0),  new Double(45.0), "Betaald", "3-2-2013"},
-                { new Integer(9), "Jorrit Verschuur",  new Double(25.0),  new Double(12.5),  new Double(0.0),  new Double(5.0),  new Double(42.5), "Stornering", "8-2-2013"},
-                { new Integer(13), "Jessica Kaaijk",  new Double(25.0),  new Double(6.5),  new Double(0.0),  new Double(0.0),  new Double(31.5), "Betaald", "3-2-2013"},
-                { new Integer(14), "Ashley Daza",  new Double(35.0),  new Double(8.5),  new Double(25.0),  new Double(25.0),  new Double(93.5), "Betaald", "3-2-2013"},
-                { new Integer(15), "Corry Symons",  new Double(25.0),  new Double(64.0),  new Double(25.0),  new Double(25.0),  new Double(139.0), "Betaald", "3-2-2013"},
-                { new Integer(19), "Madelon Boon",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"},
-                { new Integer(24), "Wilco de Boer",  new Double(35.0),  new Double(10.0),  new Double(35.0),  new Double(15.0),  new Double(95.0), "Mislukt", "5-2-2013"},
-                { new Integer(25), "Marco Bakken",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"}
-            },
-            new String [] {
-                "Lidnummer", "Naam", "Abonnement", "Bar", "Cursussen", "Faciliteiten", "Totaal", "Status", "Datum"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tableMembers.setName("tableMembers"); // NOI18N
-        jScrollPane2.setViewportView(tableMembers);
-
         javax.swing.GroupLayout paneMembersLayout = new javax.swing.GroupLayout(paneMembers);
         paneMembers.setLayout(paneMembersLayout);
         paneMembersLayout.setHorizontalGroup(
             paneMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneMembersLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2)
-                .addContainerGap())
+            .addGap(0, 733, Short.MAX_VALUE)
         );
         paneMembersLayout.setVerticalGroup(
             paneMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneMembersLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+            .addGap(0, 238, Short.MAX_VALUE)
         );
 
         labelLocation.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -221,15 +175,10 @@ public class Collection extends mvc.view.AbstractView {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(labelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectLocation, 0, 82, Short.MAX_VALUE)))
+                .addGap(144, 144, 144)
+                .addComponent(labelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectLocation, 0, 82, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(labelPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -258,9 +207,7 @@ public class Collection extends mvc.view.AbstractView {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelLocation)
                     .addComponent(selectLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,14 +286,11 @@ public class Collection extends mvc.view.AbstractView {
     private pas.layout.label.Button buttonRevenues;
     private pas.layout.label.Button buttonSelect;
     private pas.layout.label.Button buttonUpdate;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel labelPeriod;
     private javax.swing.JPanel paneMembers;
     private javax.swing.JComboBox selectLocation;
     private javax.swing.JComboBox selectPeriodMonth;
     private javax.swing.JComboBox selectPeriodYear;
-    private pas.layout.table.Table tableMembers;
-    private pas.layout.label.H1 title;
     // End of variables declaration//GEN-END:variables
 }

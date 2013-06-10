@@ -5,7 +5,7 @@
 package pas.models.db;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,29 +27,29 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Registration.findAll", query = "SELECT r FROM Registration r"),
-    @NamedQuery(name = "Registration.findById", query = "SELECT r FROM Registration r WHERE r.id = :id")})
-public class Registration implements Serializable {
+    @NamedQuery(name = "Inschrijving.findAll", query = "SELECT i FROM Inschrijving i"),
+    @NamedQuery(name = "Inschrijving.findById", query = "SELECT i FROM Inschrijving i WHERE i.id = :id")})
+public class Inschrijving implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer id;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "registrationid")
-    private Collection<Accessing> accessingCollection;
-    @JoinColumn(name = "scheduleid", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "inschrijvingid")
+    private List<Toegang> toegangList;
+    @OneToMany(mappedBy = "inschrijvingid")
+    private List<Factuuritem> factuuritemList;
+    @JoinColumn(name = "planningid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Schedule scheduleid;
-    @JoinColumn(name = "memberid", referencedColumnName = "id")
+    private Planning planningid;
+    @JoinColumn(name = "lidid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member1 memberid;
-    @OneToMany(mappedBy = "registrationid")
-    private Collection<Invoiceline> invoicelineCollection;
+    private Lid lidid;
 
-    public Registration() {
+    public Inschrijving() {
     }
 
-    public Registration(Integer id) {
+    public Inschrijving(Integer id) {
         this.id = id;
     }
 
@@ -62,37 +62,37 @@ public class Registration implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Accessing> getAccessingCollection() {
-        return accessingCollection;
+    public List<Toegang> getToegangList() {
+        return toegangList;
     }
 
-    public void setAccessingCollection(Collection<Accessing> accessingCollection) {
-        this.accessingCollection = accessingCollection;
-    }
-
-    public Schedule getScheduleid() {
-        return scheduleid;
-    }
-
-    public void setScheduleid(Schedule scheduleid) {
-        this.scheduleid = scheduleid;
-    }
-
-    public Member1 getMemberid() {
-        return memberid;
-    }
-
-    public void setMemberid(Member1 memberid) {
-        this.memberid = memberid;
+    public void setToegangList(List<Toegang> toegangList) {
+        this.toegangList = toegangList;
     }
 
     @XmlTransient
-    public Collection<Invoiceline> getInvoicelineCollection() {
-        return invoicelineCollection;
+    public List<Factuuritem> getFactuuritemList() {
+        return factuuritemList;
     }
 
-    public void setInvoicelineCollection(Collection<Invoiceline> invoicelineCollection) {
-        this.invoicelineCollection = invoicelineCollection;
+    public void setFactuuritemList(List<Factuuritem> factuuritemList) {
+        this.factuuritemList = factuuritemList;
+    }
+
+    public Planning getPlanningid() {
+        return planningid;
+    }
+
+    public void setPlanningid(Planning planningid) {
+        this.planningid = planningid;
+    }
+
+    public Lid getLidid() {
+        return lidid;
+    }
+
+    public void setLidid(Lid lidid) {
+        this.lidid = lidid;
     }
 
     @Override
@@ -105,10 +105,10 @@ public class Registration implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Registration)) {
+        if (!(object instanceof Inschrijving)) {
             return false;
         }
-        Registration other = (Registration) object;
+        Inschrijving other = (Inschrijving) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -117,7 +117,7 @@ public class Registration implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Registration[ id=" + id + " ]";
+        return "pas.models.db.Inschrijving[ id=" + id + " ]";
     }
     
 }

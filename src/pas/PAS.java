@@ -9,6 +9,7 @@ import mvc.Application;
 import mvc.controller.InstanceController;
 import pas.layout.MainFrame;
 import pas.main.MainController;
+import pas.models.ActiveMember;
 import pas.models.SessionManager;
 
 /**
@@ -27,6 +28,7 @@ public class PAS {
         sessionManager.setEntityManager(
                     Persistence.createEntityManagerFactory(PAS.PERSISTENCE_UNIT_NAME)
                                .createEntityManager());
+        sessionManager.setActiveMember(new ActiveMember());
         application.setSessionManager(sessionManager);
         
         InstanceController instanceController = new InstanceController(new MainFrame());

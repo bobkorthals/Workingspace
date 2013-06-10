@@ -143,7 +143,7 @@ public class Main extends mvc.view.AbstractView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMembersActionPerformed
-        new MemberController().manageMemberAction();
+        new MemberController().indexAction();
     }//GEN-LAST:event_buttonMembersActionPerformed
 
     private void buttonFinancialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinancialActionPerformed

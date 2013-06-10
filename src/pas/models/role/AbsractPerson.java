@@ -1,13 +1,6 @@
 package pas.models.role;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import mvc.Application;
-import pas.exception.NoEntityManagerException;
-import pas.layout.MainFrame;
-import pas.models.SessionManager;
-import session.NoSessionManagerException;
+import java.util.Date;
 
 /**
  *
@@ -19,10 +12,9 @@ public abstract class AbsractPerson {
     private String lastName;
     private String suffix;
     private String gender;
-    private String dateOfBrith;
-    private int age;
+    private Date dateOfBrith;
 
-    public AbsractPerson(String firstName, String lastName, String suffix, String gender, String dateOfBrith) {
+    public AbsractPerson(String firstName, String lastName, String suffix, String gender, Date dateOfBrith) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.suffix = suffix;
@@ -62,47 +54,11 @@ public abstract class AbsractPerson {
         this.lastName = lastName;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getDateOfBrith() {
+    public Date getDateOfBrith() {
         return dateOfBrith;
     }
 
-    public void setDateOfBrith(String dateOfBrith) {
+    public void setDateOfBrith(Date dateOfBrith) {
         this.dateOfBrith = dateOfBrith;
-    }
-    
-    /*
-     * Returns the Sessionmanager
-     * 
-     * @return SessionManager
-     */
-    protected SessionManager getSessionManager() {
-        try {
-            return (SessionManager) Application.getInstance().getSessionManager();
-        } catch (NoSessionManagerException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-
-    /*
-     * Returns the database entity manager
-     * 
-     * @return EntityManager
-     */
-    protected EntityManager getEntityManager() {
-        try {
-            return this.getSessionManager().getEntityManager();
-        } catch (NoEntityManagerException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 }

@@ -14,7 +14,7 @@ import session.SessionManagerInterface;
 public class SessionManager implements SessionManagerInterface {
     
     private EntityManager entityManager;
-    private Member currentMember;
+    private ActiveMember activeMember;
 
     /*
      * Provides access to the database entity manager
@@ -42,21 +42,26 @@ public class SessionManager implements SessionManagerInterface {
     }
 
     /*
-     * Get the current member
+     * Get the active member
      * 
-     * @return Member current member
+     * @return ActiveMember active member
      */
-    public Member getCurrentMember() {
-        return currentMember;
+    public ActiveMember getActiveMember() throws NoEntityManagerException {
+        if (null == this.entityManager) {
+            throw new NoEntityManagerException(
+                    "No active member specified in the session manager");
+        }
+        
+        return activeMember;
     }
 
     /*
-     * Set the current member
+     * Set the active member
      * 
-     * @param Member current member
+     * @param ActiveMember active member
      * @return void
      */
-    public void setCurrentMember(Member currentMember) {
-        this.currentMember = currentMember;
+    public void setActiveMember(ActiveMember currentMember) {
+        this.activeMember = currentMember;
     }
 }

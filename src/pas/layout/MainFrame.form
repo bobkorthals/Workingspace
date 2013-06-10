@@ -321,8 +321,8 @@
                           <Component id="h2MemberName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="h2MemberId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlMemberSearchResults" min="-2" pref="258" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlMemberSearchResults" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

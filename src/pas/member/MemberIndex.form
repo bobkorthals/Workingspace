@@ -1036,7 +1036,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="98" green="62" red="62" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Leden beheer"/>
+        <Property name="text" type="java.lang.String" value="Leden beheer (kies eerst een lid)"/>
       </Properties>
     </Component>
   </SubComponents>

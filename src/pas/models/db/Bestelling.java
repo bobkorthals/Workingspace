@@ -5,8 +5,8 @@
 package pas.models.db;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,31 +30,37 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Invoice.findAll", query = "SELECT i FROM Invoice i"),
-    @NamedQuery(name = "Invoice.findById", query = "SELECT i FROM Invoice i WHERE i.id = :id"),
-    @NamedQuery(name = "Invoice.findByTimes", query = "SELECT i FROM Invoice i WHERE i.times = :times")})
-public class Invoice implements Serializable {
+    @NamedQuery(name = "Bestelling.findAll", query = "SELECT b FROM Bestelling b"),
+    @NamedQuery(name = "Bestelling.findById", query = "SELECT b FROM Bestelling b WHERE b.id = :id"),
+    @NamedQuery(name = "Bestelling.findByTimes", query = "SELECT b FROM Bestelling b WHERE b.times = :times")})
+public class Bestelling implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     private Integer id;
+    @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date times;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "invoiceid")
-    private Collection<Payment> paymentCollection;
-    @JoinColumn(name = "memberid", referencedColumnName = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bestellingid")
+    private List<Factuuritem> factuuritemList;
+    @JoinColumn(name = "werknemerid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Member1 memberid;
-    @JoinColumn(name = "invoicelineid", referencedColumnName = "id")
+    private Werknemer werknemerid;
+    @JoinColumn(name = "lidid", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Invoiceline invoicelineid;
+    private Lid lidid;
 
-    public Invoice() {
+    public Bestelling() {
     }
 
-    public Invoice(Integer id) {
+    public Bestelling(Integer id) {
         this.id = id;
+    }
+
+    public Bestelling(Integer id, Date times) {
+        this.id = id;
+        this.times = times;
     }
 
     public Integer getId() {
@@ -74,28 +80,28 @@ public class Invoice implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Payment> getPaymentCollection() {
-        return paymentCollection;
+    public List<Factuuritem> getFactuuritemList() {
+        return factuuritemList;
     }
 
-    public void setPaymentCollection(Collection<Payment> paymentCollection) {
-        this.paymentCollection = paymentCollection;
+    public void setFactuuritemList(List<Factuuritem> factuuritemList) {
+        this.factuuritemList = factuuritemList;
     }
 
-    public Member1 getMemberid() {
-        return memberid;
+    public Werknemer getWerknemerid() {
+        return werknemerid;
     }
 
-    public void setMemberid(Member1 memberid) {
-        this.memberid = memberid;
+    public void setWerknemerid(Werknemer werknemerid) {
+        this.werknemerid = werknemerid;
     }
 
-    public Invoiceline getInvoicelineid() {
-        return invoicelineid;
+    public Lid getLidid() {
+        return lidid;
     }
 
-    public void setInvoicelineid(Invoiceline invoicelineid) {
-        this.invoicelineid = invoicelineid;
+    public void setLidid(Lid lidid) {
+        this.lidid = lidid;
     }
 
     @Override
@@ -108,10 +114,10 @@ public class Invoice implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Invoice)) {
+        if (!(object instanceof Bestelling)) {
             return false;
         }
-        Invoice other = (Invoice) object;
+        Bestelling other = (Bestelling) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -120,7 +126,7 @@ public class Invoice implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Invoice[ id=" + id + " ]";
+        return "pas.models.db.Bestelling[ id=" + id + " ]";
     }
     
 }
