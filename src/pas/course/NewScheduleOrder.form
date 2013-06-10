@@ -31,7 +31,6 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="pnlNewScheduleOrder" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,23 +44,21 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="pnlScheduleOverview" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblNewScheduleOrder" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pnlMemberData" max="32767" attributes="0"/>
+                              <Component id="pnlOrderData" alignment="0" max="32767" attributes="0"/>
+                              <Component id="pnlButtons" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlOrderedSchedules" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="pnlOrderData" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
-                      <Component id="pnlMemberData" alignment="1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnlScheduleOverview" min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlOrderedSchedules" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -69,24 +66,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="lblNewScheduleOrder" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlButtons" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pnlOrderData" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnlMemberData" max="32767" attributes="0"/>
+                          <Component id="pnlMemberData" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="pnlOrderedSchedules" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnlScheduleOverview" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="pnlOrderedSchedules" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="pnlScheduleOverview" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,7 +100,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlOrderedSchedulesList" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlOrderedSchedulesList" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -116,7 +109,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlOrderedSchedulesList" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlOrderedSchedulesList" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -153,7 +146,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="189" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel8" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -179,10 +172,10 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnAddSchedule" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnDeleteSchedule" min="-2" pref="108" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="286" max="-2" attributes="0"/>
+                              <Component id="btnAddSchedule" min="-2" pref="191" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnDeleteSchedule" min="-2" pref="190" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -244,7 +237,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <Component id="lblScheduleIDOverview" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -265,7 +261,7 @@
                               <Component id="ddlScheduleDateMonth" min="-2" pref="101" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ddlScheduleDateYear" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -290,8 +286,8 @@
                           <Component id="ddlScheduleDateYear" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="136" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="158" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -386,7 +382,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblNewScheduleOrder">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="20" style="1"/>
@@ -394,7 +390,7 @@
             <Property name="text" type="java.lang.String" value="Inschrijven"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel7">
+        <Container class="javax.swing.JPanel" name="pnlButtons">
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
@@ -419,7 +415,7 @@
                       <Component id="btnGoBack" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnPayment" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -470,19 +466,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblEmployeeID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="txtEmployeeID" min="-2" pref="68" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblOrderID" max="32767" attributes="0"/>
-                              <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-                              <Component id="txtOrderID" min="-2" pref="68" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblOrderID" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="lblEmployeeID" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtEmployeeID" pref="150" max="32767" attributes="0"/>
+                          <Component id="txtOrderID" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -499,7 +492,7 @@
                           <Component id="lblEmployeeID" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtEmployeeID" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -543,25 +536,25 @@
                           <Component id="btnSearchMember" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="memberFirstNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="memberIDLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="memberSuffixLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="memberLastNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="memberBirthdayLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="memberGenderLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="memberCreditLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="memberLatePaymentLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblMemberFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMemberID" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMemberSuffix" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMemberLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMemberBirthday" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblMemberGender" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblMemberCredit" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblMemberLatePayment" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="memberID" max="32767" attributes="0"/>
-                                  <Component id="memberFirstName" max="32767" attributes="0"/>
-                                  <Component id="memberSuffix" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="memberLastName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="memberBirthday" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="memberGender" alignment="0" pref="171" max="32767" attributes="0"/>
-                                  <Component id="memberCredit" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="memberLatePayment" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMemberID" max="32767" attributes="0"/>
+                                  <Component id="txtMemberFirstName" max="32767" attributes="0"/>
+                                  <Component id="txtMemberSuffix" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMemberLastName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMemberBirthday" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMemberGender" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMemberCredit" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtMemberLatePayment" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -575,43 +568,43 @@
                       <Component id="btnSearchMember" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMemberID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMemberID" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberFirstNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMemberFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMemberFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberSuffixLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMemberSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMemberSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberLastNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMemberLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMemberLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberBirthdayLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMemberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMemberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberGenderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMemberGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMemberGender" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberCreditLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberCredit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMemberCredit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMemberCredit" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="memberLatePaymentLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="memberLatePayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMemberLatePayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMemberLatePayment" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -633,61 +626,61 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchMemberActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="memberIDLabel">
+            <Component class="javax.swing.JLabel" name="lblMemberID">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lidnummer"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="memberID">
+            <Component class="javax.swing.JTextField" name="txtMemberID">
             </Component>
-            <Component class="javax.swing.JLabel" name="memberFirstNameLabel">
+            <Component class="javax.swing.JLabel" name="lblMemberFirstName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Voornaam"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="memberFirstName">
+            <Component class="javax.swing.JTextField" name="txtMemberFirstName">
             </Component>
-            <Component class="javax.swing.JLabel" name="memberSuffixLabel">
+            <Component class="javax.swing.JLabel" name="lblMemberSuffix">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tussenvoegsel"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="memberSuffix">
+            <Component class="javax.swing.JTextField" name="txtMemberSuffix">
             </Component>
-            <Component class="javax.swing.JLabel" name="memberLastNameLabel">
+            <Component class="javax.swing.JLabel" name="lblMemberLastName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Achternaam"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="memberLastName">
+            <Component class="javax.swing.JTextField" name="txtMemberLastName">
             </Component>
-            <Component class="javax.swing.JLabel" name="memberBirthdayLabel">
+            <Component class="javax.swing.JLabel" name="lblMemberBirthday">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Geboortedatum"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="memberBirthday">
+            <Component class="javax.swing.JTextField" name="txtMemberBirthday">
             </Component>
-            <Component class="javax.swing.JLabel" name="memberGenderLabel">
+            <Component class="javax.swing.JLabel" name="lblMemberGender">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Geslacht"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="memberGender">
+            <Component class="javax.swing.JTextField" name="txtMemberGender">
             </Component>
-            <Component class="javax.swing.JLabel" name="memberCreditLabel">
+            <Component class="javax.swing.JLabel" name="lblMemberCredit">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Krediet"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="memberCredit">
+            <Component class="javax.swing.JTextField" name="txtMemberCredit">
             </Component>
-            <Component class="javax.swing.JLabel" name="memberLatePaymentLabel">
+            <Component class="javax.swing.JLabel" name="lblMemberLatePayment">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Betalingsachterstand"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="memberLatePayment">
+            <Component class="javax.swing.JTextField" name="txtMemberLatePayment">
             </Component>
           </SubComponents>
         </Container>

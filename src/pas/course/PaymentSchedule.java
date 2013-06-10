@@ -44,7 +44,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
         pnlOrderedSchedules = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        pnlButtons = new javax.swing.JPanel();
         btnCloseScheduleOrder = new javax.swing.JButton();
         btnChangeScheduleOrder = new javax.swing.JButton();
         pnlMemberData = new javax.swing.JPanel();
@@ -71,7 +71,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
         txtEmployeeID = new javax.swing.JTextField();
         lblOrderDate = new javax.swing.JLabel();
         txtOrderDate = new javax.swing.JTextField();
-        orderTimeLabel = new javax.swing.JLabel();
+        lblOrderTime = new javax.swing.JLabel();
         txtOrderTime = new javax.swing.JTextField();
         lblAmountSchedules = new javax.swing.JLabel();
         txtAmountSchedules = new javax.swing.JTextField();
@@ -80,8 +80,8 @@ public class PaymentSchedule extends mvc.view.AbstractView {
         pnlPaymentScheduleDescription = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
-        payment = new javax.swing.JButton();
+        lblPaymentSchedule = new javax.swing.JLabel();
+        btnPayment = new javax.swing.JButton();
 
         setOpaque(false);
 
@@ -122,7 +122,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
 
         jPanel5.setOpaque(false);
 
-        jPanel6.setOpaque(false);
+        pnlButtons.setOpaque(false);
 
         btnCloseScheduleOrder.setBackground(new java.awt.Color(155, 9, 46));
         btnCloseScheduleOrder.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,20 +142,20 @@ public class PaymentSchedule extends mvc.view.AbstractView {
             }
         });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlButtonsLayout = new javax.swing.GroupLayout(pnlButtons);
+        pnlButtons.setLayout(pnlButtonsLayout);
+        pnlButtonsLayout.setHorizontalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCloseScheduleOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnChangeScheduleOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        pnlButtonsLayout.setVerticalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnChangeScheduleOrder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -255,7 +255,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
 
         lblOrderDate.setText("Datum");
 
-        orderTimeLabel.setText("Tijd");
+        lblOrderTime.setText("Tijd");
 
         lblAmountSchedules.setText("Aantal Planningen");
 
@@ -269,7 +269,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
                 .addContainerGap()
                 .addGroup(pnlOrderDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(lblAmountSchedules, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(orderTimeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblOrderTime, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblOrderDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblOrderID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblEmployeeID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -301,7 +301,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
                     .addComponent(txtOrderDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlOrderDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(orderTimeLabel)
+                    .addComponent(lblOrderTime)
                     .addComponent(txtOrderTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlOrderDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -320,7 +320,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlMemberData, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlOrderData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -329,7 +329,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlMemberData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -361,15 +361,15 @@ public class PaymentSchedule extends mvc.view.AbstractView {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel3.setText("Afrekenen");
+        lblPaymentSchedule.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        lblPaymentSchedule.setText("Afrekenen");
 
-        payment.setBackground(new java.awt.Color(155, 9, 46));
-        payment.setForeground(new java.awt.Color(255, 255, 255));
-        payment.setText("Betalen");
-        payment.addActionListener(new java.awt.event.ActionListener() {
+        btnPayment.setBackground(new java.awt.Color(155, 9, 46));
+        btnPayment.setForeground(new java.awt.Color(255, 255, 255));
+        btnPayment.setText("Betalen");
+        btnPayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paymentActionPerformed(evt);
+                btnPaymentActionPerformed(evt);
             }
         });
 
@@ -380,23 +380,25 @@ public class PaymentSchedule extends mvc.view.AbstractView {
             .addGroup(pnlPaymentScheduleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlPaymentScheduleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPaymentSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlPaymentScheduleLayout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlPaymentScheduleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlOrderedSchedules, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlPaymentScheduleDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPaymentScheduleLayout.createSequentialGroup()
-                                .addComponent(payment, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(96, 96, 96)))))
+                        .addGroup(pnlPaymentScheduleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlPaymentScheduleLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlPaymentScheduleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(pnlOrderedSchedules, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pnlPaymentScheduleDescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(pnlPaymentScheduleLayout.createSequentialGroup()
+                                .addGap(100, 100, 100)
+                                .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         pnlPaymentScheduleLayout.setVerticalGroup(
             pnlPaymentScheduleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPaymentScheduleLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addContainerGap()
+                .addComponent(lblPaymentSchedule)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlPaymentScheduleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlPaymentScheduleLayout.createSequentialGroup()
@@ -404,7 +406,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlPaymentScheduleDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(payment))
+                        .addComponent(btnPayment))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -426,9 +428,9 @@ public class PaymentSchedule extends mvc.view.AbstractView {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentActionPerformed
+    private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
         coursecontroller.ScheduleCourseAction();        // Deze button opent de view CourseMain
-    }//GEN-LAST:event_paymentActionPerformed
+    }//GEN-LAST:event_btnPaymentActionPerformed
 
     private void btnChangeScheduleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeScheduleOrderActionPerformed
         coursecontroller.NewScheduleOrderAction();        // Deze button opent de view NewPlanningOrder
@@ -441,10 +443,9 @@ public class PaymentSchedule extends mvc.view.AbstractView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangeScheduleOrder;
     private javax.swing.JButton btnCloseScheduleOrder;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton btnPayment;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAmountSchedules;
     private javax.swing.JLabel lblEmployeeID;
@@ -458,9 +459,10 @@ public class PaymentSchedule extends mvc.view.AbstractView {
     private javax.swing.JLabel lblMemberSuffix;
     private javax.swing.JLabel lblOrderDate;
     private javax.swing.JLabel lblOrderID;
+    private javax.swing.JLabel lblOrderTime;
+    private javax.swing.JLabel lblPaymentSchedule;
     private javax.swing.JLabel lblTotalLabel;
-    private javax.swing.JLabel orderTimeLabel;
-    private javax.swing.JButton payment;
+    private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlMemberData;
     private javax.swing.JPanel pnlOrderData;
     private javax.swing.JPanel pnlOrderedSchedules;
