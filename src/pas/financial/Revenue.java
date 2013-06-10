@@ -381,15 +381,15 @@ public class Revenue extends mvc.view.AbstractView {
     }//GEN-LAST:event_selectPeriodYearActionPerformed
 
     private void buttonRevenuesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonRevenuesMouseClicked
-        this.controller.openRevenue();
+//        this.controller.openRevenue();
     }//GEN-LAST:event_buttonRevenuesMouseClicked
 
     private void buttonCostsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCostsMouseClicked
-        this.controller.openCost();
+//        this.controller.openCost();
     }//GEN-LAST:event_buttonCostsMouseClicked
 
     private void buttonCollectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCollectionMouseClicked
-        this.controller.openCollection();
+//        this.controller.openCollection();
     }//GEN-LAST:event_buttonCollectionMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
