@@ -16,6 +16,9 @@ import pas.models.db.Lid;
  */
 public class SidebarMemberSearchResult extends JPanel implements MouseListener {
 
+    // Member controller
+    private static MemberController controller;
+    
     // Active result list members
     private static ArrayList<SidebarMemberSearchResult> activeResultList = new ArrayList<>();
     // Statusses
@@ -69,6 +72,19 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
 
         SidebarMemberSearchResult.activeResultList.add(this);
         addMouseListener(this);
+    }
+    
+    /*
+     * Returns an instance of the controller
+     * 
+     * @return MemberController controller
+     */
+    public MemberController getController() {
+        if (null == SidebarMemberSearchResult.controller) {
+            SidebarMemberSearchResult.controller = new MemberController();
+        }
+        
+        return SidebarMemberSearchResult.controller;
     }
 
     /*
@@ -145,7 +161,7 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        new MemberController().manageMemberAction(
+        getController().manageMemberAction(
                 Integer.parseInt(lblMemberId.getText()));
     }//GEN-LAST:event_formMouseClicked
 

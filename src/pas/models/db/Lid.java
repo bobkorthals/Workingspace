@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pas.models.db;
 
 import java.io.Serializable;
@@ -30,12 +34,14 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Lid.findAll", query = "SELECT l FROM Lid l"),
     @NamedQuery(name = "Lid.findById", query = "SELECT l FROM Lid l WHERE l.id = :id"),
     @NamedQuery(name = "Lid.findBySleutelid", query = "SELECT l FROM Lid l WHERE l.sleutelid = :sleutelid"),
+    @NamedQuery(name = "Lid.findByIdentiteitsid", query = "SELECT l FROM Lid l WHERE l.identiteitsid = :identiteitsid"),
+    @NamedQuery(name = "Lid.findByBestandslocatie", query = "SELECT l FROM Lid l WHERE l.bestandslocatie = :bestandslocatie"),
     @NamedQuery(name = "Lid.findByCredit", query = "SELECT l FROM Lid l WHERE l.credit = :credit"),
     @NamedQuery(name = "Lid.findByVoornaam", query = "SELECT l FROM Lid l WHERE l.voornaam = :voornaam"),
     @NamedQuery(name = "Lid.findByTussenvoegsel", query = "SELECT l FROM Lid l WHERE l.tussenvoegsel = :tussenvoegsel"),
     @NamedQuery(name = "Lid.findByAchternaam", query = "SELECT l FROM Lid l WHERE l.achternaam = :achternaam"),
     @NamedQuery(name = "Lid.findByGeboortedatum", query = "SELECT l FROM Lid l WHERE l.geboortedatum = :geboortedatum"),
-    @NamedQuery(name = "Lid.findByGeslachte", query = "SELECT l FROM Lid l WHERE l.geslachte = :geslachte"),
+    @NamedQuery(name = "Lid.findByGeslacht", query = "SELECT l FROM Lid l WHERE l.geslacht = :geslacht"),
     @NamedQuery(name = "Lid.findByMobiel", query = "SELECT l FROM Lid l WHERE l.mobiel = :mobiel"),
     @NamedQuery(name = "Lid.findByTelefoonnummer", query = "SELECT l FROM Lid l WHERE l.telefoonnummer = :telefoonnummer"),
     @NamedQuery(name = "Lid.findByEmail", query = "SELECT l FROM Lid l WHERE l.email = :email"),
@@ -48,7 +54,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Lid.findByOpmerking", query = "SELECT l FROM Lid l WHERE l.opmerking = :opmerking"),
     @NamedQuery(name = "Lid.findByIdentiteitid", query = "SELECT l FROM Lid l WHERE l.identiteitid = :identiteitid"),
     @NamedQuery(name = "Lid.findByCheckin", query = "SELECT l FROM Lid l WHERE l.checkin = :checkin"),
-    @NamedQuery(name = "Lid.search", query = "SELECT l FROM Lid l WHERE l.searchable LIKE :searchable")})
+    @NamedQuery(name = "Lid.search", query = "SELECT l FROM Lid l WHERE l.searchable LIKE :searchable"),
+    @NamedQuery(name = "Lid.update", query = "UPDATE Lid SET voornaam = :voornaam")})
 public class Lid implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,6 +64,9 @@ public class Lid implements Serializable {
     private Integer id;
     @Basic(optional = false)
     private int sleutelid;
+    @Basic(optional = false)
+    private int identiteitsid;
+    private String bestandslocatie;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     private BigDecimal credit;
@@ -69,7 +79,7 @@ public class Lid implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date geboortedatum;
     @Basic(optional = false)
-    private int geslachte;
+    private int geslacht;
     private String mobiel;
     private String telefoonnummer;
     private String email;
@@ -115,14 +125,15 @@ public class Lid implements Serializable {
         this.id = id;
     }
 
-    public Lid(Integer id, int sleutelid, BigDecimal credit, String voornaam, String achternaam, Date geboortedatum, int geslachte, String straatnaam, int huisnummer, String postcode, String plaats, String status, int identiteitid) {
+    public Lid(Integer id, int sleutelid, int identiteitsid, BigDecimal credit, String voornaam, String achternaam, Date geboortedatum, int geslacht, String straatnaam, int huisnummer, String postcode, String plaats, String status, int identiteitid) {
         this.id = id;
         this.sleutelid = sleutelid;
+        this.identiteitsid = identiteitsid;
         this.credit = credit;
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.geboortedatum = geboortedatum;
-        this.geslachte = geslachte;
+        this.geslacht = geslacht;
         this.straatnaam = straatnaam;
         this.huisnummer = huisnummer;
         this.postcode = postcode;
@@ -145,6 +156,22 @@ public class Lid implements Serializable {
 
     public void setSleutelid(int sleutelid) {
         this.sleutelid = sleutelid;
+    }
+
+    public int getIdentiteitsid() {
+        return identiteitsid;
+    }
+
+    public void setIdentiteitsid(int identiteitsid) {
+        this.identiteitsid = identiteitsid;
+    }
+
+    public String getBestandslocatie() {
+        return bestandslocatie;
+    }
+
+    public void setBestandslocatie(String bestandslocatie) {
+        this.bestandslocatie = bestandslocatie;
     }
 
     public BigDecimal getCredit() {
@@ -187,12 +214,12 @@ public class Lid implements Serializable {
         this.geboortedatum = geboortedatum;
     }
 
-    public int getGeslachte() {
-        return geslachte;
+    public int getGeslacht() {
+        return geslacht;
     }
 
-    public void setGeslachte(int geslachte) {
-        this.geslachte = geslachte;
+    public void setGeslacht(int geslacht) {
+        this.geslacht = geslacht;
     }
 
     public String getMobiel() {
@@ -367,6 +394,10 @@ public class Lid implements Serializable {
 
     public void setReserveringList(List<Reservering> reserveringList) {
         this.reserveringList = reserveringList;
+    }
+    
+    public void save() {
+        
     }
 
     @Override

@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Betaling.findAll", query = "SELECT b FROM Betaling b"),
     @NamedQuery(name = "Betaling.findById", query = "SELECT b FROM Betaling b WHERE b.id = :id"),
-    @NamedQuery(name = "Betaling.findByTimes", query = "SELECT b FROM Betaling b WHERE b.times = :times"),
+    @NamedQuery(name = "Betaling.findByTijddatum", query = "SELECT b FROM Betaling b WHERE b.tijddatum = :tijddatum"),
     @NamedQuery(name = "Betaling.findByLidid", query = "SELECT b FROM Betaling b WHERE b.lidid = :lidid"),
     @NamedQuery(name = "Betaling.findByMethode", query = "SELECT b FROM Betaling b WHERE b.methode = :methode"),
     @NamedQuery(name = "Betaling.findByRestant", query = "SELECT b FROM Betaling b WHERE b.restant = :restant"),
@@ -42,7 +42,7 @@ public class Betaling implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date times;
+    private Date tijddatum;
     @Basic(optional = false)
     private int lidid;
     @Basic(optional = false)
@@ -61,9 +61,9 @@ public class Betaling implements Serializable {
         this.id = id;
     }
 
-    public Betaling(Integer id, Date times, int lidid, String methode) {
+    public Betaling(Integer id, Date tijddatum, int lidid, String methode) {
         this.id = id;
-        this.times = times;
+        this.tijddatum = tijddatum;
         this.lidid = lidid;
         this.methode = methode;
     }
@@ -76,12 +76,12 @@ public class Betaling implements Serializable {
         this.id = id;
     }
 
-    public Date getTimes() {
-        return times;
+    public Date getTijddatum() {
+        return tijddatum;
     }
 
-    public void setTimes(Date times) {
-        this.times = times;
+    public void setTijddatum(Date tijddatum) {
+        this.tijddatum = tijddatum;
     }
 
     public int getLidid() {

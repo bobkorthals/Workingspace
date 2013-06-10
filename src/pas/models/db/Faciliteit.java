@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Faciliteit.findByCapaciteit", query = "SELECT f FROM Faciliteit f WHERE f.capaciteit = :capaciteit"),
     @NamedQuery(name = "Faciliteit.findByOmschrijving", query = "SELECT f FROM Faciliteit f WHERE f.omschrijving = :omschrijving"),
     @NamedQuery(name = "Faciliteit.findByKosten", query = "SELECT f FROM Faciliteit f WHERE f.kosten = :kosten"),
-    @NamedQuery(name = "Faciliteit.findByTypen", query = "SELECT f FROM Faciliteit f WHERE f.typen = :typen")})
+    @NamedQuery(name = "Faciliteit.findBySoort", query = "SELECT f FROM Faciliteit f WHERE f.soort = :soort")})
 public class Faciliteit implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,7 +47,7 @@ public class Faciliteit implements Serializable {
     @Basic(optional = false)
     private BigDecimal kosten;
     @Basic(optional = false)
-    private String typen;
+    private String soort;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "faciliteitid")
     private List<Reservering> reserveringList;
     @JoinColumn(name = "vestigingid", referencedColumnName = "id")
@@ -61,11 +61,11 @@ public class Faciliteit implements Serializable {
         this.id = id;
     }
 
-    public Faciliteit(Integer id, int capaciteit, BigDecimal kosten, String typen) {
+    public Faciliteit(Integer id, int capaciteit, BigDecimal kosten, String soort) {
         this.id = id;
         this.capaciteit = capaciteit;
         this.kosten = kosten;
-        this.typen = typen;
+        this.soort = soort;
     }
 
     public Integer getId() {
@@ -100,12 +100,12 @@ public class Faciliteit implements Serializable {
         this.kosten = kosten;
     }
 
-    public String getTypen() {
-        return typen;
+    public String getSoort() {
+        return soort;
     }
 
-    public void setTypen(String typen) {
-        this.typen = typen;
+    public void setSoort(String soort) {
+        this.soort = soort;
     }
 
     @XmlTransient

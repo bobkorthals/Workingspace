@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Werknemer.findByTussenvoegsel", query = "SELECT w FROM Werknemer w WHERE w.tussenvoegsel = :tussenvoegsel"),
     @NamedQuery(name = "Werknemer.findByAchternaam", query = "SELECT w FROM Werknemer w WHERE w.achternaam = :achternaam"),
     @NamedQuery(name = "Werknemer.findByGeboortedatum", query = "SELECT w FROM Werknemer w WHERE w.geboortedatum = :geboortedatum"),
-    @NamedQuery(name = "Werknemer.findByGeslachte", query = "SELECT w FROM Werknemer w WHERE w.geslachte = :geslachte"),
+    @NamedQuery(name = "Werknemer.findByGeslacht", query = "SELECT w FROM Werknemer w WHERE w.geslacht = :geslacht"),
     @NamedQuery(name = "Werknemer.findByMobiel", query = "SELECT w FROM Werknemer w WHERE w.mobiel = :mobiel"),
     @NamedQuery(name = "Werknemer.findByTelefoonnummer", query = "SELECT w FROM Werknemer w WHERE w.telefoonnummer = :telefoonnummer"),
     @NamedQuery(name = "Werknemer.findByEmail", query = "SELECT w FROM Werknemer w WHERE w.email = :email"),
@@ -68,7 +68,7 @@ public class Werknemer implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date geboortedatum;
     @Basic(optional = false)
-    private int geslachte;
+    private int geslacht;
     private String mobiel;
     private String telefoonnummer;
     private String email;
@@ -117,12 +117,12 @@ public class Werknemer implements Serializable {
         this.id = id;
     }
 
-    public Werknemer(Integer id, String voornaam, String achternaam, Date geboortedatum, int geslachte, Date indienst, String straatnaam, int huisnummer, String postcode, String plaats, String status, String wachtwoord, int identitynr) {
+    public Werknemer(Integer id, String voornaam, String achternaam, Date geboortedatum, int geslacht, Date indienst, String straatnaam, int huisnummer, String postcode, String plaats, String status, String wachtwoord, int identitynr) {
         this.id = id;
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.geboortedatum = geboortedatum;
-        this.geslachte = geslachte;
+        this.geslacht = geslacht;
         this.indienst = indienst;
         this.straatnaam = straatnaam;
         this.huisnummer = huisnummer;
@@ -173,12 +173,12 @@ public class Werknemer implements Serializable {
         this.geboortedatum = geboortedatum;
     }
 
-    public int getGeslachte() {
-        return geslachte;
+    public int getGeslacht() {
+        return geslacht;
     }
 
-    public void setGeslachte(int geslachte) {
-        this.geslachte = geslachte;
+    public void setGeslacht(int geslacht) {
+        this.geslacht = geslacht;
     }
 
     public String getMobiel() {

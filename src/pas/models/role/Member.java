@@ -35,7 +35,7 @@ public class Member extends AbsractPerson {
                dbResult.getVoornaam(), 
                dbResult.getAchternaam(),
                dbResult.getAchtervoegsel(),
-               ((Integer) dbResult.getGeslachte()).toString(),
+               ((Integer) dbResult.getGeslacht()).toString(),
                dbResult.getGeboortedatum());
 
         this.memberID = dbResult.getId();
@@ -48,5 +48,9 @@ public class Member extends AbsractPerson {
      */
     public int getMemberID() {
         return memberID;
+    }
+    
+    public void save() {
+        
     }
 }
