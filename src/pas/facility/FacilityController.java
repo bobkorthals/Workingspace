@@ -26,13 +26,6 @@ public class FacilityController extends AbstractController {
        open(view);
    }
    
-   public void actionReservation(){
-       ReservationFacility view = new ReservationFacility(this);
-       mainFrame.setProfilePanelEnabled(true);
-       mainFrame.setSidebarEnabled(true);
-       open(view);
-   }
-   
    public void reservationChange(){
        ReservationChange view = new ReservationChange(this);
        mainFrame.setProfilePanelEnabled(true);
@@ -49,6 +42,13 @@ public class FacilityController extends AbstractController {
    
    public void addFacilityAction(){
        AddFacility view = new AddFacility(this);
+       mainFrame.setProfilePanelEnabled(true);
+       mainFrame.setSidebarEnabled(true);
+       open(view);
+   }
+   
+   public void actionReservationMemberSelected(){
+       ReservationFacilityMemberSelected view = new ReservationFacilityMemberSelected(this);
        mainFrame.setProfilePanelEnabled(true);
        mainFrame.setSidebarEnabled(true);
        open(view);
