@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Lid.findByTussenvoegsel", query = "SELECT l FROM Lid l WHERE l.tussenvoegsel = :tussenvoegsel"),
     @NamedQuery(name = "Lid.findByAchternaam", query = "SELECT l FROM Lid l WHERE l.achternaam = :achternaam"),
     @NamedQuery(name = "Lid.findByGeboortedatum", query = "SELECT l FROM Lid l WHERE l.geboortedatum = :geboortedatum"),
-    @NamedQuery(name = "Lid.findByGeslachte", query = "SELECT l FROM Lid l WHERE l.geslachte = :geslachte"),
+    @NamedQuery(name = "Lid.findByGeslacht", query = "SELECT l FROM Lid l WHERE l.geslacht = :geslacht"),
     @NamedQuery(name = "Lid.findByMobiel", query = "SELECT l FROM Lid l WHERE l.mobiel = :mobiel"),
     @NamedQuery(name = "Lid.findByTelefoonnummer", query = "SELECT l FROM Lid l WHERE l.telefoonnummer = :telefoonnummer"),
     @NamedQuery(name = "Lid.findByEmail", query = "SELECT l FROM Lid l WHERE l.email = :email"),
@@ -69,7 +69,7 @@ public class Lid implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date geboortedatum;
     @Basic(optional = false)
-    private int geslachte;
+    private int geslacht;
     private String mobiel;
     private String telefoonnummer;
     private String email;
@@ -115,14 +115,14 @@ public class Lid implements Serializable {
         this.id = id;
     }
 
-    public Lid(Integer id, int sleutelid, BigDecimal credit, String voornaam, String achternaam, Date geboortedatum, int geslachte, String straatnaam, int huisnummer, String postcode, String plaats, String status, int identiteitid) {
+    public Lid(Integer id, int sleutelid, BigDecimal credit, String voornaam, String achternaam, Date geboortedatum, int geslacht, String straatnaam, int huisnummer, String postcode, String plaats, String status, int identiteitid) {
         this.id = id;
         this.sleutelid = sleutelid;
         this.credit = credit;
         this.voornaam = voornaam;
         this.achternaam = achternaam;
         this.geboortedatum = geboortedatum;
-        this.geslachte = geslachte;
+        this.geslacht = geslacht;
         this.straatnaam = straatnaam;
         this.huisnummer = huisnummer;
         this.postcode = postcode;
@@ -187,12 +187,12 @@ public class Lid implements Serializable {
         this.geboortedatum = geboortedatum;
     }
 
-    public int getGeslachte() {
-        return geslachte;
+    public int getGeslacht() {
+        return geslacht;
     }
 
-    public void setGeslachte(int geslachte) {
-        this.geslachte = geslachte;
+    public void setGeslacht(int geslacht) {
+        this.geslacht = geslacht;
     }
 
     public String getMobiel() {

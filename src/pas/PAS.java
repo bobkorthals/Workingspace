@@ -21,20 +21,24 @@ public class PAS {
     public static final String PERSISTENCE_UNIT_NAME = "PASPU"; 
 
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-        PAS.setLookAndFeel();
-        
-        Application application = Application.getInstance();
-        SessionManager sessionManager = new SessionManager();
-        sessionManager.setEntityManager(
-                    Persistence.createEntityManagerFactory(PAS.PERSISTENCE_UNIT_NAME)
-                               .createEntityManager());
-        sessionManager.setActiveMember(new ActiveMember());
-        application.setSessionManager(sessionManager);
-        
-        InstanceController instanceController = new InstanceController(new MainFrame());
-        application.setInstanceController(instanceController);
+        try {
+            PAS.setLookAndFeel();
 
-        new MainController().mainAction();
+            Application application = Application.getInstance();
+            SessionManager sessionManager = new SessionManager();
+            sessionManager.setEntityManager(
+                        Persistence.createEntityManagerFactory(PAS.PERSISTENCE_UNIT_NAME)
+                                   .createEntityManager());
+            sessionManager.setActiveMember(new ActiveMember());
+            application.setSessionManager(sessionManager);
+
+            InstanceController instanceController = new InstanceController(new MainFrame());
+            application.setInstanceController(instanceController);
+
+            new MainController().mainAction();
+        } catch(Exception e){
+            Logger.getLogger(PAS.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
     
     private static void setLookAndFeel() {
