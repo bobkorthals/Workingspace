@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package pas.models.db;
 
 import java.io.Serializable;
@@ -30,6 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Lid.findAll", query = "SELECT l FROM Lid l"),
     @NamedQuery(name = "Lid.findById", query = "SELECT l FROM Lid l WHERE l.id = :id"),
     @NamedQuery(name = "Lid.findBySleutelid", query = "SELECT l FROM Lid l WHERE l.sleutelid = :sleutelid"),
+    @NamedQuery(name = "Lid.findByIdentiteitsid", query = "SELECT l FROM Lid l WHERE l.identiteitsid = :identiteitsid"),
+    @NamedQuery(name = "Lid.findByBestandslocatie", query = "SELECT l FROM Lid l WHERE l.bestandslocatie = :bestandslocatie"),
     @NamedQuery(name = "Lid.findByCredit", query = "SELECT l FROM Lid l WHERE l.credit = :credit"),
     @NamedQuery(name = "Lid.findByVoornaam", query = "SELECT l FROM Lid l WHERE l.voornaam = :voornaam"),
     @NamedQuery(name = "Lid.findByTussenvoegsel", query = "SELECT l FROM Lid l WHERE l.tussenvoegsel = :tussenvoegsel"),
@@ -48,7 +54,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Lid.findByOpmerking", query = "SELECT l FROM Lid l WHERE l.opmerking = :opmerking"),
     @NamedQuery(name = "Lid.findByIdentiteitid", query = "SELECT l FROM Lid l WHERE l.identiteitid = :identiteitid"),
     @NamedQuery(name = "Lid.findByCheckin", query = "SELECT l FROM Lid l WHERE l.checkin = :checkin"),
-    @NamedQuery(name = "Lid.search", query = "SELECT l FROM Lid l WHERE l.searchable LIKE :searchable")})
+    @NamedQuery(name = "Lid.search", query = "SELECT l FROM Lid l WHERE l.searchable LIKE :searchable"),
+    @NamedQuery(name = "Lid.update", query = "UPDATE Lid SET voornaam = :voornaam")})
 public class Lid implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,6 +64,9 @@ public class Lid implements Serializable {
     private Integer id;
     @Basic(optional = false)
     private int sleutelid;
+    @Basic(optional = false)
+    private int identiteitsid;
+    private String bestandslocatie;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     private BigDecimal credit;
@@ -115,9 +125,10 @@ public class Lid implements Serializable {
         this.id = id;
     }
 
-    public Lid(Integer id, int sleutelid, BigDecimal credit, String voornaam, String achternaam, Date geboortedatum, int geslacht, String straatnaam, int huisnummer, String postcode, String plaats, String status, int identiteitid) {
+    public Lid(Integer id, int sleutelid, int identiteitsid, BigDecimal credit, String voornaam, String achternaam, Date geboortedatum, int geslacht, String straatnaam, int huisnummer, String postcode, String plaats, String status, int identiteitid) {
         this.id = id;
         this.sleutelid = sleutelid;
+        this.identiteitsid = identiteitsid;
         this.credit = credit;
         this.voornaam = voornaam;
         this.achternaam = achternaam;
@@ -145,6 +156,22 @@ public class Lid implements Serializable {
 
     public void setSleutelid(int sleutelid) {
         this.sleutelid = sleutelid;
+    }
+
+    public int getIdentiteitsid() {
+        return identiteitsid;
+    }
+
+    public void setIdentiteitsid(int identiteitsid) {
+        this.identiteitsid = identiteitsid;
+    }
+
+    public String getBestandslocatie() {
+        return bestandslocatie;
+    }
+
+    public void setBestandslocatie(String bestandslocatie) {
+        this.bestandslocatie = bestandslocatie;
     }
 
     public BigDecimal getCredit() {
@@ -367,6 +394,10 @@ public class Lid implements Serializable {
 
     public void setReserveringList(List<Reservering> reserveringList) {
         this.reserveringList = reserveringList;
+    }
+    
+    public void save() {
+        
     }
 
     @Override

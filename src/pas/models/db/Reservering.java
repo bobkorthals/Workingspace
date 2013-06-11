@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Reservering.findAll", query = "SELECT r FROM Reservering r"),
     @NamedQuery(name = "Reservering.findById", query = "SELECT r FROM Reservering r WHERE r.id = :id"),
-    @NamedQuery(name = "Reservering.findByTimes", query = "SELECT r FROM Reservering r WHERE r.times = :times")})
+    @NamedQuery(name = "Reservering.findByTijddatum", query = "SELECT r FROM Reservering r WHERE r.tijddatum = :tijddatum")})
 public class Reservering implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,7 +41,7 @@ public class Reservering implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date times;
+    private Date tijddatum;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "reserveringid")
     private List<Toegang> toegangList;
     @OneToMany(mappedBy = "reserveringid")
@@ -60,9 +60,9 @@ public class Reservering implements Serializable {
         this.id = id;
     }
 
-    public Reservering(Integer id, Date times) {
+    public Reservering(Integer id, Date tijddatum) {
         this.id = id;
-        this.times = times;
+        this.tijddatum = tijddatum;
     }
 
     public Integer getId() {
@@ -73,12 +73,12 @@ public class Reservering implements Serializable {
         this.id = id;
     }
 
-    public Date getTimes() {
-        return times;
+    public Date getTijddatum() {
+        return tijddatum;
     }
 
-    public void setTimes(Date times) {
-        this.times = times;
+    public void setTijddatum(Date tijddatum) {
+        this.tijddatum = tijddatum;
     }
 
     @XmlTransient

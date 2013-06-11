@@ -1,6 +1,14 @@
 package pas.models.role;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import mvc.Application;
+import pas.exception.NoEntityManagerException;
+import pas.layout.MainFrame;
+import pas.models.SessionManager;
+import session.NoSessionManagerException;
 
 /**
  *
@@ -60,5 +68,33 @@ public abstract class AbsractPerson {
 
     public void setDateOfBrith(Date dateOfBrith) {
         this.dateOfBrith = dateOfBrith;
+    }
+    
+    /*
+     * Returns the Sessionmanager
+     * 
+     * @return SessionManager
+     */
+    private SessionManager getSessionManager() {
+        try {
+            return (SessionManager) Application.getInstance().getSessionManager();
+        } catch (NoSessionManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    /*
+     * Returns the database entity manager
+     * 
+     * @return EntityManager
+     */
+    private EntityManager getEntityManager() {
+        try {
+            return this.getSessionManager().getEntityManager();
+        } catch (NoEntityManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

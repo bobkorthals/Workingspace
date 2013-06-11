@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import mvc.Application;
 import mvc.controller.AbstractController;
+import mvc.view.AbstractView;
 import pas.exception.NoEntityManagerException;
 import pas.layout.MainFrame;
 import pas.models.ActiveMember;
@@ -23,6 +24,9 @@ public class MemberController extends AbstractController {
     // ManageMember view
     private ManageMember manageMember;
     
+    // Openend view
+    private AbstractView open;
+    
     /*
      * Enable sidebar and profile section in the mainframe
      */
@@ -30,6 +34,8 @@ public class MemberController extends AbstractController {
         MainFrame mainFrame = (MainFrame) getMainFrame();
         mainFrame.setSidebarEnabled(true);
         mainFrame.setProfilePanelEnabled(true);
+     
+        addModel(getActiveMember());
     }
     
     /*
@@ -40,6 +46,7 @@ public class MemberController extends AbstractController {
     private ManageMember getManageMember() {
         if (null == this.manageMember) {
             this.manageMember = new ManageMember(this);
+            addView(this.manageMember);
         }
         
         return this.manageMember;
@@ -116,7 +123,11 @@ public class MemberController extends AbstractController {
      */
     public void manageMemberAction(int memberId) {
         getActiveMember().setMember(getMember(memberId));
-        open(this.getManageMember());
+        
+        if (null == this.open || !this.open.equals(this.getManageMember())) {
+            open(this.getManageMember());
+            this.open = this.getManageMember();
+        }
     }
 
     /*

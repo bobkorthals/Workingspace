@@ -49,4 +49,8 @@ public class Member extends AbsractPerson {
     public int getMemberID() {
         return memberID;
     }
+    
+    public void save() {
+        
+    }
 }

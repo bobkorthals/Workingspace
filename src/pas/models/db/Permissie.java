@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Permissie.findAll", query = "SELECT p FROM Permissie p"),
     @NamedQuery(name = "Permissie.findById", query = "SELECT p FROM Permissie p WHERE p.id = :id"),
     @NamedQuery(name = "Permissie.findByOmschrijving", query = "SELECT p FROM Permissie p WHERE p.omschrijving = :omschrijving"),
-    @NamedQuery(name = "Permissie.findByAllow", query = "SELECT p FROM Permissie p WHERE p.allow = :allow")})
+    @NamedQuery(name = "Permissie.findByToestaan", query = "SELECT p FROM Permissie p WHERE p.toestaan = :toestaan")})
 public class Permissie implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -38,7 +38,7 @@ public class Permissie implements Serializable {
     private Integer id;
     private String omschrijving;
     @Basic(optional = false)
-    private int allow;
+    private int toestaan;
     @ManyToMany(mappedBy = "permissieList")
     private List<Functie> functieList;
     @JoinColumn(name = "privilegeid", referencedColumnName = "id")
@@ -58,9 +58,9 @@ public class Permissie implements Serializable {
         this.id = id;
     }
 
-    public Permissie(Integer id, int allow) {
+    public Permissie(Integer id, int toestaan) {
         this.id = id;
-        this.allow = allow;
+        this.toestaan = toestaan;
     }
 
     public Integer getId() {
@@ -79,12 +79,12 @@ public class Permissie implements Serializable {
         this.omschrijving = omschrijving;
     }
 
-    public int getAllow() {
-        return allow;
+    public int getToestaan() {
+        return toestaan;
     }
 
-    public void setAllow(int allow) {
-        this.allow = allow;
+    public void setToestaan(int toestaan) {
+        this.toestaan = toestaan;
     }
 
     @XmlTransient

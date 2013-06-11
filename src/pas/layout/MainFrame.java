@@ -25,7 +25,7 @@ import session.NoSessionManagerException;
  * @author Frank
  */
 public class MainFrame extends AbstractFrame {
-
+  
     /**
      * Creates new form MainFrame
      */

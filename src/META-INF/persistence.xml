@@ -2,50 +2,28 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="PASPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>pas.models.db.Result</class>
-    <class>pas.models.db.Accessing</class>
-    <class>pas.models.db.Subscribe</class>
-    <class>pas.models.db.Payment</class>
-    <class>pas.models.db.Facility</class>
-    <class>pas.models.db.Locations</class>
-    <class>pas.models.db.Employee</class>
-    <class>pas.models.db.Invoice</class>
-    <class>pas.models.db.Schedule</class>
-    <class>pas.models.db.Category</class>
-    <class>pas.models.db.Privilege</class>
-    <class>pas.models.db.Device</class>
-    <class>pas.models.db.Registration</class>
-    <class>pas.models.db.Subscription</class>
-    <class>pas.models.db.Claim</class>
-    <class>pas.models.db.Course</class>
-    <class>pas.models.db.Invoiceline</class>
-    <class>pas.models.db.Resource</class>
-    <class>pas.models.db.Permission</class>
-    <class>pas.models.db.Product</class>
-    <class>pas.models.db.Orders</class>
-    <class>pas.models.db.Roles</class>
-    <class>pas.models.db.Reservation</class>
-    <class>pas.models.db.Member1</class>
-    <class>pas.models.db.Reservering</class>
-    <class>pas.models.db.Permissie</class>
-    <class>pas.models.db.Planning</class>
-    <class>pas.models.db.Vestiging</class>
-    <class>pas.models.db.Lid</class>
-    <class>pas.models.db.Categorie</class>
-    <class>pas.models.db.Bewering</class>
-    <class>pas.models.db.Factuuritem</class>
-    <class>pas.models.db.Bestelling</class>
-    <class>pas.models.db.Inschrijving</class>
-    <class>pas.models.db.Functie</class>
-    <class>pas.models.db.Werknemer</class>
-    <class>pas.models.db.Faciliteit</class>
-    <class>pas.models.db.Cursus</class>
-    <class>pas.models.db.Betaling</class>
-    <class>pas.models.db.Abonnering</class>
-    <class>pas.models.db.Abonnement</class>
     <class>pas.models.db.Hulpbron</class>
     <class>pas.models.db.Toegang</class>
+    <class>pas.models.db.Functie</class>
+    <class>pas.models.db.Inschrijving</class>
+    <class>pas.models.db.Privilege</class>
+    <class>pas.models.db.Categorie</class>
+    <class>pas.models.db.Faciliteit</class>
+    <class>pas.models.db.Planning</class>
+    <class>pas.models.db.Bestelling</class>
+    <class>pas.models.db.Bewering</class>
+    <class>pas.models.db.Lid</class>
+    <class>pas.models.db.Product</class>
     <class>pas.models.db.Factuur</class>
+    <class>pas.models.db.Reservering</class>
+    <class>pas.models.db.Factuuritem</class>
+    <class>pas.models.db.Cursus</class>
+    <class>pas.models.db.Abonnering</class>
+    <class>pas.models.db.Permissie</class>
+    <class>pas.models.db.Werknemer</class>
+    <class>pas.models.db.Vestiging</class>
+    <class>pas.models.db.Abonnement</class>
+    <class>pas.models.db.Betaling</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/PAS"/>
       <property name="javax.persistence.jdbc.password" value="pas"/>
