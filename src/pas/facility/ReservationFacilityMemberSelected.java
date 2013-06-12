@@ -6,7 +6,7 @@ package pas.facility;
 
 import java.beans.PropertyChangeEvent;
 import java.util.List;
-import javax.swing.table.TableColumn;
+import javax.swing.table.DefaultTableModel;
 import pas.member.MemberController;
 import pas.models.ActiveMember;
 import pas.models.db.Faciliteit;
@@ -33,24 +33,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         this.facilitycontroller = facilitycontroller;
         this.facilities = facilities;
         
-        // Fill facilities dropdown
-        ddlFacilities.add("Selecteer faciliteit");
-        Object facilityData[][] = new Object[this.facilities.size()][3];
-        int i = 0;
-        for (Faciliteit facilitie : facilities) {
-           ddlFacilities.add(facilitie.getOmschrijving());
-           Object dataObject[] = {
-                facilitie.getOmschrijving(), 
-                facilitie.getSoort(),
-                facilitie.getKosten(),
-                facilitie.getVestigingid()
-           };
-           facilityData[i] = dataObject;
-           i++;
-        }
-        
-        String[] columnNames = {"Naam", "Soort", "Kosten", "Vestiging"};
-        //tblOverzichtFaciliteiten.set(facilityData, columnNames);
+        this.setFacilities();
         this.setMember(member);
     }
 
@@ -79,6 +62,33 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         txtLastName.setText(member.getLastName());
         txtSuffix.setText(member.getSuffix());
         txtDateOfBirth.setText(member.getDateOfBrith().toString());
+    }
+    
+    /*
+     * Fill the facilitie table and dropdown
+     * 
+     * @return void
+     */
+    private void setFacilities() {
+        ddlFacilities.add("Selecteer faciliteit");
+        DefaultTableModel model = new DefaultTableModel();
+        
+        // Copy columns into model
+        for (int i=0; i<tblOverzichtFaciliteiten.getColumnCount(); i++) {
+            model.addColumn(tblOverzichtFaciliteiten.getColumnName(i).toString());
+        }
+        
+        for (Faciliteit facilitie : facilities) {
+           ddlFacilities.add(facilitie.getOmschrijving());
+           Object dataObject[] = {
+                facilitie.getOmschrijving(), 
+                facilitie.getSoort(),
+                facilitie.getKosten(),
+                facilitie.getVestigingid().toString()};
+           model.addRow(dataObject);
+        }
+
+        tblOverzichtFaciliteiten.setModel(model);
     }
 
     /**
