@@ -85,7 +85,7 @@ public class MemberController extends AbstractController {
      * 
      * @return ActiveMember
      */
-    private ActiveMember getActiveMember() {
+    public ActiveMember getActiveMember() {
         try {
             return getSessionManager().getActiveMember();
         } catch (NoEntityManagerException ex) {
