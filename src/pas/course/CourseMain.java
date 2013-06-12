@@ -42,8 +42,8 @@ public class CourseMain extends mvc.view.AbstractView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlCourseManagement = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        pnlCourseMain = new javax.swing.JPanel();
+        pnlButtons = new javax.swing.JPanel();
         btnChange = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -51,7 +51,7 @@ public class CourseMain extends mvc.view.AbstractView {
         btnScheduleCourse = new javax.swing.JButton();
         pnlCourseOverview = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCourseOverview = new javax.swing.JTable();
         lblCourseIDOverview = new javax.swing.JLabel();
         lblCourseNameOverview = new javax.swing.JLabel();
         lblLocationIDOverview = new javax.swing.JLabel();
@@ -99,13 +99,13 @@ public class CourseMain extends mvc.view.AbstractView {
         txtLocationTelNumber = new javax.swing.JTextField();
         lblLocationEmail = new javax.swing.JLabel();
         txtLocationEmail = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblCourseMain = new javax.swing.JLabel();
 
         setOpaque(false);
 
-        pnlCourseManagement.setOpaque(false);
+        pnlCourseMain.setOpaque(false);
 
-        jPanel3.setOpaque(false);
+        pnlButtons.setOpaque(false);
 
         btnChange.setBackground(new java.awt.Color(155, 9, 46));
         btnChange.setForeground(new java.awt.Color(255, 255, 255));
@@ -113,11 +113,6 @@ public class CourseMain extends mvc.view.AbstractView {
         btnChange.setMaximumSize(new java.awt.Dimension(99, 23));
         btnChange.setMinimumSize(new java.awt.Dimension(99, 23));
         btnChange.setPreferredSize(new java.awt.Dimension(99, 23));
-        btnChange.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeActionPerformed(evt);
-            }
-        });
 
         btnSave.setBackground(new java.awt.Color(155, 9, 46));
         btnSave.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,13 +140,13 @@ public class CourseMain extends mvc.view.AbstractView {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlButtonsLayout = new javax.swing.GroupLayout(pnlButtons);
+        pnlButtons.setLayout(pnlButtonsLayout);
+        pnlButtonsLayout.setHorizontalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnChange, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -159,9 +154,9 @@ public class CourseMain extends mvc.view.AbstractView {
                     .addComponent(btnScheduleCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pnlButtonsLayout.setVerticalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -178,7 +173,7 @@ public class CourseMain extends mvc.view.AbstractView {
         pnlCourseOverview.setBorder(javax.swing.BorderFactory.createTitledBorder("Cursus overzicht"));
         pnlCourseOverview.setOpaque(false);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCourseOverview.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -197,8 +192,8 @@ public class CourseMain extends mvc.view.AbstractView {
                 return types [columnIndex];
             }
         });
-        jTable1.setOpaque(false);
-        jScrollPane1.setViewportView(jTable1);
+        tblCourseOverview.setOpaque(false);
+        jScrollPane1.setViewportView(tblCourseOverview);
 
         lblCourseIDOverview.setText("Cursusnummer");
 
@@ -251,7 +246,7 @@ public class CourseMain extends mvc.view.AbstractView {
                                     .addComponent(txtCoursePriceOverview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblCoursePriceOverview, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addComponent(lblCourseNameOverview)
-                                .addComponent(lblLocationIDOverview, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(lblLocationIDOverview)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -468,40 +463,40 @@ public class CourseMain extends mvc.view.AbstractView {
                 .addContainerGap())
         );
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel1.setText("Cursus Beheer");
-        jLabel1.setMaximumSize(new java.awt.Dimension(129, 24));
-        jLabel1.setMinimumSize(new java.awt.Dimension(129, 24));
-        jLabel1.setPreferredSize(new java.awt.Dimension(129, 24));
+        lblCourseMain.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        lblCourseMain.setText("Cursus Beheer");
+        lblCourseMain.setMaximumSize(new java.awt.Dimension(129, 24));
+        lblCourseMain.setMinimumSize(new java.awt.Dimension(129, 24));
+        lblCourseMain.setPreferredSize(new java.awt.Dimension(129, 24));
 
-        javax.swing.GroupLayout pnlCourseManagementLayout = new javax.swing.GroupLayout(pnlCourseManagement);
-        pnlCourseManagement.setLayout(pnlCourseManagementLayout);
-        pnlCourseManagementLayout.setHorizontalGroup(
-            pnlCourseManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCourseManagementLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlCourseMainLayout = new javax.swing.GroupLayout(pnlCourseMain);
+        pnlCourseMain.setLayout(pnlCourseMainLayout);
+        pnlCourseMainLayout.setHorizontalGroup(
+            pnlCourseMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCourseMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlCourseManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlCourseManagementLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlCourseMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCourseMain, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlCourseMainLayout.createSequentialGroup()
+                        .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlCourseManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlCourseMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnlCourseOverview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(pnlCourseData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
-        pnlCourseManagementLayout.setVerticalGroup(
-            pnlCourseManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCourseManagementLayout.createSequentialGroup()
+        pnlCourseMainLayout.setVerticalGroup(
+            pnlCourseMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCourseMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCourseMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlCourseManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlCourseManagementLayout.createSequentialGroup()
+                .addGroup(pnlCourseMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlCourseMainLayout.createSequentialGroup()
                         .addComponent(pnlCourseOverview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlCourseData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -511,13 +506,13 @@ public class CourseMain extends mvc.view.AbstractView {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(140, 140, 140)
-                .addComponent(pnlCourseManagement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlCourseMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(pnlCourseManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlCourseMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -529,21 +524,15 @@ public class CourseMain extends mvc.view.AbstractView {
         coursecontroller.ScheduleCourseAction();        // Deze button opent de view PlanningCourse
     }//GEN-LAST:event_btnScheduleCourseActionPerformed
 
-    private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnChangeActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChange;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnNewCourse;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnScheduleCourse;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblCcoursePrice;
     private javax.swing.JLabel lblCourseActivity;
     private javax.swing.JLabel lblCourseCapacity;
@@ -551,6 +540,7 @@ public class CourseMain extends mvc.view.AbstractView {
     private javax.swing.JLabel lblCourseDuration;
     private javax.swing.JLabel lblCourseID;
     private javax.swing.JLabel lblCourseIDOverview;
+    private javax.swing.JLabel lblCourseMain;
     private javax.swing.JLabel lblCourseMinimum;
     private javax.swing.JLabel lblCourseName;
     private javax.swing.JLabel lblCourseNameOverview;
@@ -565,11 +555,13 @@ public class CourseMain extends mvc.view.AbstractView {
     private javax.swing.JLabel lblLocationSuffix;
     private javax.swing.JLabel lblLocationTelNumber;
     private javax.swing.JLabel lblLocationZipCode;
+    private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlCourseData;
     private javax.swing.JPanel pnlCourseGeneral;
-    private javax.swing.JPanel pnlCourseManagement;
+    private javax.swing.JPanel pnlCourseMain;
     private javax.swing.JPanel pnlCourseOverview;
     private javax.swing.JPanel pnlLocationData;
+    private javax.swing.JTable tblCourseOverview;
     private javax.swing.JTextField txtCourseActivity;
     private javax.swing.JTextField txtCourseCapacity;
     private javax.swing.JTextArea txtCourseDescription;

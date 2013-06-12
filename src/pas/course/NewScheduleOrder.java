@@ -60,8 +60,8 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
         ddlScheduleDateYear = new java.awt.Choice();
         lblCourseIDOverview = new javax.swing.JLabel();
         txtCourseID = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        lblNewScheduleOrder = new javax.swing.JLabel();
+        pnlButtons = new javax.swing.JPanel();
         btnGoBack = new javax.swing.JButton();
         btnPayment = new javax.swing.JButton();
         pnlOrderData = new javax.swing.JPanel();
@@ -71,22 +71,22 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
         txtEmployeeID = new javax.swing.JTextField();
         pnlMemberData = new javax.swing.JPanel();
         btnSearchMember = new javax.swing.JButton();
-        memberIDLabel = new javax.swing.JLabel();
-        memberID = new javax.swing.JTextField();
-        memberFirstNameLabel = new javax.swing.JLabel();
-        memberFirstName = new javax.swing.JTextField();
-        memberSuffixLabel = new javax.swing.JLabel();
-        memberSuffix = new javax.swing.JTextField();
-        memberLastNameLabel = new javax.swing.JLabel();
-        memberLastName = new javax.swing.JTextField();
-        memberBirthdayLabel = new javax.swing.JLabel();
-        memberBirthday = new javax.swing.JTextField();
-        memberGenderLabel = new javax.swing.JLabel();
-        memberGender = new javax.swing.JTextField();
-        memberCreditLabel = new javax.swing.JLabel();
-        memberCredit = new javax.swing.JTextField();
-        memberLatePaymentLabel = new javax.swing.JLabel();
-        memberLatePayment = new javax.swing.JTextField();
+        lblMemberID = new javax.swing.JLabel();
+        txtMemberID = new javax.swing.JTextField();
+        lblMemberFirstName = new javax.swing.JLabel();
+        txtMemberFirstName = new javax.swing.JTextField();
+        lblMemberSuffix = new javax.swing.JLabel();
+        txtMemberSuffix = new javax.swing.JTextField();
+        lblMemberLastName = new javax.swing.JLabel();
+        txtMemberLastName = new javax.swing.JTextField();
+        lblMemberBirthday = new javax.swing.JLabel();
+        txtMemberBirthday = new javax.swing.JTextField();
+        lblMemberGender = new javax.swing.JLabel();
+        txtMemberGender = new javax.swing.JTextField();
+        lblMemberCredit = new javax.swing.JLabel();
+        txtMemberCredit = new javax.swing.JTextField();
+        lblMemberLatePayment = new javax.swing.JLabel();
+        txtMemberLatePayment = new javax.swing.JTextField();
 
         setOpaque(false);
 
@@ -116,10 +116,10 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnAddSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnDeleteSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(286, 286, 286))
+                .addComponent(btnAddSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnDeleteSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +146,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             pnlOrderedSchedulesListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOrderedSchedulesListLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -158,14 +158,14 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             pnlOrderedSchedulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOrderedSchedulesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlOrderedSchedulesList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlOrderedSchedulesList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlOrderedSchedulesLayout.setVerticalGroup(
             pnlOrderedSchedulesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOrderedSchedulesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlOrderedSchedulesList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlOrderedSchedulesList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -209,7 +209,9 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             .addGroup(pnlScheduleOverviewLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlScheduleOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(pnlScheduleOverviewLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
                     .addGroup(pnlScheduleOverviewLayout.createSequentialGroup()
                         .addComponent(lblScheduleIDOverview)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -230,7 +232,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
                         .addComponent(ddlScheduleDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ddlScheduleDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         pnlScheduleOverviewLayout.setVerticalGroup(
             pnlScheduleOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,14 +251,14 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
                     .addComponent(ddlScheduleDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ddlScheduleDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel3.setText("Inschrijven");
+        lblNewScheduleOrder.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        lblNewScheduleOrder.setText("Inschrijven");
 
-        jPanel7.setOpaque(false);
+        pnlButtons.setOpaque(false);
 
         btnGoBack.setBackground(new java.awt.Color(155, 9, 46));
         btnGoBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -276,25 +278,25 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             }
         });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlButtonsLayout = new javax.swing.GroupLayout(pnlButtons);
+        pnlButtons.setLayout(pnlButtonsLayout);
+        pnlButtonsLayout.setHorizontalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPayment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        pnlButtonsLayout.setVerticalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnGoBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPayment)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pnlOrderData.setBorder(javax.swing.BorderFactory.createTitledBorder("Bestel gegevens"));
@@ -316,16 +318,14 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             pnlOrderDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlOrderDataLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(pnlOrderDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmployeeID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlOrderDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlOrderDataLayout.createSequentialGroup()
-                        .addComponent(lblEmployeeID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlOrderDataLayout.createSequentialGroup()
-                        .addComponent(lblOrderID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(16, 16, 16)
-                        .addComponent(txtOrderID, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(txtEmployeeID, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(txtOrderID))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlOrderDataLayout.setVerticalGroup(
             pnlOrderDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,7 +338,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
                 .addGroup(pnlOrderDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmployeeID)
                     .addComponent(txtEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pnlMemberData.setBorder(javax.swing.BorderFactory.createTitledBorder("Lid gegevens"));
@@ -353,21 +353,21 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             }
         });
 
-        memberIDLabel.setText("Lidnummer");
+        lblMemberID.setText("Lidnummer");
 
-        memberFirstNameLabel.setText("Voornaam");
+        lblMemberFirstName.setText("Voornaam");
 
-        memberSuffixLabel.setText("Tussenvoegsel");
+        lblMemberSuffix.setText("Tussenvoegsel");
 
-        memberLastNameLabel.setText("Achternaam");
+        lblMemberLastName.setText("Achternaam");
 
-        memberBirthdayLabel.setText("Geboortedatum");
+        lblMemberBirthday.setText("Geboortedatum");
 
-        memberGenderLabel.setText("Geslacht");
+        lblMemberGender.setText("Geslacht");
 
-        memberCreditLabel.setText("Krediet");
+        lblMemberCredit.setText("Krediet");
 
-        memberLatePaymentLabel.setText("Betalingsachterstand");
+        lblMemberLatePayment.setText("Betalingsachterstand");
 
         javax.swing.GroupLayout pnlMemberDataLayout = new javax.swing.GroupLayout(pnlMemberData);
         pnlMemberData.setLayout(pnlMemberDataLayout);
@@ -379,24 +379,24 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
                     .addComponent(btnSearchMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlMemberDataLayout.createSequentialGroup()
                         .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(memberFirstNameLabel)
-                            .addComponent(memberIDLabel)
-                            .addComponent(memberSuffixLabel)
-                            .addComponent(memberLastNameLabel)
-                            .addComponent(memberBirthdayLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(memberGenderLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(memberCreditLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(memberLatePaymentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblMemberFirstName)
+                            .addComponent(lblMemberID)
+                            .addComponent(lblMemberSuffix)
+                            .addComponent(lblMemberLastName)
+                            .addComponent(lblMemberBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMemberGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMemberCredit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblMemberLatePayment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(memberID)
-                            .addComponent(memberFirstName)
-                            .addComponent(memberSuffix)
-                            .addComponent(memberLastName)
-                            .addComponent(memberBirthday)
-                            .addComponent(memberGender, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                            .addComponent(memberCredit)
-                            .addComponent(memberLatePayment))))
+                            .addComponent(txtMemberID)
+                            .addComponent(txtMemberFirstName)
+                            .addComponent(txtMemberSuffix)
+                            .addComponent(txtMemberLastName)
+                            .addComponent(txtMemberBirthday)
+                            .addComponent(txtMemberGender)
+                            .addComponent(txtMemberCredit)
+                            .addComponent(txtMemberLatePayment))))
                 .addContainerGap())
         );
         pnlMemberDataLayout.setVerticalGroup(
@@ -405,36 +405,36 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
                 .addComponent(btnSearchMember)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberIDLabel)
-                    .addComponent(memberID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMemberID)
+                    .addComponent(txtMemberID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberFirstNameLabel)
-                    .addComponent(memberFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMemberFirstName)
+                    .addComponent(txtMemberFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberSuffixLabel)
-                    .addComponent(memberSuffix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMemberSuffix)
+                    .addComponent(txtMemberSuffix, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberLastNameLabel)
-                    .addComponent(memberLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMemberLastName)
+                    .addComponent(txtMemberLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberBirthdayLabel)
-                    .addComponent(memberBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMemberBirthday)
+                    .addComponent(txtMemberBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberGenderLabel)
-                    .addComponent(memberGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMemberGender)
+                    .addComponent(txtMemberGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberCreditLabel)
-                    .addComponent(memberCredit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMemberCredit)
+                    .addComponent(txtMemberCredit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(memberLatePaymentLabel)
-                    .addComponent(memberLatePayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMemberLatePayment)
+                    .addComponent(txtMemberLatePayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -445,37 +445,32 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             .addGroup(pnlNewScheduleOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlNewScheduleOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlScheduleOverview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlNewScheduleOrderLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlOrderData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMemberData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlNewScheduleOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlScheduleOverview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlOrderedSchedules, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addGroup(pnlNewScheduleOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblNewScheduleOrder)
+                            .addComponent(pnlMemberData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlOrderData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlOrderedSchedules, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlNewScheduleOrderLayout.setVerticalGroup(
             pnlNewScheduleOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNewScheduleOrderLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlNewScheduleOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlNewScheduleOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnlNewScheduleOrderLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(lblNewScheduleOrder)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlOrderData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlMemberData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlNewScheduleOrderLayout.createSequentialGroup()
-                        .addComponent(pnlOrderedSchedules, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlScheduleOverview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(pnlMemberData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlOrderedSchedules, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlScheduleOverview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -491,8 +486,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(pnlNewScheduleOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(pnlNewScheduleOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -521,33 +515,25 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
     private java.awt.Choice ddlScheduleDateDay;
     private java.awt.Choice ddlScheduleDateMonth;
     private java.awt.Choice ddlScheduleDateYear;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCourseIDOverview;
     private javax.swing.JLabel lblCourseNameOverview;
     private javax.swing.JLabel lblEmployeeID;
+    private javax.swing.JLabel lblMemberBirthday;
+    private javax.swing.JLabel lblMemberCredit;
+    private javax.swing.JLabel lblMemberFirstName;
+    private javax.swing.JLabel lblMemberGender;
+    private javax.swing.JLabel lblMemberID;
+    private javax.swing.JLabel lblMemberLastName;
+    private javax.swing.JLabel lblMemberLatePayment;
+    private javax.swing.JLabel lblMemberSuffix;
+    private javax.swing.JLabel lblNewScheduleOrder;
     private javax.swing.JLabel lblOrderID;
     private javax.swing.JLabel lblScheduleDateOverview;
     private javax.swing.JLabel lblScheduleIDOverview;
-    private javax.swing.JTextField memberBirthday;
-    private javax.swing.JLabel memberBirthdayLabel;
-    private javax.swing.JTextField memberCredit;
-    private javax.swing.JLabel memberCreditLabel;
-    private javax.swing.JTextField memberFirstName;
-    private javax.swing.JLabel memberFirstNameLabel;
-    private javax.swing.JTextField memberGender;
-    private javax.swing.JLabel memberGenderLabel;
-    private javax.swing.JTextField memberID;
-    private javax.swing.JLabel memberIDLabel;
-    private javax.swing.JTextField memberLastName;
-    private javax.swing.JLabel memberLastNameLabel;
-    private javax.swing.JTextField memberLatePayment;
-    private javax.swing.JLabel memberLatePaymentLabel;
-    private javax.swing.JTextField memberSuffix;
-    private javax.swing.JLabel memberSuffixLabel;
+    private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlMemberData;
     private javax.swing.JPanel pnlNewScheduleOrder;
     private javax.swing.JPanel pnlOrderData;
@@ -558,6 +544,14 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
     private javax.swing.JTextField txtCourseID;
     private javax.swing.JTextField txtCourseName;
     private javax.swing.JTextField txtEmployeeID;
+    private javax.swing.JTextField txtMemberBirthday;
+    private javax.swing.JTextField txtMemberCredit;
+    private javax.swing.JTextField txtMemberFirstName;
+    private javax.swing.JTextField txtMemberGender;
+    private javax.swing.JTextField txtMemberID;
+    private javax.swing.JTextField txtMemberLastName;
+    private javax.swing.JTextField txtMemberLatePayment;
+    private javax.swing.JTextField txtMemberSuffix;
     private javax.swing.JTextField txtOrderID;
     private javax.swing.JTextField txtScheduleID;
     // End of variables declaration//GEN-END:variables

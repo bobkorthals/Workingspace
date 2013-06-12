@@ -39,8 +39,8 @@ public class ScheduleCourse extends mvc.view.AbstractView {
     private void initComponents() {
 
         pnlScheduleManagement = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        lblScheduleCourse = new javax.swing.JLabel();
+        pnlButtons = new javax.swing.JPanel();
         btnChange = new javax.swing.JButton();
         btnNewSchedule = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -125,11 +125,11 @@ public class ScheduleCourse extends mvc.view.AbstractView {
 
         pnlScheduleManagement.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel1.setText("Planning Beheer");
-        jLabel1.setPreferredSize(new java.awt.Dimension(129, 24));
+        lblScheduleCourse.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        lblScheduleCourse.setText("Planning Beheer");
+        lblScheduleCourse.setPreferredSize(new java.awt.Dimension(129, 24));
 
-        jPanel2.setOpaque(false);
+        pnlButtons.setOpaque(false);
 
         btnChange.setBackground(new java.awt.Color(155, 9, 46));
         btnChange.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,13 +185,13 @@ public class ScheduleCourse extends mvc.view.AbstractView {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlButtonsLayout = new javax.swing.GroupLayout(pnlButtons);
+        pnlButtons.setLayout(pnlButtonsLayout);
+        pnlButtonsLayout.setHorizontalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnChange, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNewSchedule, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -200,9 +200,9 @@ public class ScheduleCourse extends mvc.view.AbstractView {
                     .addComponent(btnGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        pnlButtonsLayout.setVerticalGroup(
+            pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnNewSchedule)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -657,8 +657,8 @@ public class ScheduleCourse extends mvc.view.AbstractView {
             .addGroup(pnlScheduleManagementLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlScheduleManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblScheduleCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlScheduleManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlScheduleData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -669,7 +669,7 @@ public class ScheduleCourse extends mvc.view.AbstractView {
             pnlScheduleManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlScheduleManagementLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblScheduleCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlScheduleManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlScheduleManagementLayout.createSequentialGroup()
@@ -677,7 +677,7 @@ public class ScheduleCourse extends mvc.view.AbstractView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlScheduleData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnlButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -734,8 +734,6 @@ public class ScheduleCourse extends mvc.view.AbstractView {
     private java.awt.Choice ddlScheduleDay;
     private java.awt.Choice ddlScheduleMonth;
     private java.awt.Choice ddlScheduleYear;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCourseActivity;
@@ -766,8 +764,10 @@ public class ScheduleCourse extends mvc.view.AbstractView {
     private javax.swing.JLabel lblOverviewCourseName;
     private javax.swing.JLabel lblOverviewScheduleDate;
     private javax.swing.JLabel lblOverviewScheduleID;
+    private javax.swing.JLabel lblScheduleCourse;
     private javax.swing.JLabel lblScheduleDate;
     private javax.swing.JLabel lblScheduleID;
+    private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlCourseData;
     private javax.swing.JPanel pnlEmployeeData;
     private javax.swing.JPanel pnlLocationData;

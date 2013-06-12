@@ -48,7 +48,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNewSchedule" min="-2" max="-2" attributes="0"/>
                       <Component id="pnlScheduleData" pref="1216" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -59,7 +59,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNewSchedule" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlScheduleData" pref="386" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -68,7 +68,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblNewSchedule">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="20" style="1"/>
@@ -103,7 +103,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnlLocationData" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlButtons" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -112,7 +112,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pnlButtons" alignment="0" max="32767" attributes="0"/>
                           <Component id="pnlLocationData" alignment="0" max="32767" attributes="0"/>
                           <Component id="pnlCourseData" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
@@ -127,7 +127,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel7">
+            <Container class="javax.swing.JPanel" name="pnlButtons">
               <Properties>
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>

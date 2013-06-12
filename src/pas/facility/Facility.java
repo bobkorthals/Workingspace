@@ -31,6 +31,7 @@ public class Facility extends mvc.view.AbstractView {
     public void propertyChange(PropertyChangeEvent evt){
     }          
     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,36 +47,35 @@ public class Facility extends mvc.view.AbstractView {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
-        jButton28 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        btnFacilityWijzigen = new javax.swing.JButton();
+        btnFacilityOpslaan = new javax.swing.JButton();
+        btnOverzichtReservering = new javax.swing.JButton();
+        btnNieuweFaciliteit = new javax.swing.JButton();
+        btnFacilityHoofdscherm = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblTitle1 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
-        jTextField25 = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
-        txtVoornaam = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jTextField27 = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
-        jTextField29 = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField28 = new javax.swing.JTextField();
+        txtBeschrijving = new javax.swing.JTextArea();
         jLabel42 = new javax.swing.JLabel();
+        txtNaam = new pas.layout.textfield.TextField();
+        txtSoort = new pas.layout.textfield.TextField();
+        txtKosten = new pas.layout.textfield.TextField();
+        txtLocatie = new pas.layout.textfield.TextField();
+        txtCapaciteit = new pas.layout.textfield.TextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelFaciliteiten = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        choice21 = new java.awt.Choice();
-        choice23 = new java.awt.Choice();
+        txtDropdownLocatie = new java.awt.Choice();
+        java.awt.Choice txtDropdownFacliteit = new java.awt.Choice();
         lblTitle2 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
@@ -94,54 +94,50 @@ public class Facility extends mvc.view.AbstractView {
 
         jPanel7.setOpaque(false);
 
-        jButton18.setBackground(new java.awt.Color(155, 9, 46));
-        jButton18.setForeground(new java.awt.Color(255, 255, 255));
-        jButton18.setText("Nieuwe Reservering");
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        btnFacilityWijzigen.setBackground(new java.awt.Color(155, 9, 46));
+        btnFacilityWijzigen.setForeground(new java.awt.Color(255, 255, 255));
+        btnFacilityWijzigen.setText("Wijzigen");
+        btnFacilityWijzigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                btnFacilityWijzigenActionPerformed(evt);
             }
         });
 
-        jButton19.setBackground(new java.awt.Color(155, 9, 46));
-        jButton19.setForeground(new java.awt.Color(255, 255, 255));
-        jButton19.setText("Wijzigen");
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        btnFacilityOpslaan.setBackground(new java.awt.Color(155, 9, 46));
+        btnFacilityOpslaan.setForeground(new java.awt.Color(255, 255, 255));
+        btnFacilityOpslaan.setText("Opslaan");
+        btnFacilityOpslaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                btnFacilityOpslaanActionPerformed(evt);
             }
         });
 
-        jButton27.setBackground(new java.awt.Color(155, 9, 46));
-        jButton27.setForeground(new java.awt.Color(255, 255, 255));
-        jButton27.setText("Opslaan");
-        jButton27.addActionListener(new java.awt.event.ActionListener() {
+        btnOverzichtReservering.setBackground(new java.awt.Color(155, 9, 46));
+        btnOverzichtReservering.setForeground(new java.awt.Color(255, 255, 255));
+        btnOverzichtReservering.setText("Overzicht Reserveringen");
+        btnOverzichtReservering.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton27ActionPerformed(evt);
+                btnOverzichtReserveringActionPerformed(evt);
             }
         });
 
-        jButton28.setBackground(new java.awt.Color(155, 9, 46));
-        jButton28.setForeground(new java.awt.Color(255, 255, 255));
-        jButton28.setText("Overzicht Reserveringen");
-        jButton28.addActionListener(new java.awt.event.ActionListener() {
+        btnNieuweFaciliteit.setBackground(new java.awt.Color(155, 9, 46));
+        btnNieuweFaciliteit.setForeground(new java.awt.Color(255, 255, 255));
+        btnNieuweFaciliteit.setText("Nieuwe Faciliteit");
+        btnNieuweFaciliteit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton28ActionPerformed(evt);
+                btnNieuweFaciliteitActionPerformed(evt);
             }
         });
 
-        jToggleButton1.setBackground(new java.awt.Color(155, 9, 46));
-        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setText("Naar Hoofdmenu");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnFacilityHoofdscherm.setBackground(new java.awt.Color(155, 9, 46));
+        btnFacilityHoofdscherm.setForeground(new java.awt.Color(255, 255, 255));
+        btnFacilityHoofdscherm.setText("Naar Hoofdmenu");
+        btnFacilityHoofdscherm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnFacilityHoofdschermActionPerformed(evt);
             }
         });
-
-        jToggleButton2.setBackground(new java.awt.Color(155, 9, 46));
-        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton2.setText("Nieuwe Faciliteit");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -150,30 +146,27 @@ public class Facility extends mvc.view.AbstractView {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton28, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                    .addComponent(jToggleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnFacilityWijzigen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFacilityOpslaan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnOverzichtReservering, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(btnNieuweFaciliteit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFacilityHoofdscherm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jToggleButton1)
+                .addGap(4, 4, 4)
+                .addComponent(btnFacilityHoofdscherm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnNieuweFaciliteit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton2)
+                .addComponent(btnOverzichtReservering)
+                .addGap(13, 13, 13)
+                .addComponent(btnFacilityWijzigen)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton27)
-                .addGap(18, 18, 18)
-                .addComponent(jButton18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton28)
-                .addContainerGap())
+                .addComponent(btnFacilityOpslaan)
+                .addGap(52, 52, 52))
         );
 
         jPanel1.setOpaque(false);
@@ -185,15 +178,9 @@ public class Facility extends mvc.view.AbstractView {
         jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Algemeen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
         jPanel22.setOpaque(false);
 
-        jTextField25.setText("jTextField1");
-
         jLabel39.setText("Kosten");
 
-        txtVoornaam.setText("jTextField1");
-
         jLabel40.setText("Naam");
-
-        jTextField27.setText("jTextField4");
 
         jLabel41.setText("Soort");
 
@@ -201,15 +188,26 @@ public class Facility extends mvc.view.AbstractView {
 
         jLabel44.setText("Beschrijving");
 
-        jTextField29.setText("jTextField1");
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
-
-        jTextField28.setText("jTextField4");
+        txtBeschrijving.setColumns(20);
+        txtBeschrijving.setRows(5);
+        jScrollPane3.setViewportView(txtBeschrijving);
 
         jLabel42.setText("Capaciteit");
+
+        txtNaam.setText("textField1");
+        txtNaam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNaamActionPerformed(evt);
+            }
+        });
+
+        txtSoort.setText("textField1");
+
+        txtKosten.setText("textField1");
+
+        txtLocatie.setText("textField1");
+
+        txtCapaciteit.setText("textField1");
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
@@ -226,16 +224,15 @@ public class Facility extends mvc.view.AbstractView {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(jTextField25, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVoornaam, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField27, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(txtNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel42)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSoort, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtKosten, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel22Layout.setVerticalGroup(
@@ -245,22 +242,22 @@ public class Facility extends mvc.view.AbstractView {
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel40)
-                            .addComponent(txtVoornaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel41))
+                            .addComponent(jLabel41)
+                            .addComponent(txtSoort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel39))
+                            .addComponent(jLabel39)
+                            .addComponent(txtKosten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel43)
-                            .addComponent(jTextField29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel42)
-                        .addComponent(jTextField28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel44)
@@ -289,13 +286,13 @@ public class Facility extends mvc.view.AbstractView {
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(98, 98, 152));
-        jLabel3.setText("Faciliteiten");
+        jLabel3.setText("Faciliteiten Beheren");
 
         jPanel4.setOpaque(false);
 
         jLabel1.setText("Faciliteit");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelFaciliteiten.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -314,7 +311,7 @@ public class Facility extends mvc.view.AbstractView {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tabelFaciliteiten);
 
         jLabel2.setText("Locatie");
 
@@ -333,11 +330,11 @@ public class Facility extends mvc.view.AbstractView {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(choice23, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDropdownFacliteit, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(choice21, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtDropdownLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(lblTitle2)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -350,8 +347,8 @@ public class Facility extends mvc.view.AbstractView {
                 .addComponent(lblTitle2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(choice21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(choice23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDropdownLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDropdownFacliteit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addGap(10, 10, 10)
@@ -374,7 +371,7 @@ public class Facility extends mvc.view.AbstractView {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
         jPanel2Layout.setVerticalGroup(
@@ -409,33 +406,36 @@ public class Facility extends mvc.view.AbstractView {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        new FacilityController().actionReservation();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
-
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void btnFacilityWijzigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityWijzigenActionPerformed
         // TO Do
-    }//GEN-LAST:event_jButton19ActionPerformed
+    }//GEN-LAST:event_btnFacilityWijzigenActionPerformed
 
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+    private void btnFacilityOpslaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityOpslaanActionPerformed
         new FacilityController().facilityAction();        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton27ActionPerformed
+    }//GEN-LAST:event_btnFacilityOpslaanActionPerformed
 
-    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+    private void btnOverzichtReserveringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverzichtReserveringActionPerformed
         new FacilityController().reservationChange();                // TODO add your handling code here:
-    }//GEN-LAST:event_jButton28ActionPerformed
+    }//GEN-LAST:event_btnOverzichtReserveringActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        new MainController().mainAction();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void btnNieuweFaciliteitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNieuweFaciliteitActionPerformed
+        new FacilityController().addFacilityAction();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNieuweFaciliteitActionPerformed
+
+    private void btnFacilityHoofdschermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityHoofdschermActionPerformed
+        new MainController().mainAction();                // TODO add your handling code here:
+    }//GEN-LAST:event_btnFacilityHoofdschermActionPerformed
+
+    private void txtNaamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNaamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNaamActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Choice choice21;
-    private java.awt.Choice choice23;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton27;
-    private javax.swing.JButton jButton28;
+    private javax.swing.JButton btnFacilityHoofdscherm;
+    private javax.swing.JButton btnFacilityOpslaan;
+    private javax.swing.JButton btnFacilityWijzigen;
+    private javax.swing.JButton btnNieuweFaciliteit;
+    private javax.swing.JButton btnOverzichtReservering;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -455,16 +455,15 @@ public class Facility extends mvc.view.AbstractView {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField25;
-    private javax.swing.JTextField jTextField27;
-    private javax.swing.JTextField jTextField28;
-    private javax.swing.JTextField jTextField29;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblTitle2;
-    private javax.swing.JTextField txtVoornaam;
+    private javax.swing.JTable tabelFaciliteiten;
+    private javax.swing.JTextArea txtBeschrijving;
+    private pas.layout.textfield.TextField txtCapaciteit;
+    private java.awt.Choice txtDropdownLocatie;
+    private pas.layout.textfield.TextField txtKosten;
+    private pas.layout.textfield.TextField txtLocatie;
+    private pas.layout.textfield.TextField txtNaam;
+    private pas.layout.textfield.TextField txtSoort;
     // End of variables declaration//GEN-END:variables
 }

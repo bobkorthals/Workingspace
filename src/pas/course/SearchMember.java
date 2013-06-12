@@ -41,7 +41,7 @@ public class SearchMember extends mvc.view.AbstractView {
     private void initComponents() {
 
         pnlSearchMember = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblSearchMember = new javax.swing.JLabel();
         btnGoBack = new javax.swing.JButton();
         pnlMemberOverview = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -58,8 +58,8 @@ public class SearchMember extends mvc.view.AbstractView {
 
         pnlSearchMember.setOpaque(false);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
-        jLabel1.setText("Zoek Lid");
+        lblSearchMember.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        lblSearchMember.setText("Zoek Lid");
 
         btnGoBack.setBackground(new java.awt.Color(155, 9, 46));
         btnGoBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,7 +157,7 @@ public class SearchMember extends mvc.view.AbstractView {
                     .addComponent(pnlMemberOverview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlSearchMemberLayout.createSequentialGroup()
                         .addGroup(pnlSearchMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(lblSearchMember)
                             .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -167,7 +167,7 @@ public class SearchMember extends mvc.view.AbstractView {
             pnlSearchMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchMemberLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblSearchMember)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlSearchMemberLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGoBack)
@@ -205,11 +205,11 @@ public class SearchMember extends mvc.view.AbstractView {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoBack;
     private javax.swing.JButton btnOK;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblMemberID;
     private javax.swing.JLabel lblMemberLastName;
     private javax.swing.JLabel lblMemberName;
+    private javax.swing.JLabel lblSearchMember;
     private javax.swing.JPanel pnlMemberOverview;
     private javax.swing.JPanel pnlSearchMember;
     private javax.swing.JTable tblMember;

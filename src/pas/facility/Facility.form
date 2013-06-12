@@ -87,7 +87,7 @@
                       <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -121,15 +121,14 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jToggleButton1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton18" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton19" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton27" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jButton28" alignment="0" pref="193" max="32767" attributes="0"/>
-                          <Component id="jToggleButton2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnFacilityWijzigen" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnFacilityOpslaan" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnOverzichtReservering" alignment="0" pref="193" max="32767" attributes="0"/>
+                          <Component id="btnNieuweFaciliteit" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnFacilityHoofdscherm" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -138,39 +137,23 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Component id="btnFacilityHoofdscherm" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnNieuweFaciliteit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jToggleButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnOverzichtReservering" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Component id="btnFacilityWijzigen" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton19" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton27" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton18" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton28" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnFacilityOpslaan" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton18">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="2e" green="9" red="9b" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nieuwe Reservering"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton18ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton19">
+            <Component class="javax.swing.JButton" name="btnFacilityWijzigen">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="2e" green="9" red="9b" type="rgb"/>
@@ -181,10 +164,10 @@
                 <Property name="text" type="java.lang.String" value="Wijzigen"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton19ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFacilityWijzigenActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton27">
+            <Component class="javax.swing.JButton" name="btnFacilityOpslaan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="2e" green="9" red="9b" type="rgb"/>
@@ -195,10 +178,10 @@
                 <Property name="text" type="java.lang.String" value="Opslaan"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton27ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFacilityOpslaanActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton28">
+            <Component class="javax.swing.JButton" name="btnOverzichtReservering">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="2e" green="9" red="9b" type="rgb"/>
@@ -209,10 +192,24 @@
                 <Property name="text" type="java.lang.String" value="Overzicht Reserveringen"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton28ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOverzichtReserveringActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+            <Component class="javax.swing.JButton" name="btnNieuweFaciliteit">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="2e" green="9" red="9b" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nieuwe Faciliteit"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNieuweFaciliteitActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnFacilityHoofdscherm">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="2e" green="9" red="9b" type="rgb"/>
@@ -223,19 +220,8 @@
                 <Property name="text" type="java.lang.String" value="Naar Hoofdmenu"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFacilityHoofdschermActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JToggleButton" name="jToggleButton2">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="2e" green="9" red="9b" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nieuwe Faciliteit"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -308,18 +294,16 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jTextField29" alignment="0" pref="152" max="32767" attributes="0"/>
-                                      <Component id="jTextField25" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtVoornaam" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTextField27" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="txtNaam" min="-2" pref="152" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jTextField28" min="-2" pref="152" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="txtCapaciteit" min="-2" pref="152" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane3" alignment="0" min="-2" pref="389" max="-2" attributes="0"/>
+                              <Component id="txtSoort" min="-2" pref="152" max="-2" attributes="0"/>
+                              <Component id="txtKosten" min="-2" pref="152" max="-2" attributes="0"/>
+                              <Component id="txtLocatie" min="-2" pref="152" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -332,27 +316,27 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtVoornaam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNaam" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField27" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtSoort" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField25" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtKosten" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel43" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtLocatie" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="jLabel42" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField28" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCapaciteit" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -365,29 +349,14 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField25">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel39">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Kosten"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtVoornaam">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel40">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Naam"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField27">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField4"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel41">
@@ -405,11 +374,6 @@
                     <Property name="text" type="java.lang.String" value="Beschrijving"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField29">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField1"/>
-                  </Properties>
-                </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane3">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -417,7 +381,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea1">
+                    <Component class="javax.swing.JTextArea" name="txtBeschrijving">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
@@ -425,14 +389,37 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JTextField" name="jTextField28">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jTextField4"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel42">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Capaciteit"/>
+                  </Properties>
+                </Component>
+                <Component class="pas.layout.textfield.TextField" name="txtNaam">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="textField1"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNaamActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="pas.layout.textfield.TextField" name="txtSoort">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="textField1"/>
+                  </Properties>
+                </Component>
+                <Component class="pas.layout.textfield.TextField" name="txtKosten">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="textField1"/>
+                  </Properties>
+                </Component>
+                <Component class="pas.layout.textfield.TextField" name="txtLocatie">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="textField1"/>
+                  </Properties>
+                </Component>
+                <Component class="pas.layout.textfield.TextField" name="txtCapaciteit">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="textField1"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -447,7 +434,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="98" green="62" red="62" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Faciliteiten"/>
+            <Property name="text" type="java.lang.String" value="Faciliteiten Beheren"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel4">
@@ -465,11 +452,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="choice23" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="txtDropdownFacliteit" min="-2" pref="130" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="choice21" min="-2" pref="129" max="-2" attributes="0"/>
+                              <Component id="txtDropdownLocatie" min="-2" pref="129" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
@@ -487,8 +474,8 @@
                       <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="choice21" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="choice23" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDropdownLocatie" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtDropdownFacliteit" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -512,7 +499,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tabelFaciliteiten">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -521,6 +508,30 @@
                         <Column editable="true" title="Kosten" type="java.lang.Double"/>
                         <Column editable="true" title="Locatie" type="java.lang.Integer"/>
                       </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
                     </Property>
                     <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -534,9 +545,13 @@
                 <Property name="text" type="java.lang.String" value="Locatie"/>
               </Properties>
             </Component>
-            <Component class="java.awt.Choice" name="choice21">
+            <Component class="java.awt.Choice" name="txtDropdownLocatie">
             </Component>
-            <Component class="java.awt.Choice" name="choice23">
+            <Component class="java.awt.Choice" name="txtDropdownFacliteit">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTitle2">
               <Properties>
