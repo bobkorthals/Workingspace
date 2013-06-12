@@ -9,7 +9,6 @@ import pas.facility.FacilityController;
 import pas.file.chooser.FileChooserAbstract;
 import pas.file.chooser.FileChooserImage;
 import pas.file.chooser.FileChooserInterface;
-import pas.main.MainController;
 import pas.models.ActiveMember;
 import pas.models.role.Member;
 
@@ -807,7 +806,9 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        Member member = this.getController().getActiveMember().getMember();
+        member.setFirstName(txtFirstName.getText());
+        member.save();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
