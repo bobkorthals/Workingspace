@@ -50,7 +50,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         }
         
         String[] columnNames = {"Naam", "Soort", "Kosten", "Vestiging"};
-        tblOverzichtFaciliteiten.set(facilityData, columnNames);
+        //tblOverzichtFaciliteiten.set(facilityData, columnNames);
         this.setMember(member);
     }
 
