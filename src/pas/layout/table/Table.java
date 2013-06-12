@@ -11,7 +11,7 @@ import javax.swing.ListSelectionModel;
  *
  * @author Ruben
  */
-public class Table  extends JTable {
+public class Table extends JTable {
     public void setMultiSelect(){
         this.setRowSelectionAllowed(true);
         this.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);

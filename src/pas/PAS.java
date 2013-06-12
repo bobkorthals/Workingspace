@@ -23,7 +23,7 @@ public class PAS {
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
         try {
             PAS.setLookAndFeel();
-
+            
             Application application = Application.getInstance();
             SessionManager sessionManager = new SessionManager();
             sessionManager.setEntityManager(

@@ -31,7 +31,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -189,7 +189,7 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ddlFacliteit" min="-2" pref="130" max="-2" attributes="0"/>
+                                  <Component id="ddlFacilities" min="-2" pref="129" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -206,9 +206,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="ddlLocatie" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="ddlFacliteit" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="ddlFacilities" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="189" max="-2" attributes="0"/>
@@ -243,12 +243,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="java.awt.Choice" name="ddlFacliteit">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Faciliteit"/>
@@ -260,6 +254,11 @@
                   </Properties>
                 </Component>
                 <Component class="java.awt.Choice" name="ddlLocatie">
+                </Component>
+                <Component class="java.awt.Choice" name="ddlFacilities">
+                  <Events>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ddlFacilitiesItemStateChanged"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -356,11 +355,11 @@
                                               </Group>
                                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="txtLidVoornaam" alignment="1" pref="152" max="32767" attributes="0"/>
-                                                  <Component id="txtLidAchternaam" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="txtLidTussenvoegsel" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtFirstName" alignment="1" pref="152" max="32767" attributes="0"/>
+                                                  <Component id="txtLastName" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtSuffix" alignment="1" max="32767" attributes="0"/>
                                                   <Component id="txtGeslacht" max="32767" attributes="0"/>
-                                                  <Component id="txtLidGeboortedatum" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="txtDateOfBirth" alignment="1" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Component id="btnLocatie" min="-2" pref="152" max="-2" attributes="0"/>
@@ -406,7 +405,7 @@
                                       <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="txtVoornaam8" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jLabel62" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -447,7 +446,7 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtLidAchternaam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtLidBetalingsAchterstand" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -458,17 +457,17 @@
                                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="txtLidVoornaam" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtLidTussenvoegsel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtLidGeboortedatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDateOfBirth" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -568,20 +567,14 @@
                         <Property name="text" type="java.lang.String" value="Geslacht"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtLidTussenvoegsel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField1"/>
-                      </Properties>
+                    <Component class="javax.swing.JTextField" name="txtSuffix">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSuffixActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtLidAchternaam">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField4"/>
-                      </Properties>
+                    <Component class="javax.swing.JTextField" name="txtLastName">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtLidVoornaam">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField1"/>
-                      </Properties>
+                    <Component class="javax.swing.JTextField" name="txtFirstName">
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtGeslacht">
                       <Properties>
@@ -625,10 +618,7 @@
                         <Property name="text" type="java.lang.String" value="Lid gegevens"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtLidGeboortedatum">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="jTextField1"/>
-                      </Properties>
+                    <Component class="javax.swing.JTextField" name="txtDateOfBirth">
                     </Component>
                   </SubComponents>
                 </Container>
