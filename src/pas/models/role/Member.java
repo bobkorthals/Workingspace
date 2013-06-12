@@ -11,6 +11,9 @@ public class Member extends AbsractPerson {
 
     // Read-only memberId
     private int memberID;
+    
+    // Db result
+    private Lid dbResult;
 
     /*
      * Create member from supplied data
@@ -32,15 +35,29 @@ public class Member extends AbsractPerson {
      */
     public Member(Lid dbResult) {
         super(
-               dbResult.getVoornaam(), 
-               dbResult.getAchternaam(),
-               dbResult.getAchtervoegsel(),
-               ((Integer) dbResult.getGeslacht()).toString(),
-               dbResult.getGeboortedatum());
-
+            dbResult.getVoornaam(), 
+            dbResult.getAchternaam(),
+            dbResult.getAchtervoegsel(),
+            ((Integer) dbResult.getGeslacht()).toString(),
+            dbResult.getGeboortedatum());
+        
+        this.dbResult = dbResult;
         this.memberID = dbResult.getId();
     }
-
+    
+    /*
+     * Returns the Lid db result
+     * 
+     * @return Lid dbResult
+     */
+    private Lid getDbResult() {
+        if (null == this.dbResult) {
+            
+        }
+        
+        return this.dbResult;
+    }
+    
     /*
      * Return member id
      * 
@@ -50,7 +67,13 @@ public class Member extends AbsractPerson {
         return memberID;
     }
     
+    /*
+     * Save current member state to db class
+     * 
+     * @return void
+     */
     public void save() {
-        
+        Lid lid = this.getDbResult();
+        lid.setVoornaam(getFirstName());
     }
 }

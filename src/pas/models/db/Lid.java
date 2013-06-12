@@ -8,9 +8,12 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,10 +22,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Query;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import mvc.Application;
+import pas.exception.NoEntityManagerException;
+import pas.layout.MainFrame;
+import pas.models.SessionManager;
+import session.NoSessionManagerException;
 
 /**
  *
@@ -140,6 +149,34 @@ public class Lid implements Serializable {
         this.plaats = plaats;
         this.status = status;
         this.identiteitid = identiteitid;
+    }
+    
+    /*
+     * Returns the Sessionmanager
+     * 
+     * @return SessionManager
+     */
+    private SessionManager getSessionManager() {
+        try {
+            return (SessionManager) Application.getInstance().getSessionManager();
+        } catch (NoSessionManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    /*
+     * Returns the database entity manager
+     * 
+     * @return EntityManager
+     */
+    private EntityManager getEntityManager() {
+        try {
+            return this.getSessionManager().getEntityManager();
+        } catch (NoEntityManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     public Integer getId() {
@@ -397,7 +434,9 @@ public class Lid implements Serializable {
     }
     
     public void save() {
-        
+        Query query = getEntityManager().createNamedQuery("Lid.update");
+        query.setParameter("voornaam", this.getVoornaam());
+        query.executeUpdate();
     }
 
     @Override
