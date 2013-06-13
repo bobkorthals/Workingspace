@@ -1,12 +1,15 @@
-package pas.financial.models;
+package pas.models;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
+import mvc.model.PropertyChangeSupportInterface;
 
 /**
  *
  * @author Ruben
  */
-public class Clieop {
+public class Clieop implements PropertyChangeSupportInterface {
     /* Instance variables */
     private int outputType;
     
@@ -27,6 +30,8 @@ public class Clieop {
     private ArrayList<String> clientAddress;
     private ArrayList<String> clientAmount;
     private ArrayList<String> transactionType;
+    
+    private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     
     /* Class Constants */
     
@@ -115,6 +120,24 @@ public class Clieop {
      * public String FULL_COLLECTION
      */
     public static final String FULL_COLLECTION  = "1001";
+    
+    /**
+     * Implementation of addPropertyChangeListener
+     * @param listener 
+     */
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.addPropertyChangeListener(listener);
+    }
+
+    /**
+     * Implementation of removePropertyChangeListener
+     * @param listener 
+     */
+    @Override
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        this.propertyChangeSupport.removePropertyChangeListener(listener);
+    }
             
     /***** Get Methods *****/
     /**
@@ -134,16 +157,16 @@ public class Clieop {
     }
 
     /**
-     *
-     * @return
+     * Returns the currently set NAW code
+     * @return String nawCode
      */
     public String getNawCode() {
         return this.nawCode;
     }
 
     /**
-     *
-     * @return
+     * Returns the currently set duplicity type
+     * @return String
      */
     public String getDuplicityType() {
         return this.duplicityType;
@@ -151,7 +174,7 @@ public class Clieop {
 
     /**
      * Get the set Email address when using the output type EMAIL
-     * @return String
+     * @return String email
      */
     public String getEmail() {
         return this.email;
@@ -159,38 +182,38 @@ public class Clieop {
 
     /**
      * Set the output type to either SCREEN, SAVE, EMAIL or PRINT using the class constants
-     * @param outputType
+     * @param int outputType
      */
     public void setOutputType(int outputType) {
         this.outputType = outputType;
     }
     
     /**
-     * 
-     * @param transactionGroup
+     * Set the transaction group
+     * @param String transactionGroup
      */
     public void setTransactionGroup(String transactionGroup) {
         this.transactionGroup = transactionGroup;
     }
 
     /**
-     *
-     * @param nawCode
+     * Set the NAW code
+     * @param String nawCode
      */
     public void setNawCode(String nawCode) {
         this.nawCode = nawCode;
     }
 
     /**
-     *
-     * @param duplicityType
+     * Set the duplicity type
+     * @param String duplicityType
      */
     public void setDuplicityType(String duplicityType) {
         this.duplicityType = duplicityType;
     }
 
     /**
-     *
+     * Set the email
      * @param String email
      */
     public void setEmail(String email) {

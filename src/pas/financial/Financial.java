@@ -48,20 +48,35 @@ public class Financial extends mvc.view.AbstractView {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelLocation1 = new javax.swing.JLabel();
         mainFrame = new javax.swing.JPanel();
+        buttonRevenues = new pas.layout.label.Button();
+        buttonCosts = new pas.layout.label.Button();
+        buttonCollection = new pas.layout.label.Button();
         labelLocation = new javax.swing.JLabel();
         selectPeriodMonth = new javax.swing.JComboBox();
         labelPeriod = new javax.swing.JLabel();
         selectLocation = new javax.swing.JComboBox();
         selectPeriodYear = new javax.swing.JComboBox();
+        buttonSelect = new pas.layout.label.Button();
+        buttonPaymentStatus = new pas.layout.label.Button();
         viewFrame = new javax.swing.JPanel();
         collectionPanel = new javax.swing.JPanel();
         paneMembers1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableMembers1 = new pas.layout.table.Table();
+        buttonUpdateAction3 = new pas.layout.label.Button();
+        buttonGenerateCollection1 = new pas.layout.label.Button();
+        labelUpdateAction1 = new javax.swing.JLabel();
+        selectUpdateAction1 = new javax.swing.JComboBox();
+        buttonUpdateAction2 = new pas.layout.label.Button();
         paymentStatusPanel = new javax.swing.JPanel();
         paneMembers = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableMembers = new pas.layout.table.Table();
+        buttonUpdateAction1 = new pas.layout.label.Button();
         labelUpdateAction = new javax.swing.JLabel();
         selectUpdateAction = new javax.swing.JComboBox();
+        buttonUpdateAction = new pas.layout.label.Button();
         costPanel = new javax.swing.JPanel();
         paneBar = new javax.swing.JPanel();
         paneCourse = new javax.swing.JPanel();
@@ -83,11 +98,31 @@ public class Financial extends mvc.view.AbstractView {
         labelStatus = new javax.swing.JLabel();
         labelTitle = new javax.swing.JLabel();
 
-        labelLocation1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        labelLocation1.setForeground(new java.awt.Color(98, 98, 152));
-        labelLocation1.setText("Vestiging");
+        setOpaque(false);
 
+        mainFrame.setOpaque(false);
         mainFrame.setPreferredSize(new java.awt.Dimension(915, 617));
+
+        buttonRevenues.setText("Omzetten");
+        buttonRevenues.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonRevenuesMouseClicked(evt);
+            }
+        });
+
+        buttonCosts.setText("Kosten");
+        buttonCosts.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCostsMouseClicked(evt);
+            }
+        });
+
+        buttonCollection.setText("Incasso");
+        buttonCollection.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonCollectionMouseClicked(evt);
+            }
+        });
 
         labelLocation.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelLocation.setForeground(new java.awt.Color(98, 98, 152));
@@ -129,28 +164,149 @@ public class Financial extends mvc.view.AbstractView {
             }
         });
 
+        buttonSelect.setText("Selecteren");
+        buttonSelect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSelectMouseClicked(evt);
+            }
+        });
+        buttonSelect.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                buttonSelectPropertyChange(evt);
+            }
+        });
+
+        buttonPaymentStatus.setText("Betalingsstatus");
+        buttonPaymentStatus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonPaymentStatusMouseClicked(evt);
+            }
+        });
+
+        viewFrame.setOpaque(false);
         viewFrame.setLayout(new java.awt.CardLayout());
 
+        collectionPanel.setOpaque(false);
+
         paneMembers1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Leden", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneMembers1.setOpaque(false);
+
+        tableMembers1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                { new Integer(1), "Jan Jansen",  new Double(35.0),  new Double(121.5),  new Double(0.0),  new Double(45.0),  new Double(201.5), "Betaald", "3-2-2013"},
+                { new Integer(3), "Sander Boersma",  new Double(20.0),  new Double(0.0),  new Double(35.0),  new Double(10.0),  new Double(65.0), "Betaald", "3-2-2013"},
+                { new Integer(4), "Ralph Veenstra",  new Double(35.0),  new Double(35.0),  new Double(35.0),  new Double(50.0),  new Double(155.0), "Betaald", "3-2-2013"},
+                { new Integer(5), null,  new Double(35.0),  new Double(10.0),  new Double(70.0),  new Double(0.0),  new Double(115.0), "Betaald", "5-2-2013"},
+                { new Integer(8), "Anneke Veenstra",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(10.0),  new Double(45.0), "Betaald", "3-2-2013"},
+                { new Integer(9), "Jorrit Verschuur",  new Double(25.0),  new Double(12.5),  new Double(0.0),  new Double(5.0),  new Double(42.5), "Stornering", "8-2-2013"},
+                { new Integer(13), "Jessica Kaaijk",  new Double(25.0),  new Double(6.5),  new Double(0.0),  new Double(0.0),  new Double(31.5), "Betaald", "3-2-2013"},
+                { new Integer(14), "Ashley Daza",  new Double(35.0),  new Double(8.5),  new Double(25.0),  new Double(25.0),  new Double(93.5), "Betaald", "3-2-2013"},
+                { new Integer(15), "Corry Symons",  new Double(25.0),  new Double(64.0),  new Double(25.0),  new Double(25.0),  new Double(139.0), "Betaald", "3-2-2013"},
+                { new Integer(19), "Madelon Boon",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"},
+                { new Integer(24), "Wilco de Boer",  new Double(35.0),  new Double(10.0),  new Double(35.0),  new Double(15.0),  new Double(95.0), "Mislukt", "5-2-2013"},
+                { new Integer(25), "Marco Bakken",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"}
+            },
+            new String [] {
+                "Lidnummer", "Naam", "Abonnement", "Bar", "Cursussen", "Faciliteiten", "Totaal", "Status", "Datum"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(tableMembers1);
+
+        buttonUpdateAction3.setText("Selecteer/Deselecteer alles");
+        buttonUpdateAction3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonUpdateAction3MouseClicked(evt);
+            }
+        });
+        buttonUpdateAction3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                buttonUpdateAction3PropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneMembers1Layout = new javax.swing.GroupLayout(paneMembers1);
         paneMembers1.setLayout(paneMembers1Layout);
         paneMembers1Layout.setHorizontalGroup(
             paneMembers1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(paneMembers1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paneMembers1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(paneMembers1Layout.createSequentialGroup()
+                        .addComponent(buttonUpdateAction3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         paneMembers1Layout.setVerticalGroup(
             paneMembers1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(paneMembers1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addComponent(buttonUpdateAction3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        buttonGenerateCollection1.setText("Genereer Incassobestand");
+        buttonGenerateCollection1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonGenerateCollection1MouseClicked(evt);
+            }
+        });
+
+        labelUpdateAction1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        labelUpdateAction1.setForeground(new java.awt.Color(98, 98, 152));
+        labelUpdateAction1.setText("Met geselecteerd");
+
+        selectUpdateAction1.setBackground(new java.awt.Color(242, 109, 142));
+        selectUpdateAction1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Verwijderen", "Wijzigen" }));
+        selectUpdateAction1.setToolTipText("");
+        selectUpdateAction1.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
+        selectUpdateAction1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        selectUpdateAction1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectUpdateAction1ActionPerformed(evt);
+            }
+        });
+
+        buttonUpdateAction2.setText("Uitvoeren");
+        buttonUpdateAction2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonUpdateAction2MouseClicked(evt);
+            }
+        });
+        buttonUpdateAction2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                buttonUpdateAction2PropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout collectionPanelLayout = new javax.swing.GroupLayout(collectionPanel);
         collectionPanel.setLayout(collectionPanelLayout);
         collectionPanelLayout.setHorizontalGroup(
             collectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(collectionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(paneMembers1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(collectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(collectionPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(paneMembers1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(collectionPanelLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(buttonGenerateCollection1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
+                        .addComponent(labelUpdateAction1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(selectUpdateAction1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonUpdateAction2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         collectionPanelLayout.setVerticalGroup(
@@ -158,22 +314,84 @@ public class Financial extends mvc.view.AbstractView {
             .addGroup(collectionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(paneMembers1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(collectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonGenerateCollection1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelUpdateAction1)
+                    .addComponent(selectUpdateAction1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonUpdateAction2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         viewFrame.add(collectionPanel, "collectionCard");
 
+        paymentStatusPanel.setOpaque(false);
+
         paneMembers.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Leden", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneMembers.setOpaque(false);
+
+        tableMembers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                { new Integer(1), "Jan Jansen",  new Double(35.0),  new Double(121.5),  new Double(0.0),  new Double(45.0),  new Double(201.5), "Betaald", "3-2-2013"},
+                { new Integer(3), "Sander Boersma",  new Double(20.0),  new Double(0.0),  new Double(35.0),  new Double(10.0),  new Double(65.0), "Betaald", "3-2-2013"},
+                { new Integer(4), "Ralph Veenstra",  new Double(35.0),  new Double(35.0),  new Double(35.0),  new Double(50.0),  new Double(155.0), "Betaald", "3-2-2013"},
+                { new Integer(5), null,  new Double(35.0),  new Double(10.0),  new Double(70.0),  new Double(0.0),  new Double(115.0), "Betaald", "5-2-2013"},
+                { new Integer(8), "Anneke Veenstra",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(10.0),  new Double(45.0), "Betaald", "3-2-2013"},
+                { new Integer(9), "Jorrit Verschuur",  new Double(25.0),  new Double(12.5),  new Double(0.0),  new Double(5.0),  new Double(42.5), "Stornering", "8-2-2013"},
+                { new Integer(13), "Jessica Kaaijk",  new Double(25.0),  new Double(6.5),  new Double(0.0),  new Double(0.0),  new Double(31.5), "Betaald", "3-2-2013"},
+                { new Integer(14), "Ashley Daza",  new Double(35.0),  new Double(8.5),  new Double(25.0),  new Double(25.0),  new Double(93.5), "Betaald", "3-2-2013"},
+                { new Integer(15), "Corry Symons",  new Double(25.0),  new Double(64.0),  new Double(25.0),  new Double(25.0),  new Double(139.0), "Betaald", "3-2-2013"},
+                { new Integer(19), "Madelon Boon",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"},
+                { new Integer(24), "Wilco de Boer",  new Double(35.0),  new Double(10.0),  new Double(35.0),  new Double(15.0),  new Double(95.0), "Mislukt", "5-2-2013"},
+                { new Integer(25), "Marco Bakken",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"}
+            },
+            new String [] {
+                "Lidnummer", "Naam", "Abonnement", "Bar", "Cursussen", "Faciliteiten", "Totaal", "Status", "Datum"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableMembers);
+
+        buttonUpdateAction1.setText("Selecteer/Deselecteer alles");
+        buttonUpdateAction1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonUpdateAction1MouseClicked(evt);
+            }
+        });
+        buttonUpdateAction1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                buttonUpdateAction1PropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneMembersLayout = new javax.swing.GroupLayout(paneMembers);
         paneMembers.setLayout(paneMembersLayout);
         paneMembersLayout.setHorizontalGroup(
             paneMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 702, Short.MAX_VALUE)
+            .addGroup(paneMembersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paneMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+                    .addGroup(paneMembersLayout.createSequentialGroup()
+                        .addComponent(buttonUpdateAction1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         paneMembersLayout.setVerticalGroup(
             paneMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 481, Short.MAX_VALUE)
+            .addGroup(paneMembersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addComponent(buttonUpdateAction1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         labelUpdateAction.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -191,6 +409,18 @@ public class Financial extends mvc.view.AbstractView {
             }
         });
 
+        buttonUpdateAction.setText("Uitvoeren");
+        buttonUpdateAction.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonUpdateActionMouseClicked(evt);
+            }
+        });
+        buttonUpdateAction.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                buttonUpdateActionPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout paymentStatusPanelLayout = new javax.swing.GroupLayout(paymentStatusPanel);
         paymentStatusPanel.setLayout(paymentStatusPanelLayout);
         paymentStatusPanelLayout.setHorizontalGroup(
@@ -204,7 +434,8 @@ public class Financial extends mvc.view.AbstractView {
                         .addComponent(labelUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(selectUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         paymentStatusPanelLayout.setVerticalGroup(
@@ -214,6 +445,7 @@ public class Financial extends mvc.view.AbstractView {
                 .addComponent(paneMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paymentStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selectUpdateAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelUpdateAction))
                 .addContainerGap())
@@ -221,7 +453,10 @@ public class Financial extends mvc.view.AbstractView {
 
         viewFrame.add(paymentStatusPanel, "statusCard");
 
+        costPanel.setOpaque(false);
+
         paneBar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneBar.setOpaque(false);
 
         javax.swing.GroupLayout paneBarLayout = new javax.swing.GroupLayout(paneBar);
         paneBar.setLayout(paneBarLayout);
@@ -235,6 +470,7 @@ public class Financial extends mvc.view.AbstractView {
         );
 
         paneCourse.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cursussen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneCourse.setOpaque(false);
 
         javax.swing.GroupLayout paneCourseLayout = new javax.swing.GroupLayout(paneCourse);
         paneCourse.setLayout(paneCourseLayout);
@@ -248,6 +484,7 @@ public class Financial extends mvc.view.AbstractView {
         );
 
         paneBar3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Faciliteiten", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneBar3.setOpaque(false);
 
         javax.swing.GroupLayout paneBar3Layout = new javax.swing.GroupLayout(paneBar3);
         paneBar3.setLayout(paneBar3Layout);
@@ -284,9 +521,12 @@ public class Financial extends mvc.view.AbstractView {
                 .addContainerGap())
         );
 
-        viewFrame.add(costPanel, "card4");
+        viewFrame.add(costPanel, "costCard");
+
+        paymentPanel.setOpaque(false);
 
         paneBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneBar1.setOpaque(false);
 
         tableBar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -325,6 +565,7 @@ public class Financial extends mvc.view.AbstractView {
         );
 
         paneSubscription.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Abonnementen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneSubscription.setOpaque(false);
 
         tableSubscription.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -363,6 +604,7 @@ public class Financial extends mvc.view.AbstractView {
         );
 
         paneCourse1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cursussen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneCourse1.setOpaque(false);
 
         tableCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -401,6 +643,7 @@ public class Financial extends mvc.view.AbstractView {
         );
 
         paneBar4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Faciliteiten", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneBar4.setOpaque(false);
 
         tableFacility.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -465,7 +708,7 @@ public class Financial extends mvc.view.AbstractView {
                 .addContainerGap())
         );
 
-        viewFrame.add(paymentPanel, "card5");
+        viewFrame.add(paymentPanel, "paymentCard");
 
         selectStatus.setBackground(new java.awt.Color(242, 109, 142));
         selectStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle", "Achterstand", "Betaald", "Geweigerd", "Gestorneerd" }));
@@ -493,7 +736,12 @@ public class Financial extends mvc.view.AbstractView {
                 .addContainerGap()
                 .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(mainFrameLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
+                        .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(buttonPaymentStatus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonCosts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(buttonRevenues, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonCollection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addComponent(viewFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(13, 13, 13))
                     .addGroup(mainFrameLayout.createSequentialGroup()
@@ -512,13 +760,16 @@ public class Financial extends mvc.view.AbstractView {
                         .addComponent(labelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(57, Short.MAX_VALUE))))
         );
         mainFrameLayout.setVerticalGroup(
             mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainFrameLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelStatus)
                     .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -527,9 +778,21 @@ public class Financial extends mvc.view.AbstractView {
                     .addComponent(selectLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelLocation)
                     .addComponent(labelTitle))
-                .addGap(18, 18, 18)
-                .addComponent(viewFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainFrameLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(buttonRevenues, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonCosts, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonPaymentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(mainFrameLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(viewFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -646,19 +909,51 @@ public class Financial extends mvc.view.AbstractView {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonUpdateAction1PropertyChange
 
+    private void selectUpdateAction1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUpdateAction1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectUpdateAction1ActionPerformed
+
+    private void buttonUpdateAction2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdateAction2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonUpdateAction2MouseClicked
+
+    private void buttonUpdateAction2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonUpdateAction2PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonUpdateAction2PropertyChange
+
+    private void buttonUpdateAction3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdateAction3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonUpdateAction3MouseClicked
+
+    private void buttonUpdateAction3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonUpdateAction3PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonUpdateAction3PropertyChange
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private pas.layout.label.Button buttonCollection;
+    private pas.layout.label.Button buttonCosts;
+    private pas.layout.label.Button buttonGenerateCollection1;
+    private pas.layout.label.Button buttonPaymentStatus;
+    private pas.layout.label.Button buttonRevenues;
+    private pas.layout.label.Button buttonSelect;
+    private pas.layout.label.Button buttonUpdateAction;
+    private pas.layout.label.Button buttonUpdateAction1;
+    private pas.layout.label.Button buttonUpdateAction2;
+    private pas.layout.label.Button buttonUpdateAction3;
     private javax.swing.JPanel collectionPanel;
     private javax.swing.JPanel costPanel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel labelLocation;
-    private javax.swing.JLabel labelLocation1;
     private javax.swing.JLabel labelPeriod;
     private javax.swing.JLabel labelStatus;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelUpdateAction;
+    private javax.swing.JLabel labelUpdateAction1;
     private javax.swing.JPanel mainFrame;
     private javax.swing.JPanel paneBar;
     private javax.swing.JPanel paneBar1;
@@ -676,9 +971,12 @@ public class Financial extends mvc.view.AbstractView {
     private javax.swing.JComboBox selectPeriodYear;
     private javax.swing.JComboBox selectStatus;
     private javax.swing.JComboBox selectUpdateAction;
+    private javax.swing.JComboBox selectUpdateAction1;
     private javax.swing.JTable tableBar;
     private javax.swing.JTable tableCourse;
     private javax.swing.JTable tableFacility;
+    private pas.layout.table.Table tableMembers;
+    private pas.layout.table.Table tableMembers1;
     private javax.swing.JTable tableSubscription;
     private javax.swing.JPanel viewFrame;
     // End of variables declaration//GEN-END:variables
