@@ -394,7 +394,7 @@
                     <Property name="text" type="java.lang.String" value="Capaciteit"/>
                   </Properties>
                 </Component>
-                <Component class="pas.layout.textfield.TextField" name="txtNaam">
+                <Component class="pas.layout.form.TextField" name="txtNaam">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="textField1"/>
                   </Properties>
@@ -402,22 +402,22 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNaamActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="pas.layout.textfield.TextField" name="txtSoort">
+                <Component class="pas.layout.form.TextField" name="txtSoort">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="textField1"/>
                   </Properties>
                 </Component>
-                <Component class="pas.layout.textfield.TextField" name="txtKosten">
+                <Component class="pas.layout.form.TextField" name="txtKosten">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="textField1"/>
                   </Properties>
                 </Component>
-                <Component class="pas.layout.textfield.TextField" name="txtLocatie">
+                <Component class="pas.layout.form.TextField" name="txtLocatie">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="textField1"/>
                   </Properties>
                 </Component>
-                <Component class="pas.layout.textfield.TextField" name="txtCapaciteit">
+                <Component class="pas.layout.form.TextField" name="txtCapaciteit">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="textField1"/>
                   </Properties>
