@@ -15,6 +15,9 @@ Incasso gegevens, maar met status (Te betalen/Betaald/Mislukt/Gestorneerd/Aangep
 |						Queries							|
 =========================================================================================================
 
+Incasso/Betalingsstatus tabel
+Lidnummer | Naam | Abonnement | Bar | Cursussen | Faciliteiten | Totaal | Status | Datum
+
 ================
 |  Selectform  |
 ================
@@ -29,48 +32,48 @@ FROM		vestiging
 ===============
 Product:
 ---------------
-SELECT 		categorie.omschrijving, SUM(product.prijs), vestiging.id, vestiging.naam
+SELECT 		product.name, categorie.omschrijving, SUM(product.prijs) AS omzet, vestiging.id, vestiging.naam
 FROM 		factuuritem
 LEFT JOIN 	product 		ON product.id 			= factuuritem.productid
 LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid
 LEFT JOIN 	bestelling 		ON bestelling.id 		= factuuritem.bestellingid
 LEFT JOIN	categorie		ON categorie.id			= product.categorieid
-WHERE 		vestiging.id 						=  :vestiging
-AND		bestelling.tijddatum 					BETWEEN :timeoffset AND :timeendset
-GROUP BY	product.id, vestiging.id
-
+WHERE 		vestiging.id 						= :vestiging
+AND		factuuritem.tijddatum	BETWEEN :timeofset		AND :timeendset
+GROUP BY	product.name, categorie.omschrijving, vestiging.id, vestiging.naam
 
 Facility:
 ---------------
-SELECT		faciliteit.omschrijving, SUM(faciliteit.kosten), vestiging.id, vestiging.naam
+SELECT		faciliteit.name, SUM(faciliteit.kosten) AS omzet, COUNT(reservering.faciliteitid) AS gebruikers, vestiging.id, vestiging.naam
 FROM		factuuritem
 LEFT JOIN	reservering		ON reservering.id		= factuuritem.reserveringid
 LEFT JOIN	faciliteit		ON faciliteit.id		= reservering.faciliteitid
+LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid
 WHERE		faciliteit.vestigingid					= :vestiging
-AND		reservering.tijddatum					BETWEEN :timeoffset AND :timeendset
-GROUP BY	faciliteit.id, vestiging.id
+AND		reservering.tijddatum	BETWEEN :timeoffset		AND :timeendset
+GROUP BY	faciliteit.name, vestiging.id, vestiging.naam
 
 Cursus:
 ----------------
-SELECT		cursus.omschrijving, SUM(cursus.kosten), vestiging.id, vestiging.naam
+SELECT		cursus.naam, SUM(cursus.kosten) AS omzet, COUNT(planning.id) AS deelnames, vestiging.id, vestiging.naam
 FROM		factuuritem
 LEFT JOIN	inschrijving		ON inschrijving.id		= factuuritem.inschrijvingid
 LEFT JOIN	planning		ON planning.id			= inschrijving.planningid
 LEFT JOIN	cursus			ON cursus.id			= planning.cursusid
 LEFT JOIN	vestiging		ON vestiging.id			= factuuritem.vestigingid
 WHERE		cursus.vestigingid					= :vestiging
-AND		planning.tijddatum					BETWEEN :timeoffset AND :timeendset
-GROUP BY	cursus.id, vestiging.id
+AND		planning.tijddatum	BETWEEN :timeoffset		AND :timeendset
+GROUP BY	planning.id, vestiging.id, cursus.naam, vestiging.naam
 
 
 Abonnementen:
 ----------------
-SELECT		abonnement.omschrijving, SUM(abonnement.kosten), vestiging.id, vestiging.naam
+SELECT		abonnement.name, SUM(abonnement.kosten) AS omzet, vestiging.id, vestiging.naam
 FROM		factuuritem
 LEFT JOIN	abonnering		ON abonnering.id		= factuuritem.abonneringid
 LEFT JOIN	abonnement		ON abonnement.id		= abonnering.abonnementid
 LEFT JOIN	vestiging		ON vestiging.id			= factuuritem.vestigingid
 WHERE		factuuritem.vestigingid					= :vestiging
-AND		abonnering.startdate 					BETWEEN :timeoffset AND :timeendset
-OR		abonnering.enddate 					BETWEEN :timeoffset 	 AND :timeendset
-GROUP BY	abonnement.id, vestiging.id
+AND		abonnering.startdate 	BETWEEN :timeoffset 		AND :timeendset
+OR		abonnering.enddate 	BETWEEN :timeoffset 	 	AND :timeendset
+GROUP BY	abonnement.name, vestiging.id, vestiging.naam
