@@ -63,11 +63,11 @@ public class Facility extends mvc.view.AbstractView {
         jScrollPane3 = new javax.swing.JScrollPane();
         txtBeschrijving = new javax.swing.JTextArea();
         jLabel42 = new javax.swing.JLabel();
-        txtNaam = new pas.layout.textfield.TextField();
-        txtSoort = new pas.layout.textfield.TextField();
-        txtKosten = new pas.layout.textfield.TextField();
-        txtLocatie = new pas.layout.textfield.TextField();
-        txtCapaciteit = new pas.layout.textfield.TextField();
+        txtNaam = new pas.layout.form.TextField();
+        txtSoort = new pas.layout.form.TextField();
+        txtKosten = new pas.layout.form.TextField();
+        txtLocatie = new pas.layout.form.TextField();
+        txtCapaciteit = new pas.layout.form.TextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -459,11 +459,11 @@ public class Facility extends mvc.view.AbstractView {
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JTable tabelFaciliteiten;
     private javax.swing.JTextArea txtBeschrijving;
-    private pas.layout.textfield.TextField txtCapaciteit;
+    private pas.layout.form.TextField txtCapaciteit;
     private java.awt.Choice txtDropdownLocatie;
-    private pas.layout.textfield.TextField txtKosten;
-    private pas.layout.textfield.TextField txtLocatie;
-    private pas.layout.textfield.TextField txtNaam;
-    private pas.layout.textfield.TextField txtSoort;
+    private pas.layout.form.TextField txtKosten;
+    private pas.layout.form.TextField txtLocatie;
+    private pas.layout.form.TextField txtNaam;
+    private pas.layout.form.TextField txtSoort;
     // End of variables declaration//GEN-END:variables
 }

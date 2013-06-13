@@ -389,7 +389,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnActiveMembersMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="pas.layout.textfield.TextField" name="txtFilterMember">
+                <Component class="pas.layout.form.TextField" name="txtFilterMember">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
@@ -405,7 +405,7 @@
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFilterMemberKeyTyped"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new pas.layout.textfield.TextField(&quot;Zoek op naam of lid nummer..&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new pas.layout.form.TextField(&quot;Zoek op naam of lid nummer..&quot;)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

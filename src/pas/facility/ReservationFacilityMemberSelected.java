@@ -7,6 +7,7 @@ package pas.facility;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import pas.layout.form.ComboListItem;
 import pas.member.MemberController;
 import pas.models.ActiveMember;
 import pas.models.db.Faciliteit;
@@ -70,25 +71,13 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
      * @return void
      */
     private void setFacilities() {
-        ddlFacilities.add("Selecteer faciliteit");
-        DefaultTableModel model = new DefaultTableModel();
-        
-        // Copy columns into model
-        for (int i=0; i<tblOverzichtFaciliteiten.getColumnCount(); i++) {
-            model.addColumn(tblOverzichtFaciliteiten.getColumnName(i).toString());
+        ddlFacilities.addItem(new ComboListItem("Selecteer"));
+        for (Faciliteit facility : facilities) {
+           ddlFacilities.addItem(
+                new ComboListItem(
+                   facility.getOmschrijving(), 
+                   facility));
         }
-        
-        for (Faciliteit facilitie : facilities) {
-           ddlFacilities.add(facilitie.getOmschrijving());
-           Object dataObject[] = {
-                facilitie.getOmschrijving(), 
-                facilitie.getSoort(),
-                facilitie.getKosten(),
-                facilitie.getVestigingid().toString()};
-           model.addRow(dataObject);
-        }
-
-        tblOverzichtFaciliteiten.setModel(model);
     }
 
     /**
@@ -106,13 +95,10 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         btnReserverenBetalen = new javax.swing.JButton();
         btnTerug = new javax.swing.JButton();
         pnlMiddleUpTable = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblOverzichtFaciliteiten = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         ddlLocatie = new java.awt.Choice();
-        ddlFacilities = new java.awt.Choice();
-        pnlMiddleDown = new javax.swing.JPanel();
+        ddlFacilities = new pas.layout.form.ComboList();
         lblTitle1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel58 = new javax.swing.JLabel();
@@ -143,11 +129,9 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         txtLidBetalingsAchterstand = new javax.swing.JTextField();
         lblTitle2 = new javax.swing.JLabel();
         txtDateOfBirth = new javax.swing.JTextField();
+        pnlMiddleDown = new javax.swing.JPanel();
         lblTitle4 = new javax.swing.JLabel();
         h11 = new pas.layout.label.H1();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtBeschrijvingFaciliteit = new javax.swing.JTextArea();
-        lblTitle3 = new javax.swing.JLabel();
 
         setOpaque(false);
 
@@ -194,28 +178,6 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
 
         pnlMiddleUpTable.setOpaque(false);
 
-        tblOverzichtFaciliteiten.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Naam", "Soort", "Kosten", "Locatie"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tblOverzichtFaciliteiten.setOpaque(false);
-        jScrollPane1.setViewportView(tblOverzichtFaciliteiten);
-
         jLabel2.setText("Faciliteit");
 
         jLabel3.setText("Locatie");
@@ -225,40 +187,11 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                 ddlFacilitiesItemStateChanged(evt);
             }
         });
-
-        javax.swing.GroupLayout pnlMiddleUpTableLayout = new javax.swing.GroupLayout(pnlMiddleUpTable);
-        pnlMiddleUpTable.setLayout(pnlMiddleUpTableLayout);
-        pnlMiddleUpTableLayout.setHorizontalGroup(
-            pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMiddleUpTableLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(pnlMiddleUpTableLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ddlFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ddlLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        pnlMiddleUpTableLayout.setVerticalGroup(
-            pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMiddleUpTableLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ddlLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(ddlFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        pnlMiddleDown.setOpaque(false);
+        ddlFacilities.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ddlFacilitiesActionPerformed(evt);
+            }
+        });
 
         lblTitle1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblTitle1.setForeground(new java.awt.Color(98, 98, 152));
@@ -339,10 +272,23 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel60)
-                            .addComponent(jLabel44)
-                            .addComponent(jLabel59)
-                            .addComponent(jLabel58)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel59)
+                                    .addComponent(jLabel44)
+                                    .addComponent(jLabel60))
+                                .addGap(232, 232, 232)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel62)
+                                    .addComponent(jLabel4)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel58)
+                                .addGap(238, 238, 238)
+                                .addComponent(jLabel61)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCapaciteit, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(ddlTijd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -452,38 +398,61 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout pnlMiddleUpTableLayout = new javax.swing.GroupLayout(pnlMiddleUpTable);
+        pnlMiddleUpTable.setLayout(pnlMiddleUpTableLayout);
+        pnlMiddleUpTableLayout.setHorizontalGroup(
+            pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMiddleUpTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMiddleUpTableLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ddlFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ddlLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMiddleUpTableLayout.createSequentialGroup()
+                        .addComponent(lblTitle1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlMiddleUpTableLayout.setVerticalGroup(
+            pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMiddleUpTableLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ddlLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addGroup(pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(ddlFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(lblTitle1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(78, 78, 78))
+        );
+
+        pnlMiddleDown.setOpaque(false);
+
         javax.swing.GroupLayout pnlMiddleDownLayout = new javax.swing.GroupLayout(pnlMiddleDown);
         pnlMiddleDown.setLayout(pnlMiddleDownLayout);
         pnlMiddleDownLayout.setHorizontalGroup(
             pnlMiddleDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMiddleDownLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMiddleDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitle1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 549, Short.MAX_VALUE)
         );
         pnlMiddleDownLayout.setVerticalGroup(
             pnlMiddleDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMiddleDownLayout.createSequentialGroup()
-                .addComponent(lblTitle1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 324, Short.MAX_VALUE)
         );
 
         lblTitle4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblTitle4.setForeground(new java.awt.Color(98, 98, 152));
 
         h11.setText("Reservering");
-
-        txtBeschrijvingFaciliteit.setColumns(20);
-        txtBeschrijvingFaciliteit.setRows(5);
-        jScrollPane2.setViewportView(txtBeschrijvingFaciliteit);
-
-        lblTitle3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblTitle3.setForeground(new java.awt.Color(98, 98, 152));
-        lblTitle3.setText("Beschrijving Faciliteit");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -503,11 +472,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(h11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitle3))
-                .addContainerGap())
+                .addContainerGap(340, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -515,16 +480,14 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitle4)
-                    .addComponent(h11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitle3))
+                    .addComponent(h11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlLeftButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(pnlMiddleUpTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlMiddleDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
+                        .addGap(304, 304, 304)
+                        .addComponent(pnlMiddleDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -584,19 +547,24 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     }//GEN-LAST:event_txtSuffixActionPerformed
 
     private void ddlFacilitiesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ddlFacilitiesItemStateChanged
-        for (Faciliteit facility : this.facilities) {
-            if (facility.getOmschrijving().equals(ddlFacilities.getSelectedItem())) {
-                System.out.println(facility.getId());
-            }
-        }
+        
     }//GEN-LAST:event_ddlFacilitiesItemStateChanged
+
+    private void ddlFacilitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddlFacilitiesActionPerformed
+        ComboListItem item = (ComboListItem) ddlFacilities.getSelectedItem();
+        
+        if (item.hasValue()) {
+            Faciliteit facility = (Faciliteit) item.getValue();
+            System.out.println(facility.getKosten() + " : " + facility.getOmschrijving());
+        }
+    }//GEN-LAST:event_ddlFacilitiesActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField btnKosten;
     private javax.swing.JTextField btnLocatie;
     private javax.swing.JButton btnReserverenBetalen;
     private javax.swing.JButton btnTerug;
-    private java.awt.Choice ddlFacilities;
+    private pas.layout.form.ComboList ddlFacilities;
     private java.awt.Choice ddlLocatie;
     private java.awt.Choice ddlTijd;
     private pas.layout.label.H1 h11;
@@ -619,17 +587,12 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblTitle2;
-    private javax.swing.JLabel lblTitle3;
     private javax.swing.JLabel lblTitle4;
     private javax.swing.JPanel pnlLeftButtons;
     private javax.swing.JPanel pnlMiddleDown;
     private javax.swing.JPanel pnlMiddleUpTable;
-    private javax.swing.JTable tblOverzichtFaciliteiten;
-    private javax.swing.JTextArea txtBeschrijvingFaciliteit;
     private javax.swing.JTextField txtCapaciteit;
     private javax.swing.JTextField txtDateOfBirth;
     private javax.swing.JTextField txtFirstName;

@@ -146,7 +146,7 @@ public class MainFrame extends AbstractFrame {
         pnlMemberSearchControl = new javax.swing.JPanel();
         btnAllMembers = new pas.layout.label.Button();
         btnActiveMembers = new pas.layout.label.Button();
-        txtFilterMember = new pas.layout.textfield.TextField("Zoek op naam of lid nummer..");
+        txtFilterMember = new pas.layout.form.TextField("Zoek op naam of lid nummer..");
         pnlMemberSearchResults = new javax.swing.JPanel();
         h2MemberName = new pas.layout.label.H2();
         h2MemberId = new pas.layout.label.H2();
@@ -464,6 +464,6 @@ public class MainFrame extends AbstractFrame {
     private javax.swing.JPanel pnlSidebar;
     private javax.swing.JPanel profilePanel;
     private pas.layout.label.H1 title2;
-    private pas.layout.textfield.TextField txtFilterMember;
+    private pas.layout.form.TextField txtFilterMember;
     // End of variables declaration//GEN-END:variables
 }
