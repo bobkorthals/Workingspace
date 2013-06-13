@@ -1,0 +1,76 @@
+Omzetten:
+Per product/Abonnement/Cursus/Faciliteit
+Per vestiging
+Gedurende een geselecteerde maand of gehele jaar in geselecteerd jaar
+
+Incasso:
+Lidnummer, Lidnaam, Abonnementsprijs, Bar verbruik, Cursusgeld, Faciliteiten, Totaal, Status (geexporteerd/lopend/Verwijderd/Aangepast), Periode, Datum
+Bij selectie geheel jaar verdelen per maand
+
+
+Betalingen:
+Incasso gegevens, maar met status (Te betalen/Betaald/Mislukt/Gestorneerd/Aangepast/Verwijderd)
+
+=========================================================================================================
+|						Queries							|
+=========================================================================================================
+
+================
+|  Selectform  |
+================
+Vestiging:
+---------------
+SELECT		vestiging.id, vestiging.naam
+FROM		vestiging
+
+
+===============
+|  Omzetten:  |
+===============
+Product:
+---------------
+SELECT 		categorie.omschrijving, SUM(product.prijs), vestiging.id, vestiging.naam
+FROM 		factuuritem
+LEFT JOIN 	product 		ON product.id 			= factuuritem.productid
+LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid
+LEFT JOIN 	bestelling 		ON bestelling.id 		= factuuritem.bestellingid
+LEFT JOIN	categorie		ON categorie.id			= product.categorieid
+WHERE 		vestiging.id 						=  :vestiging
+AND		bestelling.tijddatum 					BETWEEN :timeoffset AND :timeendset
+GROUP BY	product.id, vestiging.id
+
+
+Facility:
+---------------
+SELECT		faciliteit.omschrijving, SUM(faciliteit.kosten), vestiging.id, vestiging.naam
+FROM		factuuritem
+LEFT JOIN	reservering		ON reservering.id		= factuuritem.reserveringid
+LEFT JOIN	faciliteit		ON faciliteit.id		= reservering.faciliteitid
+WHERE		faciliteit.vestigingid					= :vestiging
+AND		reservering.tijddatum					BETWEEN :timeoffset AND :timeendset
+GROUP BY	faciliteit.id, vestiging.id
+
+Cursus:
+----------------
+SELECT		cursus.omschrijving, SUM(cursus.kosten), vestiging.id, vestiging.naam
+FROM		factuuritem
+LEFT JOIN	inschrijving		ON inschrijving.id		= factuuritem.inschrijvingid
+LEFT JOIN	planning		ON planning.id			= inschrijving.planningid
+LEFT JOIN	cursus			ON cursus.id			= planning.cursusid
+LEFT JOIN	vestiging		ON vestiging.id			= factuuritem.vestigingid
+WHERE		cursus.vestigingid					= :vestiging
+AND		planning.tijddatum					BETWEEN :timeoffset AND :timeendset
+GROUP BY	cursus.id, vestiging.id
+
+
+Abonnementen:
+----------------
+SELECT		abonnement.omschrijving, SUM(abonnement.kosten), vestiging.id, vestiging.naam
+FROM		factuuritem
+LEFT JOIN	abonnering		ON abonnering.id		= factuuritem.abonneringid
+LEFT JOIN	abonnement		ON abonnement.id		= abonnering.abonnementid
+LEFT JOIN	vestiging		ON vestiging.id			= factuuritem.vestigingid
+WHERE		factuuritem.vestigingid					= :vestiging
+AND		abonnering.startdate 					BETWEEN :timeoffset AND :timeendset
+OR		abonnering.enddate 					BETWEEN :timeoffset 	 AND :timeendset
+GROUP BY	abonnement.id, vestiging.id

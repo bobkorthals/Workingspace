@@ -26,12 +26,26 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Finance.findAll", query = "SELECT a FROM Finance a"),
-    @NamedQuery(name = "Finance.findById", query = "SELECT a FROM Finance a WHERE a.id = :id"),
-    @NamedQuery(name = "Finance.findByKosten", query = "SELECT a FROM Finance a WHERE a.kosten = :kosten"),
-    @NamedQuery(name = "Finance.findByOmschrijving", query = "SELECT a FROM Finance a WHERE a.omschrijving = :omschrijving"),
-    @NamedQuery(name = "Finance.findByPeriodes", query = "SELECT a FROM Finance a WHERE a.periodes = :periodes"),
-    @NamedQuery(name = "Finance.findByTypen", query = "SELECT a FROM Finance a WHERE a.typen = :typen")})
+    @NamedQuery(name = "Finance.getRevenuesByLocation", 
+        query = "SELECT categorie.omschrijving, SUM(product.prijs), vestiging.id, vestiging.naam" +
+                "FROM 		factuuritem"+
+                "LEFT JOIN 	product 		ON product.id 			= factuuritem.productid"+
+                "LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid"+
+                "LEFT JOIN 	bestelling 		ON bestelling.id 		= factuuritem.bestellingid"+
+                "LEFT JOIN	categorie		ON categorie.id			= product.categorieid"+
+                "WHERE 		vestiging.id 						=  :vestiging"+
+                "AND		bestelling.tijddatum 					BETWEEN :timeoffset AND :timeendset"+
+                "GROUP BY	product.id, vestiging.id"),
+    @NamedQuery(name = "Finance.getRevenues", 
+        query = "SELECT categorie.omschrijving, SUM(product.prijs), vestiging.id, vestiging.naam" +
+                "FROM 		factuuritem"+
+                "LEFT JOIN 	product 		ON product.id 			= factuuritem.productid"+
+                "LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid"+
+                "LEFT JOIN 	bestelling 		ON bestelling.id 		= factuuritem.bestellingid"+
+                "LEFT JOIN	categorie		ON categorie.id			= product.categorieid"+
+                "WHERE 		bestelling.tijddatum 					BETWEEN :timeoffset AND :timeendset"+
+                "GROUP BY	product.id, vestiging.id"),
+    @NamedQuery(name = "Finance.findById", query = "SELECT a FROM Finance a WHERE a.id = :id")})
 public class Finance implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
