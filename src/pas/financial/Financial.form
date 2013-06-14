@@ -59,8 +59,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="buttonPaymentStatus" alignment="0" max="32767" attributes="0"/>
-                              <Component id="buttonCosts" alignment="0" pref="140" max="32767" attributes="0"/>
+                              <Component id="buttonPaymentStatus" alignment="0" pref="140" max="32767" attributes="0"/>
                               <Component id="buttonRevenues" alignment="0" max="32767" attributes="0"/>
                               <Component id="buttonCollection" alignment="1" max="32767" attributes="0"/>
                           </Group>
@@ -112,8 +111,6 @@
                           <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="buttonRevenues" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="buttonCosts" min="-2" pref="23" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonCollection" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="buttonPaymentStatus" min="-2" pref="23" max="-2" attributes="0"/>
@@ -136,14 +133,6 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonRevenuesMouseClicked"/>
-          </Events>
-        </Component>
-        <Component class="pas.layout.label.Button" name="buttonCosts">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Kosten"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonCostsMouseClicked"/>
           </Events>
         </Component>
         <Component class="pas.layout.label.Button" name="buttonCollection">
@@ -273,6 +262,7 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSelectMouseClicked"/>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSelectMouseReleased"/>
             <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonSelectPropertyChange"/>
           </Events>
         </Component>
@@ -308,17 +298,17 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="paneMembers1" max="32767" attributes="0"/>
+                                  <Component id="paneMembersCollection" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="buttonGenerateCollection1" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="buttonGenerateCollection" min="-2" pref="160" max="-2" attributes="0"/>
                                   <EmptySpace pref="186" max="32767" attributes="0"/>
-                                  <Component id="labelUpdateAction1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCollectionUpdateAction" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="selectUpdateAction1" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="selectCollectionUpdateAction" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="buttonUpdateAction2" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="buttonUpdateCollection" min="-2" pref="97" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -329,13 +319,13 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="paneMembers1" max="32767" attributes="0"/>
+                          <Component id="paneMembersCollection" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="buttonGenerateCollection1" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="labelUpdateAction1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="selectUpdateAction1" alignment="3" max="-2" attributes="0"/>
-                              <Component id="buttonUpdateAction2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="buttonGenerateCollection" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="labelCollectionUpdateAction" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="selectCollectionUpdateAction" alignment="3" max="-2" attributes="0"/>
+                              <Component id="buttonUpdateCollection" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -343,7 +333,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="paneMembers1">
+                <Container class="javax.swing.JPanel" name="paneMembersCollection">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -362,9 +352,9 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane3" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="collectionScrollPane" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="buttonUpdateAction3" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="buttonSellectAllCollection" min="-2" pref="180" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -376,23 +366,23 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" pref="219" max="-2" attributes="0"/>
+                              <Component id="collectionScrollPane" min="-2" pref="219" max="-2" attributes="0"/>
                               <EmptySpace pref="216" max="32767" attributes="0"/>
-                              <Component id="buttonUpdateAction3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="buttonSellectAllCollection" min="-2" pref="23" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+                    <Container class="javax.swing.JScrollPane" name="collectionScrollPane">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="pas.layout.table.Table" name="tableMembers1">
+                        <Component class="pas.layout.table.Table" name="tableCollectionMembers">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="9" rowCount="12">
@@ -531,26 +521,28 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="pas.layout.label.Button" name="buttonUpdateAction3">
+                    <Component class="pas.layout.label.Button" name="buttonSellectAllCollection">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Selecteer/Deselecteer alles"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdateAction3MouseClicked"/>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonUpdateAction3PropertyChange"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSellectAllCollectionMouseClicked"/>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSellectAllCollectionMouseReleased"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonSellectAllCollectionPropertyChange"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="pas.layout.label.Button" name="buttonGenerateCollection1">
+                <Component class="pas.layout.label.Button" name="buttonGenerateCollection">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Genereer Incassobestand"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonGenerateCollection1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonGenerateCollectionMouseClicked"/>
+                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonGenerateCollectionMouseReleased"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="labelUpdateAction1">
+                <Component class="javax.swing.JLabel" name="labelCollectionUpdateAction">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="1"/>
@@ -561,7 +553,7 @@
                     <Property name="text" type="java.lang.String" value="Met geselecteerd"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="selectUpdateAction1">
+                <Component class="javax.swing.JComboBox" name="selectCollectionUpdateAction">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8e" green="6d" red="f2" type="rgb"/>
@@ -585,16 +577,17 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectUpdateAction1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectCollectionUpdateActionActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="pas.layout.label.Button" name="buttonUpdateAction2">
+                <Component class="pas.layout.label.Button" name="buttonUpdateCollection">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Uitvoeren"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdateAction2MouseClicked"/>
-                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonUpdateAction2PropertyChange"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdateCollectionMouseClicked"/>
+                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdateCollectionMouseReleased"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonUpdateCollectionPropertyChange"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -615,14 +608,14 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="paneMembers" max="32767" attributes="0"/>
+                              <Component id="paneMembersPayment" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="labelUpdateAction" min="-2" pref="108" max="-2" attributes="0"/>
+                                  <Component id="labelPaymentUpdateAction" min="-2" pref="108" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="selectUpdateAction" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="selectPaymentUpdateAction" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="buttonUpdateAction" min="-2" pref="97" max="-2" attributes="0"/>
+                                  <Component id="buttonUpdatePayment" min="-2" pref="97" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -633,12 +626,12 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="paneMembers" max="32767" attributes="0"/>
+                          <Component id="paneMembersPayment" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="buttonUpdateAction" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="selectUpdateAction" alignment="3" max="-2" attributes="0"/>
-                              <Component id="labelUpdateAction" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonUpdatePayment" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="selectPaymentUpdateAction" alignment="3" max="-2" attributes="0"/>
+                              <Component id="labelPaymentUpdateAction" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -646,7 +639,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="paneMembers">
+                <Container class="javax.swing.JPanel" name="paneMembersPayment">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -665,9 +658,9 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane2" alignment="0" pref="682" max="32767" attributes="0"/>
+                                  <Component id="paymentScrollPane" alignment="0" pref="682" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="buttonUpdateAction1" min="-2" pref="180" max="-2" attributes="0"/>
+                                      <Component id="buttonSelectAllPayment" min="-2" pref="180" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -679,23 +672,23 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" min="-2" pref="219" max="-2" attributes="0"/>
+                              <Component id="paymentScrollPane" min="-2" pref="219" max="-2" attributes="0"/>
                               <EmptySpace pref="216" max="32767" attributes="0"/>
-                              <Component id="buttonUpdateAction1" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="buttonSelectAllPayment" min="-2" pref="23" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                    <Container class="javax.swing.JScrollPane" name="paymentScrollPane">
                       <AuxValues>
                         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                       </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="pas.layout.table.Table" name="tableMembers">
+                        <Component class="pas.layout.table.Table" name="tablePaymentMembers">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="9" rowCount="12">
@@ -883,18 +876,19 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="pas.layout.label.Button" name="buttonUpdateAction1">
+                    <Component class="pas.layout.label.Button" name="buttonSelectAllPayment">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Selecteer/Deselecteer alles"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdateAction1MouseClicked"/>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonUpdateAction1PropertyChange"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSelectAllPaymentMouseClicked"/>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonSelectAllPaymentMouseReleased"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonSelectAllPaymentPropertyChange"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JLabel" name="labelUpdateAction">
+                <Component class="javax.swing.JLabel" name="labelPaymentUpdateAction">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="1"/>
@@ -905,7 +899,7 @@
                     <Property name="text" type="java.lang.String" value="Met geselecteerd"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="selectUpdateAction">
+                <Component class="javax.swing.JComboBox" name="selectPaymentUpdateAction">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="8e" green="6d" red="f2" type="rgb"/>
@@ -931,137 +925,19 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectUpdateActionActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectPaymentUpdateActionActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="pas.layout.label.Button" name="buttonUpdateAction">
+                <Component class="pas.layout.label.Button" name="buttonUpdatePayment">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Uitvoeren"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdateActionMouseClicked"/>
-                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonUpdateActionPropertyChange"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdatePaymentMouseClicked"/>
+                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="buttonUpdatePaymentMouseReleased"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="buttonUpdatePaymentPropertyChange"/>
                   </Events>
                 </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="costPanel">
-              <Properties>
-                <Property name="opaque" type="boolean" value="false"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="costCard"/>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="paneBar" alignment="0" max="32767" attributes="0"/>
-                              <Component id="paneCourse" alignment="0" max="32767" attributes="0"/>
-                              <Component id="paneBar3" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="paneBar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="paneCourse" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="paneBar3" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JPanel" name="paneBar">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Bar">
-                          <Font PropertyName="font" name="Arial" size="12" style="0"/>
-                          <Color PropertyName="color" blue="ff" green="0" red="66" type="rgb"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="702" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="140" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-                <Container class="javax.swing.JPanel" name="paneCourse">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Cursussen">
-                          <Font PropertyName="font" name="Arial" size="12" style="0"/>
-                          <Color PropertyName="color" blue="ff" green="0" red="66" type="rgb"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="131" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-                <Container class="javax.swing.JPanel" name="paneBar3">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Faciliteiten">
-                          <Font PropertyName="font" name="Arial" size="12" style="0"/>
-                          <Color PropertyName="color" blue="ff" green="0" red="66" type="rgb"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="178" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="paymentPanel">
@@ -1080,7 +956,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="paneBar1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="paneBar" alignment="0" max="32767" attributes="0"/>
                               <Component id="paneSubscription" alignment="0" max="32767" attributes="0"/>
                               <Component id="paneCourse1" alignment="1" max="32767" attributes="0"/>
                               <Component id="paneBar4" alignment="0" max="32767" attributes="0"/>
@@ -1093,7 +969,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="paneBar1" max="32767" attributes="0"/>
+                          <Component id="paneBar" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="paneSubscription" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1106,7 +982,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="paneBar1">
+                <Container class="javax.swing.JPanel" name="paneBar">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -1181,6 +1057,9 @@
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Table()"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>

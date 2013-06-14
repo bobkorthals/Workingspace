@@ -40,7 +40,6 @@ public class FinancialController extends AbstractController {
         mainFrame.setSidebarEnabled(true);
         mainFrame.setProfilePanelEnabled(true);
         this.view = new Financial(this);
-        this.view.changeCard("costCard");        
         this.open(this.view);
     }
     

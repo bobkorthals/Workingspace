@@ -26,26 +26,82 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Finance.getRevenuesByLocation", 
-        query = "SELECT categorie.omschrijving, SUM(product.prijs), vestiging.id, vestiging.naam" +
+    @NamedQuery(name = "Finance.getProductRevenuesByLocation", 
+        query = "SELECT 	product.name, categorie.omschrijving, SUM(product.prijs) AS omzet, vestiging.id, vestiging.naam"+
                 "FROM 		factuuritem"+
                 "LEFT JOIN 	product 		ON product.id 			= factuuritem.productid"+
                 "LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid"+
                 "LEFT JOIN 	bestelling 		ON bestelling.id 		= factuuritem.bestellingid"+
                 "LEFT JOIN	categorie		ON categorie.id			= product.categorieid"+
-                "WHERE 		vestiging.id 						=  :vestiging"+
-                "AND		bestelling.tijddatum 					BETWEEN :timeoffset AND :timeendset"+
-                "GROUP BY	product.id, vestiging.id"),
-    @NamedQuery(name = "Finance.getRevenues", 
-        query = "SELECT categorie.omschrijving, SUM(product.prijs), vestiging.id, vestiging.naam" +
+                "WHERE 		vestiging.id 						= :vestiging"+
+                "AND		factuuritem.tijddatum	BETWEEN :timeofset		AND :timeendset"+
+                "GROUP BY	product.name, categorie.omschrijving, vestiging.id, vestiging.naam"),
+    
+    @NamedQuery(name = "Finance.getProductRevenues", 
+        query = "SELECT 	product.name, categorie.omschrijving, SUM(product.prijs) AS omzet, vestiging.id, vestiging.naam"+
                 "FROM 		factuuritem"+
                 "LEFT JOIN 	product 		ON product.id 			= factuuritem.productid"+
                 "LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid"+
                 "LEFT JOIN 	bestelling 		ON bestelling.id 		= factuuritem.bestellingid"+
                 "LEFT JOIN	categorie		ON categorie.id			= product.categorieid"+
-                "WHERE 		bestelling.tijddatum 					BETWEEN :timeoffset AND :timeendset"+
-                "GROUP BY	product.id, vestiging.id"),
-    @NamedQuery(name = "Finance.findById", query = "SELECT a FROM Finance a WHERE a.id = :id")})
+                "AND		factuuritem.tijddatum	BETWEEN :timeofset		AND :timeendset"+
+                "GROUP BY	product.name, categorie.omschrijving, vestiging.id, vestiging.naam"),
+    @NamedQuery(name = "Finance.getFacilityRevenuesByLocation", 
+        query = "SELECT		faciliteit.name, SUM(faciliteit.kosten) AS omzet, COUNT(reservering.faciliteitid) AS gebruikers, vestiging.id, vestiging.naam"+
+                "FROM 		factuuritem"+
+                "LEFT JOIN	reservering		ON reservering.id		= factuuritem.reserveringid"+
+                "LEFT JOIN	faciliteit		ON faciliteit.id		= reservering.faciliteitid"+
+                "LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid"+
+                "WHERE		faciliteit.vestigingid					= :vestiging"+
+                "AND		reservering.tijddatum	BETWEEN :timeoffset		AND :timeendset"+
+                "GROUP BY	faciliteit.name, vestiging.id, vestiging.naam"),
+    
+    @NamedQuery(name = "Finance.getFacilityRevenues", 
+        query = "SELECT		faciliteit.name, SUM(faciliteit.kosten) AS omzet, COUNT(reservering.faciliteitid) AS gebruikers, vestiging.id, vestiging.naam"+
+                "FROM 		factuuritem"+
+                "LEFT JOIN	reservering		ON reservering.id		= factuuritem.reserveringid"+
+                "LEFT JOIN	faciliteit		ON faciliteit.id		= reservering.faciliteitid"+
+                "LEFT JOIN 	vestiging 		ON vestiging.id 		= factuuritem.vestigingid"+
+                "AND		reservering.tijddatum	BETWEEN :timeoffset		AND :timeendset"+
+                "GROUP BY	faciliteit.name, vestiging.id, vestiging.naam"),
+    @NamedQuery(name = "Finance.getCourseRevenuesByLocation", 
+        query = "SELECT		cursus.naam, SUM(cursus.kosten) AS omzet, COUNT(planning.id) AS deelnames, vestiging.id, vestiging.naam"+
+                "FROM		factuuritem"+
+                "LEFT JOIN	inschrijving		ON inschrijving.id		= factuuritem.inschrijvingid"+
+                "LEFT JOIN	planning		ON planning.id			= inschrijving.planningid"+
+                "LEFT JOIN	cursus			ON cursus.id			= planning.cursusid"+
+                "LEFT JOIN	vestiging		ON vestiging.id			= factuuritem.vestigingid"+
+                "WHERE		cursus.vestigingid					= :vestiging"+
+                "AND		planning.tijddatum	BETWEEN :timeoffset		AND :timeendset"+
+                "GROUP BY	planning.id, vestiging.id, cursus.naam, vestiging.naam"),    
+    @NamedQuery(name = "Finance.getCourseRevenues", 
+        query = "SELECT		cursus.naam, SUM(cursus.kosten) AS omzet, COUNT(planning.id) AS deelnames, vestiging.id, vestiging.naam"+
+                "FROM		factuuritem"+
+                "LEFT JOIN	inschrijving		ON inschrijving.id		= factuuritem.inschrijvingid"+
+                "LEFT JOIN	planning		ON planning.id			= inschrijving.planningid"+
+                "LEFT JOIN	cursus			ON cursus.id			= planning.cursusid"+
+                "LEFT JOIN	vestiging		ON vestiging.id			= factuuritem.vestigingid"+
+                "AND		planning.tijddatum	BETWEEN :timeoffset		AND :timeendset"+
+                "GROUP BY	planning.id, vestiging.id, cursus.naam, vestiging.naam"),    
+    @NamedQuery(name = "Finance.getSubscriptionRevenuesByLocation", 
+        query = "SELECT		abonnement.name, SUM(abonnement.kosten) AS omzet, vestiging.id, vestiging.naam"+
+                "FROM		factuuritem"+
+                "LEFT JOIN	abonnering		ON abonnering.id		= factuuritem.abonneringid"+
+                "LEFT JOIN	abonnement		ON abonnement.id		= abonnering.abonnementid"+
+                "LEFT JOIN	vestiging		ON vestiging.id			= factuuritem.vestigingid"+
+                "WHERE		factuuritem.vestigingid					= :vestiging"+
+                "AND		abonnering.startdate 	BETWEEN :timeoffset 		AND :timeendset"+
+                "OR		abonnering.enddate 	BETWEEN :timeoffset 	 	AND :timeendset"+
+                "GROUP BY	abonnement.name, vestiging.id, vestiging.naam"),    
+    @NamedQuery(name = "Finance.getSubscriptionRevenues", 
+        query = "SELECT		abonnement.name, SUM(abonnement.kosten) AS omzet, vestiging.id, vestiging.naam"+
+                "FROM		factuuritem"+
+                "LEFT JOIN	abonnering		ON abonnering.id		= factuuritem.abonneringid"+
+                "LEFT JOIN	abonnement		ON abonnement.id		= abonnering.abonnementid"+
+                "LEFT JOIN	vestiging		ON vestiging.id			= factuuritem.vestigingid"+
+                "AND		abonnering.startdate 	BETWEEN :timeoffset 		AND :timeendset"+
+                "OR		abonnering.enddate 	BETWEEN :timeoffset 	 	AND :timeendset"+
+                "GROUP BY	abonnement.name, vestiging.id, vestiging.naam")})
 public class Finance implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
