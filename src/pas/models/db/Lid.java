@@ -434,9 +434,13 @@ public class Lid implements Serializable {
     }
     
     public void save() {
-        Query query = getEntityManager().createNamedQuery("Lid.update");
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        Query query = entityManager.createNamedQuery("Lid.update");
         query.setParameter("voornaam", this.getVoornaam());
         query.executeUpdate();
+        entityManager.getTransaction().commit();
+        entityManager.clear();
     }
 
     @Override

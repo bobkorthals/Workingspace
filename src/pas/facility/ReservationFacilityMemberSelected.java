@@ -6,7 +6,6 @@ package pas.facility;
 
 import java.beans.PropertyChangeEvent;
 import java.util.List;
-import javax.swing.table.DefaultTableModel;
 import pas.layout.form.ComboListItem;
 import pas.member.MemberController;
 import pas.models.ActiveMember;
