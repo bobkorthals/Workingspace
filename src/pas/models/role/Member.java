@@ -75,5 +75,6 @@ public class Member extends AbsractPerson {
     public void save() {
         Lid lid = this.getDbResult();
         lid.setVoornaam(getFirstName());
+        lid.save();
     }
 }

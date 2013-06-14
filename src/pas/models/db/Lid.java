@@ -14,6 +14,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Query;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -63,8 +63,7 @@ import session.NoSessionManagerException;
     @NamedQuery(name = "Lid.findByOpmerking", query = "SELECT l FROM Lid l WHERE l.opmerking = :opmerking"),
     @NamedQuery(name = "Lid.findByIdentiteitid", query = "SELECT l FROM Lid l WHERE l.identiteitid = :identiteitid"),
     @NamedQuery(name = "Lid.findByCheckin", query = "SELECT l FROM Lid l WHERE l.checkin = :checkin"),
-    @NamedQuery(name = "Lid.search", query = "SELECT l FROM Lid l WHERE l.searchable LIKE :searchable"),
-    @NamedQuery(name = "Lid.update", query = "UPDATE Lid SET voornaam = :voornaam")})
+    @NamedQuery(name = "Lid.search", query = "SELECT l FROM Lid l WHERE l.searchable LIKE :searchable")})
 public class Lid implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -434,9 +433,20 @@ public class Lid implements Serializable {
     }
     
     public void save() {
-        Query query = getEntityManager().createNamedQuery("Lid.update");
-        query.setParameter("voornaam", this.getVoornaam());
-        query.executeUpdate();
+        EntityManager entityManager = getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {    
+            transaction.begin();
+            entityManager.persist(this);  
+        }
+        catch (Exception e) {
+            transaction.setRollbackOnly();
+        }
+        finally {
+            transaction.commit();
+        }
+        
+        System.out.println("save");
     }
 
     @Override

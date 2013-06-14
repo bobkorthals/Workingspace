@@ -158,7 +158,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         jButton17 = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -640,12 +640,12 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
             }
         });
 
-        jButton11.setBackground(new java.awt.Color(155, 9, 46));
-        jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setText("Wijzigingen opslaan");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setBackground(new java.awt.Color(155, 9, 46));
+        btnSave.setForeground(new java.awt.Color(255, 255, 255));
+        btnSave.setText("Wijzigingen opslaan");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
@@ -720,7 +720,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
             .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -748,7 +748,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
                 .addGap(18, 18, 18)
                 .addComponent(jButton12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton11)
+                .addComponent(btnSave)
                 .addGap(44, 44, 44)
                 .addComponent(jButton18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -826,11 +826,14 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         Member member = this.getController().getActiveMember().getMember();
         member.setFirstName(txtFirstName.getText());
+        member.setLastName(txtLastName.getText());
         member.save();
-    }//GEN-LAST:event_jButton11ActionPerformed
+        
+        this.getController().updateMemberListItem(member);
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         new BarController().barAction();        // TODO add your handling code here:
@@ -898,12 +901,12 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReserveren;
+    private javax.swing.JButton btnSave;
     private java.awt.Choice choice5;
     private java.awt.Choice choice6;
     private java.awt.Choice choice7;
     private pas.layout.label.H1 h11;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;

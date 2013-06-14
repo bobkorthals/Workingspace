@@ -34,8 +34,6 @@ public class MemberController extends AbstractController {
         MainFrame mainFrame = (MainFrame) getMainFrame();
         mainFrame.setSidebarEnabled(true);
         mainFrame.setProfilePanelEnabled(true);
-     
-        addModel(getActiveMember());
     }
     
     /*
@@ -87,7 +85,9 @@ public class MemberController extends AbstractController {
      */
     public ActiveMember getActiveMember() {
         try {
-            return getSessionManager().getActiveMember();
+            ActiveMember member = getSessionManager().getActiveMember();
+            addModel(member);
+            return member;
         } catch (NoEntityManagerException ex) {
             Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -122,12 +122,13 @@ public class MemberController extends AbstractController {
      * @return void
      */
     public void manageMemberAction(int memberId) {
-        getActiveMember().setMember(getMember(memberId));
-        
         if (null == this.open || !this.open.equals(this.getManageMember())) {
             open(this.getManageMember());
             this.open = this.getManageMember();
         }
+        
+        // New member is automaticly updated in the view
+        getActiveMember().setMember(getMember(memberId));
     }
 
     /*
@@ -137,5 +138,15 @@ public class MemberController extends AbstractController {
      */
     public void addMemeberAction() {
         open(new AddMember(this));
+    }
+
+    /*
+     * Refresh member list in the MainFrame
+     * 
+     * @return void
+     */
+    public void updateMemberListItem(Member member) {
+         MainFrame mainFrame = (MainFrame) getMainFrame();
+         mainFrame.updateMemberListItem(member);
     }
 }
