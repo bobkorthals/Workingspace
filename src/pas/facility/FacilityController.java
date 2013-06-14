@@ -17,6 +17,7 @@ import pas.member.MemberController;
 import pas.models.ActiveMember;
 import pas.models.SessionManager;
 import pas.models.db.Faciliteit;
+import pas.models.db.Vestiging;
 import session.NoSessionManagerException;
 
 /**
@@ -80,8 +81,19 @@ public class FacilityController extends AbstractController {
      * 
      * @return List<Faciliteit>
      */
-    private List<Faciliteit> getFacilities() {
-        Query query = getEntityManager().createNamedQuery("Faciliteit.findAll");
+    public List<Faciliteit> getFacilitiesByLocatieId(Vestiging vestigingId) {
+        Query query = getEntityManager().createNamedQuery("Faciliteit.findbyIdLocatie");
+        query.setParameter("vestigingid", vestigingId);
+        return query.getResultList();
+    }
+    
+    /*
+     * Get facilities from the database
+     * 
+     * @return List<Faciliteit>
+     */
+    private List<Vestiging> getVestigingen() {
+        Query query = getEntityManager().createNamedQuery("Vestiging.findAll");
         return query.getResultList();
     }
 
@@ -109,6 +121,6 @@ public class FacilityController extends AbstractController {
         open(new ReservationFacilityMemberSelected(
                 this, 
                 getActiveMember().getMember(), 
-                getFacilities()));
+                getVestigingen()));
     }
 }
