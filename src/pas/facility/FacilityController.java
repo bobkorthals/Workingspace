@@ -108,8 +108,8 @@ public class FacilityController extends AbstractController {
     }
 
     public void paymentAction() {
-        ReservationPayment view = new ReservationPayment(this);
-        open(view);
+        open(new ReservationPayment(this,
+                getActiveMember().getMember()));
     }
 
     public void addFacilityAction() {

@@ -10,6 +10,7 @@ import pas.file.chooser.FileChooserAbstract;
 import pas.file.chooser.FileChooserImage;
 import pas.file.chooser.FileChooserInterface;
 import pas.models.ActiveMember;
+import pas.models.Format;
 import pas.models.role.Member;
 
 /**
@@ -86,7 +87,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         txtFirstName.setText(member.getFirstName());
         txtLastName.setText(member.getLastName());
         txtSuffix.setText(member.getSuffix());
-        txtDateOfBirth.setText(member.getDateOfBrith().toString());
+        txtDateOfBirth.setText(Format.toShortDateString(member.getDateOfBrith()));
     }
 
     /**

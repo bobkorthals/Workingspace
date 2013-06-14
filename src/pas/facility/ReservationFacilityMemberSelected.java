@@ -5,11 +5,13 @@
 package pas.facility;
 
 import java.beans.PropertyChangeEvent;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import pas.layout.form.ComboListItem;
 import pas.member.MemberController;
 import pas.models.ActiveMember;
+import pas.models.Format;
 import pas.models.db.Faciliteit;
 import pas.models.db.Vestiging;
 import pas.models.role.Member;
@@ -63,10 +65,11 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
      * @return void
      */
     private void setMember(Member member) {
+        
         txtFirstName.setText(member.getFirstName());
         txtLastName.setText(member.getLastName());
         txtSuffix.setText(member.getSuffix());
-        txtDateOfBirth.setText(member.getDateOfBrith().toString());
+        txtDateOfBirth.setText(Format.toShortDateString(member.getDateOfBrith()));
     }
     
     /*
@@ -133,8 +136,8 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         jLabel59 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel60 = new javax.swing.JLabel();
-        txtVoornaam6 = new javax.swing.JTextField();
-        txtVoornaam8 = new javax.swing.JTextField();
+        txtSoort = new javax.swing.JTextField();
+        txtFaciliteitNaam = new javax.swing.JTextField();
         btnKosten = new javax.swing.JTextField();
         btnLocatie = new javax.swing.JTextField();
         jLabel54 = new javax.swing.JLabel();
@@ -156,9 +159,8 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         jLabel4 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
         txtCapaciteit = new javax.swing.JTextField();
-        ddlTijd = new java.awt.Choice();
+        ddtTijd = new java.awt.Choice();
         ddlLocatie = new pas.layout.form.ComboList();
-        pnlMiddleDown = new javax.swing.JPanel();
         lblTitle4 = new javax.swing.JLabel();
         h11 = new pas.layout.label.H1();
 
@@ -232,14 +234,6 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
 
         jLabel60.setText("Locatie");
 
-        txtVoornaam6.setText("jTextField1");
-
-        txtVoornaam8.setText("jTextField1");
-
-        btnKosten.setText("jTextField1");
-
-        btnLocatie.setText("jTextField1");
-
         jLabel54.setText("Tussenvoegsel");
 
         jLabel53.setText("Achternaam");
@@ -256,20 +250,16 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
             }
         });
 
-        txtGeslacht.setText("jTextField1");
-
         jLabel27.setText("Krediet");
 
         jLabel28.setText("Betalingsachterstand");
 
-        txtLidKrediet.setText("jTextField3");
         txtLidKrediet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLidKredietActionPerformed(evt);
             }
         });
 
-        txtLidBetalingsAchterstand.setText("jTextField3");
         txtLidBetalingsAchterstand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLidBetalingsAchterstandActionPerformed(evt);
@@ -286,8 +276,6 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
 
         jLabel61.setText("Capaciteit");
 
-        txtCapaciteit.setText("jTextField4");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -295,58 +283,51 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel59)
-                            .addComponent(jLabel44)
-                            .addComponent(jLabel60)
-                            .addComponent(jLabel58)))
+                        .addComponent(lblTitle2)
+                        .addGap(212, 212, 212))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel52)
-                            .addComponent(jLabel53)
-                            .addComponent(jLabel54)
-                            .addComponent(jLabel55)
-                            .addComponent(jLabel57))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLocatie)
-                    .addComponent(btnKosten)
-                    .addComponent(txtVoornaam6, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                    .addComponent(txtVoornaam8)
-                    .addComponent(txtFirstName)
-                    .addComponent(txtLastName)
-                    .addComponent(txtSuffix)
-                    .addComponent(txtDateOfBirth)
-                    .addComponent(txtGeslacht))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel27)
-                            .addComponent(jLabel28))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLidBetalingsAchterstand, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLidKrediet, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
                             .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel62)
-                                    .addComponent(jLabel61))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtCapaciteit)
-                                    .addComponent(ddlTijd, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(16, Short.MAX_VALUE))))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(lblTitle2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jLabel59)
+                                    .addComponent(jLabel44)
+                                    .addComponent(jLabel60)
+                                    .addComponent(jLabel58)))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel52)
+                                    .addComponent(jLabel53)
+                                    .addComponent(jLabel54)
+                                    .addComponent(jLabel55)
+                                    .addComponent(jLabel57))))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLocatie)
+                            .addComponent(btnKosten)
+                            .addComponent(txtSoort)
+                            .addComponent(txtFaciliteitNaam)
+                            .addComponent(txtFirstName)
+                            .addComponent(txtLastName)
+                            .addComponent(txtSuffix)
+                            .addComponent(txtDateOfBirth)
+                            .addComponent(txtGeslacht))
+                        .addGap(67, 67, 67)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel61)
+                    .addComponent(jLabel62)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel28))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCapaciteit)
+                    .addComponent(ddtTijd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtLidKrediet, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtLidBetalingsAchterstand, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,43 +350,41 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                                         .addComponent(jLabel60))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ddlTijd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(lblTitle2))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtVoornaam8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel61))
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtVoornaam6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel62)
+                                        .addComponent(btnLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel4)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel52)
-                                .addComponent(jLabel27))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel53)
-                                .addComponent(jLabel28)
-                                .addComponent(txtLidBetalingsAchterstand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                            .addComponent(txtLidKrediet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(26, 26, 26)))
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblTitle2))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSoort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtLidKrediet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtLidBetalingsAchterstand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel28)))
+                                .addGroup(jPanel5Layout.createSequentialGroup()
+                                    .addComponent(jLabel52)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel53))))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(ddtTijd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel61)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel62)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
@@ -436,15 +415,15 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                 .addGroup(pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMiddleUpTableLayout.createSequentialGroup()
                         .addComponent(lblTitle1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(481, Short.MAX_VALUE))
                     .addGroup(pnlMiddleUpTableLayout.createSequentialGroup()
                         .addGroup(pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ddlLocatie, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(ddlFacilities, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(pnlMiddleUpTableLayout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlMiddleUpTableLayout.setVerticalGroup(
             pnlMiddleUpTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -458,19 +437,6 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-        );
-
-        pnlMiddleDown.setOpaque(false);
-
-        javax.swing.GroupLayout pnlMiddleDownLayout = new javax.swing.GroupLayout(pnlMiddleDown);
-        pnlMiddleDown.setLayout(pnlMiddleDownLayout);
-        pnlMiddleDownLayout.setHorizontalGroup(
-            pnlMiddleDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlMiddleDownLayout.setVerticalGroup(
-            pnlMiddleDownLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
         );
 
         lblTitle4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -490,13 +456,11 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addComponent(pnlLeftButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pnlMiddleDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnlMiddleUpTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(pnlMiddleUpTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(h11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,11 +471,8 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                     .addComponent(h11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlLeftButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(pnlMiddleUpTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(304, 304, 304)
-                        .addComponent(pnlMiddleDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnlMiddleUpTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlLeftButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -539,14 +500,14 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
             .addGroup(layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -607,7 +568,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     private javax.swing.JButton btnTerug;
     private pas.layout.form.ComboList ddlFacilities;
     private pas.layout.form.ComboList ddlLocatie;
-    private java.awt.Choice ddlTijd;
+    private java.awt.Choice ddtTijd;
     private pas.layout.label.H1 h11;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -630,17 +591,16 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblTitle4;
     private javax.swing.JPanel pnlLeftButtons;
-    private javax.swing.JPanel pnlMiddleDown;
     private javax.swing.JPanel pnlMiddleUpTable;
     private javax.swing.JTextField txtCapaciteit;
     private javax.swing.JTextField txtDateOfBirth;
+    private javax.swing.JTextField txtFaciliteitNaam;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtGeslacht;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtLidBetalingsAchterstand;
     private javax.swing.JTextField txtLidKrediet;
+    private javax.swing.JTextField txtSoort;
     private javax.swing.JTextField txtSuffix;
-    private javax.swing.JTextField txtVoornaam6;
-    private javax.swing.JTextField txtVoornaam8;
     // End of variables declaration//GEN-END:variables
 }
