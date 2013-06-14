@@ -828,7 +828,10 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         Member member = this.getController().getActiveMember().getMember();
         member.setFirstName(txtFirstName.getText());
+        member.setLastName(txtLastName.getText());
         member.save();
+        
+        this.getController().updateMemberListItem(member);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed

@@ -27,8 +27,8 @@ public class SessionManager implements SessionManagerInterface {
             throw new NoEntityManagerException(
                     "No entity manager specified in the session manager");
         }
-        
-        return entityManager;
+        this.entityManager.getTransaction();
+        return this.entityManager;
     }
     
     /*

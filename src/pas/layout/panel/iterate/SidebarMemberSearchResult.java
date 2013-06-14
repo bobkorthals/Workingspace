@@ -18,6 +18,7 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
 
     // Member controller
     private static MemberController controller;
+    private Lid member;
     
     // Active result list members
     private static ArrayList<SidebarMemberSearchResult> activeResultList = new ArrayList<>();
@@ -53,6 +54,8 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
     public SidebarMemberSearchResult(Lid member) {
         initComponents();
 
+        this.member = member;
+           
         lblMemberName.setText(member.getVoornaam()+ " " + member.getAchternaam());
         lblMemberName.setForeground(color);
 
@@ -72,6 +75,25 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
 
         SidebarMemberSearchResult.activeResultList.add(this);
         addMouseListener(this);
+    }
+    
+    /*
+     * Return member id
+     * 
+     * @param int memberId
+     */
+    public int getMemberId() {
+        return this.member.getId();
+    }
+    
+    /*
+     * Set membername
+     * 
+     * @param String name
+     * @return void
+     */
+    public void setMemberName(String name) {
+        lblMemberName.setText(name);
     }
     
     /*
@@ -284,9 +306,12 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
         lblMemberName.setForeground(color);
         setBackground(backgroundColor);
     }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.panel.Background background1;
     private javax.swing.JLabel lblMemberId;
     private javax.swing.JLabel lblMemberName;
     // End of variables declaration//GEN-END:variables
+
 }

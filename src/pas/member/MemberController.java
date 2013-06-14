@@ -139,4 +139,14 @@ public class MemberController extends AbstractController {
     public void addMemeberAction() {
         open(new AddMember(this));
     }
+
+    /*
+     * Refresh member list in the MainFrame
+     * 
+     * @return void
+     */
+    public void updateMemberListItem(Member member) {
+         MainFrame mainFrame = (MainFrame) getMainFrame();
+         mainFrame.updateMemberListItem(member);
+    }
 }
