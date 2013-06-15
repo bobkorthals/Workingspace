@@ -6,10 +6,14 @@ package pas.financial;
 
 import java.awt.CardLayout;
 import java.beans.PropertyChangeEvent;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import pas.layout.label.Button;
 import pas.layout.table.Table;
@@ -23,7 +27,10 @@ public class Financial extends mvc.view.AbstractView {
     private CardLayout cardLayout;
     private Button currentActiveButton;
     private TableModel barTableModel;
-    private JPanel activePanel;
+    private String activePanel;
+    
+    private ArrayList<JTable> tables = new ArrayList<>();
+    private HashMap<Integer, String[]> columns = new HashMap<>();
     
     /**
      * Creates new form Revenue
@@ -32,6 +39,8 @@ public class Financial extends mvc.view.AbstractView {
         this.controller = controller;
         this.initComponents();
         this.assembleElements();
+        this.updateTable(tablePaymentMembers, new ArrayList()); // <<=== Hier werkelijke data invoeren
+        //this.controller.getResults(activePanel, 0, 0, 9999);
     }
     
     @Override
@@ -44,8 +53,13 @@ public class Financial extends mvc.view.AbstractView {
         
     }
     
+    public void updateSelection(String location, String from, String to, String status){
+        
+    }
+    
     public void changeCard(String card){
         this.cardLayout.show(this.viewFrame, card);
+        this.activePanel = card;
     }
     
     public void activateButton(Button button){
@@ -69,19 +83,113 @@ public class Financial extends mvc.view.AbstractView {
         this.cardLayout = (CardLayout) this.viewFrame.getLayout();        
         this.changeCard("revenuesCard");
         this.activateButton(this.buttonRevenues);
+        this.tableColumns();
         
         /** Table Bar Setup **/
         this.setupTable((Table) this.tableBar, barTableListener);
-        //this.setupTable((Table) this.tableCourse, courseTableListener);
-        //this.setupTable((Table) this.tableFacility, facilityTableListener);
+        this.setupTable((Table) this.tableCourse, courseTableListener);
+        this.setupTable((Table) this.tableFacility, facilityTableListener);
         this.setupTable((Table) this.tablePaymentMembers, membersTableListener);
         this.setupTable((Table) this.tableCollectionMembers, members1TableListener);
-        //this.setupTable((Table) this.tableSubscription, subscriptionTableListener);
+        this.setupTable((Table) this.tableSubscription, subscriptionTableListener);
     }
     
     private void setupTable(Table table, TableModelListener listener){
         table.setMultiSelect();
-        table.getModel().addTableModelListener(listener);
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.addTableModelListener(listener);
+        
+        int tableIndex = this.tables.indexOf(table);
+        String[] tableColumns = this.columns.get(tableIndex);
+        
+        for(String column : tableColumns){
+            model.addColumn(column);
+        }
+    }
+    
+    private void updateTable(JTable table, ArrayList data){
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+        /******** Mock Data. Dit moet nog uit de database komen *********/
+        data = new ArrayList<ArrayList>();
+        ArrayList<Object> row1 = new ArrayList<>();
+        row1.add(1);
+        row1.add("Ruben Kruiver");
+        row1.add(1);
+        row1.add("28 januari 2013");
+        row1.add(35.00);
+        row1.add(0.00);
+        row1.add("Voldaan");
+        row1.add("1 februari 2013");
+        data.add(row1);
+        
+        ArrayList<Object> row2 = new ArrayList<>();
+        row2.add(2);
+        row2.add("Chantal Scharbaai");
+        row2.add(1);
+        row2.add("28 januari 2013");
+        row2.add(35.00);
+        row2.add(20.00);
+        row2.add("Deels voldaan");
+        row2.add("1 februari 2013");
+        data.add(row2);
+        
+        ArrayList<Object> row3 = new ArrayList<>();
+        row3.add(3);
+        row3.add("Ruben Kruiver");
+        row3.add(1);
+        row3.add("28 januari 2013");
+        row3.add(35.00);
+        row3.add(0.00);
+        row3.add("Voldaan");
+        row3.add("1 februari 2013");
+        data.add(row3);
+        
+        ArrayList<Object> row5 = new ArrayList<>();
+        row5.add(4);
+        row5.add("Ashley Kruiver");
+        row5.add(1);
+        row5.add("28 januari 2013");
+        row5.add(35.00);
+        row5.add(0.00);
+        row5.add("Voldaan");
+        row5.add("1 februari 2013");
+        data.add(row5);
+        
+        ArrayList<Object> row6 = new ArrayList<>();
+        row6.add(5);
+        row6.add("Bob de Bouwer");
+        row6.add(1);
+        row6.add("28 januari 2013");
+        row6.add(35.00);
+        row6.add(35.00);
+        row6.add("Achterstand");
+        row6.add("1 februari 2013");
+        data.add(row6);
+        
+        /****************************************************************/
+        Object[] rowContent;
+        int rowcounter = 0;
+        for(Object element : data){
+            ArrayList cols = (ArrayList) element;
+             rowContent = new Object[cols.size()];
+            
+            int pointer = 0;
+            for(Object col : cols){
+                if(rowcounter == 0){
+                    System.out.println(col.getClass());
+                    if(col instanceof Integer ||
+                        col instanceof Double ||
+                        col instanceof BigDecimal){
+                            table.getColumnModel().getColumn(pointer).setPreferredWidth(50);
+                    }  
+                }
+                rowContent[pointer] = col;
+                pointer++;
+            }
+            model.addRow(rowContent);
+            rowcounter++;
+        }
     }
     
     private TableModelListener barTableListener = new TableModelListener(){
@@ -126,6 +234,32 @@ public class Financial extends mvc.view.AbstractView {
         }
     };
     
+    private void tableColumns(){
+        this.tables.add(tableBar);
+        String[] barColumns = {"Product", "Groep", "Vestiging", "Aantal", "Omzet"};
+        this.columns.put(0, barColumns);
+        
+        this.tables.add(tableCollectionMembers);
+        String[] collectionColumns = {"Lidnummer", "Naam", "Abonnement", "Bar", "Faciliteiten", "Cursussen", "Totaal", "Datum"};
+        this.columns.put(1, collectionColumns);
+        
+        this.tables.add(tableCourse);
+        String[] courseColumns = {"Naam", "Vestiging", "Aantal", "Omzet"};
+        this.columns.put(2, courseColumns);
+        
+        this.tables.add(tablePaymentMembers);
+        String[] paymentColumns = {"Lidnummer", "Naam", "Factuurnr", "Factuurdatum", "Totaal", "Resterend", "Status", "Datum"};
+        this.columns.put(3, paymentColumns);
+        
+        this.tables.add(tableFacility);
+        String[] facilityColumns = {"Naam", "Vestiging", "Aantal", "Omzet"};
+        this.columns.put(4, facilityColumns);
+        
+        this.tables.add(tableSubscription);
+        String[] subscriptionColumns = {"Abonnement", "Vestiging", "Aantal", "Omzet"};
+        this.columns.put(5, subscriptionColumns);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,6 +289,19 @@ public class Financial extends mvc.view.AbstractView {
         labelCollectionUpdateAction = new javax.swing.JLabel();
         selectCollectionUpdateAction = new javax.swing.JComboBox();
         buttonUpdateCollection = new pas.layout.label.Button();
+        revenuesPanel = new javax.swing.JPanel();
+        paneBar = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableBar = new pas.layout.table.Table();
+        paneSubscription = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableSubscription = new pas.layout.table.Table();
+        paneCourse1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tableCourse = new pas.layout.table.Table();
+        paneBar4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tableFacility = new pas.layout.table.Table();
         paymentStatusPanel = new javax.swing.JPanel();
         paneMembersPayment = new javax.swing.JPanel();
         paymentScrollPane = new javax.swing.JScrollPane();
@@ -163,19 +310,6 @@ public class Financial extends mvc.view.AbstractView {
         labelPaymentUpdateAction = new javax.swing.JLabel();
         selectPaymentUpdateAction = new javax.swing.JComboBox();
         buttonUpdatePayment = new pas.layout.label.Button();
-        paymentPanel = new javax.swing.JPanel();
-        paneBar = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableBar = new Table();
-        paneSubscription = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tableSubscription = new javax.swing.JTable();
-        paneCourse1 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tableCourse = new javax.swing.JTable();
-        paneBar4 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tableFacility = new javax.swing.JTable();
         selectStatus = new javax.swing.JComboBox();
         labelStatus = new javax.swing.JLabel();
         labelTitle = new javax.swing.JLabel();
@@ -271,31 +405,23 @@ public class Financial extends mvc.view.AbstractView {
 
         tableCollectionMembers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1), "Jan Jansen",  new Double(35.0),  new Double(121.5),  new Double(0.0),  new Double(45.0),  new Double(201.5), "Betaald", "3-2-2013"},
-                { new Integer(3), "Sander Boersma",  new Double(20.0),  new Double(0.0),  new Double(35.0),  new Double(10.0),  new Double(65.0), "Betaald", "3-2-2013"},
-                { new Integer(4), "Ralph Veenstra",  new Double(35.0),  new Double(35.0),  new Double(35.0),  new Double(50.0),  new Double(155.0), "Betaald", "3-2-2013"},
-                { new Integer(5), null,  new Double(35.0),  new Double(10.0),  new Double(70.0),  new Double(0.0),  new Double(115.0), "Betaald", "5-2-2013"},
-                { new Integer(8), "Anneke Veenstra",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(10.0),  new Double(45.0), "Betaald", "3-2-2013"},
-                { new Integer(9), "Jorrit Verschuur",  new Double(25.0),  new Double(12.5),  new Double(0.0),  new Double(5.0),  new Double(42.5), "Stornering", "8-2-2013"},
-                { new Integer(13), "Jessica Kaaijk",  new Double(25.0),  new Double(6.5),  new Double(0.0),  new Double(0.0),  new Double(31.5), "Betaald", "3-2-2013"},
-                { new Integer(14), "Ashley Daza",  new Double(35.0),  new Double(8.5),  new Double(25.0),  new Double(25.0),  new Double(93.5), "Betaald", "3-2-2013"},
-                { new Integer(15), "Corry Symons",  new Double(25.0),  new Double(64.0),  new Double(25.0),  new Double(25.0),  new Double(139.0), "Betaald", "3-2-2013"},
-                { new Integer(19), "Madelon Boon",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"},
-                { new Integer(24), "Wilco de Boer",  new Double(35.0),  new Double(10.0),  new Double(35.0),  new Double(15.0),  new Double(95.0), "Mislukt", "5-2-2013"},
-                { new Integer(25), "Marco Bakken",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Lidnummer", "Naam", "Abonnement", "Bar", "Cursussen", "Faciliteiten", "Totaal", "Status", "Datum"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         collectionScrollPane.setViewportView(tableCollectionMembers);
 
         buttonSellectAllCollection.setText("Selecteer/Deselecteer alles");
@@ -329,9 +455,8 @@ public class Financial extends mvc.view.AbstractView {
         paneMembersCollectionLayout.setVerticalGroup(
             paneMembersCollectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneMembersCollectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(collectionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addComponent(collectionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSellectAllCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -412,6 +537,157 @@ public class Financial extends mvc.view.AbstractView {
 
         viewFrame.add(collectionPanel, "collectionCard");
 
+        revenuesPanel.setOpaque(false);
+
+        paneBar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneBar.setOpaque(false);
+
+        tableBar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tableBar);
+
+        javax.swing.GroupLayout paneBarLayout = new javax.swing.GroupLayout(paneBar);
+        paneBar.setLayout(paneBarLayout);
+        paneBarLayout.setHorizontalGroup(
+            paneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneBarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        paneBarLayout.setVerticalGroup(
+            paneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        paneSubscription.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Abonnementen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneSubscription.setOpaque(false);
+
+        tableSubscription.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tableSubscription);
+
+        javax.swing.GroupLayout paneSubscriptionLayout = new javax.swing.GroupLayout(paneSubscription);
+        paneSubscription.setLayout(paneSubscriptionLayout);
+        paneSubscriptionLayout.setHorizontalGroup(
+            paneSubscriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneSubscriptionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        paneSubscriptionLayout.setVerticalGroup(
+            paneSubscriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+        );
+
+        paneCourse1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cursussen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneCourse1.setOpaque(false);
+
+        tableCourse.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(tableCourse);
+
+        javax.swing.GroupLayout paneCourse1Layout = new javax.swing.GroupLayout(paneCourse1);
+        paneCourse1.setLayout(paneCourse1Layout);
+        paneCourse1Layout.setHorizontalGroup(
+            paneCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneCourse1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+        paneCourse1Layout.setVerticalGroup(
+            paneCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        paneBar4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Faciliteiten", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneBar4.setOpaque(false);
+
+        tableFacility.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane4.setViewportView(tableFacility);
+
+        javax.swing.GroupLayout paneBar4Layout = new javax.swing.GroupLayout(paneBar4);
+        paneBar4.setLayout(paneBar4Layout);
+        paneBar4Layout.setHorizontalGroup(
+            paneBar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneBar4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4)
+                .addContainerGap())
+        );
+        paneBar4Layout.setVerticalGroup(
+            paneBar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout revenuesPanelLayout = new javax.swing.GroupLayout(revenuesPanel);
+        revenuesPanel.setLayout(revenuesPanelLayout);
+        revenuesPanelLayout.setHorizontalGroup(
+            revenuesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(revenuesPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(revenuesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(paneBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(paneSubscription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(paneCourse1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(paneBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        revenuesPanelLayout.setVerticalGroup(
+            revenuesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(revenuesPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(paneBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paneSubscription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(paneCourse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(paneBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        viewFrame.add(revenuesPanel, "revenuesCard");
+
         paymentStatusPanel.setOpaque(false);
 
         paneMembersPayment.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Leden", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
@@ -419,31 +695,12 @@ public class Financial extends mvc.view.AbstractView {
 
         tablePaymentMembers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1), "Jan Jansen",  new Double(35.0),  new Double(121.5),  new Double(0.0),  new Double(45.0),  new Double(201.5), "Betaald", "3-2-2013"},
-                { new Integer(3), "Sander Boersma",  new Double(20.0),  new Double(0.0),  new Double(35.0),  new Double(10.0),  new Double(65.0), "Betaald", "3-2-2013"},
-                { new Integer(4), "Ralph Veenstra",  new Double(35.0),  new Double(35.0),  new Double(35.0),  new Double(50.0),  new Double(155.0), "Betaald", "3-2-2013"},
-                { new Integer(5), null,  new Double(35.0),  new Double(10.0),  new Double(70.0),  new Double(0.0),  new Double(115.0), "Betaald", "5-2-2013"},
-                { new Integer(8), "Anneke Veenstra",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(10.0),  new Double(45.0), "Betaald", "3-2-2013"},
-                { new Integer(9), "Jorrit Verschuur",  new Double(25.0),  new Double(12.5),  new Double(0.0),  new Double(5.0),  new Double(42.5), "Stornering", "8-2-2013"},
-                { new Integer(13), "Jessica Kaaijk",  new Double(25.0),  new Double(6.5),  new Double(0.0),  new Double(0.0),  new Double(31.5), "Betaald", "3-2-2013"},
-                { new Integer(14), "Ashley Daza",  new Double(35.0),  new Double(8.5),  new Double(25.0),  new Double(25.0),  new Double(93.5), "Betaald", "3-2-2013"},
-                { new Integer(15), "Corry Symons",  new Double(25.0),  new Double(64.0),  new Double(25.0),  new Double(25.0),  new Double(139.0), "Betaald", "3-2-2013"},
-                { new Integer(19), "Madelon Boon",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"},
-                { new Integer(24), "Wilco de Boer",  new Double(35.0),  new Double(10.0),  new Double(35.0),  new Double(15.0),  new Double(95.0), "Mislukt", "5-2-2013"},
-                { new Integer(25), "Marco Bakken",  new Double(35.0),  new Double(0.0),  new Double(0.0),  new Double(0.0),  new Double(35.0), "Betaald", "3-2-2013"}
+
             },
             new String [] {
-                "Lidnummer", "Naam", "Abonnement", "Bar", "Cursussen", "Faciliteiten", "Totaal", "Status", "Datum"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-        });
+        ));
         paymentScrollPane.setViewportView(tablePaymentMembers);
 
         buttonSelectAllPayment.setText("Selecteer/Deselecteer alles");
@@ -477,9 +734,8 @@ public class Financial extends mvc.view.AbstractView {
         paneMembersPaymentLayout.setVerticalGroup(
             paneMembersPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneMembersPaymentLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(paymentScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addComponent(paymentScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSelectAllPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -545,193 +801,6 @@ public class Financial extends mvc.view.AbstractView {
         );
 
         viewFrame.add(paymentStatusPanel, "statusCard");
-
-        paymentPanel.setOpaque(false);
-
-        paneBar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
-        paneBar.setOpaque(false);
-
-        tableBar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Sandwiches",  new Float(3487.5)},
-                {"Dranken",  new Float(6214.0)},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Groep", "Omzet"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tableBar);
-
-        javax.swing.GroupLayout paneBarLayout = new javax.swing.GroupLayout(paneBar);
-        paneBar.setLayout(paneBarLayout);
-        paneBarLayout.setHorizontalGroup(
-            paneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        paneBarLayout.setVerticalGroup(
-            paneBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-        );
-
-        paneSubscription.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Abonnementen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
-        paneSubscription.setOpaque(false);
-
-        tableSubscription.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Regulier",  new Float(12185.0)},
-                {"Junior",  new Float(2300.0)},
-                {"Senior",  new Float(3780.0)}
-            },
-            new String [] {
-                "Soort", "Omzet"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane4.setViewportView(tableSubscription);
-
-        javax.swing.GroupLayout paneSubscriptionLayout = new javax.swing.GroupLayout(paneSubscription);
-        paneSubscription.setLayout(paneSubscriptionLayout);
-        paneSubscriptionLayout.setHorizontalGroup(
-            paneSubscriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneSubscriptionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        paneSubscriptionLayout.setVerticalGroup(
-            paneSubscriptionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneSubscriptionLayout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-
-        paneCourse1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cursussen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
-        paneCourse1.setOpaque(false);
-
-        tableCourse.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Tai-boxing",  new Integer(150),  new Float(4500.0)},
-                {"Joga",  new Integer(75),  new Float(1500.0)},
-                {"Karate",  new Integer(113),  new Float(2260.0)}
-            },
-            new String [] {
-                "Naam", "Deelnames", "Omzet"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane5.setViewportView(tableCourse);
-
-        javax.swing.GroupLayout paneCourse1Layout = new javax.swing.GroupLayout(paneCourse1);
-        paneCourse1.setLayout(paneCourse1Layout);
-        paneCourse1Layout.setHorizontalGroup(
-            paneCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneCourse1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        paneCourse1Layout.setVerticalGroup(
-            paneCourse1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneCourse1Layout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        paneBar4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Faciliteiten", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
-        paneBar4.setOpaque(false);
-
-        tableFacility.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"Sauna",  new Integer(833),  new Float(4165.0)},
-                {"Squash",  new Integer(186),  new Float(930.0)},
-                {"Zonnebank",  new Integer(368), null}
-            },
-            new String [] {
-                "Naam", "Deelnames", "Omzet"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Float.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(tableFacility);
-
-        javax.swing.GroupLayout paneBar4Layout = new javax.swing.GroupLayout(paneBar4);
-        paneBar4.setLayout(paneBar4Layout);
-        paneBar4Layout.setHorizontalGroup(
-            paneBar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneBar4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        paneBar4Layout.setVerticalGroup(
-            paneBar4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paneBar4Layout.createSequentialGroup()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout paymentPanelLayout = new javax.swing.GroupLayout(paymentPanel);
-        paymentPanel.setLayout(paymentPanelLayout);
-        paymentPanelLayout.setHorizontalGroup(
-            paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paymentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paneBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(paneSubscription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(paneCourse1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(paneBar4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        paymentPanelLayout.setVerticalGroup(
-            paymentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(paymentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(paneBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneSubscription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneCourse1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(paneBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        viewFrame.add(paymentPanel, "paymentCard");
 
         selectStatus.setBackground(new java.awt.Color(242, 109, 142));
         selectStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle", "Achterstand", "Betaald", "Geweigerd", "Gestorneerd" }));
@@ -840,7 +909,7 @@ public class Financial extends mvc.view.AbstractView {
     private void buttonRevenuesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonRevenuesMouseClicked
         try {
             this.controller.requestCardSwitch();
-            this.changeCard("paymentCard");
+            this.changeCard("revenuesCard");
             this.activateButton((Button) evt.getComponent());
         } catch(Exception e){
             // Switch not allowed
@@ -876,8 +945,6 @@ public class Financial extends mvc.view.AbstractView {
         String month = (String) selectPeriodMonth.getSelectedItem();
         String year = (String) selectPeriodYear.getSelectedItem();
         JOptionPane.showMessageDialog(this, "Selectie: Vestiging "+location+" in de periode van "+month+" "+year);
-        Button button = (Button) evt.getComponent();
-        button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonSelectMouseClicked
 
     private void buttonSelectPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonSelectPropertyChange
@@ -908,7 +975,7 @@ public class Financial extends mvc.view.AbstractView {
     }//GEN-LAST:event_selectPaymentUpdateActionActionPerformed
 
     private void buttonUpdatePaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdatePaymentMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_buttonUpdatePaymentMouseClicked
 
     private void buttonUpdatePaymentPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonUpdatePaymentPropertyChange
@@ -916,11 +983,12 @@ public class Financial extends mvc.view.AbstractView {
     }//GEN-LAST:event_buttonUpdatePaymentPropertyChange
 
     private void buttonSelectAllPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSelectAllPaymentMouseClicked
-        // TODO add your handling code here:
+
+        this.tablePaymentMembers.toggleRowSelect();
     }//GEN-LAST:event_buttonSelectAllPaymentMouseClicked
 
     private void buttonSelectAllPaymentPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonSelectAllPaymentPropertyChange
-        this.tablePaymentMembers.toggleRowSelect();
+       
     }//GEN-LAST:event_buttonSelectAllPaymentPropertyChange
 
     private void selectCollectionUpdateActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCollectionUpdateActionActionPerformed
@@ -928,7 +996,7 @@ public class Financial extends mvc.view.AbstractView {
     }//GEN-LAST:event_selectCollectionUpdateActionActionPerformed
 
     private void buttonUpdateCollectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdateCollectionMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_buttonUpdateCollectionMouseClicked
 
     private void buttonUpdateCollectionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonUpdateCollectionPropertyChange
@@ -936,7 +1004,8 @@ public class Financial extends mvc.view.AbstractView {
     }//GEN-LAST:event_buttonUpdateCollectionPropertyChange
 
     private void buttonSellectAllCollectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSellectAllCollectionMouseClicked
-        // TODO add your handling code here:
+        Button button = (Button) evt.getComponent();
+        button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonSellectAllCollectionMouseClicked
 
     private void buttonSellectAllCollectionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonSellectAllCollectionPropertyChange
@@ -944,15 +1013,18 @@ public class Financial extends mvc.view.AbstractView {
     }//GEN-LAST:event_buttonSellectAllCollectionPropertyChange
 
     private void buttonSelectMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSelectMouseReleased
-        this.deActivateButton((Button) evt.getComponent());
+        Button button = (Button) evt.getComponent();
+        button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonSelectMouseReleased
 
     private void buttonSellectAllCollectionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSellectAllCollectionMouseReleased
-        this.deActivateButton((Button) evt.getComponent());
+        Button button = (Button) evt.getComponent();
+        button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonSellectAllCollectionMouseReleased
 
     private void buttonGenerateCollectionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonGenerateCollectionMouseReleased
-        this.deActivateButton((Button) evt.getComponent());
+        Button button = (Button) evt.getComponent();
+        button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonGenerateCollectionMouseReleased
 
     private void buttonUpdateCollectionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdateCollectionMouseReleased
@@ -961,11 +1033,13 @@ public class Financial extends mvc.view.AbstractView {
     }//GEN-LAST:event_buttonUpdateCollectionMouseReleased
 
     private void buttonSelectAllPaymentMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSelectAllPaymentMouseReleased
-        this.deActivateButton((Button) evt.getComponent());
+        Button button = (Button) evt.getComponent();
+        button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonSelectAllPaymentMouseReleased
 
     private void buttonUpdatePaymentMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdatePaymentMouseReleased
-       this.deActivateButton((Button) evt.getComponent());
+       Button button = (Button) evt.getComponent();
+        button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonUpdatePaymentMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -981,9 +1055,9 @@ public class Financial extends mvc.view.AbstractView {
     private javax.swing.JPanel collectionPanel;
     private javax.swing.JScrollPane collectionScrollPane;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel labelCollectionUpdateAction;
     private javax.swing.JLabel labelLocation;
     private javax.swing.JLabel labelPaymentUpdateAction;
@@ -997,21 +1071,21 @@ public class Financial extends mvc.view.AbstractView {
     private javax.swing.JPanel paneMembersCollection;
     private javax.swing.JPanel paneMembersPayment;
     private javax.swing.JPanel paneSubscription;
-    private javax.swing.JPanel paymentPanel;
     private javax.swing.JScrollPane paymentScrollPane;
     private javax.swing.JPanel paymentStatusPanel;
+    private javax.swing.JPanel revenuesPanel;
     private javax.swing.JComboBox selectCollectionUpdateAction;
     private javax.swing.JComboBox selectLocation;
     private javax.swing.JComboBox selectPaymentUpdateAction;
     private javax.swing.JComboBox selectPeriodMonth;
     private javax.swing.JComboBox selectPeriodYear;
     private javax.swing.JComboBox selectStatus;
-    private javax.swing.JTable tableBar;
+    private pas.layout.table.Table tableBar;
     private pas.layout.table.Table tableCollectionMembers;
-    private javax.swing.JTable tableCourse;
-    private javax.swing.JTable tableFacility;
+    private pas.layout.table.Table tableCourse;
+    private pas.layout.table.Table tableFacility;
     private pas.layout.table.Table tablePaymentMembers;
-    private javax.swing.JTable tableSubscription;
+    private pas.layout.table.Table tableSubscription;
     private javax.swing.JPanel viewFrame;
     // End of variables declaration//GEN-END:variables
 }

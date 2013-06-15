@@ -30,9 +30,9 @@ public class Table extends JTable {
     
     public void toggleRowSelect(){
         if(this.allSelected){
-            this.deselectAllRows();
+            //this.deselectAllRows();
         } else {
-             this.selectAllRows();
+             //this.selectAllRows();
         }
     }
     
