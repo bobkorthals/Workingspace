@@ -222,12 +222,6 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
 
         lblEmployeeID.setText("Medewerker nummer");
 
-        txtEmployeeID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmployeeIDActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlOrderDataLayout = new javax.swing.GroupLayout(pnlOrderData);
         pnlOrderData.setLayout(pnlOrderDataLayout);
         pnlOrderDataLayout.setHorizontalGroup(
@@ -589,16 +583,12 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtEmployeeIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeIDActionPerformed
-        coursecontroller.NewScheduleOrderAction();        // Deze button opent de view NewPlanningOrder
-    }//GEN-LAST:event_txtEmployeeIDActionPerformed
-
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
         coursecontroller.PaymentScheduleAction();        // Deze button opent de view NewPlanningOrder
     }//GEN-LAST:event_btnPaymentActionPerformed
 
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
-        coursecontroller.ScheduleCourseAction();        // Deze button opent de view CourseMain
+        coursecontroller.NewScheduleOrderAction();        // Deze button opent de view CourseMain
     }//GEN-LAST:event_btnGoBackActionPerformed
 
     private void ddlLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddlLocationActionPerformed

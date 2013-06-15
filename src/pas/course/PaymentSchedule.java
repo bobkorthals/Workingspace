@@ -33,13 +33,13 @@ public class PaymentSchedule extends mvc.view.AbstractView {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-            switch (evt.getPropertyName()) {
+        switch (evt.getPropertyName()) {
             case ActiveMember.MEMBER:
                 this.setMember((Member) evt.getNewValue());
                 break;
         }
     }
-    
+
     /*
      * Class helper to set member data
      * 
@@ -47,7 +47,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
      * @return void
      */
     private void setMember(Member member) {
-        
+
         txtMemberID.setText(new Integer(member.getMemberID()).toString());
         txtMemberFirstName.setText(member.getFirstName());
         txtMemberLastName.setText(member.getLastName());
@@ -451,7 +451,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentActionPerformed
-        coursecontroller.ScheduleCourseAction();        // Deze button opent de view CourseMain
+        coursecontroller.NewScheduleOrderAction();        // Deze button opent de view NewPlanningOrder
     }//GEN-LAST:event_btnPaymentActionPerformed
 
     private void btnChangeScheduleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeScheduleOrderActionPerformed
