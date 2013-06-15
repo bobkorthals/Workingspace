@@ -219,7 +219,7 @@
                               <Component id="txtMemberID" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtMemberSuffix" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtMemberLastName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtMemberBirthDay" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtMemberBirthday" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtMemberLatePayment" alignment="0" pref="140" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -252,7 +252,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblMemberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtMemberBirthDay" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -307,7 +307,7 @@
                     <Property name="text" type="java.lang.String" value="Geboortedatum"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberBirthDay">
+                <Component class="javax.swing.JTextField" name="txtMemberBirthday">
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblMemberGender">
                   <Properties>

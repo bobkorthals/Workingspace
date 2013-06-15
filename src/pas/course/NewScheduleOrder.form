@@ -559,19 +559,20 @@
                               <Component id="jScrollPane1" alignment="0" pref="795" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblCourseOverview" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-                                  <Component id="lblScheduleDateOverview" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ddlScheduleDateDay" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="ddlCourse" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lblScheduleDate" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ddlScheduleDateMonth" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <Component id="ddlDateDay" min="-2" pref="50" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ddlScheduleDateYear" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <Component id="ddlDateMonth" min="-2" pref="98" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblLocationOverview" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlDateYear" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lblLocation" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ddlLocationOverview" min="-2" pref="130" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="ddlLocation" min="-2" pref="115" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -585,14 +586,15 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblCourseOverview" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblScheduleDateOverview" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblScheduleDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlCourse" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlDateDay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlDateMonth" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlDateYear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="ddlScheduleDateDay" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="ddlScheduleDateMonth" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="lblLocationOverview" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ddlScheduleDateYear" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ddlLocationOverview" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="lblLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -608,7 +610,7 @@
                     <Property name="text" type="java.lang.String" value="Cursus"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblScheduleDateOverview">
+                <Component class="javax.swing.JLabel" name="lblScheduleDate">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Datum"/>
                   </Properties>
@@ -668,18 +670,26 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="java.awt.Choice" name="ddlScheduleDateDay">
-                </Component>
-                <Component class="java.awt.Choice" name="ddlScheduleDateMonth">
-                </Component>
-                <Component class="java.awt.Choice" name="ddlScheduleDateYear">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblLocationOverview">
+                <Component class="javax.swing.JLabel" name="lblLocation">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Locatie"/>
                   </Properties>
                 </Component>
-                <Component class="java.awt.Choice" name="ddlLocationOverview">
+                <Component class="pas.layout.form.ComboList" name="ddlCourse">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ddlCourseActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlLocation">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ddlLocationActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlDateDay">
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlDateMonth">
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlDateYear">
                 </Component>
               </SubComponents>
             </Container>

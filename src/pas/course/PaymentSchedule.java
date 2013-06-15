@@ -5,6 +5,9 @@
 package pas.course;
 
 import java.beans.PropertyChangeEvent;
+import pas.models.ActiveMember;
+import pas.models.Format;
+import pas.models.role.Member;
 
 /**
  *
@@ -17,9 +20,10 @@ public class PaymentSchedule extends mvc.view.AbstractView {
     /**
      * Creates new form PaymentSchedule
      */
-    public PaymentSchedule(CourseController coursecontroller) {
-        this.coursecontroller = coursecontroller;
+    public PaymentSchedule(CourseController coursecontroller, Member member) {
         initComponents();
+        this.coursecontroller = coursecontroller;
+        this.setMember(member);
     }
 
     @Override
@@ -28,7 +32,26 @@ public class PaymentSchedule extends mvc.view.AbstractView {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent change) {
+    public void propertyChange(PropertyChangeEvent evt) {
+            switch (evt.getPropertyName()) {
+            case ActiveMember.MEMBER:
+                this.setMember((Member) evt.getNewValue());
+                break;
+        }
+    }
+    
+    /*
+     * Class helper to set member data
+     * 
+     * @param Member member
+     * @return void
+     */
+    private void setMember(Member member) {
+        
+        txtMemberID.setText(new Integer(member.getMemberID()).toString());
+        txtMemberFirstName.setText(member.getFirstName());
+        txtMemberLastName.setText(member.getLastName());
+        txtMemberBirthday.setText(Format.toShortDateString(member.getDateOfBrith()));
     }
 
     /**
@@ -56,7 +79,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
         lblMemberLastName = new javax.swing.JLabel();
         txtMemberLastName = new javax.swing.JTextField();
         lblMemberBirthday = new javax.swing.JLabel();
-        txtMemberBirthDay = new javax.swing.JTextField();
+        txtMemberBirthday = new javax.swing.JTextField();
         lblMemberGender = new javax.swing.JLabel();
         txtMemberGender = new javax.swing.JTextField();
         lblMemberCredit = new javax.swing.JLabel();
@@ -175,7 +198,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
                     .addComponent(txtMemberID)
                     .addComponent(txtMemberSuffix)
                     .addComponent(txtMemberLastName)
-                    .addComponent(txtMemberBirthDay)
+                    .addComponent(txtMemberBirthday)
                     .addComponent(txtMemberLatePayment, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -201,7 +224,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMemberBirthday)
-                    .addComponent(txtMemberBirthDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMemberBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMemberDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMemberGender)
@@ -438,7 +461,6 @@ public class PaymentSchedule extends mvc.view.AbstractView {
     private void btnCloseScheduleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseScheduleOrderActionPerformed
         coursecontroller.ScheduleCourseAction();        // Deze button opent de view CourseMain
     }//GEN-LAST:event_btnCloseScheduleOrderActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangeScheduleOrder;
     private javax.swing.JButton btnCloseScheduleOrder;
@@ -470,7 +492,7 @@ public class PaymentSchedule extends mvc.view.AbstractView {
     private javax.swing.JTextField txtAmountSchedules;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtEmployeeID;
-    private javax.swing.JTextField txtMemberBirthDay;
+    private javax.swing.JTextField txtMemberBirthday;
     private javax.swing.JTextField txtMemberCredit;
     private javax.swing.JTextField txtMemberFirstName;
     private javax.swing.JTextField txtMemberGender;

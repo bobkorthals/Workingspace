@@ -31,7 +31,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
      * @param Member active member
      * @param List<Cursus>
      */
-    public NewScheduleOrder(CourseController coursecontroller) {
+    public NewScheduleOrder(CourseController coursecontroller, Member member, List<Vestiging> vestigingen) {
         initComponents();
         this.coursecontroller = coursecontroller;
         this.vestigingen = vestigingen;
@@ -39,7 +39,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
         this.setVestigingen();
         this.setMember(member);
 
-        ddlCourseOverview.setEnabled(false);
+        ddlCourse.setEnabled(false);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
     }
 
     @Override
-    public void propertyChange(PropertyChangeEvent change) {
+    public void propertyChange(PropertyChangeEvent evt) {
         switch (evt.getPropertyName()) {
             case ActiveMember.MEMBER:
                 this.setMember((Member) evt.getNewValue());
@@ -76,23 +76,23 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
      * @return void
      */
     private void setCourse() {
-        ddlCourseOverview.removeAllItems();
-        ddlCourseOverview.addItem(new ComboListItem("Selecteer cursus"));
+        ddlCourse.removeAllItems();
+        ddlCourse.addItem(new ComboListItem("Selecteer cursus"));
 
-        if (!this.course.isEmpty()) {
-            for (Cursus course : course) {
-                ddlCourseOverview.addItem(
+        if (!this.courses.isEmpty()) {
+            for (Cursus course : courses) {
+                ddlCourse.addItem(
                         new ComboListItem(
                         course.getOmschrijving(),
                         course));
             }
 
-            ddlCourseOverview.setEnabled(true);
+            ddlCourse.setEnabled(true);
         } else {
-            ddlCourseOverview.setEnabled(false);
+            ddlCourse.setEnabled(false);
         }
 
-        ddlCourseOverview.repaint();
+        ddlCourse.repaint();
     }
 
     /*
@@ -101,9 +101,9 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
      * @return void
      */
     private void setVestigingen() {
-        ddlLocationOverview.addItem(new ComboListItem("Selecteer vestiging"));
+        ddlLocation.addItem(new ComboListItem("Selecteer vestiging"));
         for (Vestiging vestinging : this.vestigingen) {
-            ddlLocationOverview.addItem(
+            ddlLocation.addItem(
                     new ComboListItem(
                     vestinging.getNaam(),
                     vestinging));
@@ -155,14 +155,15 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
         txtMemberLatePayment = new javax.swing.JTextField();
         pnlScheduleOverview = new javax.swing.JPanel();
         lblCourseOverview = new javax.swing.JLabel();
-        lblScheduleDateOverview = new javax.swing.JLabel();
+        lblScheduleDate = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSchedule = new javax.swing.JTable();
-        ddlScheduleDateDay = new java.awt.Choice();
-        ddlScheduleDateMonth = new java.awt.Choice();
-        ddlScheduleDateYear = new java.awt.Choice();
-        lblLocationOverview = new javax.swing.JLabel();
-        ddlLocationOverview = new java.awt.Choice();
+        lblLocation = new javax.swing.JLabel();
+        ddlCourse = new pas.layout.form.ComboList();
+        ddlLocation = new pas.layout.form.ComboList();
+        ddlDateDay = new pas.layout.form.ComboList();
+        ddlDateMonth = new pas.layout.form.ComboList();
+        ddlDateYear = new pas.layout.form.ComboList();
 
         setOpaque(false);
 
@@ -422,7 +423,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
 
         lblCourseOverview.setText("Cursus");
 
-        lblScheduleDateOverview.setText("Datum");
+        lblScheduleDate.setText("Datum");
 
         tblSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -452,7 +453,19 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
         tblSchedule.setOpaque(false);
         jScrollPane1.setViewportView(tblSchedule);
 
-        lblLocationOverview.setText("Locatie");
+        lblLocation.setText("Locatie");
+
+        ddlCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ddlCourseActionPerformed(evt);
+            }
+        });
+
+        ddlLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ddlLocationActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlScheduleOverviewLayout = new javax.swing.GroupLayout(pnlScheduleOverview);
         pnlScheduleOverview.setLayout(pnlScheduleOverviewLayout);
@@ -464,19 +477,20 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
                     .addGroup(pnlScheduleOverviewLayout.createSequentialGroup()
                         .addComponent(lblCourseOverview)
-                        .addGap(145, 145, 145)
-                        .addComponent(lblScheduleDateOverview)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ddlScheduleDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ddlCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblScheduleDate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ddlScheduleDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ddlDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ddlScheduleDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ddlDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblLocationOverview)
+                        .addComponent(ddlDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblLocation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ddlLocationOverview, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(ddlLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnlScheduleOverviewLayout.setVerticalGroup(
@@ -486,13 +500,14 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
                 .addGroup(pnlScheduleOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlScheduleOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCourseOverview)
-                        .addComponent(lblScheduleDateOverview))
-                    .addComponent(ddlScheduleDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ddlScheduleDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlScheduleOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblLocationOverview)
-                        .addComponent(ddlScheduleDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ddlLocationOverview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblScheduleDate)
+                        .addComponent(ddlCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ddlDateDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ddlDateMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ddlDateYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlScheduleOverviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblLocation)
+                        .addComponent(ddlLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                 .addContainerGap())
@@ -585,21 +600,47 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
     private void btnGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoBackActionPerformed
         coursecontroller.ScheduleCourseAction();        // Deze button opent de view CourseMain
     }//GEN-LAST:event_btnGoBackActionPerformed
+
+    private void ddlLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddlLocationActionPerformed
+        // TODO add your handling code here:       
+        ComboListItem item = (ComboListItem) ddlLocation.getSelectedItem();
+
+        if (item.hasValue()) {
+            Vestiging vestiging = (Vestiging) item.getValue();
+            this.courses = this.getController()
+                    .getCourseByLocatieId(vestiging);
+
+            this.setCourse();
+        } else {
+            this.courses.clear();
+            this.setCourse();
+        }
+    }//GEN-LAST:event_ddlLocationActionPerformed
+
+    private void ddlCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddlCourseActionPerformed
+        ComboListItem item = (ComboListItem) ddlCourse.getSelectedItem();
+
+        if (item.hasValue()) {
+            Cursus course = (Cursus) item.getValue();
+            System.out.println(course.getKosten() + " : " + course.getOmschrijving());
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_ddlCourseActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddSchedule;
     private javax.swing.JButton btnDeleteSchedule;
     private javax.swing.JButton btnGoBack;
     private javax.swing.JButton btnPayment;
-    private java.awt.Choice ddlLocationOverview;
-    private java.awt.Choice ddlScheduleDateDay;
-    private java.awt.Choice ddlScheduleDateMonth;
-    private java.awt.Choice ddlScheduleDateYear;
+    private pas.layout.form.ComboList ddlCourse;
+    private pas.layout.form.ComboList ddlDateDay;
+    private pas.layout.form.ComboList ddlDateMonth;
+    private pas.layout.form.ComboList ddlDateYear;
+    private pas.layout.form.ComboList ddlLocation;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCourseOverview;
     private javax.swing.JLabel lblEmployeeID;
-    private javax.swing.JLabel lblLocationOverview;
+    private javax.swing.JLabel lblLocation;
     private javax.swing.JLabel lblMemberBirthday;
     private javax.swing.JLabel lblMemberCredit;
     private javax.swing.JLabel lblMemberFirstName;
@@ -610,7 +651,7 @@ public class NewScheduleOrder extends mvc.view.AbstractView {
     private javax.swing.JLabel lblMemberSuffix;
     private javax.swing.JLabel lblNewScheduleOrder;
     private javax.swing.JLabel lblOrderID;
-    private javax.swing.JLabel lblScheduleDateOverview;
+    private javax.swing.JLabel lblScheduleDate;
     private javax.swing.JPanel pnlButtons;
     private javax.swing.JPanel pnlMemberData;
     private javax.swing.JPanel pnlNewScheduleOrder;
