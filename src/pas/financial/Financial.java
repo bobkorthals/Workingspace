@@ -15,6 +15,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import pas.layout.form.ComboListItem;
 import pas.layout.label.Button;
 import pas.layout.table.Table;
 
@@ -85,13 +86,52 @@ public class Financial extends mvc.view.AbstractView {
         this.activateButton(this.buttonRevenues);
         this.tableColumns();
         
-        /** Table Bar Setup **/
-        this.setupTable((Table) this.tableBar, barTableListener);
-        this.setupTable((Table) this.tableCourse, courseTableListener);
-        this.setupTable((Table) this.tableFacility, facilityTableListener);
-        this.setupTable((Table) this.tablePaymentMembers, membersTableListener);
-        this.setupTable((Table) this.tableCollectionMembers, members1TableListener);
-        this.setupTable((Table) this.tableSubscription, subscriptionTableListener);
+        /** Table Setup **/
+        this.setupTable(this.tableBar, barTableListener);
+        this.setupTable(this.tableCourse, courseTableListener);
+        this.setupTable(this.tableFacility, facilityTableListener);
+        this.setupTable(this.tablePaymentMembers, membersTableListener);
+        this.setupTable(this.tableCollectionMembers, members1TableListener);
+        this.setupTable(this.tableSubscription, subscriptionTableListener);
+        
+        /** Combobox setup **/
+        this.selectLocation.addItem(new ComboListItem("Alle", 0));
+        this.selectLocation.addItem(new ComboListItem("Haarlem", 1));
+        this.selectLocation.addItem(new ComboListItem("Purmerend", 2));
+        this.selectLocation.addItem(new ComboListItem("Amsterdam", 3));
+        
+        this.selectPeriodMonth.addItem(new ComboListItem("Geheel", 0));
+        this.selectPeriodMonth.addItem(new ComboListItem("Januari", 1));
+        this.selectPeriodMonth.addItem(new ComboListItem("Februari", 2));
+        this.selectPeriodMonth.addItem(new ComboListItem("Maart", 3));
+        this.selectPeriodMonth.addItem(new ComboListItem("April", 4));
+        this.selectPeriodMonth.addItem(new ComboListItem("Mei", 5));
+        this.selectPeriodMonth.addItem(new ComboListItem("Juni", 6));
+        this.selectPeriodMonth.addItem(new ComboListItem("Juli", 7));
+        this.selectPeriodMonth.addItem(new ComboListItem("Augustus", 8));
+        this.selectPeriodMonth.addItem(new ComboListItem("September", 9));
+        this.selectPeriodMonth.addItem(new ComboListItem("Oktober", 10));
+        this.selectPeriodMonth.addItem(new ComboListItem("November", 11));
+        this.selectPeriodMonth.addItem(new ComboListItem("December", 12));
+        
+        this.selectPeriodYear.addItem(new ComboListItem("2010", 2010));
+        this.selectPeriodYear.addItem(new ComboListItem("2011", 2011));
+        this.selectPeriodYear.addItem(new ComboListItem("2012", 2012));
+        this.selectPeriodYear.addItem(new ComboListItem("2013", 2013));
+        
+        this.selectStatus.addItem(new ComboListItem("Alle", 0));
+        this.selectStatus.addItem(new ComboListItem("Voldaan", 1));
+        this.selectStatus.addItem(new ComboListItem("Deels Voldaan", 2));
+        this.selectStatus.addItem(new ComboListItem("Mislukt", 3));
+        this.selectStatus.addItem(new ComboListItem("Gestorneerd", 4));
+        
+        this.selectPaymentUpdateAction.addItem(new ComboListItem("Status voldaan", "Voldaan"));
+        this.selectPaymentUpdateAction.addItem(new ComboListItem("Status deels voldaan", "Deels voldaan"));
+        this.selectPaymentUpdateAction.addItem(new ComboListItem("Status mislukt", "Mislukt"));
+        this.selectPaymentUpdateAction.addItem(new ComboListItem("Status gestorneerd", "Gestorneerd"));
+        
+        this.selectCollectionUpdateAction.addItem(new ComboListItem("Verwijderen", 0));
+        this.selectCollectionUpdateAction.addItem(new ComboListItem("Wijzigen", 1));
     }
     
     private void setupTable(Table table, TableModelListener listener){
@@ -260,6 +300,12 @@ public class Financial extends mvc.view.AbstractView {
         this.columns.put(5, subscriptionColumns);
     }
     
+    private void getSelection(ComboListItem location, ComboListItem month, ComboListItem year, ComboListItem status){
+        JOptionPane.showMessageDialog(this, "Selectie: Vestiging "+location.getText()+" in de periode van "+month.getText()+" "+year.getText()+" met status "+status.getText()+" en toepassen in "+this.activePanel);
+        // Queries ophalen aan de hand van de active panel
+        // Tabellen updaten behorend aan de active panel
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -273,10 +319,7 @@ public class Financial extends mvc.view.AbstractView {
         buttonRevenues = new pas.layout.label.Button();
         buttonCollection = new pas.layout.label.Button();
         labelLocation = new javax.swing.JLabel();
-        selectPeriodMonth = new javax.swing.JComboBox();
         labelPeriod = new javax.swing.JLabel();
-        selectLocation = new javax.swing.JComboBox();
-        selectPeriodYear = new javax.swing.JComboBox();
         buttonSelect = new pas.layout.label.Button();
         buttonPaymentStatus = new pas.layout.label.Button();
         viewFrame = new javax.swing.JPanel();
@@ -287,8 +330,8 @@ public class Financial extends mvc.view.AbstractView {
         buttonSellectAllCollection = new pas.layout.label.Button();
         buttonGenerateCollection = new pas.layout.label.Button();
         labelCollectionUpdateAction = new javax.swing.JLabel();
-        selectCollectionUpdateAction = new javax.swing.JComboBox();
         buttonUpdateCollection = new pas.layout.label.Button();
+        selectCollectionUpdateAction = new pas.layout.form.ComboList();
         revenuesPanel = new javax.swing.JPanel();
         paneBar = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -308,11 +351,14 @@ public class Financial extends mvc.view.AbstractView {
         tablePaymentMembers = new pas.layout.table.Table();
         buttonSelectAllPayment = new pas.layout.label.Button();
         labelPaymentUpdateAction = new javax.swing.JLabel();
-        selectPaymentUpdateAction = new javax.swing.JComboBox();
         buttonUpdatePayment = new pas.layout.label.Button();
-        selectStatus = new javax.swing.JComboBox();
+        selectPaymentUpdateAction = new pas.layout.form.ComboList();
         labelStatus = new javax.swing.JLabel();
         labelTitle = new javax.swing.JLabel();
+        selectLocation = new pas.layout.form.ComboList();
+        selectPeriodMonth = new pas.layout.form.ComboList();
+        selectPeriodYear = new pas.layout.form.ComboList();
+        selectStatus = new pas.layout.form.ComboList();
 
         setOpaque(false);
 
@@ -337,41 +383,9 @@ public class Financial extends mvc.view.AbstractView {
         labelLocation.setForeground(new java.awt.Color(98, 98, 152));
         labelLocation.setText("Vestiging");
 
-        selectPeriodMonth.setBackground(new java.awt.Color(242, 109, 142));
-        selectPeriodMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Geheel", "Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December" }));
-        selectPeriodMonth.setToolTipText("");
-        selectPeriodMonth.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
-        selectPeriodMonth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectPeriodMonthActionPerformed(evt);
-            }
-        });
-
         labelPeriod.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelPeriod.setForeground(new java.awt.Color(98, 98, 152));
         labelPeriod.setText("Periode");
-
-        selectLocation.setBackground(new java.awt.Color(242, 109, 142));
-        selectLocation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle", "Haarlem", "Amsterdam", "Purmerend" }));
-        selectLocation.setToolTipText("");
-        selectLocation.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
-        selectLocation.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        selectLocation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectLocationActionPerformed(evt);
-            }
-        });
-
-        selectPeriodYear.setBackground(new java.awt.Color(242, 109, 142));
-        selectPeriodYear.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2010", "2011", "2012", "2013" }));
-        selectPeriodYear.setSelectedIndex(3);
-        selectPeriodYear.setToolTipText("");
-        selectPeriodYear.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
-        selectPeriodYear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectPeriodYearActionPerformed(evt);
-            }
-        });
 
         buttonSelect.setText("Selecteren");
         buttonSelect.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -475,17 +489,6 @@ public class Financial extends mvc.view.AbstractView {
         labelCollectionUpdateAction.setForeground(new java.awt.Color(98, 98, 152));
         labelCollectionUpdateAction.setText("Met geselecteerd");
 
-        selectCollectionUpdateAction.setBackground(new java.awt.Color(242, 109, 142));
-        selectCollectionUpdateAction.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Verwijderen", "Wijzigen" }));
-        selectCollectionUpdateAction.setToolTipText("");
-        selectCollectionUpdateAction.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
-        selectCollectionUpdateAction.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        selectCollectionUpdateAction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectCollectionUpdateActionActionPerformed(evt);
-            }
-        });
-
         buttonUpdateCollection.setText("Uitvoeren");
         buttonUpdateCollection.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -515,9 +518,9 @@ public class Financial extends mvc.view.AbstractView {
                         .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
                         .addComponent(labelCollectionUpdateAction)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(selectCollectionUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectCollectionUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(buttonUpdateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -530,8 +533,8 @@ public class Financial extends mvc.view.AbstractView {
                 .addGroup(collectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelCollectionUpdateAction)
-                    .addComponent(selectCollectionUpdateAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonUpdateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonUpdateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectCollectionUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -744,17 +747,6 @@ public class Financial extends mvc.view.AbstractView {
         labelPaymentUpdateAction.setForeground(new java.awt.Color(98, 98, 152));
         labelPaymentUpdateAction.setText("Met geselecteerd");
 
-        selectPaymentUpdateAction.setBackground(new java.awt.Color(242, 109, 142));
-        selectPaymentUpdateAction.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Status betaald", "Status stornering", "Status mislukt", "Verstuur aanmaning" }));
-        selectPaymentUpdateAction.setToolTipText("");
-        selectPaymentUpdateAction.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
-        selectPaymentUpdateAction.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        selectPaymentUpdateAction.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectPaymentUpdateActionActionPerformed(evt);
-            }
-        });
-
         buttonUpdatePayment.setText("Uitvoeren");
         buttonUpdatePayment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -795,22 +787,12 @@ public class Financial extends mvc.view.AbstractView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(paymentStatusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonUpdatePayment, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selectPaymentUpdateAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPaymentUpdateAction))
+                    .addComponent(labelPaymentUpdateAction)
+                    .addComponent(selectPaymentUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         viewFrame.add(paymentStatusPanel, "statusCard");
-
-        selectStatus.setBackground(new java.awt.Color(242, 109, 142));
-        selectStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Alle", "Achterstand", "Betaald", "Geweigerd", "Gestorneerd" }));
-        selectStatus.setToolTipText("");
-        selectStatus.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(154, 13, 48), null));
-        selectStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectStatusActionPerformed(evt);
-            }
-        });
 
         labelStatus.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelStatus.setForeground(new java.awt.Color(98, 98, 152));
@@ -840,20 +822,20 @@ public class Financial extends mvc.view.AbstractView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
+                        .addComponent(selectLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(labelPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectPeriodMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selectPeriodMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
+                        .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
                         .addComponent(labelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(buttonSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(57, Short.MAX_VALUE))))
+                        .addContainerGap(39, Short.MAX_VALUE))))
         );
         mainFrameLayout.setVerticalGroup(
             mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -861,14 +843,14 @@ public class Financial extends mvc.view.AbstractView {
                 .addGap(7, 7, 7)
                 .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonSelect, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelStatus)
-                    .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selectPeriodMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPeriod)
-                    .addComponent(selectLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelLocation)
-                    .addComponent(labelTitle))
+                    .addComponent(labelTitle)
+                    .addComponent(selectLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectPeriodMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectPeriodYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainFrameLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
@@ -928,23 +910,12 @@ public class Financial extends mvc.view.AbstractView {
         }
     }//GEN-LAST:event_buttonCollectionMouseClicked
 
-    private void selectPeriodMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectPeriodMonthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectPeriodMonthActionPerformed
-
-    private void selectLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectLocationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectLocationActionPerformed
-
-    private void selectPeriodYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectPeriodYearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectPeriodYearActionPerformed
-
     private void buttonSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSelectMouseClicked
-        String location = (String) selectLocation.getSelectedItem();
-        String month = (String) selectPeriodMonth.getSelectedItem();
-        String year = (String) selectPeriodYear.getSelectedItem();
-        JOptionPane.showMessageDialog(this, "Selectie: Vestiging "+location+" in de periode van "+month+" "+year);
+        ComboListItem location = (ComboListItem) selectLocation.getSelectedItem();
+        ComboListItem month = (ComboListItem) selectPeriodMonth.getSelectedItem();
+        ComboListItem year = (ComboListItem) selectPeriodYear.getSelectedItem();
+        ComboListItem status = (ComboListItem) selectStatus.getSelectedItem();
+        this.getSelection(location, month, year, status);
     }//GEN-LAST:event_buttonSelectMouseClicked
 
     private void buttonSelectPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonSelectPropertyChange
@@ -966,16 +937,30 @@ public class Financial extends mvc.view.AbstractView {
         JOptionPane.showMessageDialog(this, "Genereren van Clieop03 bestand op basis van huidige selectie");
     }//GEN-LAST:event_buttonGenerateCollectionMouseClicked
 
-    private void selectStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectStatusActionPerformed
-
-    private void selectPaymentUpdateActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectPaymentUpdateActionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectPaymentUpdateActionActionPerformed
-
     private void buttonUpdatePaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdatePaymentMouseClicked
-
+        // ophalen huidige selectie
+        
+        ComboListItem updateAction = (ComboListItem) this.selectPaymentUpdateAction.getSelectedItem();
+        int dialogButton = JOptionPane.OK_CANCEL_OPTION;
+        int response = JOptionPane.showConfirmDialog(this, "Weet u zeker dat u betalingsstatus van de huidige selectie wilt wijzigen in "+updateAction.getText(), "Bevestigen", dialogButton);
+        
+        // Controleren op aantal geselecteerde rijen en bij 1 of meer
+        if(response == JOptionPane.OK_OPTION){
+            int[] rows = tablePaymentMembers.getSelectedRows();
+            
+            for(int row : rows){
+                DefaultTableModel model = (DefaultTableModel) tablePaymentMembers.getModel();
+                
+                model.setValueAt(updateAction.getStringValue(), row, 6);
+                
+                Integer lidnummer = (Integer) tablePaymentMembers.getModel().getValueAt(row, 0);
+                
+                // Wijziging toepassen op database en bij selectie van aanmaning versturen een email zenden
+            }
+        }
+        else {
+            
+        }
     }//GEN-LAST:event_buttonUpdatePaymentMouseClicked
 
     private void buttonUpdatePaymentPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonUpdatePaymentPropertyChange
@@ -983,7 +968,6 @@ public class Financial extends mvc.view.AbstractView {
     }//GEN-LAST:event_buttonUpdatePaymentPropertyChange
 
     private void buttonSelectAllPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSelectAllPaymentMouseClicked
-
         this.tablePaymentMembers.toggleRowSelect();
     }//GEN-LAST:event_buttonSelectAllPaymentMouseClicked
 
@@ -991,12 +975,36 @@ public class Financial extends mvc.view.AbstractView {
        
     }//GEN-LAST:event_buttonSelectAllPaymentPropertyChange
 
-    private void selectCollectionUpdateActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCollectionUpdateActionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectCollectionUpdateActionActionPerformed
-
     private void buttonUpdateCollectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonUpdateCollectionMouseClicked
-
+        // ophalen huidige selectie
+        
+        ComboListItem updateAction = (ComboListItem) this.selectCollectionUpdateAction.getSelectedItem();
+        int dialogButton = JOptionPane.OK_CANCEL_OPTION;
+        int response = JOptionPane.showConfirmDialog(this, "Weet u zeker dat u deze rij(en) wilt "+updateAction.getText(), "Bevestigen", dialogButton);
+        
+        // Controleren op aantal geselecteerde rijen en bij 1 of meer
+        if(response == JOptionPane.OK_OPTION){
+            int[] rows = tableCollectionMembers.getSelectedRows();
+            
+            int action = updateAction.getIntegerValue();
+            
+            for(int row : rows){
+                DefaultTableModel model = (DefaultTableModel) tableCollectionMembers.getModel();
+                Integer lidnummer = (Integer) tableCollectionMembers.getModel().getValueAt(row, 0);
+                
+                if(action == 0){
+                    // status verwijderd in database en niet tonen in lijst
+                    tableCollectionMembers.removeRowSelectionInterval(row, row);
+                }
+                else {
+                    // wijzigen in database
+                    // model.setValueAt(updateAction.getStringValue(), row, 6);
+                }
+            }
+        }
+        else {
+            
+        }
     }//GEN-LAST:event_buttonUpdateCollectionMouseClicked
 
     private void buttonUpdateCollectionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonUpdateCollectionPropertyChange
@@ -1004,6 +1012,8 @@ public class Financial extends mvc.view.AbstractView {
     }//GEN-LAST:event_buttonUpdateCollectionPropertyChange
 
     private void buttonSellectAllCollectionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSellectAllCollectionMouseClicked
+        this.tableCollectionMembers.toggleRowSelect();
+        
         Button button = (Button) evt.getComponent();
         button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonSellectAllCollectionMouseClicked
@@ -1074,12 +1084,12 @@ public class Financial extends mvc.view.AbstractView {
     private javax.swing.JScrollPane paymentScrollPane;
     private javax.swing.JPanel paymentStatusPanel;
     private javax.swing.JPanel revenuesPanel;
-    private javax.swing.JComboBox selectCollectionUpdateAction;
-    private javax.swing.JComboBox selectLocation;
-    private javax.swing.JComboBox selectPaymentUpdateAction;
-    private javax.swing.JComboBox selectPeriodMonth;
-    private javax.swing.JComboBox selectPeriodYear;
-    private javax.swing.JComboBox selectStatus;
+    private pas.layout.form.ComboList selectCollectionUpdateAction;
+    private pas.layout.form.ComboList selectLocation;
+    private pas.layout.form.ComboList selectPaymentUpdateAction;
+    private pas.layout.form.ComboList selectPeriodMonth;
+    private pas.layout.form.ComboList selectPeriodYear;
+    private pas.layout.form.ComboList selectStatus;
     private pas.layout.table.Table tableBar;
     private pas.layout.table.Table tableCollectionMembers;
     private pas.layout.table.Table tableCourse;
