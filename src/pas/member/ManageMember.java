@@ -913,7 +913,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     }//GEN-LAST:event_btnReserverenActionPerformed
 
     private void btnNewScheduleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewScheduleOrderActionPerformed
-        new CourseController().NewScheduleOrderMemberSelectedAction();                // Deze button opent de view NewScheduleOrder van Course
+        new CourseController().NewScheduleOrderAction();                // Deze button opent de view NewScheduleOrder van Course
     }//GEN-LAST:event_btnNewScheduleOrderActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
