@@ -3,6 +3,7 @@ package pas.layout;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,8 +17,11 @@ import pas.exception.NoEntityManagerException;
 import pas.layout.label.Button;
 import pas.layout.panel.iterate.SidebarMemberSearchResult;
 import pas.main.MainController;
+import pas.member.MemberController;
+import pas.models.ActiveMember;
 import pas.models.SessionManager;
 import pas.models.db.Lid;
+import pas.models.role.Member;
 import session.NoSessionManagerException;
 
 /**
@@ -26,6 +30,8 @@ import session.NoSessionManagerException;
  */
 public class MainFrame extends AbstractFrame {
   
+    private List<SidebarMemberSearchResult> currentResultList = new ArrayList();
+    
     /**
      * Creates new form MainFrame
      */
@@ -65,23 +71,75 @@ public class MainFrame extends AbstractFrame {
         }
         return null;
     }
+    
+    /*
+     * Returns the active member
+     * 
+     * @return ActiveMember
+     */
+    public ActiveMember getActiveMember() {
+        try {
+            ActiveMember member = getSessionManager().getActiveMember();
+            return member;
+        } catch (NoEntityManagerException ex) {
+            Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    /*
+     * Update a single member list item
+     * 
+     * @param Member member
+     * @return void
+     */
+    public void updateMemberListItem(Member member) {
+        for (SidebarMemberSearchResult item : this.currentResultList) {
+            if (item.getMemberId() == member.getMemberID()) {
+                item.setMemberName(member.getFirstName() + " " + member.getLastName());
+                item.repaint();
+            }
+        }
+    }
+    
+    /*
+     * Refresh the memberlist
+     * 
+     * @return void
+     */
+    public void refreshMemberList() {
+        Query query;
+        if (txtFilterMember.getText().equals("")) {
+            query = this.getEntityManager().createNamedQuery("Lid.findAll");
+        } else {
+            query = this.getEntityManager()
+                    .createNamedQuery("Lid.search")
+                    .setParameter("searchable", "%" + txtFilterMember.getText() + "%");
+        }
+
+        this.setMemberList(query.getResultList());
+    }
 
     /*
-     * Fill the memberlist in the sidebar
+     * Fill the memberlist in the sidebar. Each created member listens to the
+     * Active member
      * 
      * @param List<Member> memberlist
      * @return void
      */
     private void setMemberList(List<Lid> memberList) {
         pnlMemberSearchResults.removeAll();
+        this.currentResultList.clear();
         SidebarMemberSearchResult.resetCounter();
+        
         if (memberList.size() > 0) {
             pnlMemberSearchResults.setLayout(new GridLayout(memberList.size(), 0));
-        pnlMemberSearchResults.repaint();
+            pnlMemberSearchResults.repaint();
             GridBagConstraints gbc = new GridBagConstraints();
             for (Lid member : memberList) {
-                pnlMemberSearchResults.add(
-                        new SidebarMemberSearchResult(member), gbc);
+                SidebarMemberSearchResult item = new SidebarMemberSearchResult(member);
+                pnlMemberSearchResults.add(item, gbc);
+                this.currentResultList.add(item);
             }
         }
         
@@ -427,16 +485,7 @@ public class MainFrame extends AbstractFrame {
     }//GEN-LAST:event_txtFilterMemberKeyTyped
 
     private void txtFilterMemberKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFilterMemberKeyReleased
-        Query query;
-        if (txtFilterMember.getText().equals("")) {
-            query = this.getEntityManager().createNamedQuery("Lid.findAll");
-        } else {
-            query = this.getEntityManager()
-                    .createNamedQuery("Lid.search")
-                    .setParameter("searchable", "%" + txtFilterMember.getText() + "%");
-        }
-
-        this.setMemberList(query.getResultList());
+        this.refreshMemberList();
     }//GEN-LAST:event_txtFilterMemberKeyReleased
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.label.Button btnActiveMembers;

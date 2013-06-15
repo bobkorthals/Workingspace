@@ -776,13 +776,14 @@
                   <Component id="jButton19" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton10" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton17" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jButton11" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnSave" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton12" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton14" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton15" alignment="0" max="32767" attributes="0"/>
                   <Component id="jButton18" alignment="1" max="32767" attributes="0"/>
                   <Component id="jButton13" alignment="1" max="32767" attributes="0"/>
                   <Component id="btnReserveren" alignment="0" pref="197" max="32767" attributes="0"/>
+                  <Component id="btnNewScheduleOrder" alignment="0" pref="197" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -796,6 +797,8 @@
                       <Component id="jButton10" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnReserveren" min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnNewScheduleOrder" min="-2" pref="23" max="-2" attributes="0"/>
                       <EmptySpace pref="112" max="32767" attributes="0"/>
                       <Component id="jButton14" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -805,7 +808,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton12" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jButton18" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -858,7 +861,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton11">
+            <Component class="javax.swing.JButton" name="btnSave">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="2e" green="9" red="9b" type="rgb"/>
@@ -869,7 +872,7 @@
                 <Property name="text" type="java.lang.String" value="Wijzigingen opslaan"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton12">
@@ -968,6 +971,20 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReserverenActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnNewScheduleOrder">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="2e" green="9" red="9b" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Cursus Inschrijven"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewScheduleOrderActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

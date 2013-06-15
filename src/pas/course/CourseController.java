@@ -4,13 +4,21 @@
  */
 package pas.course;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import mvc.Application;
 import mvc.controller.AbstractController;
-import mvc.exception.NoInstanceControllerException;
-import mvc.view.AbstractView;
+import pas.exception.NoEntityManagerException;
 import pas.layout.MainFrame;
+import pas.member.MemberController;
+import pas.models.ActiveMember;
+import pas.models.SessionManager;
+import pas.models.db.Cursus;
+import pas.models.db.Vestiging;
+import session.NoSessionManagerException;
 
 /**
  *
@@ -22,64 +30,99 @@ public class CourseController extends AbstractController {
 
     public CourseController() {
         mainframe = (MainFrame) getMainFrame();
-    }
-
-    public void openReferer() {
-        try {
-//            open(Application.getInstance().getInstanceController().getReferer());
-            this.mainframe = (MainFrame) super.getMainFrame();
-//        } catch (NoInstanceControllerException ex) {
-            } catch (Exception ex) {
-            Logger.getLogger(CourseController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void CourseMainAction() {
-
-        CourseMain view = new CourseMain(this);
-
         // Maakt Side Pane en het profiel scherm zichtbaar wat je links en rechtsbovenin de applicatie ziet
         mainframe.setSidebarEnabled(true);
         mainframe.setProfilePanelEnabled(true);
-        open(view);
     }
-    
-    public void returnAction(AbstractView view){  
+
+    /*
+     * Returns the Sessionmanager
+     * 
+     * @return SessionManager
+     */
+    private SessionManager getSessionManager() {
+        try {
+            return (SessionManager) Application.getInstance().getSessionManager();
+        } catch (NoSessionManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    /*
+     * Returns the database entity manager
+     * 
+     * @return EntityManager
+     */
+    private EntityManager getEntityManager() {
+        try {
+            return this.getSessionManager().getEntityManager();
+        } catch (NoEntityManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    /*
+     * Returns the active member
+     * 
+     * @return ActiveMember
+     */
+    private ActiveMember getActiveMember() {
+        try {
+            return getSessionManager().getActiveMember();
+        } catch (NoEntityManagerException ex) {
+            Logger.getLogger(MemberController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    /*
+     * Get course from the database
+     * 
+     * @return List<Cursus>
+     */
+    public List<Cursus> getCourseByLocatieId(Vestiging vestigingId) {
+        Query query = getEntityManager().createNamedQuery("Cursus.findbyIdLocatie");
+        query.setParameter("vestigingid", vestigingId);
+        return query.getResultList();
+    }
+
+    /*
+     * Get courses from the database
+     * 
+     * @return List<Cursus>
+     */
+    private List<Vestiging> getVestigingen() {
+        Query query = getEntityManager().createNamedQuery("Vestiging.findAll");
+        return query.getResultList();
+    }
+
+    public void CourseMainAction() {
+        CourseMain view = new CourseMain(this);
         open(view);
     }
 
     public void AddCourseAction() {
-        mainframe.setSidebarEnabled(true);
-        mainframe.setProfilePanelEnabled(true);
         open(new AddCourse(this));
     }
 
     public void ScheduleCourseAction() {
-        mainframe.setSidebarEnabled(true);
-        mainframe.setProfilePanelEnabled(true);
         open(new ScheduleCourse(this));
     }
 
     public void AddScheduleAction() {
-        mainframe.setSidebarEnabled(true);
-        mainframe.setProfilePanelEnabled(true);
         open(new AddSchedule(this));
     }
 
-    public void NewScheduleOrderAction() {
-        mainframe.setSidebarEnabled(true);
-        mainframe.setProfilePanelEnabled(true);
-        open(new NewScheduleOrder(this));
-    }
-
     public void PaymentScheduleAction() {
-        mainframe.setSidebarEnabled(true);
-        mainframe.setProfilePanelEnabled(true);
-        open(new PaymentSchedule(this));
-    }
-    
-    public void SearchMemberAction() {
-        open(new SearchMember(this));
+        open(new PaymentSchedule(this,
+                getActiveMember().getMember()));
     }
 
+    public void NewScheduleOrderAction() {
+        open(new NewScheduleOrder(this,
+                getActiveMember().getMember(),
+                getVestigingen()));
+    }
 }
