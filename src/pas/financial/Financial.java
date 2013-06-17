@@ -61,6 +61,30 @@ public class Financial extends mvc.view.AbstractView {
     public void changeCard(String card){
         this.cardLayout.show(this.viewFrame, card);
         this.activePanel = card;
+        
+        if(card == "statusCard"){
+            this.labelStatus.setVisible(true);
+            this.selectStatus.setVisible(true);
+        }
+        else {
+            this.labelStatus.setVisible(false);
+            this.selectStatus.setVisible(false);
+        }
+        
+        if(card == "settingsCard"){
+            this.labelLocation.setVisible(false);
+            this.selectLocation.setVisible(false);
+            this.labelPeriod.setVisible(false);
+            this.selectPeriodMonth.setVisible(false);
+            this.selectPeriodYear.setVisible(false);
+        }
+        else {
+            this.labelLocation.setVisible(true);
+            this.selectLocation.setVisible(true);
+            this.labelPeriod.setVisible(true);
+            this.selectPeriodMonth.setVisible(true);
+            this.selectPeriodYear.setVisible(true);
+        }
     }
     
     public void activateButton(Button button){
@@ -353,12 +377,16 @@ public class Financial extends mvc.view.AbstractView {
         labelPaymentUpdateAction = new javax.swing.JLabel();
         buttonUpdatePayment = new pas.layout.label.Button();
         selectPaymentUpdateAction = new pas.layout.form.ComboList();
+        settingsPanel = new javax.swing.JPanel();
+        paneMembersCollection1 = new javax.swing.JPanel();
+        buttonSaveSettings = new pas.layout.label.Button();
         labelStatus = new javax.swing.JLabel();
         labelTitle = new javax.swing.JLabel();
         selectLocation = new pas.layout.form.ComboList();
         selectPeriodMonth = new pas.layout.form.ComboList();
         selectPeriodYear = new pas.layout.form.ComboList();
         selectStatus = new pas.layout.form.ComboList();
+        buttonSettings = new pas.layout.label.Button();
 
         setOpaque(false);
 
@@ -518,9 +546,9 @@ public class Financial extends mvc.view.AbstractView {
                         .addComponent(buttonGenerateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
                         .addComponent(labelCollectionUpdateAction)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectCollectionUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(selectCollectionUpdateAction, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonUpdateCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -794,6 +822,63 @@ public class Financial extends mvc.view.AbstractView {
 
         viewFrame.add(paymentStatusPanel, "statusCard");
 
+        settingsPanel.setOpaque(false);
+
+        paneMembersCollection1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Instellingen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), new java.awt.Color(102, 0, 255))); // NOI18N
+        paneMembersCollection1.setOpaque(false);
+
+        javax.swing.GroupLayout paneMembersCollection1Layout = new javax.swing.GroupLayout(paneMembersCollection1);
+        paneMembersCollection1.setLayout(paneMembersCollection1Layout);
+        paneMembersCollection1Layout.setHorizontalGroup(
+            paneMembersCollection1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 702, Short.MAX_VALUE)
+        );
+        paneMembersCollection1Layout.setVerticalGroup(
+            paneMembersCollection1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        buttonSaveSettings.setText("Opslaan");
+        buttonSaveSettings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSaveSettingsMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                buttonSaveSettingsMouseReleased(evt);
+            }
+        });
+        buttonSaveSettings.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                buttonSaveSettingsPropertyChange(evt);
+            }
+        });
+
+        javax.swing.GroupLayout settingsPanelLayout = new javax.swing.GroupLayout(settingsPanel);
+        settingsPanel.setLayout(settingsPanelLayout);
+        settingsPanelLayout.setHorizontalGroup(
+            settingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(settingsPanelLayout.createSequentialGroup()
+                .addGroup(settingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(settingsPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(paneMembersCollection1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(settingsPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonSaveSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        settingsPanelLayout.setVerticalGroup(
+            settingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(settingsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(paneMembersCollection1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonSaveSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        viewFrame.add(settingsPanel, "settingsCard");
+
         labelStatus.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         labelStatus.setForeground(new java.awt.Color(98, 98, 152));
         labelStatus.setText("Status");
@@ -801,6 +886,13 @@ public class Financial extends mvc.view.AbstractView {
         labelTitle.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         labelTitle.setForeground(new java.awt.Color(98, 98, 152));
         labelTitle.setText("Financieel");
+
+        buttonSettings.setText("Instellingen");
+        buttonSettings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSettingsMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout mainFrameLayout = new javax.swing.GroupLayout(mainFrame);
         mainFrame.setLayout(mainFrameLayout);
@@ -813,7 +905,8 @@ public class Financial extends mvc.view.AbstractView {
                         .addGroup(mainFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(buttonPaymentStatus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                             .addComponent(buttonRevenues, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonCollection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(buttonCollection, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(viewFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(13, 13, 13))
@@ -858,7 +951,9 @@ public class Financial extends mvc.view.AbstractView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonPaymentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonPaymentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(mainFrameLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1052,14 +1147,39 @@ public class Financial extends mvc.view.AbstractView {
         button.setStatus(Button.INACTIVE);
     }//GEN-LAST:event_buttonUpdatePaymentMouseReleased
 
+    private void buttonSaveSettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveSettingsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSaveSettingsMouseClicked
+
+    private void buttonSaveSettingsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSaveSettingsMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSaveSettingsMouseReleased
+
+    private void buttonSaveSettingsPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_buttonSaveSettingsPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSaveSettingsPropertyChange
+
+    private void buttonSettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSettingsMouseClicked
+        try {
+            this.controller.requestCardSwitch();
+            this.changeCard("settingsCard");
+            this.activateButton((Button) evt.getComponent());
+        } catch(Exception e){
+            // Switch not allowed
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Fout", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonSettingsMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private pas.layout.label.Button buttonCollection;
     private pas.layout.label.Button buttonGenerateCollection;
     private pas.layout.label.Button buttonPaymentStatus;
     private pas.layout.label.Button buttonRevenues;
+    private pas.layout.label.Button buttonSaveSettings;
     private pas.layout.label.Button buttonSelect;
     private pas.layout.label.Button buttonSelectAllPayment;
     private pas.layout.label.Button buttonSellectAllCollection;
+    private pas.layout.label.Button buttonSettings;
     private pas.layout.label.Button buttonUpdateCollection;
     private pas.layout.label.Button buttonUpdatePayment;
     private javax.swing.JPanel collectionPanel;
@@ -1079,6 +1199,7 @@ public class Financial extends mvc.view.AbstractView {
     private javax.swing.JPanel paneBar4;
     private javax.swing.JPanel paneCourse1;
     private javax.swing.JPanel paneMembersCollection;
+    private javax.swing.JPanel paneMembersCollection1;
     private javax.swing.JPanel paneMembersPayment;
     private javax.swing.JPanel paneSubscription;
     private javax.swing.JScrollPane paymentScrollPane;
@@ -1090,6 +1211,7 @@ public class Financial extends mvc.view.AbstractView {
     private pas.layout.form.ComboList selectPeriodMonth;
     private pas.layout.form.ComboList selectPeriodYear;
     private pas.layout.form.ComboList selectStatus;
+    private javax.swing.JPanel settingsPanel;
     private pas.layout.table.Table tableBar;
     private pas.layout.table.Table tableCollectionMembers;
     private pas.layout.table.Table tableCourse;
