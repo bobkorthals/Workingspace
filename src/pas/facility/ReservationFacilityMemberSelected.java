@@ -5,14 +5,13 @@
 package pas.facility;
 
 import java.beans.PropertyChangeEvent;
-import java.text.SimpleDateFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import pas.layout.form.ComboListItem;
 import pas.member.MemberController;
 import pas.models.ActiveMember;
 import pas.models.db.Faciliteit;
-import pas.models.db.Reservering;
 import pas.models.db.Vestiging;
 import pas.models.role.Member;
 
