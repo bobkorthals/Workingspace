@@ -5,7 +5,6 @@
 package pas.facility;
 
 import java.beans.PropertyChangeEvent;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import pas.layout.form.ComboListItem;
@@ -24,10 +23,10 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     private FacilityController facilitycontroller;
     private List<Faciliteit> facilities = new ArrayList();
     private List<Vestiging> vestigingen;
-
+    
     /**
      * Creates new form ReservationFacilityMemberSelected
-     *
+     * 
      * @param FacilityController controller
      * @param Member active member
      * @param List<Faciliteit>
@@ -36,10 +35,10 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         initComponents();
         this.facilitycontroller = facilitycontroller;
         this.vestigingen = vestigingen;
-
+        
         this.setVestigingen();
         this.setMember(member);
-
+        
         ddlFacilities.setEnabled(false);
     }
 
@@ -56,7 +55,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                 break;
         }
     }
-
+    
     /*
      * Class helper to set member data
      * 
@@ -69,7 +68,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         txtSuffix.setText(member.getSuffix());
         txtDateOfBirth.setText(member.getDateOfBrith().toString());
     }
-
+    
     /*
      * Fill the facilitie table and dropdown
      * 
@@ -78,23 +77,25 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     private void setFacilities() {
         ddlFacilities.removeAllItems();
         ddlFacilities.addItem(new ComboListItem("Selecteer faciliteit"));
-
+        
         if (!this.facilities.isEmpty()) {
             for (Faciliteit facility : facilities) {
-                ddlFacilities.addItem(
-                        new ComboListItem(
-                        facility.getOmschrijving(),
-                        facility));
+               ddlFacilities.addItem(
+                    new ComboListItem(
+                       facility.getOmschrijving(), 
+                       facility));
             }
 
             ddlFacilities.setEnabled(true);
-        } else {
+        }
+        
+        else {
             ddlFacilities.setEnabled(false);
         }
-
+        
         ddlFacilities.repaint();
     }
-
+    
     /*
      * Fill the location table and dropdown
      * 
@@ -103,23 +104,11 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     private void setVestigingen() {
         ddlLocatie.addItem(new ComboListItem("Selecteer vestiging"));
         for (Vestiging vestinging : this.vestigingen) {
-            ddlLocatie.addItem(
-                    new ComboListItem(
-                    vestinging.getNaam(),
-                    vestinging));
+           ddlLocatie.addItem(
+                new ComboListItem(
+                   vestinging.getNaam(), 
+                   vestinging));
         }
-    }
-    
-    /*
-     * Clear the facility form fields
-     * 
-     * @return void
-     */
-    private void clearFacilityForm() {
-        txtCapaciteit.setText("");
-        txtNaam.setText("");
-        txtKosten.setText("");
-        txtLocation.setText("");
     }
 
     /**
@@ -243,6 +232,14 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
 
         jLabel60.setText("Locatie");
 
+        txtVoornaam6.setText("jTextField1");
+
+        txtVoornaam8.setText("jTextField1");
+
+        btnKosten.setText("jTextField1");
+
+        btnLocatie.setText("jTextField1");
+
         jLabel54.setText("Tussenvoegsel");
 
         jLabel53.setText("Achternaam");
@@ -288,6 +285,8 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
         jLabel4.setText("Datum");
 
         jLabel61.setText("Capaciteit");
+
+        txtCapaciteit.setText("jTextField4");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -360,7 +359,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel44)
-                                    .addComponent(txtKosten, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnKosten, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(13, 13, 13)
@@ -417,11 +416,6 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        ddlLocatie.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ddlLocatieItemStateChanged(evt);
-            }
-        });
         ddlLocatie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ddlLocatieActionPerformed(evt);
@@ -568,50 +562,42 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     }//GEN-LAST:event_txtLidBetalingsAchterstandActionPerformed
 
     private void txtSuffixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSuffixActionPerformed
+        // TODO add your handling code here:
     }//GEN-LAST:event_txtSuffixActionPerformed
 
     private void ddlFacilitiesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ddlFacilitiesItemStateChanged
-        if (ddlFacilities.isFocusOwner()) {
-            ComboListItem item = ddlFacilities.getSelectedItem();
-
-            if (item.hasValue()) {
-                // Populate form
-                Faciliteit facility = (Faciliteit) item.getValue();
-                NumberFormat formatter = NumberFormat.getCurrencyInstance();
-                txtCapaciteit.setText(new Integer(facility.getCapaciteit()).toString());
-                txtNaam.setText(facility.getOmschrijving());
-                txtKosten.setText(formatter.format(facility.getKosten()));
-                txtLocation.setText(ddlLocatie.getSelectedItem().getValue().toString());
-            } else {
-                // Clear form
-                this.clearFacilityForm();
-            }
-        }
+        
     }//GEN-LAST:event_ddlFacilitiesItemStateChanged
 
     private void ddlFacilitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddlFacilitiesActionPerformed
+        ComboListItem item = (ComboListItem) ddlFacilities.getSelectedItem();
+        
+        if (item.hasValue()) {
+            Faciliteit facility = (Faciliteit) item.getValue();
+            System.out.println(facility.getKosten() + " : " + facility.getOmschrijving());
+        }
     }//GEN-LAST:event_ddlFacilitiesActionPerformed
 
     private void ddlLocatieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddlLocatieActionPerformed
-        ComboListItem item = ddlLocatie.getSelectedItem();
-        this.clearFacilityForm();
+        ComboListItem item = (ComboListItem) ddlLocatie.getSelectedItem();
         
         if (item.hasValue()) {
             Vestiging vestiging = (Vestiging) item.getValue();
             this.facilities = this.getController()
-                    .getFacilitiesByLocatieId(vestiging);
-
+                                  .getFacilitiesByLocatieId(vestiging);
+            
             this.setFacilities();
-        } else {
+        }
+        
+        else {
             this.facilities.clear();
             this.setFacilities();
         }
     }//GEN-LAST:event_ddlLocatieActionPerformed
 
-    private void ddlLocatieItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ddlLocatieItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ddlLocatieItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField btnKosten;
+    private javax.swing.JTextField btnLocatie;
     private javax.swing.JButton btnReserverenBetalen;
     private javax.swing.JButton btnTerug;
     private pas.layout.form.ComboList ddlFacilities;
@@ -645,11 +631,12 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     private javax.swing.JTextField txtDateOfBirth;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtGeslacht;
-    private javax.swing.JTextField txtKosten;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtLidBetalingsAchterstand;
     private javax.swing.JTextField txtLidKrediet;
     private javax.swing.JTextField txtSoort;
     private javax.swing.JTextField txtSuffix;
+    private javax.swing.JTextField txtVoornaam6;
+    private javax.swing.JTextField txtVoornaam8;
     // End of variables declaration//GEN-END:variables
 }
