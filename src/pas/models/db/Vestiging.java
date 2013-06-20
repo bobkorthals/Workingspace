@@ -211,7 +211,7 @@ public class Vestiging implements Serializable {
 
     @Override
     public String toString() {
-        return "pas.models.db.Vestiging[ id=" + id + " ]";
+        return this.naam;
     }
     
 }
