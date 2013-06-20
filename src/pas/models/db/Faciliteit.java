@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Faciliteit.findById", query = "SELECT f FROM Faciliteit f WHERE f.id = :id"),
     @NamedQuery(name = "Faciliteit.findbyIdLocatie", query = "SELECT f FROM Faciliteit f WHERE f.vestigingid = :vestigingid"),
     @NamedQuery(name = "Faciliteit.findByCapaciteit", query = "SELECT f FROM Faciliteit f WHERE f.capaciteit = :capaciteit"),
-    @NamedQuery(name = "Faciliteit.findByOmschrijving", query = "SELECT f FROM Faciliteit f WHERE f.omschrijving = :omschrijving"),
+    @NamedQuery(name = "Faciliteit.findByOmschrijving", query = "SELECT f FROM Faciliteit f WHERE f.omschrijving LIKE :omschrijving"),
     @NamedQuery(name = "Faciliteit.findByKosten", query = "SELECT f FROM Faciliteit f WHERE f.kosten = :kosten"),
     @NamedQuery(name = "Faciliteit.findBySoort", query = "SELECT f FROM Faciliteit f WHERE f.soort = :soort")})
 public class Faciliteit implements Serializable {

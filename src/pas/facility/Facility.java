@@ -4,8 +4,23 @@
  */
 package pas.facility;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import mvc.Application;
+import pas.exception.NoEntityManagerException;
+import pas.layout.MainFrame;
+import pas.layout.panel.iterate.FacilityListSearchResults;
 import pas.main.MainController;
+import pas.models.ActiveFacility;
+import pas.models.SessionManager;
+import pas.models.db.Faciliteit;
+import session.NoSessionManagerException;
 
 /**
  *
@@ -14,24 +29,145 @@ import pas.main.MainController;
 public class Facility extends mvc.view.AbstractView {
 
     private FacilityController facilitycontroller;
+
     /**
      * Creates new form Facility
      */
     public Facility(FacilityController facilitycontroller) {
         this.facilitycontroller = facilitycontroller;
         initComponents();
+        
+        refreshTable();
     }
-    
+
     @Override
-    public FacilityController getController(){
+    public FacilityController getController() {
         return this.facilitycontroller;
     }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private SessionManager getSessionManager() {
+        try {
+            return (SessionManager) Application.getInstance().getSessionManager();
+        } catch (NoSessionManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    /*
+     * Returns the database entity manager
+     * 
+     * @return EntityManager
+     */
+    private EntityManager getEntityManager() {
+        try {
+            return this.getSessionManager().getEntityManager();
+        } catch (NoEntityManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    
+    
+    
+    
+    
     
     @Override
-    public void propertyChange(PropertyChangeEvent evt){
-    }          
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("Test");
+        switch (evt.getPropertyName()) {
+            case ActiveFacility.FACILITEIT:
+                this.setFaciliteit((Faciliteit) evt.getNewValue());
+                break;
+        }
+    }
+
     
     
+    
+    
+    
+    
+    public void setFacilityList(List<Faciliteit> facilityList) {
+        System.out.println("TEST");
+        pnlFacilitySearchResults.removeAll();
+        FacilityListSearchResults.resetCounter();
+        if (facilityList.size() > 0) {
+            pnlFacilitySearchResults.setLayout(new GridLayout(facilityList.size(), 0));
+            pnlFacilitySearchResults.repaint();
+            GridBagConstraints gbc = new GridBagConstraints();
+            for (Faciliteit facility : facilityList) {
+                pnlFacilitySearchResults.add(
+                        new FacilityListSearchResults(facility, this), gbc);
+            }
+        }
+
+        pnlFacilitySearchResults.revalidate();
+        pnlFacilitySearchResults.repaint();
+    }
+
+    
+    
+    
+    
+    public void refreshTable() {
+        Query query = getEntityManager().createNamedQuery("Faciliteit.findAll");
+        this.setFacilityList(query.getResultList());
+    }
+    
+    
+    
+    
+    
+    
+
+    public void updateFaciliteit() {
+        String sql = "UPDATE Faciliteit SET name='" + this.txtSearchFaciliteit.getText() + "', "
+                + "WHERE id='" + Integer.parseInt(this.txtSearchID.getText()) + "' ";
+
+        try {
+            if (!getEntityManager().getTransaction().isActive()) {
+                getEntityManager().getTransaction().begin();
+            }
+            if (getEntityManager().getTransaction().isActive()) {
+                System.out.println("Verbinding is actief");
+            } else {
+                System.out.println("Verbinding is niet actief");
+            }
+
+            Query query = getEntityManager().createQuery(sql);
+            query.executeUpdate();
+            getEntityManager().getTransaction().commit();
+            this.refreshTable();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    
+    
+    
+    
+    
+    
+    public void setFaciliteit(Faciliteit faciliteit) {
+        txtFaciliteitNaam.setText(faciliteit.getOmschrijving());
+        txtFaciliteitKosten.setText(faciliteit.getKosten().toString());
+        txtFaciliteitSoort.setText(faciliteit.getSoort());
+        txtFaciliteitLocatie.setText(faciliteit.getVestigingid().toString());
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,29 +190,29 @@ public class Facility extends mvc.view.AbstractView {
         btnFacilityHoofdscherm = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lblTitle1 = new javax.swing.JLabel();
-        jPanel22 = new javax.swing.JPanel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txtBeschrijving = new javax.swing.JTextArea();
-        jLabel42 = new javax.swing.JLabel();
-        txtNaam = new pas.layout.form.TextField();
-        txtSoort = new pas.layout.form.TextField();
-        txtKosten = new pas.layout.form.TextField();
-        txtLocatie = new pas.layout.form.TextField();
-        txtCapaciteit = new pas.layout.form.TextField();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtBeschrijving1 = new javax.swing.JTextArea();
+        jLabel50 = new javax.swing.JLabel();
+        txtFaciliteitNaam = new javax.swing.JTextField();
+        txtFaciliteitSoort = new javax.swing.JTextField();
+        txtFaciliteitKosten = new javax.swing.JTextField();
+        txtFaciliteitLocatie = new javax.swing.JTextField();
+        txtFaciliteitCapaciteit = new javax.swing.JTextField();
+        txtFaciliteitCapaciteit1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabelFaciliteiten = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        txtDropdownLocatie = new java.awt.Choice();
-        java.awt.Choice txtDropdownFacliteit = new java.awt.Choice();
         lblTitle2 = new javax.swing.JLabel();
+        pnlFacilitySearchResults = new javax.swing.JPanel();
+        txtSearchFaciliteit = new javax.swing.JTextField();
+        txtSearchID = new javax.swing.JTextField();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -175,93 +311,97 @@ public class Facility extends mvc.view.AbstractView {
         lblTitle1.setForeground(new java.awt.Color(98, 98, 152));
         lblTitle1.setText("Faciliteit gegevens");
 
-        jPanel22.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Algemeen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
-        jPanel22.setOpaque(false);
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Algemeen", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
+        jPanel23.setOpaque(false);
 
-        jLabel39.setText("Kosten");
+        jLabel45.setText("Kosten");
 
-        jLabel40.setText("Naam");
+        jLabel46.setText("Naam");
 
-        jLabel41.setText("Soort");
+        jLabel47.setText("Soort");
 
-        jLabel43.setText("Locatie");
+        jLabel48.setText("Locatie");
 
-        jLabel44.setText("Beschrijving");
+        jLabel49.setText("Beschrijving");
 
-        txtBeschrijving.setColumns(20);
-        txtBeschrijving.setRows(5);
-        jScrollPane3.setViewportView(txtBeschrijving);
+        txtBeschrijving1.setColumns(20);
+        txtBeschrijving1.setRows(5);
+        jScrollPane4.setViewportView(txtBeschrijving1);
 
-        jLabel42.setText("Capaciteit");
+        jLabel50.setText("Capaciteit");
 
-        txtNaam.setText("textField1");
-        txtNaam.addActionListener(new java.awt.event.ActionListener() {
+        txtFaciliteitNaam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNaamActionPerformed(evt);
+                txtFaciliteitNaamActionPerformed(evt);
             }
         });
 
-        txtSoort.setText("textField1");
-
-        txtKosten.setText("textField1");
-
-        txtLocatie.setText("textField1");
-
-        txtCapaciteit.setText("textField1");
-
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel41)
-                    .addComponent(jLabel39)
-                    .addComponent(jLabel44)
-                    .addComponent(jLabel43))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addComponent(txtNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel42)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSoort, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtKosten, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel47)
+                            .addComponent(jLabel46))
+                        .addGap(56, 56, 56)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                                .addComponent(jLabel50)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtFaciliteitCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(txtFaciliteitSoort, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtFaciliteitCapaciteit1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel48)
+                                    .addComponent(jLabel45))
+                                .addGap(49, 49, 49)
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtFaciliteitKosten, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFaciliteitLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel49))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel22Layout.createSequentialGroup()
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel22Layout.createSequentialGroup()
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel40)
-                            .addComponent(txtNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel46)
+                            .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel41)
-                            .addComponent(txtSoort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel47)
+                            .addComponent(txtFaciliteitSoort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFaciliteitCapaciteit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel39)
-                            .addComponent(txtKosten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel45)
+                            .addComponent(txtFaciliteitKosten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel43)
-                            .addComponent(txtLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel42)
-                        .addComponent(txtCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel48)
+                            .addComponent(txtFaciliteitLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel50)
+                    .addComponent(txtFaciliteitCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel49)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel44)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -271,7 +411,7 @@ public class Facility extends mvc.view.AbstractView {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTitle1)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -280,7 +420,7 @@ public class Facility extends mvc.view.AbstractView {
                 .addGap(6, 6, 6)
                 .addComponent(lblTitle1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -292,32 +432,44 @@ public class Facility extends mvc.view.AbstractView {
 
         jLabel1.setText("Faciliteit");
 
-        tabelFaciliteiten.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Naam", "Soort", "Kosten", "Locatie"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tabelFaciliteiten);
-
-        jLabel2.setText("Locatie");
+        jLabel2.setText("ID");
 
         lblTitle2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblTitle2.setForeground(new java.awt.Color(98, 98, 152));
         lblTitle2.setText("Faciliteiten");
+
+        javax.swing.GroupLayout pnlFacilitySearchResultsLayout = new javax.swing.GroupLayout(pnlFacilitySearchResults);
+        pnlFacilitySearchResults.setLayout(pnlFacilitySearchResultsLayout);
+        pnlFacilitySearchResultsLayout.setHorizontalGroup(
+            pnlFacilitySearchResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pnlFacilitySearchResultsLayout.setVerticalGroup(
+            pnlFacilitySearchResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+
+        txtSearchFaciliteit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchFaciliteitActionPerformed(evt);
+            }
+        });
+        txtSearchFaciliteit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchFaciliteitKeyReleased(evt);
+            }
+        });
+
+        txtSearchID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchIDActionPerformed(evt);
+            }
+        });
+        txtSearchID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchIDKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -326,19 +478,21 @@ public class Facility extends mvc.view.AbstractView {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDropdownFacliteit, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDropdownLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(lblTitle2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pnlFacilitySearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtSearchFaciliteit, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(21, 21, 21))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,12 +501,14 @@ public class Facility extends mvc.view.AbstractView {
                 .addComponent(lblTitle2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDropdownLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDropdownFacliteit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(txtSearchFaciliteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(pnlFacilitySearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -371,7 +527,7 @@ public class Facility extends mvc.view.AbstractView {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 14, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
         jPanel2Layout.setVerticalGroup(
@@ -411,7 +567,7 @@ public class Facility extends mvc.view.AbstractView {
     }//GEN-LAST:event_btnFacilityWijzigenActionPerformed
 
     private void btnFacilityOpslaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityOpslaanActionPerformed
-        new FacilityController().facilityAction();        // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnFacilityOpslaanActionPerformed
 
     private void btnOverzichtReserveringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverzichtReserveringActionPerformed
@@ -430,6 +586,46 @@ public class Facility extends mvc.view.AbstractView {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNaamActionPerformed
 
+    private void txtFaciliteitNaamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFaciliteitNaamActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFaciliteitNaamActionPerformed
+
+    private void txtSearchFaciliteitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchFaciliteitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchFaciliteitActionPerformed
+
+    private void txtSearchFaciliteitKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchFaciliteitKeyReleased
+        Query query;
+        if (txtSearchFaciliteit.getText().equals("")) {
+            query = this.getEntityManager().createNamedQuery("Faciliteit.findAll");
+        } else {
+            query = this.getEntityManager()
+                    .createNamedQuery("Faciliteit.findByOmschrijving")
+                    .setParameter("omschrijving", "%" + txtSearchFaciliteit.getText() + "%");
+        }
+
+        this.setFacilityList(query.getResultList());        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchFaciliteitKeyReleased
+
+    private void txtSearchIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchIDActionPerformed
+
+    private void txtSearchIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchIDKeyReleased
+        Query query;
+        if (txtSearchID.getText().equals("")) {
+            query = this.getEntityManager().createNamedQuery("Faciliteit.findAll");
+        } else {
+            int test = Integer.parseInt(txtSearchID.getText());
+            
+            query = this.getEntityManager()
+                    .createNamedQuery("Faciliteit.findById")
+                    .setParameter("id", test);
+        }
+
+        this.setFacilityList(query.getResultList());        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchIDKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFacilityHoofdscherm;
     private javax.swing.JButton btnFacilityOpslaan;
@@ -440,30 +636,31 @@ public class Facility extends mvc.view.AbstractView {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblTitle1;
     private javax.swing.JLabel lblTitle2;
-    private javax.swing.JTable tabelFaciliteiten;
-    private javax.swing.JTextArea txtBeschrijving;
-    private pas.layout.form.TextField txtCapaciteit;
-    private java.awt.Choice txtDropdownLocatie;
-    private pas.layout.form.TextField txtKosten;
-    private pas.layout.form.TextField txtLocatie;
-    private pas.layout.form.TextField txtNaam;
-    private pas.layout.form.TextField txtSoort;
+    private javax.swing.JPanel pnlFacilitySearchResults;
+    private javax.swing.JTextArea txtBeschrijving1;
+    private javax.swing.JTextField txtFaciliteitCapaciteit;
+    private javax.swing.JTextField txtFaciliteitCapaciteit1;
+    private javax.swing.JTextField txtFaciliteitKosten;
+    private javax.swing.JTextField txtFaciliteitLocatie;
+    private javax.swing.JTextField txtFaciliteitNaam;
+    private javax.swing.JTextField txtFaciliteitSoort;
+    private javax.swing.JTextField txtSearchFaciliteit;
+    private javax.swing.JTextField txtSearchID;
     // End of variables declaration//GEN-END:variables
 }
