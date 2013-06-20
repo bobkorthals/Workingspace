@@ -45,6 +45,10 @@ public class PAS {
         try {
             UIManager.setLookAndFeel(
                     UIManager.getCrossPlatformLookAndFeelClassName());
+            UIManager.put("OptionPane.cancelButtonText", "Annuleren");
+            UIManager.put("OptionPane.noButtonText", "Nee");
+            UIManager.put("OptionPane.okButtonText", "Ok");
+            UIManager.put("OptionPane.yesButtonText", "Ja");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(PAS.class.getName()).log(Level.SEVERE, null, ex);
         }

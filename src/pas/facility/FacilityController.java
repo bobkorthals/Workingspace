@@ -14,6 +14,7 @@ import mvc.controller.AbstractController;
 import pas.exception.NoEntityManagerException;
 import pas.layout.MainFrame;
 import pas.member.MemberController;
+import pas.models.ActiveFacility;
 import pas.models.ActiveMember;
 import pas.models.SessionManager;
 import pas.models.db.Faciliteit;
@@ -27,18 +28,41 @@ import session.NoSessionManagerException;
 public class FacilityController extends AbstractController {
 
     private MainFrame mainFrame;
+    private Facility faciliteit;
 
     public FacilityController() {
         mainFrame = (MainFrame) getMainFrame();
         mainFrame.setProfilePanelEnabled(true);
         mainFrame.setSidebarEnabled(true);
     }
-    
+
+    public void indexAction() {
+        open(new Facility(this));
+    }
+
+    private ActiveFacility getActiveFacility() {
+        try {
+            return getSessionManager().getActiveFacility();
+        } catch (NoEntityManagerException ex) {
+            Logger.getLogger(FacilityController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
+    }
+
+    public Facility getFacilityView() {
+        if (null == this.faciliteit) {
+            this.faciliteit = new Facility(this);
+            addView(this.faciliteit);
+        }
+        return this.faciliteit;
+    }
     /*
      * Returns the Sessionmanager
      * 
      * @return SessionManager
      */
+
     private SessionManager getSessionManager() {
         try {
             return (SessionManager) Application.getInstance().getSessionManager();
@@ -47,7 +71,7 @@ public class FacilityController extends AbstractController {
         }
         return null;
     }
-    
+
     /*
      * Returns the database entity manager
      * 
@@ -61,7 +85,7 @@ public class FacilityController extends AbstractController {
         }
         return null;
     }
-    
+
     /*
      * Returns the active member
      * 
@@ -75,7 +99,7 @@ public class FacilityController extends AbstractController {
         }
         return null;
     }
-    
+
     /*
      * Get facilities from the database
      * 
@@ -86,7 +110,17 @@ public class FacilityController extends AbstractController {
         query.setParameter("vestigingid", vestigingId);
         return query.getResultList();
     }
+
     
+    
+    
+    
+    public Faciliteit getFacilitiesById(int faciliteitId) {
+        Query query = getEntityManager().createNamedQuery("Faciliteit.findById");
+        query.setParameter("id", faciliteitId);
+        return (Faciliteit) query.getSingleResult();
+    }
+
     /*
      * Get facilities from the database
      * 
@@ -97,19 +131,34 @@ public class FacilityController extends AbstractController {
         return query.getResultList();
     }
 
-    public void facilityAction() {
+    
+    
+    
+    public void facilityAction(int faciliteitid) {
         Facility view = new Facility(this);
+
+        if (null == this.faciliteit || !this.faciliteit.equals(this.getFacilityView())) {
+            this.faciliteit = view;
+            open(this.faciliteit);
+        }
+        System.out.println("TEST");
+        Query query = getEntityManager().createNamedQuery("Faciliteit.findAll");
+        this.faciliteit.setFacilityList(query.getResultList());
+
         open(view);
     }
 
+    
+    
+    //FacilityController, startup ReservationChanges    
     public void reservationChange() {
         ReservationChange view = new ReservationChange(this);
         open(view);
     }
 
     public void paymentAction() {
-        ReservationPayment view = new ReservationPayment(this);
-        open(view);
+        open(new ReservationPayment(this,
+                getActiveMember().getMember()));
     }
 
     public void addFacilityAction() {
@@ -119,8 +168,8 @@ public class FacilityController extends AbstractController {
 
     public void actionReservationMemberSelected() {
         open(new ReservationFacilityMemberSelected(
-                this, 
-                getActiveMember().getMember(), 
+                this,
+                getActiveMember().getMember(),
                 getVestigingen()));
     }
 }

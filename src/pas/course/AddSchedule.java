@@ -53,7 +53,6 @@ public class AddSchedule extends mvc.view.AbstractView {
         ddlDateYear = new java.awt.Choice();
         pnlEmployeeData = new javax.swing.JPanel();
         lblEmployeeID = new javax.swing.JLabel();
-        txtEmployeeID = new javax.swing.JTextField();
         lblEmployeeFirstName = new javax.swing.JLabel();
         txtEmployeeFirstName = new javax.swing.JTextField();
         lblEmployeeSuffix = new javax.swing.JLabel();
@@ -65,7 +64,8 @@ public class AddSchedule extends mvc.view.AbstractView {
         txtEmployeeTelNumber = new javax.swing.JTextField();
         lblEmployeeEmail = new javax.swing.JLabel();
         txtEmployeeEmail = new javax.swing.JTextField();
-        ddlEmployeeGender = new java.awt.Choice();
+        ddlEmployeeGender = new pas.layout.form.ComboList();
+        ddlEmployee = new pas.layout.form.ComboList();
         pnlCourseData = new javax.swing.JPanel();
         lblCourseID = new javax.swing.JLabel();
         lblCourseName = new javax.swing.JLabel();
@@ -103,12 +103,15 @@ public class AddSchedule extends mvc.view.AbstractView {
         txtLocationTelNumber = new javax.swing.JTextField();
         lblLocationEmail = new javax.swing.JLabel();
         txtLocationEmail = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        ddlLocation = new pas.layout.form.ComboList();
 
         setOpaque(false);
 
         pnlNewSchedule.setOpaque(false);
 
         lblNewSchedule.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        lblNewSchedule.setForeground(new java.awt.Color(0, 0, 88));
         lblNewSchedule.setText("Nieuw Planning");
 
         pnlScheduleData.setBorder(javax.swing.BorderFactory.createTitledBorder("Gegevens"));
@@ -142,8 +145,8 @@ public class AddSchedule extends mvc.view.AbstractView {
             .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(btnGoBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlButtonsLayout.setVerticalGroup(
@@ -151,7 +154,7 @@ public class AddSchedule extends mvc.view.AbstractView {
             .addGroup(pnlButtonsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -204,8 +207,6 @@ public class AddSchedule extends mvc.view.AbstractView {
 
         lblEmployeeID.setText("Medewerkernummer");
 
-        txtEmployeeID.setToolTipText("");
-
         lblEmployeeFirstName.setText("Voornaam");
 
         lblEmployeeSuffix.setText("Tussenvoegsel");
@@ -234,13 +235,15 @@ public class AddSchedule extends mvc.view.AbstractView {
                     .addComponent(lblEmployeeID, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlEmployeeDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEmployeeID)
-                    .addComponent(txtEmployeeFirstName)
+                    .addComponent(txtEmployeeFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(txtEmployeeSuffix)
                     .addComponent(txtEmployeeLastName)
                     .addComponent(txtEmployeeTelNumber)
                     .addComponent(txtEmployeeEmail)
-                    .addComponent(ddlEmployeeGender, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEmployeeDataLayout.createSequentialGroup()
+                        .addComponent(ddlEmployeeGender, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(ddlEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlEmployeeDataLayout.setVerticalGroup(
@@ -249,7 +252,7 @@ public class AddSchedule extends mvc.view.AbstractView {
                 .addContainerGap()
                 .addGroup(pnlEmployeeDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmployeeID)
-                    .addComponent(txtEmployeeID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ddlEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlEmployeeDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmployeeFirstName)
@@ -262,8 +265,8 @@ public class AddSchedule extends mvc.view.AbstractView {
                 .addGroup(pnlEmployeeDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmployeeLastName)
                     .addComponent(txtEmployeeLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlEmployeeDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(11, 11, 11)
+                .addGroup(pnlEmployeeDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmployeeGender)
                     .addComponent(ddlEmployeeGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -388,6 +391,8 @@ public class AddSchedule extends mvc.view.AbstractView {
 
         lblLocationEmail.setText("Email");
 
+        jLabel1.setText("Locatie");
+
         javax.swing.GroupLayout pnlLocationDataLayout = new javax.swing.GroupLayout(pnlLocationData);
         pnlLocationData.setLayout(pnlLocationDataLayout);
         pnlLocationDataLayout.setHorizontalGroup(
@@ -396,13 +401,9 @@ public class AddSchedule extends mvc.view.AbstractView {
                 .addContainerGap()
                 .addGroup(pnlLocationDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlLocationDataLayout.createSequentialGroup()
-                        .addComponent(lblLocationNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLocationID, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
-                    .addGroup(pnlLocationDataLayout.createSequentialGroup()
                         .addComponent(lblLocationName, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLocationName))
+                        .addComponent(txtLocationName, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
                     .addGroup(pnlLocationDataLayout.createSequentialGroup()
                         .addComponent(lblLocationStreetName, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -430,13 +431,28 @@ public class AddSchedule extends mvc.view.AbstractView {
                     .addGroup(pnlLocationDataLayout.createSequentialGroup()
                         .addComponent(lblLocationEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLocationEmail)))
+                        .addComponent(txtLocationEmail))
+                    .addGroup(pnlLocationDataLayout.createSequentialGroup()
+                        .addGroup(pnlLocationDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblLocationNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
+                        .addGroup(pnlLocationDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlLocationDataLayout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(txtLocationID))
+                            .addGroup(pnlLocationDataLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ddlLocation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         pnlLocationDataLayout.setVerticalGroup(
             pnlLocationDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLocationDataLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLocationDataLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(pnlLocationDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ddlLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlLocationDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLocationNumber)
                     .addComponent(txtLocationID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -523,7 +539,7 @@ public class AddSchedule extends mvc.view.AbstractView {
                 .addContainerGap()
                 .addComponent(lblNewSchedule)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlScheduleData, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addComponent(pnlScheduleData, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -558,7 +574,10 @@ public class AddSchedule extends mvc.view.AbstractView {
     private java.awt.Choice ddlDateDay;
     private java.awt.Choice ddlDateMonth;
     private java.awt.Choice ddlDateYear;
-    private java.awt.Choice ddlEmployeeGender;
+    private pas.layout.form.ComboList ddlEmployee;
+    private pas.layout.form.ComboList ddlEmployeeGender;
+    private pas.layout.form.ComboList ddlLocation;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCourseActivity;
     private javax.swing.JLabel lblCourseCapacity;
@@ -604,7 +623,6 @@ public class AddSchedule extends mvc.view.AbstractView {
     private javax.swing.JTextField txtCoursePrice;
     private javax.swing.JTextField txtEmployeeEmail;
     private javax.swing.JTextField txtEmployeeFirstName;
-    private javax.swing.JTextField txtEmployeeID;
     private javax.swing.JTextField txtEmployeeLastName;
     private javax.swing.JTextField txtEmployeeSuffix;
     private javax.swing.JTextField txtEmployeeTelNumber;

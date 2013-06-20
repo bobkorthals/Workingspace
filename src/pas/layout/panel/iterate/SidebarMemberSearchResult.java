@@ -129,7 +129,6 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
 
         lblMemberName = new javax.swing.JLabel();
         lblMemberId = new javax.swing.JLabel();
-        background1 = new pas.layout.panel.Background("/pas/resources/member_active.png");
 
         setMaximumSize(new java.awt.Dimension(246, 20));
         setMinimumSize(new java.awt.Dimension(246, 20));
@@ -144,24 +143,6 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
 
         lblMemberId.setText("Member id");
 
-        background1.setAlignmentY(5.0F);
-        background1.setMaximumSize(new java.awt.Dimension(9, 9));
-        background1.setMinimumSize(new java.awt.Dimension(9, 9));
-        background1.setName(""); // NOI18N
-        background1.setOpaque(false);
-        background1.setPreferredSize(new java.awt.Dimension(9, 9));
-
-        javax.swing.GroupLayout background1Layout = new javax.swing.GroupLayout(background1);
-        background1.setLayout(background1Layout);
-        background1Layout.setHorizontalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
-        );
-        background1Layout.setVerticalGroup(
-            background1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -170,15 +151,13 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
                 .addComponent(lblMemberName, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(lblMemberId)
-                .addGap(40, 40, 40)
-                .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(lblMemberName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(lblMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(background1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -309,7 +288,6 @@ public class SidebarMemberSearchResult extends JPanel implements MouseListener {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private pas.layout.panel.Background background1;
     private javax.swing.JLabel lblMemberId;
     private javax.swing.JLabel lblMemberName;
     // End of variables declaration//GEN-END:variables

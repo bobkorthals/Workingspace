@@ -10,6 +10,7 @@ import pas.file.chooser.FileChooserAbstract;
 import pas.file.chooser.FileChooserImage;
 import pas.file.chooser.FileChooserInterface;
 import pas.models.ActiveMember;
+import pas.models.Format;
 import pas.models.role.Member;
 
 /**
@@ -86,7 +87,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         txtFirstName.setText(member.getFirstName());
         txtLastName.setText(member.getLastName());
         txtSuffix.setText(member.getSuffix());
-        txtDateOfBirth.setText(member.getDateOfBrith().toString());
+        txtDateOfBirth.setText(Format.toShortDateString(member.getDateOfBrith()));
     }
 
     /**
@@ -165,7 +166,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         jButton18 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         btnReserveren = new javax.swing.JButton();
-        h11 = new pas.layout.label.H1();
+        btnNewScheduleOrder = new javax.swing.JButton();
 
         setOpaque(false);
 
@@ -711,6 +712,15 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
             }
         });
 
+        btnNewScheduleOrder.setBackground(new java.awt.Color(155, 9, 46));
+        btnNewScheduleOrder.setForeground(new java.awt.Color(255, 255, 255));
+        btnNewScheduleOrder.setText("Cursus Inschrijven");
+        btnNewScheduleOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewScheduleOrderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -726,6 +736,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
             .addComponent(jButton18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnReserveren, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+            .addComponent(btnNewScheduleOrder, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -738,6 +749,8 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnReserveren, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnNewScheduleOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addComponent(jButton14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -755,28 +768,21 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
                 .addContainerGap())
         );
 
-        h11.setText("Lid beheren");
-
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(h11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(h11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -839,7 +845,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        new FacilityController().facilityAction();        // TODO add your handling code here:
+        new FacilityController().facilityAction(WIDTH);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
@@ -898,13 +904,17 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
         new FacilityController().actionReservationMemberSelected();                // TODO add your handling code here:
     }//GEN-LAST:event_btnReserverenActionPerformed
 
+    private void btnNewScheduleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewScheduleOrderActionPerformed
+        new CourseController().NewScheduleOrderAction();                // Deze button opent de view NewScheduleOrder van Course
+    }//GEN-LAST:event_btnNewScheduleOrderActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNewScheduleOrder;
     private javax.swing.JButton btnReserveren;
     private javax.swing.JButton btnSave;
     private java.awt.Choice choice5;
     private java.awt.Choice choice6;
     private java.awt.Choice choice7;
-    private pas.layout.label.H1 h11;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;

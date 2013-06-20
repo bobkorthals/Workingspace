@@ -45,7 +45,6 @@ public class ScheduleCourse extends mvc.view.AbstractView {
         btnNewSchedule = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnNewScheduleOrder = new javax.swing.JButton();
         btnGoBack = new javax.swing.JButton();
         pnlScheduleOverview = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -167,15 +166,6 @@ public class ScheduleCourse extends mvc.view.AbstractView {
             }
         });
 
-        btnNewScheduleOrder.setBackground(new java.awt.Color(155, 9, 46));
-        btnNewScheduleOrder.setForeground(new java.awt.Color(255, 255, 255));
-        btnNewScheduleOrder.setText("Inschrijven");
-        btnNewScheduleOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewScheduleOrderActionPerformed(evt);
-            }
-        });
-
         btnGoBack.setBackground(new java.awt.Color(155, 9, 46));
         btnGoBack.setForeground(new java.awt.Color(255, 255, 255));
         btnGoBack.setText("Ga Terug");
@@ -196,7 +186,6 @@ public class ScheduleCourse extends mvc.view.AbstractView {
                     .addComponent(btnNewSchedule, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                    .addComponent(btnNewScheduleOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGoBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -209,11 +198,9 @@ public class ScheduleCourse extends mvc.view.AbstractView {
                 .addComponent(btnChange)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNewScheduleOrder)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnGoBack)
                 .addContainerGap())
         );
@@ -717,16 +704,11 @@ public class ScheduleCourse extends mvc.view.AbstractView {
         coursecontroller.CourseMainAction();        // Deze button opent de view CourseMain
     }//GEN-LAST:event_btnGoBackActionPerformed
 
-    private void btnNewScheduleOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewScheduleOrderActionPerformed
-        coursecontroller.NewScheduleOrderAction();        // Deze button opent de view NewScheduleOrder
-    }//GEN-LAST:event_btnNewScheduleOrderActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChange;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnGoBack;
     private javax.swing.JButton btnNewSchedule;
-    private javax.swing.JButton btnNewScheduleOrder;
     private javax.swing.JButton btnSave;
     private java.awt.Choice ddlOverviewScheduleDay;
     private java.awt.Choice ddlOverviewScheduleMonth;

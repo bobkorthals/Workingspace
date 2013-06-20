@@ -30,3 +30,11 @@ $BODY$
 $BODY$
 LANGUAGE plpgsql VOLATILE
 COST 100;
+
+
+
+
+
+
+ALTER TABLE faciliteit
+ADD COLUMN beschrijving VARCHAR(255);

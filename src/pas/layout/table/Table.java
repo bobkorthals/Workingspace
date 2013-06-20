@@ -25,11 +25,12 @@ public class Table extends JTable {
     }
     
     public void deselectAllRows(){
+        this.clearSelection();
         this.allSelected = false;
     }
     
     public void toggleRowSelect(){
-        if(this.allSelected){
+        if(this.allSelected == true){
             this.deselectAllRows();
         } else {
              this.selectAllRows();

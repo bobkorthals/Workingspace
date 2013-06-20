@@ -24,6 +24,7 @@
     <class>pas.models.db.Vestiging</class>
     <class>pas.models.db.Abonnement</class>
     <class>pas.models.db.Betaling</class>
+    <class>pas.models.db.Finance</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/PAS"/>
       <property name="javax.persistence.jdbc.password" value="pas"/>

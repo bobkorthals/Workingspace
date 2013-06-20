@@ -28,9 +28,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="pnlNewScheduleOrder" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -44,19 +45,17 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnlScheduleOverview" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblNewScheduleOrder" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="pnlMemberData" max="32767" attributes="0"/>
-                              <Component id="pnlOrderData" alignment="0" max="32767" attributes="0"/>
-                              <Component id="pnlButtons" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="lblNewScheduleOrder" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnlOrderedSchedules" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="pnlButtons" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlNewScheduleOrderData" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -66,328 +65,24 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="lblNewScheduleOrder" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnlButtons" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnlOrderData" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pnlMemberData" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="pnlOrderedSchedules" max="32767" attributes="0"/>
+                  <Component id="lblNewScheduleOrder" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="pnlButtons" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlNewScheduleOrderData" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="pnlScheduleOverview" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="pnlOrderedSchedules">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Bestelde Inschrijvingen"/>
-              </Border>
-            </Property>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlOrderedSchedulesList" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlOrderedSchedulesList" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JPanel" name="pnlOrderedSchedulesList">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                    <EtchetBorder>
-                      <Color PropertyName="highlight" blue="66" green="0" red="66" type="rgb"/>
-                      <Color PropertyName="shadow" blue="0" green="0" red="0" type="rgb"/>
-                    </EtchetBorder>
-                  </Border>
-                </Property>
-                <Property name="opaque" type="boolean" value="false"/>
-              </Properties>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPanel8" alignment="1" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel8" min="-2" pref="39" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                </Container>
-                <Container class="javax.swing.JPanel" name="jPanel8">
-                  <Properties>
-                    <Property name="opaque" type="boolean" value="false"/>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnAddSchedule" min="-2" pref="191" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btnDeleteSchedule" min="-2" pref="190" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnAddSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnDeleteSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JButton" name="btnAddSchedule">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="2e" green="9" red="9b" type="rgb"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Toevoegen"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btnDeleteSchedule">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="2e" green="9" red="9b" type="rgb"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Verwijder"/>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="pnlScheduleOverview">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Planning Overzichten"/>
-              </Border>
-            </Property>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jScrollPane1" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="lblScheduleIDOverview" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtScheduleID" min="-2" pref="80" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblCourseIDOverview" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtCourseID" min="-2" pref="51" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblCourseNameOverview" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtCourseName" min="-2" pref="96" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblScheduleDateOverview" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ddlScheduleDateDay" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ddlScheduleDateMonth" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ddlScheduleDateYear" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblScheduleIDOverview" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtScheduleID" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCourseNameOverview" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblScheduleDateOverview" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblCourseIDOverview" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtCourseID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="ddlScheduleDateDay" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="ddlScheduleDateMonth" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="ddlScheduleDateYear" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="158" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblScheduleIDOverview">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Planning nummer"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtScheduleID">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCourseNameOverview">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cursusnaam"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCourseName">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblScheduleDateOverview">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Datum"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tblSchedule">
-                  <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="4">
-                        <Column editable="true" title="Planning nummer" type="java.lang.Integer"/>
-                        <Column editable="true" title="Cursusnummer" type="java.lang.Integer"/>
-                        <Column editable="true" title="Cursusnaam" type="java.lang.String"/>
-                        <Column editable="true" title="Datum" type="java.lang.String"/>
-                        <Column editable="true" title="Bezetting" type="java.lang.String"/>
-                      </Table>
-                    </Property>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="0">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                      </TableColumnModel>
-                    </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="java.awt.Choice" name="ddlScheduleDateDay">
-            </Component>
-            <Component class="java.awt.Choice" name="ddlScheduleDateMonth">
-            </Component>
-            <Component class="java.awt.Choice" name="ddlScheduleDateYear">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCourseIDOverview">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cursusnummer"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCourseID">
-            </Component>
-          </SubComponents>
-        </Container>
         <Component class="javax.swing.JLabel" name="lblNewScheduleOrder">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="20" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Inschrijven"/>
+            <Property name="text" type="java.lang.String" value="Inschrijving"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="pnlButtons">
@@ -401,8 +96,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnPayment" pref="199" max="32767" attributes="0"/>
                           <Component id="btnGoBack" max="32767" attributes="0"/>
-                          <Component id="btnPayment" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -451,13 +146,8 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlOrderData">
+        <Container class="javax.swing.JPanel" name="pnlNewScheduleOrderData">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Bestel gegevens"/>
-              </Border>
-            </Property>
             <Property name="opaque" type="boolean" value="false"/>
           </Properties>
 
@@ -467,95 +157,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblOrderID" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                          <Component id="lblEmployeeID" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtEmployeeID" pref="150" max="32767" attributes="0"/>
-                          <Component id="txtOrderID" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblOrderID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtOrderID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblEmployeeID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEmployeeID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JTextField" name="txtOrderID">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblOrderID">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Bestellingnummer"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblEmployeeID">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Medewerker nummer"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtEmployeeID">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEmployeeIDActionPerformed"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="pnlMemberData">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Lid gegevens"/>
-              </Border>
-            </Property>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnSearchMember" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Component id="pnlScheduleOverview" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblMemberFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMemberID" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMemberSuffix" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMemberLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblMemberBirthday" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblMemberGender" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblMemberCredit" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="lblMemberLatePayment" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="pnlOrderData" max="32767" attributes="0"/>
+                                  <Component id="pnlMemberData" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtMemberID" max="32767" attributes="0"/>
-                                  <Component id="txtMemberFirstName" max="32767" attributes="0"/>
-                                  <Component id="txtMemberSuffix" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtMemberLastName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtMemberBirthday" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtMemberGender" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtMemberCredit" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtMemberLatePayment" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlOrderedSchedules" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -565,123 +174,522 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="btnSearchMember" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMemberID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMemberID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="pnlOrderData" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="pnlMemberData" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="pnlOrderedSchedules" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMemberFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMemberFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMemberSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMemberSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMemberLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMemberLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMemberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMemberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMemberGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMemberGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMemberCredit" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMemberCredit" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblMemberLatePayment" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMemberLatePayment" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="pnlScheduleOverview" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnSearchMember">
+            <Container class="javax.swing.JPanel" name="pnlOrderData">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="2e" green="9" red="9b" type="rgb"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Bestel gegevens"/>
+                  </Border>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                <Property name="opaque" type="boolean" value="false"/>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblOrderID" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                              <Component id="lblEmployeeID" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtEmployeeID" pref="150" max="32767" attributes="0"/>
+                              <Component id="txtOrderID" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblOrderID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtOrderID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblEmployeeID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEmployeeID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JTextField" name="txtOrderID">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblOrderID">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bestellingnummer"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblEmployeeID">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Medewerker nummer"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtEmployeeID">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlOrderedSchedules">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Bestelde Inschrijvingen"/>
+                  </Border>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Lid Opzoeken"/>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchMemberActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblMemberID">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlOrderedSchedulesList" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlOrderedSchedulesList" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="pnlOrderedSchedulesList">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder>
+                          <Color PropertyName="highlight" blue="66" green="0" red="66" type="rgb"/>
+                          <Color PropertyName="shadow" blue="0" green="0" red="0" type="rgb"/>
+                        </EtchetBorder>
+                      </Border>
+                    </Property>
+                    <Property name="opaque" type="boolean" value="false"/>
+                  </Properties>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jPanel8" alignment="1" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane2" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel8" min="-2" pref="39" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                      <Properties>
+                        <Property name="opaque" type="boolean" value="false"/>
+                      </Properties>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="jPanel8">
+                      <Properties>
+                        <Property name="opaque" type="boolean" value="false"/>
+                      </Properties>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnAddSchedule" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btnDeleteSchedule" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnAddSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnDeleteSchedule" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JButton" name="btnAddSchedule">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2e" green="9" red="9b" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Toevoegen"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnDeleteSchedule">
+                          <Properties>
+                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="2e" green="9" red="9b" type="rgb"/>
+                            </Property>
+                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="Verwijder"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlMemberData">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Lidnummer"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Lid gegevens"/>
+                  </Border>
+                </Property>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberID">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblMemberFirstName">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblMemberFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMemberID" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMemberSuffix" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMemberLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblMemberBirthday" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblMemberGender" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblMemberCredit" alignment="0" max="32767" attributes="0"/>
+                              <Component id="lblMemberLatePayment" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtMemberID" pref="148" max="32767" attributes="0"/>
+                              <Component id="txtMemberFirstName" max="32767" attributes="0"/>
+                              <Component id="txtMemberSuffix" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtMemberLastName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtMemberBirthday" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtMemberGender" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtMemberCredit" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtMemberLatePayment" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMemberID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMemberFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMemberSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberSuffix" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMemberLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMemberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberBirthday" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMemberGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMemberCredit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberCredit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblMemberLatePayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtMemberLatePayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblMemberID">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Lidnummer"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMemberID">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMemberFirstName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Voornaam"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMemberFirstName">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMemberSuffix">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Tussenvoegsel"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMemberSuffix">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMemberLastName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Achternaam"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMemberLastName">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMemberBirthday">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Geboortedatum"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMemberBirthday">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMemberGender">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Geslacht"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMemberGender">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMemberCredit">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Krediet"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMemberCredit">
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblMemberLatePayment">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Betalingsachterstand"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtMemberLatePayment">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlScheduleOverview">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Voornaam"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Planning Overzichten"/>
+                  </Border>
+                </Property>
+                <Property name="opaque" type="boolean" value="false"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberFirstName">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblMemberSuffix">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tussenvoegsel"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberSuffix">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblMemberLastName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Achternaam"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberLastName">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblMemberBirthday">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Geboortedatum"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberBirthday">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblMemberGender">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Geslacht"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberGender">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblMemberCredit">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Krediet"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberCredit">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblMemberLatePayment">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Betalingsachterstand"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberLatePayment">
-            </Component>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane1" alignment="0" pref="795" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="lblCourseOverview" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ddlCourse" min="-2" pref="122" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lblScheduleDate" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ddlDateDay" min="-2" pref="50" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ddlDateMonth" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ddlDateYear" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="lblLocation" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ddlLocation" min="-2" pref="115" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblCourseOverview" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblScheduleDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlCourse" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlDateDay" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlDateMonth" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlDateYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="lblLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ddlLocation" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="186" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblCourseOverview">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cursus"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblScheduleDate">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Datum"/>
+                  </Properties>
+                </Component>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tblSchedule">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="5" rowCount="10">
+                            <Column editable="true" title="Planning nummer" type="java.lang.Integer"/>
+                            <Column editable="true" title="Cursusnummer" type="java.lang.Integer"/>
+                            <Column editable="true" title="Cursusnaam" type="java.lang.String"/>
+                            <Column editable="true" title="Datum" type="java.lang.String"/>
+                            <Column editable="true" title="Bezetting" type="java.lang.String"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="opaque" type="boolean" value="false"/>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JLabel" name="lblLocation">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Locatie"/>
+                  </Properties>
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlCourse">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ddlCourseActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlLocation">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ddlLocationActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlDateDay">
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlDateMonth">
+                </Component>
+                <Component class="pas.layout.form.ComboList" name="ddlDateYear">
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
