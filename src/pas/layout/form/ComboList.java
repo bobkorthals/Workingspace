@@ -14,4 +14,9 @@ public class ComboList extends javax.swing.JComboBox {
     public ComboListItem getItemAt(int index) {
         return (ComboListItem) super.getItemAt(index);
     }
+    
+    @Override
+    public ComboListItem getSelectedItem() {
+        return (ComboListItem) super.getSelectedItem();
+    }
 }
