@@ -88,8 +88,9 @@ public class ReservationPayment extends mvc.view.AbstractView {
         jLabel56 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtSoort = new javax.swing.JTextField();
-        ddtTijd = new java.awt.Choice();
         jLabel5 = new javax.swing.JLabel();
+        txtDatum = new javax.swing.JTextField();
+        txtTijd = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         btnBetalen = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
@@ -202,16 +203,24 @@ public class ReservationPayment extends mvc.view.AbstractView {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", 0, 0, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
+        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
         jPanel24.setOpaque(false);
+
+        btnKosten.setEditable(false);
 
         jLabel44.setText("Kosten");
 
+        txtFaciliteitNaam.setEditable(false);
+
         jLabel52.setText("Naam");
+
+        txtCapaciteit.setEditable(false);
 
         jLabel53.setText("Soort");
 
         jLabel54.setText("Locatie");
+
+        btnLocatie.setEditable(false);
 
         jLabel55.setText("Capaciteit");
 
@@ -219,8 +228,14 @@ public class ReservationPayment extends mvc.view.AbstractView {
 
         jLabel7.setText("Datum");
 
+        txtSoort.setEditable(false);
+
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Reservering Gegevens");
+
+        txtDatum.setEditable(false);
+
+        txtTijd.setEditable(false);
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -241,12 +256,13 @@ public class ReservationPayment extends mvc.view.AbstractView {
                             .addComponent(jLabel52))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ddtTijd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtCapaciteit)
                             .addComponent(btnLocatie)
                             .addComponent(btnKosten)
                             .addComponent(txtSoort)
-                            .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTijd)
+                            .addComponent(txtDatum))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
@@ -255,8 +271,17 @@ public class ReservationPayment extends mvc.view.AbstractView {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel24Layout.createSequentialGroup()
+                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel56)
+                            .addComponent(txtTijd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel52)
                             .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -276,12 +301,7 @@ public class ReservationPayment extends mvc.view.AbstractView {
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel55)
                             .addComponent(txtCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ddtTijd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel56, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addContainerGap())
+                        .addGap(61, 61, 61))))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -318,10 +338,17 @@ public class ReservationPayment extends mvc.view.AbstractView {
 
         jLabel11.setText("Lidnummer");
 
+        txtMemberID.setEditable(false);
+
+        txtFirstName.setEditable(false);
+
         jLabel12.setText("Voornaam");
 
         jLabel13.setText("Achternaam");
 
+        txtLastName.setEditable(false);
+
+        txtDateOfBirth.setEditable(false);
         txtDateOfBirth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDateOfBirthActionPerformed(evt);
@@ -392,17 +419,25 @@ public class ReservationPayment extends mvc.view.AbstractView {
 
         jLabel18.setText("Totaalbedrag");
 
+        txtBestellingTotaalbedrag.setEditable(false);
         txtBestellingTotaalbedrag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBestellingTotaalbedragActionPerformed(evt);
             }
         });
 
+        txtBestellingTijd.setEditable(false);
+
+        txtBestellingDatum.setEditable(false);
+
+        txtWerknemerID.setEditable(false);
         txtWerknemerID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtWerknemerIDActionPerformed(evt);
             }
         });
+
+        txtBestelingID.setEditable(false);
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setText("Bestelling Gegevens");
@@ -509,7 +544,7 @@ public class ReservationPayment extends mvc.view.AbstractView {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -548,7 +583,6 @@ public class ReservationPayment extends mvc.view.AbstractView {
     private javax.swing.JButton btnReserveringPrinten;
     private javax.swing.JButton btnSluitReservering;
     private javax.swing.JButton btnTerug;
-    private java.awt.Choice ddtTijd;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -582,11 +616,13 @@ public class ReservationPayment extends mvc.view.AbstractView {
     private javax.swing.JTextField txtBestellingTotaalbedrag;
     private javax.swing.JTextField txtCapaciteit;
     private javax.swing.JTextField txtDateOfBirth;
+    private javax.swing.JTextField txtDatum;
     private javax.swing.JTextField txtFaciliteitNaam;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtMemberID;
     private javax.swing.JTextField txtSoort;
+    private javax.swing.JTextField txtTijd;
     private javax.swing.JTextField txtWerknemerID;
     // End of variables declaration//GEN-END:variables
 }
