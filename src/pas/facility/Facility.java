@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import javax.swing.JOptionPane;
 import mvc.Application;
 import pas.exception.NoEntityManagerException;
 import pas.layout.MainFrame;
@@ -19,7 +20,6 @@ import pas.main.MainController;
 import pas.models.SessionManager;
 import pas.models.db.Faciliteit;
 import pas.models.db.Vestiging;
-import pas.models.role.Member;
 import session.NoSessionManagerException;
 
 /**
@@ -514,14 +514,15 @@ public class Facility extends mvc.view.AbstractView {
     private void btnFacilityWijzigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityWijzigenActionPerformed
         if (ddlFacilities.getSelectedItem().hasValue()) {
             if (!wijzigen == true) {
+                JOptionPane.showMessageDialog(ddlLocatie, "U kunt nu een Faciliteit wijzigen");
                 wijzigen = true;
                 this.Wijzigen(wijzigen);
                 btnFacilityWijzigen.setText("Stop Wijzigen");
             } else {
-                wijzigen = false;
                 this.Wijzigen(wijzigen);
                 btnFacilityWijzigen.setText("Wijzigen");
             }
+                wijzigen = false;
         }
     }//GEN-LAST:event_btnFacilityWijzigenActionPerformed
 
