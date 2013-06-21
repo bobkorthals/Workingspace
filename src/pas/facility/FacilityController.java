@@ -36,10 +36,9 @@ public class FacilityController extends AbstractController {
         mainFrame.setSidebarEnabled(true);
     }
 
-    public void indexAction() {
-        open(new Facility(this));
-    }
-
+//    public void indexAction() {
+//        open(new Facility(this));
+//    }
     private ActiveFacility getActiveFacility() {
         try {
             return getSessionManager().getActiveFacility();
@@ -50,19 +49,18 @@ public class FacilityController extends AbstractController {
 
     }
 
-    public Facility getFacilityView() {
-        if (null == this.faciliteit) {
-            this.faciliteit = new Facility(this);
-            addView(this.faciliteit);
-        }
-        return this.faciliteit;
-    }
+//    public Facility getFacilityView() {
+//        if (null == this.faciliteit) {
+//            this.faciliteit = new Facility(this);
+//            addView(this.faciliteit);
+//        }
+//        return this.faciliteit;
+//    }
     /*
      * Returns the Sessionmanager
      * 
      * @return SessionManager
      */
-
     private SessionManager getSessionManager() {
         try {
             return (SessionManager) Application.getInstance().getSessionManager();
@@ -111,10 +109,6 @@ public class FacilityController extends AbstractController {
         return query.getResultList();
     }
 
-    
-    
-    
-    
     public Faciliteit getFacilitiesById(int faciliteitId) {
         Query query = getEntityManager().createNamedQuery("Faciliteit.findById");
         query.setParameter("id", faciliteitId);
@@ -131,34 +125,31 @@ public class FacilityController extends AbstractController {
         return query.getResultList();
     }
 
-    
-    
-    
-    public void facilityAction(int faciliteitid) {
-        Facility view = new Facility(this);
-
-        if (null == this.faciliteit || !this.faciliteit.equals(this.getFacilityView())) {
-            this.faciliteit = view;
-            open(this.faciliteit);
-        }
-        System.out.println("TEST");
-        Query query = getEntityManager().createNamedQuery("Faciliteit.findAll");
-        this.faciliteit.setFacilityList(query.getResultList());
-
-        open(view);
+    public void facilityAction() {
+        open(new Facility(this, getVestigingen()));
+        
+//        Facility view = new Facility(this);
+//
+//        if (null == this.faciliteit || !this.faciliteit.equals(this.getFacilityView())) {
+//            this.faciliteit = view;
+//            open(this.faciliteit);
+//        }
+//        System.out.println("TEST");
+//        Query query = getEntityManager().createNamedQuery("Faciliteit.findAll");
+//        this.faciliteit.setFacilityList(query.getResultList());
+//
+//        open(view);
     }
 
-    
-    
     //FacilityController, startup ReservationChanges    
     public void reservationChange() {
         ReservationChange view = new ReservationChange(this);
         open(view);
     }
 
-    public void paymentAction() {
+    public void paymentAction(Faciliteit facility) {
         open(new ReservationPayment(this,
-                getActiveMember().getMember()));
+                getActiveMember().getMember(), facility));
     }
 
     public void addFacilityAction() {

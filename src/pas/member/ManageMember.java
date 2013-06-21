@@ -845,7 +845,7 @@ public class ManageMember extends mvc.view.AbstractView implements FileChooserIn
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        new FacilityController().facilityAction(WIDTH);        // TODO add your handling code here:
+        new FacilityController().facilityAction();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed

@@ -152,7 +152,7 @@ public class Main extends mvc.view.AbstractView {
     }//GEN-LAST:event_buttonFinancialActionPerformed
 
     private void buttonFacilitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFacilitiesActionPerformed
-        new FacilityController().indexAction();        // TODO add your handling code here:
+        new FacilityController().facilityAction();        // TODO add your handling code here:
     }//GEN-LAST:event_buttonFacilitiesActionPerformed
 
     private void buttonCoursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCoursesActionPerformed

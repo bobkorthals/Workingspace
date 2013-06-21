@@ -254,13 +254,13 @@
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtCapaciteit" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnLocatie" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnKosten" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtSoort" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFaciliteitCapaciteit" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFaciliteitLocatie" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFaciliteitKosten" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFaciliteitSoort" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtFaciliteitNaam" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                                  <Component id="txtTijd" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtDatum" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFaciliteitTijd" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFaciliteitDatum" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -278,12 +278,12 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTijd" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFaciliteitTijd" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFaciliteitDatum" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -295,22 +295,22 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtSoort" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFaciliteitSoort" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnKosten" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFaciliteitKosten" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnLocatie" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFaciliteitLocatie" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel55" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtCapaciteit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFaciliteitCapaciteit" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           </Group>
@@ -320,7 +320,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="btnKosten">
+            <Component class="javax.swing.JTextField" name="txtFaciliteitKosten">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
@@ -340,7 +340,7 @@
                 <Property name="text" type="java.lang.String" value="Naam"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCapaciteit">
+            <Component class="javax.swing.JTextField" name="txtFaciliteitCapaciteit">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
@@ -355,7 +355,7 @@
                 <Property name="text" type="java.lang.String" value="Locatie"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="btnLocatie">
+            <Component class="javax.swing.JTextField" name="txtFaciliteitLocatie">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
@@ -375,7 +375,7 @@
                 <Property name="text" type="java.lang.String" value="Datum"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtSoort">
+            <Component class="javax.swing.JTextField" name="txtFaciliteitSoort">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
@@ -388,12 +388,12 @@
                 <Property name="text" type="java.lang.String" value="Reservering Gegevens"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDatum">
+            <Component class="javax.swing.JTextField" name="txtFaciliteitDatum">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTijd">
+            <Component class="javax.swing.JTextField" name="txtFaciliteitTijd">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>

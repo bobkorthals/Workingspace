@@ -144,7 +144,7 @@ public class FacilityListSearchResults extends javax.swing.JPanel implements Mou
                 setStatus(FacilityListSearchResults.INACTIVE);
                 break;
         }
-        this.view.setFaciliteit(faciliteit);
+//        this.view.setFaciliteit(faciliteit);
     }
 
     @Override

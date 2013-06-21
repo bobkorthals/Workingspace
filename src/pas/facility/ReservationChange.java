@@ -501,7 +501,7 @@ public class ReservationChange extends mvc.view.AbstractView {
     }//GEN-LAST:event_btnOpslaanActionPerformed
 
     private void btnTerugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerugActionPerformed
-        new FacilityController().facilityAction(WIDTH);        // TODO add your handling code here:
+        new FacilityController().facilityAction();        // TODO add your handling code here:
     }//GEN-LAST:event_btnTerugActionPerformed
 
     private void txtKredietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKredietActionPerformed

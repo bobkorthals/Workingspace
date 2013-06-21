@@ -76,25 +76,15 @@ public class AddFacility extends mvc.view.AbstractView {
         jPanel6.setOpaque(false);
         jPanel6.setPreferredSize(new java.awt.Dimension(368, 212));
 
-        jLabel11.setText("Faciliteit Nummer");
-
-        jTextField9.setText("jTextField9");
+        jLabel11.setText("FaciliteitID");
 
         jLabel12.setText("Naam");
 
-        jTextField10.setText("jTextField10");
-
         jLabel13.setText("Soort");
-
-        jTextField11.setText("jTextField11");
 
         jLabel14.setText("Prijs");
 
-        jTextField12.setText("jTextField12");
-
         jLabel15.setText("Capaciteit");
-
-        jTextField13.setText("jTextField13");
 
         jLabel17.setText("Duur");
 
@@ -103,14 +93,6 @@ public class AddFacility extends mvc.view.AbstractView {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
-
-        jTextField17.setText("jTextField13");
-
-        jTextField18.setText("jTextField13");
-
-        jTextField19.setText("jTextField13");
-
-        jTextField20.setText("jTextField13");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -284,7 +266,7 @@ public class AddFacility extends mvc.view.AbstractView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new FacilityController().facilityAction(WIDTH);               
+        new FacilityController().facilityAction();               
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

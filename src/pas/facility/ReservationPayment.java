@@ -8,6 +8,7 @@ import java.beans.PropertyChangeEvent;
 import pas.member.MemberController;
 import pas.models.ActiveMember;
 import pas.models.Format;
+import pas.models.db.Faciliteit;
 import pas.models.role.Member;
 
 /**
@@ -17,14 +18,19 @@ import pas.models.role.Member;
 public class ReservationPayment extends mvc.view.AbstractView {
 
     private FacilityController facilitycontroller;
+    private Faciliteit facility;
+    
     /**
      * Creates new form ReservationPayment
      */
-    public ReservationPayment(FacilityController facilitycontroller, Member member) {
+    public ReservationPayment(FacilityController facilitycontroller, Member member, Faciliteit facility) {
         initComponents();
+        this.facility = facility;
         
         this.facilitycontroller = facilitycontroller;
         this.setMember(member);
+        this.setFacility();
+        
     }
     
     
@@ -59,6 +65,18 @@ public class ReservationPayment extends mvc.view.AbstractView {
         txtDateOfBirth.setText(Format.toShortDateString(member.getDateOfBrith()));
     }
     
+    
+    
+    private void setFacility(){
+        
+        txtFaciliteitNaam.setText(facility.getOmschrijving());
+        txtFaciliteitSoort.setText(facility.getSoort());
+        txtFaciliteitCapaciteit.setText(new Integer(facility.getCapaciteit()).toString());
+        txtFaciliteitKosten.setText(facility.getKosten().toString());
+        txtFaciliteitLocatie.setText(facility.getVestigingid().getNaam());
+                
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,21 +94,21 @@ public class ReservationPayment extends mvc.view.AbstractView {
         btnReserveringPrinten = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
-        btnKosten = new javax.swing.JTextField();
+        txtFaciliteitKosten = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         txtFaciliteitNaam = new javax.swing.JTextField();
         jLabel52 = new javax.swing.JLabel();
-        txtCapaciteit = new javax.swing.JTextField();
+        txtFaciliteitCapaciteit = new javax.swing.JTextField();
         jLabel53 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
-        btnLocatie = new javax.swing.JTextField();
+        txtFaciliteitLocatie = new javax.swing.JTextField();
         jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtSoort = new javax.swing.JTextField();
+        txtFaciliteitSoort = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtDatum = new javax.swing.JTextField();
-        txtTijd = new javax.swing.JTextField();
+        txtFaciliteitDatum = new javax.swing.JTextField();
+        txtFaciliteitTijd = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         btnBetalen = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
@@ -206,7 +224,7 @@ public class ReservationPayment extends mvc.view.AbstractView {
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12), java.awt.Color.darkGray)); // NOI18N
         jPanel24.setOpaque(false);
 
-        btnKosten.setEditable(false);
+        txtFaciliteitKosten.setEditable(false);
 
         jLabel44.setText("Kosten");
 
@@ -214,13 +232,13 @@ public class ReservationPayment extends mvc.view.AbstractView {
 
         jLabel52.setText("Naam");
 
-        txtCapaciteit.setEditable(false);
+        txtFaciliteitCapaciteit.setEditable(false);
 
         jLabel53.setText("Soort");
 
         jLabel54.setText("Locatie");
 
-        btnLocatie.setEditable(false);
+        txtFaciliteitLocatie.setEditable(false);
 
         jLabel55.setText("Capaciteit");
 
@@ -228,14 +246,14 @@ public class ReservationPayment extends mvc.view.AbstractView {
 
         jLabel7.setText("Datum");
 
-        txtSoort.setEditable(false);
+        txtFaciliteitSoort.setEditable(false);
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Reservering Gegevens");
 
-        txtDatum.setEditable(false);
+        txtFaciliteitDatum.setEditable(false);
 
-        txtTijd.setEditable(false);
+        txtFaciliteitTijd.setEditable(false);
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -256,13 +274,13 @@ public class ReservationPayment extends mvc.view.AbstractView {
                             .addComponent(jLabel52))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCapaciteit)
-                            .addComponent(btnLocatie)
-                            .addComponent(btnKosten)
-                            .addComponent(txtSoort)
+                            .addComponent(txtFaciliteitCapaciteit)
+                            .addComponent(txtFaciliteitLocatie)
+                            .addComponent(txtFaciliteitKosten)
+                            .addComponent(txtFaciliteitSoort)
                             .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTijd)
-                            .addComponent(txtDatum))))
+                            .addComponent(txtFaciliteitTijd)
+                            .addComponent(txtFaciliteitDatum))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
@@ -275,11 +293,11 @@ public class ReservationPayment extends mvc.view.AbstractView {
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel56)
-                            .addComponent(txtTijd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFaciliteitTijd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(txtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFaciliteitDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -288,19 +306,19 @@ public class ReservationPayment extends mvc.view.AbstractView {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel53)
-                            .addComponent(txtSoort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFaciliteitSoort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnKosten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFaciliteitKosten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel44))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFaciliteitLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel54))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel55)
-                            .addComponent(txtCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFaciliteitCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(61, 61, 61))))
         );
 
@@ -578,8 +596,6 @@ public class ReservationPayment extends mvc.view.AbstractView {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBetalen;
-    private javax.swing.JTextField btnKosten;
-    private javax.swing.JTextField btnLocatie;
     private javax.swing.JButton btnReserveringPrinten;
     private javax.swing.JButton btnSluitReservering;
     private javax.swing.JButton btnTerug;
@@ -614,15 +630,17 @@ public class ReservationPayment extends mvc.view.AbstractView {
     private javax.swing.JTextField txtBestellingDatum;
     private javax.swing.JTextField txtBestellingTijd;
     private javax.swing.JTextField txtBestellingTotaalbedrag;
-    private javax.swing.JTextField txtCapaciteit;
     private javax.swing.JTextField txtDateOfBirth;
-    private javax.swing.JTextField txtDatum;
+    private javax.swing.JTextField txtFaciliteitCapaciteit;
+    private javax.swing.JTextField txtFaciliteitDatum;
+    private javax.swing.JTextField txtFaciliteitKosten;
+    private javax.swing.JTextField txtFaciliteitLocatie;
     private javax.swing.JTextField txtFaciliteitNaam;
+    private javax.swing.JTextField txtFaciliteitSoort;
+    private javax.swing.JTextField txtFaciliteitTijd;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtMemberID;
-    private javax.swing.JTextField txtSoort;
-    private javax.swing.JTextField txtTijd;
     private javax.swing.JTextField txtWerknemerID;
     // End of variables declaration//GEN-END:variables
 }

@@ -25,6 +25,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     private FacilityController facilitycontroller;
     private List<Faciliteit> facilities = new ArrayList();
     private List<Vestiging> vestigingen;
+    private Faciliteit activeFacility;
 
     /**
      * Creates new form ReservationFacilityMemberSelected
@@ -333,7 +334,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                             .addComponent(txtGeslacht)
                             .addComponent(txtNaam)
                             .addComponent(txtLocation))
-                        .addGap(104, 104, 104)))
+                        .addGap(64, 64, 64)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -555,7 +556,7 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReserverenBetalenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserverenBetalenActionPerformed
-        new FacilityController().paymentAction();        // TODO add your handling code here:
+        new FacilityController().paymentAction(this.activeFacility);        // TODO add your handling code here:
     }//GEN-LAST:event_btnReserverenBetalenActionPerformed
 
     private void btnTerugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerugActionPerformed
@@ -584,7 +585,8 @@ public class ReservationFacilityMemberSelected extends mvc.view.AbstractView {
                 txtCapaciteit.setText(new Integer(facility.getCapaciteit()).toString());
                 txtNaam.setText(facility.getOmschrijving());
                 txtKosten.setText(formatter.format(facility.getKosten()));
-                txtLocation.setText(ddlLocatie.getSelectedItem().getValue().toString());
+                txtLocation.setText(facility.getVestigingid().getNaam());
+                this.activeFacility = facility;
             } else {
                 // Clear form
                 this.clearFacilityForm();

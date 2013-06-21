@@ -4,22 +4,22 @@
  */
 package pas.facility;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import mvc.Application;
 import pas.exception.NoEntityManagerException;
 import pas.layout.MainFrame;
-import pas.layout.panel.iterate.FacilityListSearchResults;
+import pas.layout.form.ComboListItem;
 import pas.main.MainController;
-import pas.models.ActiveFacility;
 import pas.models.SessionManager;
 import pas.models.db.Faciliteit;
+import pas.models.db.Vestiging;
+import pas.models.role.Member;
 import session.NoSessionManagerException;
 
 /**
@@ -29,15 +29,25 @@ import session.NoSessionManagerException;
 public class Facility extends mvc.view.AbstractView {
 
     private FacilityController facilitycontroller;
+    private List<Faciliteit> facilities = new ArrayList();
+    private List<Vestiging> vestigingen;
+    private boolean wijzigen = false;
 
     /**
      * Creates new form Facility
      */
-    public Facility(FacilityController facilitycontroller) {
+    public Facility(FacilityController facilitycontroller, List<Vestiging> vestigingen) {
         this.facilitycontroller = facilitycontroller;
         initComponents();
-        
-        refreshTable();
+
+        this.vestigingen = vestigingen;
+
+        this.Wijzigen(wijzigen);
+        this.setVestigingen();
+        ddlFacilities.setEditable(false);
+
+//        refreshTable();
+
     }
 
     @Override
@@ -45,15 +55,6 @@ public class Facility extends mvc.view.AbstractView {
         return this.facilitycontroller;
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
     private SessionManager getSessionManager() {
         try {
             return (SessionManager) Application.getInstance().getSessionManager();
@@ -77,98 +78,112 @@ public class Facility extends mvc.view.AbstractView {
         return null;
     }
 
-    
-    
-    
-    
-    
-    
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("Test");
-        switch (evt.getPropertyName()) {
-            case ActiveFacility.FACILITEIT:
-                this.setFaciliteit((Faciliteit) evt.getNewValue());
-                break;
+    }
+
+    /*
+     * Fill the facilitie table and dropdown
+     * 
+     * @return void
+     */
+    private void setFacilities() {
+        ddlFacilities.removeAllItems();
+        ddlFacilities.addItem(new ComboListItem("Selecteer faciliteit"));
+
+        if (!this.facilities.isEmpty()) {
+            for (Faciliteit facility : facilities) {
+                ddlFacilities.addItem(
+                        new ComboListItem(
+                        facility.getOmschrijving(),
+                        facility));
+            }
+
+            ddlFacilities.setEnabled(true);
+        } else {
+            ddlFacilities.setEnabled(false);
+        }
+
+        ddlFacilities.repaint();
+    }
+
+    private void Wijzigen(Boolean wijzigen) {
+        txtFaciliteitNaam.setEditable(wijzigen);
+        txtFaciliteitSoort.setEditable(wijzigen);
+        txtFaciliteitKosten.setEditable(wijzigen);
+        txtFaciliteitTijd.setEditable(wijzigen);
+        txtFaciliteitLocatie.setEditable(wijzigen);
+        txtFaciliteitCapaciteit.setEditable(wijzigen);
+        txtBeschrijving.setEditable(wijzigen);
+
+    }
+
+    /*
+     * Fill the location table and dropdown
+     * 
+     * @return void
+     */
+    private void setVestigingen() {
+        ddlLocatie.addItem(new ComboListItem("Selecteer vestiging"));
+        for (Vestiging vestinging : this.vestigingen) {
+            ddlLocatie.addItem(
+                    new ComboListItem(
+                    vestinging.getNaam(),
+                    vestinging));
         }
     }
 
-    
-    
-    
-    
-    
-    
-    public void setFacilityList(List<Faciliteit> facilityList) {
-        System.out.println("TEST");
-        pnlFacilitySearchResults.removeAll();
-        FacilityListSearchResults.resetCounter();
-        if (facilityList.size() > 0) {
-            pnlFacilitySearchResults.setLayout(new GridLayout(facilityList.size(), 0));
-            pnlFacilitySearchResults.repaint();
-            GridBagConstraints gbc = new GridBagConstraints();
-            for (Faciliteit facility : facilityList) {
-                pnlFacilitySearchResults.add(
-                        new FacilityListSearchResults(facility, this), gbc);
-            }
-        }
-
-        pnlFacilitySearchResults.revalidate();
-        pnlFacilitySearchResults.repaint();
+    private void clearFacilityForm() {
+        txtFaciliteitCapaciteit.setText("");
+        txtFaciliteitNaam.setText("");
+        txtFaciliteitKosten.setText("");
+        txtFaciliteitLocatie.setText("");
+        txtFaciliteitSoort.setText("");
     }
 
-    
-    
-    
-    
-    public void refreshTable() {
-        Query query = getEntityManager().createNamedQuery("Faciliteit.findAll");
-        this.setFacilityList(query.getResultList());
-    }
-    
-    
-    
-    
-    
-    
-
-    public void updateFaciliteit() {
-        String sql = "UPDATE Faciliteit SET name='" + this.txtSearchFaciliteit.getText() + "', "
-                + "WHERE id='" + Integer.parseInt(this.txtSearchID.getText()) + "' ";
-
-        try {
-            if (!getEntityManager().getTransaction().isActive()) {
-                getEntityManager().getTransaction().begin();
-            }
-            if (getEntityManager().getTransaction().isActive()) {
-                System.out.println("Verbinding is actief");
-            } else {
-                System.out.println("Verbinding is niet actief");
-            }
-
-            Query query = getEntityManager().createQuery(sql);
-            query.executeUpdate();
-            getEntityManager().getTransaction().commit();
-            this.refreshTable();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    
-    
-    
-    
-    
-    
-    public void setFaciliteit(Faciliteit faciliteit) {
-        txtFaciliteitNaam.setText(faciliteit.getOmschrijving());
-        txtFaciliteitKosten.setText(faciliteit.getKosten().toString());
-        txtFaciliteitSoort.setText(faciliteit.getSoort());
-        txtFaciliteitLocatie.setText(faciliteit.getVestigingid().toString());
-
-    }
-
+//    public void setFacilityList(List<Faciliteit> facilityList) {
+//        System.out.println("TEST");
+//        pnlFacilitySearchResults.removeAll();
+//        FacilityListSearchResults.resetCounter();
+//        if (facilityList.size() > 0) {
+//            pnlFacilitySearchResults.setLayout(new GridLayout(facilityList.size(), 0));
+//            pnlFacilitySearchResults.repaint();
+//            GridBagConstraints gbc = new GridBagConstraints();
+//            for (Faciliteit facility : facilityList) {
+//                pnlFacilitySearchResults.add(
+//                        new FacilityListSearchResults(facility, this), gbc);
+//            }
+//        }
+//
+//        pnlFacilitySearchResults.revalidate();
+//        pnlFacilitySearchResults.repaint();
+//    }
+//    public void refreshTable() {
+//        Query query = getEntityManager().createNamedQuery("Faciliteit.findAll");
+//        this.setFacilityList(query.getResultList());
+//    }
+//    public void updateFaciliteit() {
+//        String sql = "UPDATE Faciliteit SET name='" + this.txtFaciliteitNaam.getText() + "', "
+//                + "WHERE id='" + Integer.parseInt(this.txtFaciliteitSoort.getText()) + "' ";
+//
+//        try {
+//            if (!getEntityManager().getTransaction().isActive()) {
+//                getEntityManager().getTransaction().begin();
+//            }
+//            if (getEntityManager().getTransaction().isActive()) {
+//                System.out.println("Verbinding is actief");
+//            } else {
+//                System.out.println("Verbinding is niet actief");
+//            }
+//
+//            Query query = getEntityManager().createQuery(sql);
+//            query.executeUpdate();
+//            getEntityManager().getTransaction().commit();
+//            this.refreshTable();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,22 +212,18 @@ public class Facility extends mvc.view.AbstractView {
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txtBeschrijving1 = new javax.swing.JTextArea();
+        txtBeschrijving = new javax.swing.JTextArea();
         jLabel50 = new javax.swing.JLabel();
         txtFaciliteitNaam = new javax.swing.JTextField();
         txtFaciliteitSoort = new javax.swing.JTextField();
         txtFaciliteitKosten = new javax.swing.JTextField();
         txtFaciliteitLocatie = new javax.swing.JTextField();
         txtFaciliteitCapaciteit = new javax.swing.JTextField();
-        txtFaciliteitCapaciteit1 = new javax.swing.JTextField();
+        txtFaciliteitTijd = new javax.swing.JTextField();
+        jLabel51 = new javax.swing.JLabel();
+        ddlLocatie = new pas.layout.form.ComboList();
+        ddlFacilities = new pas.layout.form.ComboList();
         jLabel3 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lblTitle2 = new javax.swing.JLabel();
-        pnlFacilitySearchResults = new javax.swing.JPanel();
-        txtSearchFaciliteit = new javax.swing.JTextField();
-        txtSearchID = new javax.swing.JTextField();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -292,7 +303,7 @@ public class Facility extends mvc.view.AbstractView {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(4, 4, 4)
+                .addContainerGap()
                 .addComponent(btnFacilityHoofdscherm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNieuweFaciliteit)
@@ -324,9 +335,9 @@ public class Facility extends mvc.view.AbstractView {
 
         jLabel49.setText("Beschrijving");
 
-        txtBeschrijving1.setColumns(20);
-        txtBeschrijving1.setRows(5);
-        jScrollPane4.setViewportView(txtBeschrijving1);
+        txtBeschrijving.setColumns(20);
+        txtBeschrijving.setRows(5);
+        jScrollPane4.setViewportView(txtBeschrijving);
 
         jLabel50.setText("Capaciteit");
 
@@ -335,6 +346,8 @@ public class Facility extends mvc.view.AbstractView {
                 txtFaciliteitNaamActionPerformed(evt);
             }
         });
+
+        jLabel51.setText("Tijd");
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -350,16 +363,16 @@ public class Facility extends mvc.view.AbstractView {
                             .addComponent(jLabel46))
                         .addGap(56, 56, 56)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
-                                .addComponent(jLabel50)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFaciliteitCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel23Layout.createSequentialGroup()
-                                .addComponent(txtFaciliteitSoort, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtFaciliteitCapaciteit1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFaciliteitSoort, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel51)
+                            .addComponent(jLabel50))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFaciliteitCapaciteit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFaciliteitTijd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel23Layout.createSequentialGroup()
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel23Layout.createSequentialGroup()
@@ -371,7 +384,7 @@ public class Facility extends mvc.view.AbstractView {
                                     .addComponent(txtFaciliteitKosten, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtFaciliteitLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel49))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(235, 235, 235)))
                 .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
@@ -379,14 +392,20 @@ public class Facility extends mvc.view.AbstractView {
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel23Layout.createSequentialGroup()
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel46)
-                            .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel47)
-                            .addComponent(txtFaciliteitSoort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFaciliteitCapaciteit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel46)
+                                    .addComponent(txtFaciliteitNaam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel47)
+                                    .addComponent(txtFaciliteitSoort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFaciliteitTijd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel51))
+                            .addComponent(jLabel50))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel45)
@@ -395,140 +414,73 @@ public class Facility extends mvc.view.AbstractView {
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel48)
                             .addComponent(txtFaciliteitLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel50)
                     .addComponent(txtFaciliteitCapaciteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel49)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        ddlLocatie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ddlLocatieActionPerformed(evt);
+            }
+        });
+
+        ddlFacilities.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ddlFacilitiesItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitle1)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitle1)
+                            .addComponent(ddlLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ddlFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ddlLocatie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ddlFacilities, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(lblTitle1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(98, 98, 152));
         jLabel3.setText("Faciliteiten Beheren");
 
-        jPanel4.setOpaque(false);
-
-        jLabel1.setText("Faciliteit");
-
-        jLabel2.setText("ID");
-
-        lblTitle2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblTitle2.setForeground(new java.awt.Color(98, 98, 152));
-        lblTitle2.setText("Faciliteiten");
-
-        javax.swing.GroupLayout pnlFacilitySearchResultsLayout = new javax.swing.GroupLayout(pnlFacilitySearchResults);
-        pnlFacilitySearchResults.setLayout(pnlFacilitySearchResultsLayout);
-        pnlFacilitySearchResultsLayout.setHorizontalGroup(
-            pnlFacilitySearchResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlFacilitySearchResultsLayout.setVerticalGroup(
-            pnlFacilitySearchResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-        );
-
-        txtSearchFaciliteit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchFaciliteitActionPerformed(evt);
-            }
-        });
-        txtSearchFaciliteit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchFaciliteitKeyReleased(evt);
-            }
-        });
-
-        txtSearchID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchIDActionPerformed(evt);
-            }
-        });
-        txtSearchID.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchIDKeyReleased(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(lblTitle2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pnlFacilitySearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSearchFaciliteit, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(21, 21, 21))))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtSearchID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtSearchFaciliteit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(pnlFacilitySearchResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 14, Short.MAX_VALUE)))
-                .addGap(6, 6, 6))
+                        .addContainerGap()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,11 +489,8 @@ public class Facility extends mvc.view.AbstractView {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -563,11 +512,26 @@ public class Facility extends mvc.view.AbstractView {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFacilityWijzigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityWijzigenActionPerformed
-        // TO Do
+        if (ddlFacilities.getSelectedItem().hasValue()) {
+            if (!wijzigen == true) {
+                wijzigen = true;
+                this.Wijzigen(wijzigen);
+                btnFacilityWijzigen.setText("Stop Wijzigen");
+            } else {
+                wijzigen = false;
+                this.Wijzigen(wijzigen);
+                btnFacilityWijzigen.setText("Wijzigen");
+            }
+        }
     }//GEN-LAST:event_btnFacilityWijzigenActionPerformed
 
     private void btnFacilityOpslaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityOpslaanActionPerformed
-        // TODO add your handling code here:
+        Faciliteit facility = new Faciliteit();
+        facility.setOmschrijving(txtFaciliteitNaam.getText());
+        facility.setSoort(txtFaciliteitSoort.getText());
+        facility.save();
+        
+        this.getController().facilityAction();
     }//GEN-LAST:event_btnFacilityOpslaanActionPerformed
 
     private void btnOverzichtReserveringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverzichtReserveringActionPerformed
@@ -590,51 +554,51 @@ public class Facility extends mvc.view.AbstractView {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFaciliteitNaamActionPerformed
 
-    private void txtSearchFaciliteitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchFaciliteitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchFaciliteitActionPerformed
+    private void ddlLocatieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddlLocatieActionPerformed
+        ComboListItem item = ddlLocatie.getSelectedItem();
+        this.clearFacilityForm();
 
-    private void txtSearchFaciliteitKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchFaciliteitKeyReleased
-        Query query;
-        if (txtSearchFaciliteit.getText().equals("")) {
-            query = this.getEntityManager().createNamedQuery("Faciliteit.findAll");
+        if (item.hasValue()) {
+            Vestiging vestiging = (Vestiging) item.getValue();
+            this.facilities = this.getController()
+                    .getFacilitiesByLocatieId(vestiging);
+
+            this.setFacilities();
         } else {
-            query = this.getEntityManager()
-                    .createNamedQuery("Faciliteit.findByOmschrijving")
-                    .setParameter("omschrijving", "%" + txtSearchFaciliteit.getText() + "%");
+            this.facilities.clear();
+            this.setFacilities();
         }
+    }//GEN-LAST:event_ddlLocatieActionPerformed
 
-        this.setFacilityList(query.getResultList());        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchFaciliteitKeyReleased
+    private void ddlFacilitiesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ddlFacilitiesItemStateChanged
+        if (ddlFacilities.isFocusOwner()) {
+            ComboListItem item = ddlFacilities.getSelectedItem();
 
-    private void txtSearchIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchIDActionPerformed
-
-    private void txtSearchIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchIDKeyReleased
-        Query query;
-        if (txtSearchID.getText().equals("")) {
-            query = this.getEntityManager().createNamedQuery("Faciliteit.findAll");
-        } else {
-            int test = Integer.parseInt(txtSearchID.getText());
-            
-            query = this.getEntityManager()
-                    .createNamedQuery("Faciliteit.findById")
-                    .setParameter("id", test);
+            if (item.hasValue()) {
+                // Populate form
+                Faciliteit facility = (Faciliteit) item.getValue();
+                NumberFormat formatter = NumberFormat.getCurrencyInstance();
+                txtFaciliteitCapaciteit.setText(new Integer(facility.getCapaciteit()).toString());
+                txtFaciliteitNaam.setText(facility.getOmschrijving());
+                txtFaciliteitKosten.setText(formatter.format(facility.getKosten()));
+                txtFaciliteitLocatie.setText(facility.getVestigingid().getNaam());
+                txtFaciliteitSoort.setText(facility.getSoort());
+//                txtFaciliteitTijd.setText(Integer.toString());
+            } else {
+                // Clear form
+                this.clearFacilityForm();
+            }
         }
-
-        this.setFacilityList(query.getResultList());        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchIDKeyReleased
-
+    }//GEN-LAST:event_ddlFacilitiesItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFacilityHoofdscherm;
     private javax.swing.JButton btnFacilityOpslaan;
     private javax.swing.JButton btnFacilityWijzigen;
     private javax.swing.JButton btnNieuweFaciliteit;
     private javax.swing.JButton btnOverzichtReservering;
+    private pas.layout.form.ComboList ddlFacilities;
+    private pas.layout.form.ComboList ddlLocatie;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
@@ -642,25 +606,21 @@ public class Facility extends mvc.view.AbstractView {
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblTitle1;
-    private javax.swing.JLabel lblTitle2;
-    private javax.swing.JPanel pnlFacilitySearchResults;
-    private javax.swing.JTextArea txtBeschrijving1;
+    private javax.swing.JTextArea txtBeschrijving;
     private javax.swing.JTextField txtFaciliteitCapaciteit;
-    private javax.swing.JTextField txtFaciliteitCapaciteit1;
     private javax.swing.JTextField txtFaciliteitKosten;
     private javax.swing.JTextField txtFaciliteitLocatie;
     private javax.swing.JTextField txtFaciliteitNaam;
     private javax.swing.JTextField txtFaciliteitSoort;
-    private javax.swing.JTextField txtSearchFaciliteit;
-    private javax.swing.JTextField txtSearchID;
+    private javax.swing.JTextField txtFaciliteitTijd;
     // End of variables declaration//GEN-END:variables
 }
