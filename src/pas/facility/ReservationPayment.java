@@ -5,6 +5,7 @@
 package pas.facility;
 
 import java.beans.PropertyChangeEvent;
+import java.util.Date;
 import pas.member.MemberController;
 import pas.models.ActiveMember;
 import pas.models.Format;
@@ -19,6 +20,9 @@ public class ReservationPayment extends mvc.view.AbstractView {
 
     private FacilityController facilitycontroller;
     private Faciliteit facility;
+    Date date = new Date();
+    
+    
     
     /**
      * Creates new form ReservationPayment
@@ -30,6 +34,10 @@ public class ReservationPayment extends mvc.view.AbstractView {
         this.facilitycontroller = facilitycontroller;
         this.setMember(member);
         this.setFacility();
+        
+        txtBestellingDatum.setText(Format.toShortDateString(date));
+        txtBestellingTijd.setText(Format.toShortTimeString(date));
+        
         
     }
     
@@ -76,6 +84,9 @@ public class ReservationPayment extends mvc.view.AbstractView {
         txtFaciliteitLocatie.setText(facility.getVestigingid().getNaam());
                 
     }
+    
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.

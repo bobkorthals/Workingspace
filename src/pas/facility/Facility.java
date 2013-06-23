@@ -133,6 +133,7 @@ public class Facility extends mvc.view.AbstractView {
         }
     }
 
+    
     private void clearFacilityForm() {
         txtFaciliteitCapaciteit.setText("");
         txtFaciliteitNaam.setText("");
@@ -511,6 +512,8 @@ public class Facility extends mvc.view.AbstractView {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //Wijzigen button
     private void btnFacilityWijzigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityWijzigenActionPerformed
         if (ddlFacilities.getSelectedItem().hasValue()) {
             if (!wijzigen == true) {
@@ -519,10 +522,11 @@ public class Facility extends mvc.view.AbstractView {
                 this.Wijzigen(wijzigen);
                 btnFacilityWijzigen.setText("Stop Wijzigen");
             } else {
+                wijzigen = false;
                 this.Wijzigen(wijzigen);
                 btnFacilityWijzigen.setText("Wijzigen");
             }
-                wijzigen = false;
+                
         }
     }//GEN-LAST:event_btnFacilityWijzigenActionPerformed
 
@@ -536,7 +540,7 @@ public class Facility extends mvc.view.AbstractView {
     }//GEN-LAST:event_btnFacilityOpslaanActionPerformed
 
     private void btnOverzichtReserveringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOverzichtReserveringActionPerformed
-        new FacilityController().reservationChange();                // TODO add your handling code here:
+        new FacilityController().reservationChange();        // Open reservationChange view
     }//GEN-LAST:event_btnOverzichtReserveringActionPerformed
 
     private void btnNieuweFaciliteitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNieuweFaciliteitActionPerformed
@@ -544,7 +548,7 @@ public class Facility extends mvc.view.AbstractView {
     }//GEN-LAST:event_btnNieuweFaciliteitActionPerformed
 
     private void btnFacilityHoofdschermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacilityHoofdschermActionPerformed
-        new MainController().mainAction();                // TODO add your handling code here:
+        new MainController().mainAction();                  // TODO add your handling code here:
     }//GEN-LAST:event_btnFacilityHoofdschermActionPerformed
 
     private void txtNaamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNaamActionPerformed

@@ -7,9 +7,13 @@ package pas.models.db;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +24,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import mvc.Application;
+import pas.exception.NoEntityManagerException;
+import pas.layout.MainFrame;
+import pas.models.SessionManager;
+import session.NoSessionManagerException;
 
 /**
  *
@@ -34,8 +43,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Faciliteit.findByCapaciteit", query = "SELECT f FROM Faciliteit f WHERE f.capaciteit = :capaciteit"),
     @NamedQuery(name = "Faciliteit.findByOmschrijving", query = "SELECT f FROM Faciliteit f WHERE f.omschrijving LIKE :omschrijving"),
     @NamedQuery(name = "Faciliteit.findByKosten", query = "SELECT f FROM Faciliteit f WHERE f.kosten = :kosten"),
+    @NamedQuery(name = "Faciliteit.findWithVestigingByFaciliteit", query = "SELECT v, f FROM Vestiging v, Faciliteit f WHERE f.vestigingid = :vestigingid"),
     @NamedQuery(name = "Faciliteit.findBySoort", query = "SELECT f FROM Faciliteit f WHERE f.soort = :soort")})
 public class Faciliteit implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,6 +79,41 @@ public class Faciliteit implements Serializable {
         this.kosten = kosten;
         this.soort = soort;
     }
+    
+    
+    
+    
+    /*
+     * Returns the Sessionmanager
+     * 
+     * @return SessionManager
+     */
+    private SessionManager getSessionManager() {
+        try {
+            return (SessionManager) Application.getInstance().getSessionManager();
+        } catch (NoSessionManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    /*
+     * Returns the database entity manager
+     * 
+     * @return EntityManager
+     */
+    private EntityManager getEntityManager() {
+        try {
+            return this.getSessionManager().getEntityManager();
+        } catch (NoEntityManagerException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
+    
+    
+    
 
     public Integer getId() {
         return id;
@@ -125,7 +171,35 @@ public class Faciliteit implements Serializable {
     public void setVestigingid(Vestiging vestigingid) {
         this.vestigingid = vestigingid;
     }
+    
+    
+    
+    
+    
+    
 
+    public void save() {
+        EntityManager entityManager = getEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            entityManager.persist(this);
+        } catch (Exception e) {
+            transaction.setRollbackOnly();
+        } finally {
+            transaction.commit();
+        }
+
+        System.out.println("save");
+    }
+
+    
+    
+    
+    
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -150,5 +224,4 @@ public class Faciliteit implements Serializable {
     public String toString() {
         return "pas.models.db.Faciliteit[ id=" + id + " ]";
     }
-    
 }
